@@ -1,0 +1,102 @@
+# Validação independente da máquina local (D-1001).
+# No CI não há novas tentativas: o que for instável aparece como falha.
+name: CI
+
+on:
+  push:
+  pull_request:
+
+concurrency:
+  group: ci-${{ github.ref }}
+  cancel-in-progress: true
+
+permissions:
+  contents: read
+
+jobs:
+  check:
+    name: Lint, tipos, testes e build
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v5
+
+      - uses: pnpm/action-setup@v4
+
+      - uses: actions/setup-node@v5
+        with:
+          node-version-file: .nvmrc
+          cache: pnpm
+
+      - run: pnpm install --frozen-lockfile
+
+      - name: Tokens e contraste
+        run: pnpm tokens:build
+
+      - name: Arquivos gerados em dia
+        run: git diff --exit-code -- src/styles/tokens.generated.json docs/CONTRAST.md
+
+      - name: pnpm check (lint, tipos, testes e build)
+        run: pnpm check
+
+  e2e:
+    name: E2E e axe (${{ matrix.browser }})
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    strategy:
+      fail-fast: false
+      matrix:
+        browser: [chromium, webkit, firefox]
+    env:
+      CI: "true"
+    steps:
+      - uses: actions/checkout@v5
+
+      - uses: pnpm/action-setup@v4
+
+      - uses: actions/setup-node@v5
+        with:
+          node-version-file: .nvmrc
+          cache: pnpm
+
+      - run: pnpm install --frozen-lockfile
+
+      - name: Navegador do Playwright
+        run: pnpm exec playwright install --with-deps ${{ matrix.browser }}
+
+      - name: Build de produção
+        run: pnpm build
+
+      - name: Playwright com axe
+        run: pnpm exec playwright test --project=${{ matrix.browser }}
+
+      - name: Relatório e capturas da falha
+        if: failure()
+        uses: actions/upload-artifact@v4
+        with:
+          name: playwright-${{ matrix.browser }}
+          path: |
+            playwright-report/
+            test-results/
+          retention-days: 14
+
+  release:
+    name: Bloqueio de publicação (informativo)
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    # Informativo até o conteúdo estar completo: pode falhar sem bloquear.
+    continue-on-error: true
+    steps:
+      - uses: actions/checkout@v5
+
+      - uses: pnpm/action-setup@v4
+
+      - uses: actions/setup-node@v5
+        with:
+          node-version-file: .nvmrc
+          cache: pnpm
+
+      - run: pnpm install --frozen-lockfile
+
+      - name: pnpm release:check
+        run: pnpm release:check
