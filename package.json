@@ -13,6 +13,7 @@
     "test:watch": "vitest",
     "test:e2e": "playwright test --project=chromium --project=webkit --project=firefox",
     "tokens:build": "node scripts/tokens-build.ts",
+    "release:check": "node scripts/release-check.ts",
     "format": "prettier --write .",
     "format:check": "prettier --check .",
     "check": "pnpm lint && pnpm typecheck && pnpm test && pnpm build",
