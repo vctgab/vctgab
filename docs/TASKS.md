@@ -9,5 +9,5 @@ Uma etapa por commit. Atualizada ao fim de cada etapa.
 - [x] 4. Componentes P1 e Achados
 - [x] 5. Hero e rodapé
 - [x] 6. Rota /sistema completa
-- [ ] 7. Passada de refino e QA
-- [ ] 8. Documentação e relatório final
+- [x] 7. Passada de refino e QA
+- [x] 8. Documentação e relatório final

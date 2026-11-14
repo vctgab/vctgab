@@ -30,6 +30,12 @@ pnpm check          # lint + typecheck + test + build
 
 Nenhum componente sem ficha. Antes do código, escreva `docs/specs/<componente>.md` a partir de `docs/specs/_TEMPLATE.md`: Spec (o quê, por quê, critérios de aceite), Plan (como, arquivos, riscos) e Tarefas, com Ficha de Texto e Grade de Tom. Pronto só quando cada critério tiver teste ou captura. Toda decisão e toda dependência nova vão para `docs/DECISIONS.md`.
 
+## Skills e agentes (`.claude/`)
+
+- Fluxo SDD: `start-spec` (ficha em `docs/specs/`, sem código) → `continue-spec` (implementa, valida, revisa) → `archive-spec` (confere critérios, fecha a ficha, registra em `docs/specs/HISTORY.md`).
+- `design-system` sempre que tocar UI ou texto; `data-protection` sempre que tocar dados de pessoas, contato, fixtures ou capturas; `review-pr` para revisar entrega de terceiros (somente leitura).
+- Agentes: `implementer`, `sisyphus-junior`, `tester`, `quality-gate`, `code-reviewer`, `pr-reviewer`, `codebase-explorer`, `architecture-advisor`, `qa-assistant`, `document-analyzer`, `ops-executor`.
+
 ## Nomes de arquivo
 
 Todo arquivo e pasta tem nome em inglês (`card.tsx`, `docs/RULES.md`, `specs/fields.md`). Texto visível e conteúdo dos documentos ficam em português. Exceção: segmentos de rota, que são URLs do site (`/sistema`, `/projetos`).
