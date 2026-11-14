@@ -55,7 +55,24 @@ export const PAIRS: ContrastPair[] = [
     kind: "texto",
     uso: "Texto em primária sobre fundo suave",
   },
-  { fg: "ink", bg: "primary-soft", kind: "texto", uso: "Chip selecionado" },
+  {
+    fg: "ink",
+    bg: "primary-soft",
+    kind: "texto",
+    uso: "Chip selecionado e campo em foco",
+  },
+  {
+    fg: "ink-subtle",
+    bg: "primary-soft",
+    kind: "texto",
+    uso: "Placeholder de campo em foco",
+  },
+  {
+    fg: "ink-muted",
+    bg: "primary-soft",
+    kind: "texto",
+    uso: "Ícone e contador de campo em foco",
+  },
   {
     fg: "ink",
     bg: "primary-soft-hover",
@@ -90,6 +107,11 @@ export const PAIRS: ContrastPair[] = [
   ...onSurfaces("stroke", "componente", "Contorno desenhado"),
   ...onSurfaces("border-strong", "componente", "Borda de campo e controle"),
   ...onSurfaces("focus-ring", "foco", "Anel de foco"),
+  ...onSurfaces("field-focus-stroke", "foco", "Contorno de campo em foco", [
+    "surface-base",
+    "surface-raised",
+    "primary-soft",
+  ]),
 
   {
     fg: "on-secondary-1",
@@ -217,6 +239,7 @@ export const SEMANTIC_TOKENS = [
   "primary-soft-hover",
   "primary-decor",
   "focus-ring",
+  "field-focus-stroke",
   "secondary-1-fill",
   "secondary-1-fill-hover",
   "on-secondary-1",

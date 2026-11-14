@@ -105,7 +105,10 @@ export function FieldShell({
       className={cn(
         "relative isolate flex w-full items-center",
         "[--shape-stroke:var(--border-strong)] hover:[--shape-stroke:var(--stroke)]",
-        "has-[:focus-visible]:outline-[2.5px] has-[:focus-visible]:outline-offset-2 has-[:focus-visible]:outline-focus-ring has-[:focus-visible]:outline-solid",
+        // Foco (inclusive por clique) e lista aberta: papel suave da primária e
+        // contorno no passo mais escuro da paleta (o mais claro no noturno), que garante os 3:1 que o fundo sozinho não dá.
+        "[&:has(:focus,[aria-expanded=true])]:[--shape-fill:var(--primary-soft)]",
+        "[&:not([data-invalid]):has(:focus,[aria-expanded=true])]:[--shape-stroke:var(--field-focus-stroke)]",
         "data-invalid:[--shape-stroke:var(--danger-fill)] data-invalid:hover:[--shape-stroke:var(--danger-fill)]",
         "data-disabled:[--shape-dash:6_5] data-disabled:[--shape-fill:var(--surface-sunken)] data-disabled:hover:[--shape-stroke:var(--border-strong)]",
         className,

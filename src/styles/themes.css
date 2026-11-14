@@ -74,6 +74,7 @@
   --primary-soft-hover: var(--primary-900);
   --primary-decor: var(--primary-400);
   --focus-ring: var(--primary-400);
+  --field-focus-stroke: var(--primary-50);
 
   --secondary-1-fill: var(--secondary-1-300);
   --secondary-1-fill-hover: var(--secondary-1-200);

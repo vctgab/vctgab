@@ -27,16 +27,16 @@ Altura: 48 px (campo), Textarea a partir de 5 linhas.
 
 ### Estados (copiado do Button)
 
-| Estado       | Comportamento                                                                                                                               |
-| ------------ | ------------------------------------------------------------------------------------------------------------------------------------------- |
-| Padrão       | Contorno `border-strong`.                                                                                                                   |
-| Hover        | Contorno `stroke` (um passo mais escuro).                                                                                                   |
-| Foco visível | `outline` 2,5 px `focus-ring` no hospedeiro, seguindo o raio (`:focus-within`).                                                             |
-| Ativo        | Não se aplica a campos de texto; no Select, o gatilho pressionado usa `surface-hover`.                                                      |
-| Desabilitado | Motivo obrigatório (`disabledReason`), exibido no lugar da ajuda; preenchimento `surface-sunken`, contorno tracejado, texto `ink-disabled`. |
-| Carregando   | Select com opções vindo de fora: `Spinner` no gatilho e texto "Carregando opções".                                                          |
-| Erro         | Contorno `danger-fill` 2,5 px + ícone + texto; `aria-invalid="true"`. Cor nunca sozinha.                                                    |
-| Selecionado  | Select: opção marcada com ícone `check`.                                                                                                    |
+| Estado       | Comportamento                                                                                                                                                                                                                                                                                       |
+| ------------ | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Padrão       | Contorno `border-strong`.                                                                                                                                                                                                                                                                           |
+| Hover        | Contorno `stroke` (um passo mais escuro).                                                                                                                                                                                                                                                           |
+| Foco         | Ao focar (também por clique) ou com a lista aberta: preenchimento `primary-soft` e contorno `field-focus-stroke` (passo 950 da primária; 50 no noturno); com erro, o contorno segue `danger-fill`. Sem `outline` (D-901). Lista do Select: forma no tamanho real e margem interna de 16 px × 12 px. |
+| Ativo        | Não se aplica a campos de texto; no Select, o gatilho pressionado usa `surface-hover`.                                                                                                                                                                                                              |
+| Desabilitado | Motivo obrigatório (`disabledReason`), exibido no lugar da ajuda; preenchimento `surface-sunken`, contorno tracejado, texto `ink-disabled`.                                                                                                                                                         |
+| Carregando   | Select com opções vindo de fora: `Spinner` no gatilho e texto "Carregando opções".                                                                                                                                                                                                                  |
+| Erro         | Contorno `danger-fill` 2,5 px + ícone + texto; `aria-invalid="true"`. Cor nunca sozinha.                                                                                                                                                                                                            |
+| Selecionado  | Select: opção marcada com ícone `check`.                                                                                                                                                                                                                                                            |
 
 ### Teclado
 

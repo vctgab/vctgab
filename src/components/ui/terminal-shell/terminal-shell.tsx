@@ -115,7 +115,7 @@ export function TerminalShell({
           placeholder={placeholder}
           autoComplete="off"
           spellCheck={false}
-          className="min-h-11 min-w-0 flex-1 bg-transparent font-mono text-body text-footer-ink placeholder:text-footer-ink/70 focus-visible:outline-offset-2"
+          className="min-h-11 min-w-0 flex-1 border-b-2 border-transparent bg-transparent px-2 font-mono text-body text-footer-ink outline-none placeholder:text-footer-ink/70 focus:border-footer-ink focus:bg-footer-ink/10"
         />
       </form>
     </div>

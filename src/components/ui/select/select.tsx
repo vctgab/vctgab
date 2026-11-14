@@ -112,14 +112,17 @@ export function Select({
             position="popper"
             sideOffset={8}
             className={cn(
-              "relative isolate z-(--z-popover) max-h-(--radix-select-content-available-height) min-w-(--radix-select-trigger-width) p-1.5",
+              "relative isolate z-(--z-popover) max-h-(--radix-select-content-available-height) min-w-(--radix-select-trigger-width) px-4 py-3",
               "data-[state=open]:motion-safe:animate-surgir",
             )}
           >
             <Shape
               seed={`lista:${name ?? String(label)}`}
               kind="wobblyRect"
-              bucket="md"
+              bucket="lg"
+              // Tamanho real da lista: sem isso a forma de 56 px de altura é
+              // esticada e os cantos invadem as opções.
+              nominal={{ w: 360, h: options.length * 44 + 24 }}
               shadow="md"
             />
             <RadixSelect.Viewport className="flex flex-col">

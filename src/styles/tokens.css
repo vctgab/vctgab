@@ -130,6 +130,8 @@
   --primary-soft-hover: var(--primary-100);
   --primary-decor: var(--primary-500);
   --focus-ring: var(--primary-500);
+  /* Contorno de campo em foco: o passo mais escuro da paleta (o mais claro no escuro). */
+  --field-focus-stroke: var(--primary-950);
 
   --secondary-1-fill: var(--secondary-1-600);
   --secondary-1-fill-hover: var(--secondary-1-700);

@@ -98,18 +98,22 @@ export function Dialog({
             {...host}
             onCloseAutoFocus={onCloseAutoFocus}
             className={cn(
-              "pointer-events-auto relative isolate flex max-h-[calc(100dvh-2rem)] w-full flex-col gap-6 overflow-y-auto p-6 text-ink md:p-8",
+              "pointer-events-auto relative isolate flex max-h-[calc(100dvh-2rem)] w-full flex-col text-ink",
               "data-[state=closed]:animate-sumir data-[state=open]:motion-safe:animate-surgir",
               SIZE[size],
               className,
             )}
           >
             <Shape seed={shapeSeed} bucket="lg" fill="surface-raised" shadow="lg" />
-            <Header title={title} description={description} closeLabel={closeLabel} />
-            {children ? <div className="flex flex-col gap-4">{children}</div> : null}
-            {footer ? (
-              <div className="flex flex-wrap justify-end gap-3">{footer}</div>
-            ) : null}
+            {/* Só este miolo rola: o desenho da borda e a sombra ficam no painel
+                e não criam barra de rolagem nem se movem com o texto. */}
+            <div className="relative flex min-h-0 flex-1 flex-col gap-6 overflow-y-auto p-6 md:p-8">
+              <Header title={title} description={description} closeLabel={closeLabel} />
+              {children ? <div className="flex flex-col gap-4">{children}</div> : null}
+              {footer ? (
+                <div className="flex flex-wrap justify-end gap-3">{footer}</div>
+              ) : null}
+            </div>
           </RadixDialog.Content>
         </div>
       </RadixDialog.Portal>
@@ -141,8 +145,8 @@ export function Drawer({
         <RadixDialog.Content
           data-shape-host=""
           className={cn(
-            "fixed inset-y-0 isolate z-(--z-dialog) flex w-full max-w-sm flex-col gap-6 overflow-y-auto py-6 text-ink",
-            side === "right" ? "right-0 ps-10 pe-6" : "left-0 ps-6 pe-10",
+            "fixed inset-y-0 isolate z-(--z-dialog) flex w-full max-w-sm flex-col text-ink",
+            side === "right" ? "right-0" : "left-0",
             "data-[state=closed]:animate-sumir",
             side === "right"
               ? "data-[state=open]:motion-safe:animate-deslizar-direita"
@@ -159,9 +163,16 @@ export function Drawer({
             stroke="none"
             misalign={false}
           />
-          <Header title={title} description={description} closeLabel={closeLabel} />
-          {children ? <div className="flex flex-col gap-2">{children}</div> : null}
-          {footer ? <div className="mt-auto flex flex-col gap-3">{footer}</div> : null}
+          <div
+            className={cn(
+              "relative flex min-h-0 flex-1 flex-col gap-6 overflow-y-auto py-6",
+              side === "right" ? "ps-10 pe-6" : "ps-6 pe-10",
+            )}
+          >
+            <Header title={title} description={description} closeLabel={closeLabel} />
+            {children ? <div className="flex flex-col gap-2">{children}</div> : null}
+            {footer ? <div className="mt-auto flex flex-col gap-3">{footer}</div> : null}
+          </div>
         </RadixDialog.Content>
       </RadixDialog.Portal>
     </RadixDialog.Root>

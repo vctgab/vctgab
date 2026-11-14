@@ -680,6 +680,7 @@
         "primary-soft-hover": "#FCDCE9",
         "primary-decor": "#EE2476",
         "focus-ring": "#EE2476",
+        "field-focus-stroke": "#34081A",
         "secondary-1-fill": "#295E41",
         "secondary-1-fill-hover": "#224D35",
         "on-secondary-1": "#FFFFFF",
@@ -930,9 +931,27 @@
           "fg": "ink",
           "bg": "primary-soft",
           "kind": "texto",
-          "uso": "Chip selecionado",
+          "uso": "Chip selecionado e campo em foco",
           "min": 4.5,
           "ratio": 15.8,
+          "pass": true
+        },
+        {
+          "fg": "ink-subtle",
+          "bg": "primary-soft",
+          "kind": "texto",
+          "uso": "Placeholder de campo em foco",
+          "min": 4.5,
+          "ratio": 5.22,
+          "pass": true
+        },
+        {
+          "fg": "ink-muted",
+          "bg": "primary-soft",
+          "kind": "texto",
+          "uso": "Ícone e contador de campo em foco",
+          "min": 4.5,
+          "ratio": 7.53,
           "pass": true
         },
         {
@@ -1086,6 +1105,33 @@
           "uso": "Anel de foco",
           "min": 3,
           "ratio": 3.27,
+          "pass": true
+        },
+        {
+          "fg": "field-focus-stroke",
+          "bg": "surface-base",
+          "kind": "foco",
+          "uso": "Contorno de campo em foco",
+          "min": 3,
+          "ratio": 16.76,
+          "pass": true
+        },
+        {
+          "fg": "field-focus-stroke",
+          "bg": "surface-raised",
+          "kind": "foco",
+          "uso": "Contorno de campo em foco",
+          "min": 3,
+          "ratio": 17.34,
+          "pass": true
+        },
+        {
+          "fg": "field-focus-stroke",
+          "bg": "primary-soft",
+          "kind": "foco",
+          "uso": "Contorno de campo em foco",
+          "min": 3,
+          "ratio": 15.58,
           "pass": true
         },
         {
@@ -2094,6 +2140,7 @@
         "primary-soft-hover": "#5A0E2D",
         "primary-decor": "#F25B98",
         "focus-ring": "#F25B98",
+        "field-focus-stroke": "#FEEDF4",
         "secondary-1-fill": "#97B5A5",
         "secondary-1-fill-hover": "#BCD0C5",
         "on-secondary-1": "#1D0C14",
@@ -2344,9 +2391,27 @@
           "fg": "ink",
           "bg": "primary-soft",
           "kind": "texto",
-          "uso": "Chip selecionado",
+          "uso": "Chip selecionado e campo em foco",
           "min": 4.5,
           "ratio": 15.51,
+          "pass": true
+        },
+        {
+          "fg": "ink-subtle",
+          "bg": "primary-soft",
+          "kind": "texto",
+          "uso": "Placeholder de campo em foco",
+          "min": 4.5,
+          "ratio": 9.63,
+          "pass": true
+        },
+        {
+          "fg": "ink-muted",
+          "bg": "primary-soft",
+          "kind": "texto",
+          "uso": "Ícone e contador de campo em foco",
+          "min": 4.5,
+          "ratio": 12.14,
           "pass": true
         },
         {
@@ -2500,6 +2565,33 @@
           "uso": "Anel de foco",
           "min": 3,
           "ratio": 6.35,
+          "pass": true
+        },
+        {
+          "fg": "field-focus-stroke",
+          "bg": "surface-base",
+          "kind": "foco",
+          "uso": "Contorno de campo em foco",
+          "min": 3,
+          "ratio": 16.71,
+          "pass": true
+        },
+        {
+          "fg": "field-focus-stroke",
+          "bg": "surface-raised",
+          "kind": "foco",
+          "uso": "Contorno de campo em foco",
+          "min": 3,
+          "ratio": 14.73,
+          "pass": true
+        },
+        {
+          "fg": "field-focus-stroke",
+          "bg": "primary-soft",
+          "kind": "foco",
+          "uso": "Contorno de campo em foco",
+          "min": 3,
+          "ratio": 15.58,
           "pass": true
         },
         {
@@ -3508,6 +3600,7 @@
         "primary-soft-hover": "#F6E3DB",
         "primary-decor": "#C5531F",
         "focus-ring": "#C5531F",
+        "field-focus-stroke": "#2B1207",
         "secondary-1-fill": "#5E6B29",
         "secondary-1-fill-hover": "#4D5822",
         "on-secondary-1": "#FFFFFF",
@@ -3758,9 +3851,27 @@
           "fg": "ink",
           "bg": "primary-soft",
           "kind": "texto",
-          "uso": "Chip selecionado",
+          "uso": "Chip selecionado e campo em foco",
           "min": 4.5,
           "ratio": 15.84,
+          "pass": true
+        },
+        {
+          "fg": "ink-subtle",
+          "bg": "primary-soft",
+          "kind": "texto",
+          "uso": "Placeholder de campo em foco",
+          "min": 4.5,
+          "ratio": 5.24,
+          "pass": true
+        },
+        {
+          "fg": "ink-muted",
+          "bg": "primary-soft",
+          "kind": "texto",
+          "uso": "Ícone e contador de campo em foco",
+          "min": 4.5,
+          "ratio": 7.57,
           "pass": true
         },
         {
@@ -3914,6 +4025,33 @@
           "uso": "Anel de foco",
           "min": 3,
           "ratio": 3.67,
+          "pass": true
+        },
+        {
+          "fg": "field-focus-stroke",
+          "bg": "surface-base",
+          "kind": "foco",
+          "uso": "Contorno de campo em foco",
+          "min": 3,
+          "ratio": 16.95,
+          "pass": true
+        },
+        {
+          "fg": "field-focus-stroke",
+          "bg": "surface-raised",
+          "kind": "foco",
+          "uso": "Contorno de campo em foco",
+          "min": 3,
+          "ratio": 17.35,
+          "pass": true
+        },
+        {
+          "fg": "field-focus-stroke",
+          "bg": "primary-soft",
+          "kind": "foco",
+          "uso": "Contorno de campo em foco",
+          "min": 3,
+          "ratio": 15.83,
           "pass": true
         },
         {
@@ -4922,6 +5060,7 @@
         "primary-soft-hover": "#E0EAF0",
         "primary-decor": "#3B7EA1",
         "focus-ring": "#3B7EA1",
+        "field-focus-stroke": "#0D1C23",
         "secondary-1-fill": "#294F42",
         "secondary-1-fill-hover": "#224136",
         "on-secondary-1": "#FFFFFF",
@@ -5172,9 +5311,27 @@
           "fg": "ink",
           "bg": "primary-soft",
           "kind": "texto",
-          "uso": "Chip selecionado",
+          "uso": "Chip selecionado e campo em foco",
           "min": 4.5,
           "ratio": 16.03,
+          "pass": true
+        },
+        {
+          "fg": "ink-subtle",
+          "bg": "primary-soft",
+          "kind": "texto",
+          "uso": "Placeholder de campo em foco",
+          "min": 4.5,
+          "ratio": 5.26,
+          "pass": true
+        },
+        {
+          "fg": "ink-muted",
+          "bg": "primary-soft",
+          "kind": "texto",
+          "uso": "Ícone e contador de campo em foco",
+          "min": 4.5,
+          "ratio": 7.54,
           "pass": true
         },
         {
@@ -5328,6 +5485,33 @@
           "uso": "Anel de foco",
           "min": 3,
           "ratio": 3.62,
+          "pass": true
+        },
+        {
+          "fg": "field-focus-stroke",
+          "bg": "surface-base",
+          "kind": "foco",
+          "uso": "Contorno de campo em foco",
+          "min": 3,
+          "ratio": 16.76,
+          "pass": true
+        },
+        {
+          "fg": "field-focus-stroke",
+          "bg": "surface-raised",
+          "kind": "foco",
+          "uso": "Contorno de campo em foco",
+          "min": 3,
+          "ratio": 17.21,
+          "pass": true
+        },
+        {
+          "fg": "field-focus-stroke",
+          "bg": "primary-soft",
+          "kind": "foco",
+          "uso": "Contorno de campo em foco",
+          "min": 3,
+          "ratio": 15.8,
           "pass": true
         },
         {

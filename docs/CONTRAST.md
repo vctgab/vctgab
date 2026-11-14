@@ -32,7 +32,9 @@ Claro, rosa do ipê com pinheiro e âmbar. Esquema claro. Energia 1, rotação m
 | `primary-text-hover` sobre `surface-raised` | Link em hover | texto | 4,50:1 | 9,68:1 | aprovado |
 | `primary-text-hover` sobre `surface-sunken` | Link em hover | texto | 4,50:1 | 7,86:1 | aprovado |
 | `primary-text` sobre `primary-soft` | Texto em primária sobre fundo suave | texto | 4,50:1 | 6,19:1 | aprovado |
-| `ink` sobre `primary-soft` | Chip selecionado | texto | 4,50:1 | 15,80:1 | aprovado |
+| `ink` sobre `primary-soft` | Chip selecionado e campo em foco | texto | 4,50:1 | 15,80:1 | aprovado |
+| `ink-subtle` sobre `primary-soft` | Placeholder de campo em foco | texto | 4,50:1 | 5,22:1 | aprovado |
+| `ink-muted` sobre `primary-soft` | Ícone e contador de campo em foco | texto | 4,50:1 | 7,53:1 | aprovado |
 | `ink` sobre `primary-soft-hover` | Chip selecionado em hover | texto | 4,50:1 | 14,03:1 | aprovado |
 | `primary-decor` sobre `surface-base` | Títulos de 24 px ou mais e ícones com rótulo | texto-grande | 3,00:1 | 3,89:1 | aprovado |
 | `primary-decor` sobre `surface-raised` | Títulos de 24 px ou mais e ícones com rótulo | texto-grande | 3,00:1 | 4,03:1 | aprovado |
@@ -50,6 +52,9 @@ Claro, rosa do ipê com pinheiro e âmbar. Esquema claro. Energia 1, rotação m
 | `focus-ring` sobre `surface-base` | Anel de foco | foco | 3,00:1 | 3,89:1 | aprovado |
 | `focus-ring` sobre `surface-raised` | Anel de foco | foco | 3,00:1 | 4,03:1 | aprovado |
 | `focus-ring` sobre `surface-sunken` | Anel de foco | foco | 3,00:1 | 3,27:1 | aprovado |
+| `field-focus-stroke` sobre `surface-base` | Contorno de campo em foco | foco | 3,00:1 | 16,76:1 | aprovado |
+| `field-focus-stroke` sobre `surface-raised` | Contorno de campo em foco | foco | 3,00:1 | 17,34:1 | aprovado |
+| `field-focus-stroke` sobre `primary-soft` | Contorno de campo em foco | foco | 3,00:1 | 15,58:1 | aprovado |
 | `on-secondary-1` sobre `secondary-1-fill` | Preenchimento secundário 1 | texto | 4,50:1 | 7,58:1 | aprovado |
 | `on-secondary-1` sobre `secondary-1-fill-hover` | Secundário 1 em hover | texto | 4,50:1 | 9,63:1 | aprovado |
 | `secondary-1-text` sobre `surface-base` | Texto secundário 1 | texto | 4,50:1 | 9,19:1 | aprovado |
@@ -127,7 +132,9 @@ Escuro, as mesmas sementes do ipê sobre papel noturno. Esquema escuro. Energia 
 | `primary-text-hover` sobre `surface-raised` | Link em hover | texto | 4,50:1 | 10,23:1 | aprovado |
 | `primary-text-hover` sobre `surface-sunken` | Link em hover | texto | 4,50:1 | 12,22:1 | aprovado |
 | `primary-text` sobre `primary-soft` | Texto em primária sobre fundo suave | texto | 4,50:1 | 8,18:1 | aprovado |
-| `ink` sobre `primary-soft` | Chip selecionado | texto | 4,50:1 | 15,51:1 | aprovado |
+| `ink` sobre `primary-soft` | Chip selecionado e campo em foco | texto | 4,50:1 | 15,51:1 | aprovado |
+| `ink-subtle` sobre `primary-soft` | Placeholder de campo em foco | texto | 4,50:1 | 9,63:1 | aprovado |
+| `ink-muted` sobre `primary-soft` | Ícone e contador de campo em foco | texto | 4,50:1 | 12,14:1 | aprovado |
 | `ink` sobre `primary-soft-hover` | Chip selecionado em hover | texto | 4,50:1 | 12,08:1 | aprovado |
 | `primary-decor` sobre `surface-base` | Títulos de 24 px ou mais e ícones com rótulo | texto-grande | 3,00:1 | 6,03:1 | aprovado |
 | `primary-decor` sobre `surface-raised` | Títulos de 24 px ou mais e ícones com rótulo | texto-grande | 3,00:1 | 5,32:1 | aprovado |
@@ -145,6 +152,9 @@ Escuro, as mesmas sementes do ipê sobre papel noturno. Esquema escuro. Energia 
 | `focus-ring` sobre `surface-base` | Anel de foco | foco | 3,00:1 | 6,03:1 | aprovado |
 | `focus-ring` sobre `surface-raised` | Anel de foco | foco | 3,00:1 | 5,32:1 | aprovado |
 | `focus-ring` sobre `surface-sunken` | Anel de foco | foco | 3,00:1 | 6,35:1 | aprovado |
+| `field-focus-stroke` sobre `surface-base` | Contorno de campo em foco | foco | 3,00:1 | 16,71:1 | aprovado |
+| `field-focus-stroke` sobre `surface-raised` | Contorno de campo em foco | foco | 3,00:1 | 14,73:1 | aprovado |
+| `field-focus-stroke` sobre `primary-soft` | Contorno de campo em foco | foco | 3,00:1 | 15,58:1 | aprovado |
 | `on-secondary-1` sobre `secondary-1-fill` | Preenchimento secundário 1 | texto | 4,50:1 | 8,49:1 | aprovado |
 | `on-secondary-1` sobre `secondary-1-fill-hover` | Secundário 1 em hover | texto | 4,50:1 | 11,63:1 | aprovado |
 | `secondary-1-text` sobre `surface-base` | Texto secundário 1 | texto | 4,50:1 | 8,49:1 | aprovado |
@@ -222,7 +232,9 @@ Claro, laranja queimado com oliva e vinho. Esquema claro. Energia 1.25, rotaçã
 | `primary-text-hover` sobre `surface-raised` | Link em hover | texto | 4,50:1 | 10,16:1 | aprovado |
 | `primary-text-hover` sobre `surface-sunken` | Link em hover | texto | 4,50:1 | 8,34:1 | aprovado |
 | `primary-text` sobre `primary-soft` | Texto em primária sobre fundo suave | texto | 4,50:1 | 6,72:1 | aprovado |
-| `ink` sobre `primary-soft` | Chip selecionado | texto | 4,50:1 | 15,84:1 | aprovado |
+| `ink` sobre `primary-soft` | Chip selecionado e campo em foco | texto | 4,50:1 | 15,84:1 | aprovado |
+| `ink-subtle` sobre `primary-soft` | Placeholder de campo em foco | texto | 4,50:1 | 5,24:1 | aprovado |
+| `ink-muted` sobre `primary-soft` | Ícone e contador de campo em foco | texto | 4,50:1 | 7,57:1 | aprovado |
 | `ink` sobre `primary-soft-hover` | Chip selecionado em hover | texto | 4,50:1 | 14,21:1 | aprovado |
 | `primary-decor` sobre `surface-base` | Títulos de 24 px ou mais e ícones com rótulo | texto-grande | 3,00:1 | 4,36:1 | aprovado |
 | `primary-decor` sobre `surface-raised` | Títulos de 24 px ou mais e ícones com rótulo | texto-grande | 3,00:1 | 4,47:1 | aprovado |
@@ -240,6 +252,9 @@ Claro, laranja queimado com oliva e vinho. Esquema claro. Energia 1.25, rotaçã
 | `focus-ring` sobre `surface-base` | Anel de foco | foco | 3,00:1 | 4,36:1 | aprovado |
 | `focus-ring` sobre `surface-raised` | Anel de foco | foco | 3,00:1 | 4,47:1 | aprovado |
 | `focus-ring` sobre `surface-sunken` | Anel de foco | foco | 3,00:1 | 3,67:1 | aprovado |
+| `field-focus-stroke` sobre `surface-base` | Contorno de campo em foco | foco | 3,00:1 | 16,95:1 | aprovado |
+| `field-focus-stroke` sobre `surface-raised` | Contorno de campo em foco | foco | 3,00:1 | 17,35:1 | aprovado |
+| `field-focus-stroke` sobre `primary-soft` | Contorno de campo em foco | foco | 3,00:1 | 15,83:1 | aprovado |
 | `on-secondary-1` sobre `secondary-1-fill` | Preenchimento secundário 1 | texto | 4,50:1 | 5,82:1 | aprovado |
 | `on-secondary-1` sobre `secondary-1-fill-hover` | Secundário 1 em hover | texto | 4,50:1 | 7,68:1 | aprovado |
 | `secondary-1-text` sobre `surface-base` | Texto secundário 1 | texto | 4,50:1 | 7,39:1 | aprovado |
@@ -317,7 +332,9 @@ Claro, azul-gelo com pinheiro nevado e lilás frio. Esquema claro. Energia 0.7, 
 | `primary-text-hover` sobre `surface-raised` | Link em hover | texto | 4,50:1 | 10,10:1 | aprovado |
 | `primary-text-hover` sobre `surface-sunken` | Link em hover | texto | 4,50:1 | 8,25:1 | aprovado |
 | `primary-text` sobre `primary-soft` | Texto em primária sobre fundo suave | texto | 4,50:1 | 6,70:1 | aprovado |
-| `ink` sobre `primary-soft` | Chip selecionado | texto | 4,50:1 | 16,03:1 | aprovado |
+| `ink` sobre `primary-soft` | Chip selecionado e campo em foco | texto | 4,50:1 | 16,03:1 | aprovado |
+| `ink-subtle` sobre `primary-soft` | Placeholder de campo em foco | texto | 4,50:1 | 5,26:1 | aprovado |
+| `ink-muted` sobre `primary-soft` | Ícone e contador de campo em foco | texto | 4,50:1 | 7,54:1 | aprovado |
 | `ink` sobre `primary-soft-hover` | Chip selecionado em hover | texto | 4,50:1 | 14,45:1 | aprovado |
 | `primary-decor` sobre `surface-base` | Títulos de 24 px ou mais e ícones com rótulo | texto-grande | 3,00:1 | 4,32:1 | aprovado |
 | `primary-decor` sobre `surface-raised` | Títulos de 24 px ou mais e ícones com rótulo | texto-grande | 3,00:1 | 4,44:1 | aprovado |
@@ -335,6 +352,9 @@ Claro, azul-gelo com pinheiro nevado e lilás frio. Esquema claro. Energia 0.7, 
 | `focus-ring` sobre `surface-base` | Anel de foco | foco | 3,00:1 | 4,32:1 | aprovado |
 | `focus-ring` sobre `surface-raised` | Anel de foco | foco | 3,00:1 | 4,44:1 | aprovado |
 | `focus-ring` sobre `surface-sunken` | Anel de foco | foco | 3,00:1 | 3,62:1 | aprovado |
+| `field-focus-stroke` sobre `surface-base` | Contorno de campo em foco | foco | 3,00:1 | 16,76:1 | aprovado |
+| `field-focus-stroke` sobre `surface-raised` | Contorno de campo em foco | foco | 3,00:1 | 17,21:1 | aprovado |
+| `field-focus-stroke` sobre `primary-soft` | Contorno de campo em foco | foco | 3,00:1 | 15,80:1 | aprovado |
 | `on-secondary-1` sobre `secondary-1-fill` | Preenchimento secundário 1 | texto | 4,50:1 | 9,16:1 | aprovado |
 | `on-secondary-1` sobre `secondary-1-fill-hover` | Secundário 1 em hover | texto | 4,50:1 | 11,19:1 | aprovado |
 | `secondary-1-text` sobre `surface-base` | Texto secundário 1 | texto | 4,50:1 | 10,78:1 | aprovado |
