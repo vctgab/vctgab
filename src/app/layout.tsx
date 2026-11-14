@@ -4,7 +4,7 @@ import { Footer } from "@/components/layout/footer"
 import { Header } from "@/components/layout/header"
 import { AchadosChip, AchadosProvider } from "@/components/ui/finds"
 import { ToastProvider } from "@/components/ui/toast"
-import { fontVariables } from "@/lib/fonts"
+import { fontVariables, PRELOADED_FONTS } from "@/lib/fonts"
 import { ThemeProvider } from "@/lib/theme/theme-provider"
 import { themeScript } from "@/lib/theme/theme-script"
 import { getThemeInfo, DEFAULT_THEME } from "@/lib/theme/themes"
@@ -30,6 +30,18 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
     <html lang="pt-BR" className={fontVariables} suppressHydrationWarning>
       <head>
         <script dangerouslySetInnerHTML={{ __html: themeScript() }} />
+        {/* Pré-carga no HTML, com crossOrigin explícito: o Firefox reaproveita
+            esta e não a do cabeçalho Link (D-1010). */}
+        {PRELOADED_FONTS.map((href) => (
+          <link
+            key={href}
+            rel="preload"
+            href={href}
+            as="font"
+            type="font/woff2"
+            crossOrigin="anonymous"
+          />
+        ))}
       </head>
       <body>
         <ThemeProvider>

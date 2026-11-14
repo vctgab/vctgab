@@ -1,0 +1,104 @@
+{
+  "rota": "/sistema",
+  "base": "http://localhost:3100",
+  "rotulo": "antes",
+  "execucoes": 3,
+  "metodos": {
+    "simulate": {
+      "mediana": {
+        "desempenho": 79,
+        "acessibilidade": 98,
+        "boasPraticas": 100,
+        "seo": 60,
+        "fcpMs": 2124,
+        "lcpMs": 3924,
+        "tbtMs": 327,
+        "siMs": 2124,
+        "cls": 0
+      },
+      "execucoes": [
+        {
+          "desempenho": 75,
+          "acessibilidade": 98,
+          "boasPraticas": 100,
+          "seo": 60,
+          "fcpMs": 2124,
+          "lcpMs": 3924,
+          "tbtMs": 443,
+          "siMs": 2124,
+          "cls": 0
+        },
+        {
+          "desempenho": 79,
+          "acessibilidade": 98,
+          "boasPraticas": 100,
+          "seo": 60,
+          "fcpMs": 2123,
+          "lcpMs": 3923,
+          "tbtMs": 327,
+          "siMs": 2123,
+          "cls": 0
+        },
+        {
+          "desempenho": 79,
+          "acessibilidade": 98,
+          "boasPraticas": 100,
+          "seo": 60,
+          "fcpMs": 2128,
+          "lcpMs": 3928,
+          "tbtMs": 312,
+          "siMs": 2128,
+          "cls": 0
+        }
+      ]
+    },
+    "devtools": {
+      "mediana": {
+        "desempenho": 73,
+        "acessibilidade": 98,
+        "boasPraticas": 100,
+        "seo": 60,
+        "fcpMs": 1881,
+        "lcpMs": 2241,
+        "tbtMs": 1307,
+        "siMs": 2118,
+        "cls": 0
+      },
+      "execucoes": [
+        {
+          "desempenho": 73,
+          "acessibilidade": 98,
+          "boasPraticas": 100,
+          "seo": 60,
+          "fcpMs": 1764,
+          "lcpMs": 2057,
+          "tbtMs": 1307,
+          "siMs": 2009,
+          "cls": 0
+        },
+        {
+          "desempenho": 70,
+          "acessibilidade": 98,
+          "boasPraticas": 100,
+          "seo": 60,
+          "fcpMs": 2111,
+          "lcpMs": 2324,
+          "tbtMs": 1567,
+          "siMs": 2319,
+          "cls": 0
+        },
+        {
+          "desempenho": 73,
+          "acessibilidade": 98,
+          "boasPraticas": 100,
+          "seo": 60,
+          "fcpMs": 1881,
+          "lcpMs": 2241,
+          "tbtMs": 1177,
+          "siMs": 2118,
+          "cls": 0
+        }
+      ]
+    }
+  }
+}

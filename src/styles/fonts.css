@@ -1,0 +1,80 @@
+/*
+ * Fontes da primeira dobra, servidas de public/fonts (D-1010).
+ *
+ * Fraunces e DM Sans são pré-carregadas por <link rel="preload"> no HTML
+ * (src/app/layout.tsx). O next/font emite a pré-carga como cabeçalho HTTP
+ * `Link` com `crossorigin=""`, que o Firefox não reaproveita: baixava as
+ * duas fontes duas vezes (99 KB a mais). Os nomes têm versão (-v1) porque o
+ * cache é imutável (next.config.ts); trocar o arquivo exige trocar o nome.
+ *
+ * Fraunces: instância do Google Fonts com SOFT fixo em 100 e sem WONK
+ * (D-1007), com wght e opsz variáveis. 121 KB → 62 KB, sem mudança visual.
+ * DM Sans: wght variável, sem opsz (D-710). Licenças OFL ao lado dos arquivos.
+ *
+ * Os fallbacks repetem as métricas que o next/font calculava para elas
+ * (size-adjust, ascent e descent), para a troca não deslocar o layout.
+ */
+
+@font-face {
+  font-family: "Fraunces";
+  src: url("/fonts/fraunces-soft100-latin-v1.woff2") format("woff2");
+  font-weight: 100 900;
+  font-style: normal;
+  font-display: swap;
+  unicode-range:
+    U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308,
+    U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+
+@font-face {
+  font-family: "Fraunces Ajuste";
+  src:
+    local("Times New Roman"), local("TimesNewRomanPSMT"), local("Liberation Serif"),
+    local("Tinos");
+  ascent-override: 76.38%;
+  descent-override: 19.91%;
+  line-gap-override: 0%;
+  size-adjust: 128.05%;
+}
+
+@font-face {
+  font-family: "DM Sans";
+  src: url("/fonts/dm-sans-latin-v1.woff2") format("woff2");
+  font-weight: 100 1000;
+  font-style: normal;
+  font-display: swap;
+  unicode-range:
+    U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308,
+    U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+
+@font-face {
+  font-family: "DM Sans Ajuste";
+  src: local("Arial"), local("ArialMT"), local("Liberation Sans"), local("Arimo");
+  ascent-override: 94.9%;
+  descent-override: 29.66%;
+  line-gap-override: 0%;
+  size-adjust: 104.53%;
+}
+
+/*
+ * Fallback da JetBrains Mono antes de a fonte chegar (sem pré-carga, D-1009).
+ * Courier New, as métricas-compatíveis (Liberation Mono, Cousine) e as
+ * monoespaçadas do Android têm avanço de 0,6 em, igual ao da JetBrains Mono:
+ * a largura não muda na troca. Ascendente e descendente iguais aos dela.
+ */
+@font-face {
+  font-family: "JetBrains Mono Ajuste";
+  src:
+    local("Courier New"), local("CourierNewPSMT"), local("Liberation Mono"),
+    local("Cousine"), local("Noto Sans Mono"), local("Droid Sans Mono");
+  size-adjust: 100%;
+  ascent-override: 102%;
+  descent-override: 30%;
+  line-gap-override: 0%;
+}
+
+:root {
+  --font-fraunces: "Fraunces", "Fraunces Ajuste";
+  --font-dm-sans: "DM Sans", "DM Sans Ajuste";
+}

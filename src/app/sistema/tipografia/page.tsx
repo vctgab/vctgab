@@ -70,12 +70,11 @@ export default function TipografiaPage() {
         <div className="grid gap-8 md:grid-cols-2">
           <div className="flex flex-col gap-2">
             <p className="font-mono text-label text-ink-subtle">
-              Fraunces · títulos (SOFT 100)
+              Fraunces · títulos (SOFT fixo em 100, tamanho ótico automático)
             </p>
             <p className="font-soft font-display text-h2">
               Front-end com visão de produto.
             </p>
-            <p className="font-wonk font-display text-h3">Com WONK, só em destaques.</p>
           </div>
           <div className="flex flex-col gap-2">
             <p className="font-mono text-label text-ink-subtle">

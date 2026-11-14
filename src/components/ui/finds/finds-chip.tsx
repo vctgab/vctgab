@@ -37,15 +37,18 @@ export function AchadosChip({ placement = "dock", className }: AchadosChipProps)
     >
       <Shape seed={seed} bucket="sm" fill="surface-raised" shadow="md" />
       <Icon name="busca" decorative />
-      <span className="translate-y-px">
-        Achados:{" "}
-        {state === null ? (
-          <span className="inline-grid">
+      {/* Duas caixas de largura fixa, texto à esquerda: a troca do fallback pela
+          Patrick Hand (que muda a largura de "Achados:") não move o ícone nem a
+          contagem. Com o chip centralizado, isso mantém o CLS em 0 (D-1009). */}
+      <span className="inline-flex translate-y-px">
+        <span className="inline-block w-18 text-start">Achados:</span>{" "}
+        <span className="inline-block w-12 text-start">
+          {state === null ? (
             <span className="invisible">{formatCount(0, total)}</span>
-          </span>
-        ) : (
-          formatCount(count, total)
-        )}
+          ) : (
+            formatCount(count, total)
+          )}
+        </span>
       </span>
       <span id={`${id}-acao`} className="sr-only">
         Abre o caderno de achados

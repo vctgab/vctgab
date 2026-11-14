@@ -47,7 +47,7 @@ Regras do rosa: preenchimento com texto branco no passo 600 (hover 700, ativo 80
 
 ### Tipografia
 
-Fraunces (títulos, `SOFT 100`; `WONK` só em destaques), DM Sans (corpo e interface), JetBrains Mono (rótulos e terminal), Caveat (anotações, mínimo 20 px) e Patrick Hand (etiquetas e botões). Escala fluida: `text-display`, `text-h1`, `text-h2`, `text-h3`, `text-body-lg`, `text-body`, `text-sm`, `text-label`, `text-hand`, `text-marker`.
+Fraunces (títulos, `SOFT` fixo em 100 no arquivo, tamanho ótico automático, sem `WONK`), DM Sans (corpo e interface), JetBrains Mono (rótulos e terminal), Caveat (anotações, mínimo 20 px) e Patrick Hand (etiquetas e botões). Escala fluida: `text-display`, `text-h1`, `text-h2`, `text-h3`, `text-body-lg`, `text-body`, `text-sm`, `text-label`, `text-hand`, `text-marker`.
 
 ### Espaço, sombra, movimento e camadas
 

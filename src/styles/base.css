@@ -45,9 +45,6 @@
   h4 {
     font-family: var(--font-fraunces), Georgia, serif;
     font-weight: 700;
-    font-variation-settings:
-      "SOFT" 100,
-      "WONK" 0;
     hyphens: manual;
     text-wrap: balance;
   }
@@ -99,16 +96,12 @@
 }
 
 @layer utilities {
-  /* Fraunces acolhedora e Fraunces com WONK, só para destaques. */
+  /*
+   * Fraunces acolhedora. O SOFT 100 já vem fixo no arquivo da fonte (D-1007);
+   * a classe marca o uso e mantém o tamanho ótico automático.
+   */
   .font-soft {
-    font-variation-settings:
-      "SOFT" 100,
-      "WONK" 0;
-  }
-  .font-wonk {
-    font-variation-settings:
-      "SOFT" 100,
-      "WONK" 1;
+    font-optical-sizing: auto;
   }
   .tabular {
     font-variant-numeric: tabular-nums;
