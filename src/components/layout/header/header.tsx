@@ -40,7 +40,7 @@ function NavLink({
     <Link
       href={href as Route}
       aria-current={current ? "page" : undefined}
-      className="group/nav relative inline-flex min-h-11 items-center px-3 font-medium text-ink hover:text-primary-text-hover aria-[current=page]:text-primary-text"
+      className="group/nav relative inline-flex min-h-11 items-center px-3 font-medium whitespace-nowrap text-ink hover:text-primary-text-hover aria-[current=page]:text-primary-text"
     >
       {label}
       <svg
@@ -93,13 +93,13 @@ export function Header({ ctaHref = "/contato", className }: HeaderProps) {
       <Container className="flex min-h-19 items-center justify-between gap-3">
         <Logo compact />
 
-        <nav aria-label="Principal" className="hidden items-center gap-1 md:flex">
+        <nav aria-label="Principal" className="hidden items-center gap-1 lg:flex">
           {NAV_LINKS.map((link) => (
             <NavLink key={link.href} {...link} current={pathname === link.href} />
           ))}
         </nav>
 
-        <div className="hidden items-center gap-3 md:flex">
+        <div className="hidden items-center gap-3 lg:flex">
           <TerminalDialog trigger={cmd} />
           <Popover
             title="Tema"
@@ -117,7 +117,7 @@ export function Header({ ctaHref = "/contato", className }: HeaderProps) {
           </Button>
         </div>
 
-        <div className="md:hidden">
+        <div className="lg:hidden">
           <Drawer
             title="Menu"
             open={menuOpen}

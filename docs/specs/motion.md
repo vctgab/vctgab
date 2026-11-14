@@ -52,10 +52,14 @@ Todos têm equivalente estático em `prefers-reduced-motion` (descrito acima). D
 2. Grade de Tom: boas-vindas, acolhedor.
 3. Título: "Projetos em destaque" (rótulo da faixa).
 4. Rótulos: "Horário em Teresina".
-5. a 9. Não se aplicam.
-6. Hora por `formatTimeWithSeconds` e `formatTime`, fuso de Teresina.
-7. Sem dados reais.
-8. Nenhuma exceção.
+5. Ajuda: não se aplica.
+6. Termos: nenhum novo.
+7. Estados: o relógio reserva o espaço antes de montar; a faixa e o Reveal não exibem dados.
+8. Erros: não se aplica.
+9. Sucesso: não se aplica.
+10. Números: hora por `formatTimeWithSeconds` e `formatTime`, fuso de Teresina.
+11. Sem dados reais.
+12. Nenhuma exceção.
 
 ### Critérios de aceite
 

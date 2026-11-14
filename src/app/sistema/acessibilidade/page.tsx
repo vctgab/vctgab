@@ -4,6 +4,7 @@ import { Icon } from "@/components/ui/icon"
 import { LinkText } from "@/components/ui/link-text"
 import { formatNumber } from "@/lib/format"
 import tokens from "@/styles/tokens.generated.json"
+import { ScrollRegion } from "../_showcase/scroll-region"
 
 export const metadata: Metadata = { title: "Acessibilidade" }
 
@@ -77,7 +78,7 @@ export default function AcessibilidadePage() {
           </LinkText>
           .
         </p>
-        <div className="overflow-x-auto">
+        <ScrollRegion label="Tabela de contraste por tema">
           <table className="w-full min-w-xl border-collapse text-left text-sm">
             <caption className="sr-only">Menor contraste por tipo de par e tema</caption>
             <thead>
@@ -120,7 +121,7 @@ export default function AcessibilidadePage() {
               ))}
             </tbody>
           </table>
-        </div>
+        </ScrollRegion>
         <p className="font-mono text-label text-ink-subtle">
           {formatNumber(tokens.themes.reduce((n, t) => n + t.pairs.length, 0))} pares
           calculados em {formatNumber(tokens.themes.length)} temas.
@@ -131,7 +132,7 @@ export default function AcessibilidadePage() {
         <h2 id="teclado" className="text-h2">
           Teclado
         </h2>
-        <div className="overflow-x-auto">
+        <ScrollRegion label="Tabela de teclado por componente">
           <table className="w-full min-w-xl border-collapse text-left text-sm">
             <caption className="sr-only">Comportamento de teclado por componente</caption>
             <thead>
@@ -155,7 +156,7 @@ export default function AcessibilidadePage() {
               ))}
             </tbody>
           </table>
-        </div>
+        </ScrollRegion>
       </section>
 
       <section aria-labelledby="outras" className="mt-16 flex flex-col gap-4">

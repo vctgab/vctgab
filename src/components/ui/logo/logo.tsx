@@ -33,7 +33,7 @@ export function Logo({
       href={href}
       aria-label={label}
       className={cn(
-        "font-soft inline-flex min-h-11 items-center gap-2.5 font-display text-body-lg font-bold",
+        "font-soft inline-flex min-h-11 items-center gap-2.5 font-display text-body-lg font-bold whitespace-nowrap",
         inverse ? "text-footer-ink" : "text-ink",
         className,
       )}

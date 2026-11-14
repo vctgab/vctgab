@@ -1,0 +1,365 @@
+{
+  "geradoEm": "2026-11-14T15:36:59.767Z",
+  "tags": ["wcag2a", "wcag2aa", "wcag21a", "wcag21aa", "wcag22aa"],
+  "resultados": [
+    {
+      "tema": "ipe",
+      "pagina": "/sistema",
+      "tentativas": 1,
+      "violations": [],
+      "passes": 25,
+      "console": []
+    },
+    {
+      "tema": "ipe",
+      "pagina": "/sistema/cores",
+      "tentativas": 7,
+      "violations": [],
+      "passes": 27,
+      "console": []
+    },
+    {
+      "tema": "ipe",
+      "pagina": "/sistema/tipografia",
+      "tentativas": 1,
+      "violations": [],
+      "passes": 25,
+      "console": []
+    },
+    {
+      "tema": "ipe",
+      "pagina": "/sistema/espaco",
+      "tentativas": 10,
+      "violations": [],
+      "console": [],
+      "metodo": "axe-light (só violações; resultado completo corrompido pela máquina, ver D-701)",
+      "tentativasModoLeve": 2
+    },
+    {
+      "tema": "ipe",
+      "pagina": "/sistema/formas",
+      "tentativas": 1,
+      "violations": [],
+      "passes": 29,
+      "console": []
+    },
+    {
+      "tema": "ipe",
+      "pagina": "/sistema/componentes",
+      "tentativas": 4,
+      "violations": [],
+      "passes": 30,
+      "console": []
+    },
+    {
+      "tema": "ipe",
+      "pagina": "/sistema/conteudo",
+      "tentativas": 1,
+      "violations": [],
+      "passes": 30,
+      "console": []
+    },
+    {
+      "tema": "ipe",
+      "pagina": "/sistema/achados",
+      "tentativas": 1,
+      "violations": [],
+      "passes": 26,
+      "console": []
+    },
+    {
+      "tema": "ipe",
+      "pagina": "/sistema/hero",
+      "tentativas": 1,
+      "violations": [],
+      "passes": 25,
+      "console": []
+    },
+    {
+      "tema": "ipe",
+      "pagina": "/sistema/temas",
+      "tentativas": 1,
+      "violations": [],
+      "passes": 27,
+      "console": []
+    },
+    {
+      "tema": "ipe",
+      "pagina": "/sistema/acessibilidade",
+      "tentativas": 2,
+      "violations": [],
+      "passes": 29,
+      "console": []
+    },
+    {
+      "tema": "noturno",
+      "pagina": "/sistema",
+      "tentativas": 1,
+      "violations": [],
+      "passes": 25,
+      "console": []
+    },
+    {
+      "tema": "noturno",
+      "pagina": "/sistema/cores",
+      "tentativas": 10,
+      "violations": [],
+      "console": [],
+      "metodo": "axe-light (só violações; resultado completo corrompido pela máquina, ver D-701)",
+      "tentativasModoLeve": 2
+    },
+    {
+      "tema": "noturno",
+      "pagina": "/sistema/tipografia",
+      "tentativas": 1,
+      "violations": [],
+      "passes": 25,
+      "console": []
+    },
+    {
+      "tema": "noturno",
+      "pagina": "/sistema/espaco",
+      "tentativas": 1,
+      "violations": [],
+      "passes": 25,
+      "console": []
+    },
+    {
+      "tema": "noturno",
+      "pagina": "/sistema/formas",
+      "tentativas": 1,
+      "violations": [],
+      "passes": 29,
+      "console": []
+    },
+    {
+      "tema": "noturno",
+      "pagina": "/sistema/componentes",
+      "tentativas": 4,
+      "violations": [],
+      "passes": 30,
+      "console": []
+    },
+    {
+      "tema": "noturno",
+      "pagina": "/sistema/conteudo",
+      "tentativas": 1,
+      "violations": [],
+      "passes": 30,
+      "console": []
+    },
+    {
+      "tema": "noturno",
+      "pagina": "/sistema/achados",
+      "tentativas": 1,
+      "violations": [],
+      "passes": 26,
+      "console": []
+    },
+    {
+      "tema": "noturno",
+      "pagina": "/sistema/hero",
+      "tentativas": 2,
+      "violations": [],
+      "passes": 25,
+      "console": []
+    },
+    {
+      "tema": "noturno",
+      "pagina": "/sistema/temas",
+      "tentativas": 1,
+      "violations": [],
+      "passes": 27,
+      "console": []
+    },
+    {
+      "tema": "noturno",
+      "pagina": "/sistema/acessibilidade",
+      "tentativas": 1,
+      "violations": [],
+      "passes": 29,
+      "console": []
+    },
+    {
+      "tema": "outono",
+      "pagina": "/sistema",
+      "tentativas": 1,
+      "violations": [],
+      "passes": 25,
+      "console": []
+    },
+    {
+      "tema": "outono",
+      "pagina": "/sistema/cores",
+      "tentativas": 1,
+      "violations": [],
+      "passes": 27,
+      "console": []
+    },
+    {
+      "tema": "outono",
+      "pagina": "/sistema/tipografia",
+      "tentativas": 1,
+      "violations": [],
+      "passes": 25,
+      "console": []
+    },
+    {
+      "tema": "outono",
+      "pagina": "/sistema/espaco",
+      "tentativas": 3,
+      "violations": [],
+      "passes": 25,
+      "console": []
+    },
+    {
+      "tema": "outono",
+      "pagina": "/sistema/formas",
+      "tentativas": 2,
+      "violations": [],
+      "passes": 29,
+      "console": []
+    },
+    {
+      "tema": "outono",
+      "pagina": "/sistema/componentes",
+      "tentativas": 8,
+      "violations": [],
+      "passes": 30,
+      "console": []
+    },
+    {
+      "tema": "outono",
+      "pagina": "/sistema/conteudo",
+      "tentativas": 1,
+      "violations": [],
+      "passes": 30,
+      "console": []
+    },
+    {
+      "tema": "outono",
+      "pagina": "/sistema/achados",
+      "tentativas": 2,
+      "violations": [],
+      "passes": 26,
+      "console": []
+    },
+    {
+      "tema": "outono",
+      "pagina": "/sistema/hero",
+      "tentativas": 1,
+      "violations": [],
+      "passes": 25,
+      "console": []
+    },
+    {
+      "tema": "outono",
+      "pagina": "/sistema/temas",
+      "tentativas": 1,
+      "violations": [],
+      "passes": 27,
+      "console": []
+    },
+    {
+      "tema": "outono",
+      "pagina": "/sistema/acessibilidade",
+      "tentativas": 1,
+      "violations": [],
+      "passes": 29,
+      "console": []
+    },
+    {
+      "tema": "inverno",
+      "pagina": "/sistema",
+      "tentativas": 1,
+      "violations": [],
+      "passes": 25,
+      "console": []
+    },
+    {
+      "tema": "inverno",
+      "pagina": "/sistema/cores",
+      "tentativas": 1,
+      "violations": [],
+      "passes": 27,
+      "console": []
+    },
+    {
+      "tema": "inverno",
+      "pagina": "/sistema/tipografia",
+      "tentativas": 1,
+      "violations": [],
+      "passes": 25,
+      "console": []
+    },
+    {
+      "tema": "inverno",
+      "pagina": "/sistema/espaco",
+      "tentativas": 4,
+      "violations": [],
+      "passes": 25,
+      "console": []
+    },
+    {
+      "tema": "inverno",
+      "pagina": "/sistema/formas",
+      "tentativas": 1,
+      "violations": [],
+      "passes": 29,
+      "console": []
+    },
+    {
+      "tema": "inverno",
+      "pagina": "/sistema/componentes",
+      "tentativas": 1,
+      "violations": [],
+      "passes": 30,
+      "console": []
+    },
+    {
+      "tema": "inverno",
+      "pagina": "/sistema/conteudo",
+      "tentativas": 1,
+      "violations": [],
+      "passes": 30,
+      "console": []
+    },
+    {
+      "tema": "inverno",
+      "pagina": "/sistema/achados",
+      "tentativas": 2,
+      "violations": [],
+      "passes": 26,
+      "console": []
+    },
+    {
+      "tema": "inverno",
+      "pagina": "/sistema/hero",
+      "tentativas": 1,
+      "violations": [],
+      "passes": 25,
+      "console": []
+    },
+    {
+      "tema": "inverno",
+      "pagina": "/sistema/temas",
+      "tentativas": 1,
+      "violations": [],
+      "passes": 27,
+      "console": []
+    },
+    {
+      "tema": "inverno",
+      "pagina": "/sistema/acessibilidade",
+      "tentativas": 1,
+      "violations": [],
+      "passes": 29,
+      "console": []
+    }
+  ],
+  "resumo": {
+    "auditorias": 44,
+    "comViolacao": 0,
+    "semResultado": 0
+  }
+}

@@ -11,6 +11,11 @@ const eslintConfig = defineConfig([
   {
     rules: {
       ...jsxA11y.flatConfigs.recommended.rules,
+      // Regiões com rolagem precisam de foco pelo teclado (role="region").
+      "jsx-a11y/no-noninteractive-tabindex": [
+        "error",
+        { roles: ["tabpanel", "region"], tags: [] },
+      ],
       "@typescript-eslint/no-explicit-any": "error",
       "@typescript-eslint/consistent-type-imports": "error",
       "no-restricted-properties": [

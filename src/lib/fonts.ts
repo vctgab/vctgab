@@ -5,6 +5,9 @@ export const fraunces = Fraunces({
   subsets: ["latin"],
   display: "swap",
   axes: ["SOFT", "WONK", "opsz"],
+  // Sem preload: o LCP é texto do corpo; a Fraunces chega logo depois com
+  // métricas de fallback ajustadas (sem salto).
+  preload: false,
   variable: "--font-fraunces",
 })
 
@@ -12,7 +15,6 @@ export const fraunces = Fraunces({
 export const dmSans = DM_Sans({
   subsets: ["latin"],
   display: "swap",
-  axes: ["opsz"],
   variable: "--font-dm-sans",
 })
 
@@ -20,6 +22,7 @@ export const dmSans = DM_Sans({
 export const jetbrainsMono = JetBrains_Mono({
   subsets: ["latin"],
   display: "swap",
+  preload: false,
   variable: "--font-jetbrains-mono",
 })
 
@@ -36,7 +39,8 @@ export const patrickHand = Patrick_Hand({
   subsets: ["latin"],
   display: "swap",
   weight: "400",
-  preload: false,
+  // Precarregada: 14 KB, usada nos botões e no chip acima da dobra. Chega
+  // antes da primeira pintura, então não há troca de fonte (CLS 0).
   variable: "--font-patrick-hand",
 })
 

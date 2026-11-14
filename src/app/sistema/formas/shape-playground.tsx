@@ -154,7 +154,12 @@ generateShape({ kind: "${kind}", seed: "${seed}", bucket: "${bucket}", irregular
         </figure>
 
         <div className="flex flex-col gap-3">
-          <pre className="overflow-x-auto bg-surface-sunken p-4 font-mono text-sm text-ink">
+          <pre
+            role="region"
+            aria-label="Código de uso"
+            tabIndex={0}
+            className="overflow-x-auto bg-surface-sunken p-4 font-mono text-sm text-ink"
+          >
             <code>{code}</code>
           </pre>
           <div className="flex flex-wrap items-center gap-4">

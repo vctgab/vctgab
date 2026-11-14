@@ -68,7 +68,7 @@ export function Hero({ seed, ctaHref = "/contato", titleAs: Title = "h1" }: Hero
           </ul>
           <Title id={`hero-${seed}-titulo`} className="font-soft mt-6 text-display">
             Front-end com{" "}
-            <span className="relative inline-block whitespace-nowrap">
+            <span className="relative inline-block">
               visão de produto.
               <svg
                 aria-hidden="true"

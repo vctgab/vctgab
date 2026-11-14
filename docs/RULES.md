@@ -7,7 +7,7 @@ Cada regra tem um ID, um enunciado, uma severidade e um teste que outra pessoa r
 
 Famílias: VZ voz, VC vocabulário, TL texto e títulos, BT botões e links, MS mensagens e estados, ER erros, FM formulários, AC acessibilidade, VI visual e contraste, NU números e datas, CR cor, ES estados e movimento, TK tokens, SH formas, DD dados, PR processo.
 
-Os testes automáticos estão em `tests/unit/rules.test.ts` (varreduras), `scripts/tokens-build.ts` (contraste), nos `*.test.tsx` de cada componente e em `tests/e2e/` (axe, hidratação e capturas).
+Os testes automáticos estão em `tests/unit/rules.test.ts` (varreduras), `scripts/tokens-build.ts` (contraste), nos `*.test.tsx` de cada componente, em `tests/e2e/system.spec.ts` (axe nos 4 temas, console sem aviso de hidratação, teclado, alvo de toque, movimento reduzido), em `tests/e2e/screenshots.spec.ts` (capturas em `docs/screenshots/`) e em `tests/tools/axe-audit.mjs` (auditoria com repetição, relatório em `docs/qa/axe-report.json`).
 
 ## Texto e voz
 

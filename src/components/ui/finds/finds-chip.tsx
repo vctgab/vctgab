@@ -28,7 +28,7 @@ export function AchadosChip({ placement = "dock", className }: AchadosChipProps)
       aria-describedby={`${id}-acao`}
       onClick={(e) => openCard(e.currentTarget)}
       className={cn(
-        "relative isolate inline-flex min-h-12 cursor-pointer items-center gap-2.5 px-5 font-marker text-marker leading-none text-ink",
+        "relative isolate inline-flex min-h-12 w-56 cursor-pointer items-center justify-center gap-2.5 px-5 font-marker text-marker leading-none whitespace-nowrap text-ink",
         "transition-[translate] duration-(--duration-instant) ease-hand",
         "[--shape-fill:var(--surface-raised)] hover:[--shape-fill:var(--surface-hover)] active:[--shape-fill:var(--surface-active)]",
         "active:translate-x-0.5 active:translate-y-0.5 active:[--shape-shadow-x:0px] active:[--shape-shadow-y:0px] motion-reduce:active:translate-0",

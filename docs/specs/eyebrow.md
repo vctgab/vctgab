@@ -46,9 +46,11 @@ Texto em cor do sistema; traço some (decorativo). Sem movimento.
 5. Ajuda: não se aplica.
 6. Termos: conforme o glossário.
 7. Estados: não exibe dados.
-8. a 10. Não se aplicam.
-9. Sem dados reais.
-10. Nenhuma exceção.
+8. Erros: não se aplica.
+9. Sucesso: não se aplica.
+10. Números: não se aplica.
+11. Sem dados reais.
+12. Nenhuma exceção.
 
 ### Critérios de aceite
 

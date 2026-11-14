@@ -3,6 +3,7 @@ import { Eyebrow } from "@/components/ui/eyebrow"
 import { Icon } from "@/components/ui/icon"
 import { formatNumber } from "@/lib/format"
 import tokens from "@/styles/tokens.generated.json"
+import { ScrollRegion } from "../_showcase/scroll-region"
 import { ThemeOnly, ThemeOnlyStyle } from "../_showcase/theme-only"
 
 export const metadata: Metadata = { title: "Cores" }
@@ -144,7 +145,7 @@ export default function CoresPage() {
               <h2 id={`matriz-${theme.id}`} className="text-h2">
                 Matriz de contraste
               </h2>
-              <div className="overflow-x-auto">
+              <ScrollRegion label={`Matriz de contraste do tema ${theme.label}`}>
                 <table className="w-full min-w-xl border-collapse text-left text-sm">
                   <caption className="sr-only">
                     Pares obrigatórios de contraste do tema {theme.label}
@@ -197,7 +198,7 @@ export default function CoresPage() {
                     ))}
                   </tbody>
                 </table>
-              </div>
+              </ScrollRegion>
             </section>
           </div>
         </ThemeOnly>
