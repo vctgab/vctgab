@@ -35,10 +35,13 @@ for (const theme of THEMES) {
 test.describe("teclado e alvo", () => {
   test("o primeiro Tab mostra 'Pular para o conteúdo' e leva ao conteúdo", async ({
     page,
+    browserName,
   }) => {
     await page.goto("/sistema/componentes", { waitUntil: "networkidle" })
-    await page.keyboard.press("Tab")
     const skip = page.getByRole("link", { name: "Pular para o conteúdo" })
+    // No WebKit, o Tab não chega a links (padrão do Safari): foca direto.
+    if (browserName === "webkit") await skip.focus()
+    else await page.keyboard.press("Tab")
     await expect(skip).toBeFocused()
     await expect(skip).toBeVisible()
     await page.keyboard.press("Enter")
@@ -55,6 +58,9 @@ test.describe("teclado e alvo", () => {
       return (
         Array.from(document.querySelectorAll<HTMLElement>(selector))
           .filter((el) => el.offsetParent !== null)
+          // Espelhos nativos do Radix (select e checkbox ocultos para formulário):
+          // aria-hidden e fora da ordem de foco, não são alvo.
+          .filter((el) => !(el.getAttribute("aria-hidden") === "true" && el.tabIndex < 0))
           // WCAG 2.5.8 isenta links dentro de frases.
           .filter((el) => !(el.tagName === "A" && el.closest("p")))
           .map((el) => {

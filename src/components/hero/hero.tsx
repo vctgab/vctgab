@@ -67,7 +67,8 @@ export function Hero({ seed, ctaHref = "/contato", titleAs: Title = "h1" }: Hero
             <Tag as="li">React e Next.js</Tag>
           </ul>
           <Title id={`hero-${seed}-titulo`} className="font-soft mt-6 text-display">
-            Front-end com{" "}
+            {/* Sem quebra no hífen: o Chromium quebrava "Front-" / "end". */}
+            <span className="whitespace-nowrap">Front-end</span> com{" "}
             <span className="relative inline-block">
               visão de produto.
               <svg
