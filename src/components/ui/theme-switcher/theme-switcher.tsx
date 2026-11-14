@@ -83,18 +83,28 @@ export function ThemeSwitcher({ layout = "compact", className }: ThemeSwitcherPr
             </span>
             <span
               className={cn(
-                "flex items-center gap-1",
+                "flex items-center gap-1 hyphens-none whitespace-nowrap",
                 grid ? "text-body font-medium" : "text-sm",
               )}
             >
               {t.label}
+              {grid ? (
+                <Icon
+                  name="check"
+                  size={16}
+                  decorative
+                  className="hidden group-data-[state=checked]/tema:inline-block"
+                />
+              ) : null}
+            </span>
+            {grid ? null : (
               <Icon
                 name="check"
                 size={16}
                 decorative
-                className="hidden group-data-[state=checked]/tema:inline-block"
+                className="absolute top-1 right-1 hidden text-primary-text group-data-[state=checked]/tema:block"
               />
-            </span>
+            )}
             {grid ? (
               <span className="text-sm text-ink-muted">{t.description}</span>
             ) : null}

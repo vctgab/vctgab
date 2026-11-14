@@ -8,7 +8,6 @@ import { Marquee } from "@/components/ui/marquee"
 import { Polaroid } from "@/components/ui/polaroid"
 import { ProgressHatch } from "@/components/ui/progress-hatch"
 import { Reveal } from "@/components/ui/reveal"
-import { Container } from "@/components/ui/section"
 import { Skeleton } from "@/components/ui/skeleton"
 import { Stat } from "@/components/ui/stat"
 import { TerminalShell } from "@/components/ui/terminal-shell"
@@ -26,7 +25,7 @@ const FICHAS = ["A", "B", "C", "D"].map((letra, i) => ({
 export default function ConteudoPage() {
   return (
     <main id="conteudo">
-      <Container className="py-12">
+      <div className="py-12">
         <Eyebrow>Vitrine</Eyebrow>
         <h1 className="mt-4 text-h1">Conteúdo e movimento</h1>
         <p className="mt-4 max-w-measure text-body-lg text-ink-muted">
@@ -167,7 +166,7 @@ export default function ConteudoPage() {
         >
           <TerminalShell className="max-w-2xl" />
         </Demo>
-      </Container>
+      </div>
     </main>
   )
 }

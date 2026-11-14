@@ -7,7 +7,6 @@ import {
 } from "@/components/ui/finds"
 import { Pinha } from "@/components/ui/finds/drawings"
 import { Eyebrow } from "@/components/ui/eyebrow"
-import { Container } from "@/components/ui/section"
 import { Demo, Row } from "../_showcase/demo"
 
 export const metadata: Metadata = { title: "Achados" }
@@ -15,7 +14,7 @@ export const metadata: Metadata = { title: "Achados" }
 export default function AchadosPage() {
   return (
     <main id="conteudo">
-      <Container className="py-12">
+      <div className="py-12">
         <Eyebrow>Vitrine</Eyebrow>
         <h1 className="mt-4 text-h1">Achados</h1>
         <p className="mt-4 max-w-measure text-body-lg text-ink-muted">
@@ -77,7 +76,7 @@ export default function AchadosPage() {
         >
           <AvisoPaginaSecreta />
         </Demo>
-      </Container>
+      </div>
     </main>
   )
 }

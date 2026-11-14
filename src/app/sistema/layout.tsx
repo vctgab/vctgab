@@ -1,4 +1,6 @@
 import type { Metadata } from "next"
+import { ThemeSwitcher } from "@/components/ui/theme-switcher"
+import { SystemNav } from "./_showcase/system-nav"
 
 export const metadata: Metadata = {
   title: { default: "Sistema", template: "%s · Sistema · Victor Gabriel" },
@@ -6,6 +8,20 @@ export const metadata: Metadata = {
   robots: { index: false, follow: false },
 }
 
+/** Vitrine: navegação lateral, tema fixo no topo e o conteúdo de cada seção. */
 export default function SistemaLayout({ children }: LayoutProps<"/sistema">) {
-  return children
+  return (
+    <div className="mx-auto grid w-full max-w-page gap-x-10 px-(--gutter) lg:grid-cols-[14rem_minmax(0,1fr)]">
+      <aside className="pt-8 lg:sticky lg:top-0 lg:max-h-dvh lg:overflow-y-auto lg:pt-12 lg:pb-12">
+        <SystemNav />
+      </aside>
+      <div className="min-w-0">
+        <div className="z-(--z-sticky) mt-4 flex flex-wrap items-center justify-end gap-3 border-b-2 border-dashed border-border bg-surface-base py-2 lg:sticky lg:top-0 lg:mt-0">
+          <p className="font-mono text-label text-ink-subtle">Tema da vitrine</p>
+          <ThemeSwitcher layout="compact" className="w-full max-w-md" />
+        </div>
+        {children}
+      </div>
+    </div>
+  )
 }

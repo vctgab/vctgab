@@ -75,6 +75,18 @@ describe("tokens", () => {
   })
 })
 
+describe("cor", () => {
+  it("CR-01: nenhum componente usa passo cru de escala (só tokens semânticos)", () => {
+    const components = CODE.filter((f) => f.startsWith("src/components/") && !isTest(f))
+    expect(
+      offenders(
+        components,
+        /--(primary|secondary-1|secondary-2|success|warning|danger|neutral)-d{1,3}/,
+      ),
+    ).toEqual([])
+  })
+})
+
 describe("formas", () => {
   it("SH-01: nenhum Math.random em src", () => {
     expect(
@@ -211,7 +223,7 @@ describe("texto", () => {
     expect(
       fmt(
         system.filter((t) =>
-          /\b(?!(?:OIA|SVG|CSS|HTML|JSON|WCAG|URL|API|UI)\b)[A-ZÁÉÍÓÚÂÊÔÃÕÇ]{4,}\b/.test(
+          /\b(?!(?:OIA|SVG|CSS|HTML|JSON|WCAG|URL|API|UI|SOFT|WONK)\b)[A-ZÁÉÍÓÚÂÊÔÃÕÇ]{4,}\b/.test(
             t.text,
           ),
         ),

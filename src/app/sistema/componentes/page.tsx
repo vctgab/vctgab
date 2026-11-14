@@ -15,7 +15,6 @@ import { Tooltip } from "@/components/ui/tooltip"
 import { Eyebrow } from "@/components/ui/eyebrow"
 import { Ficha } from "@/components/ui/card"
 import { LinkText } from "@/components/ui/link-text"
-import { Container } from "@/components/ui/section"
 import { Spinner } from "@/components/ui/spinner"
 import { Tag } from "@/components/ui/tag"
 import { Demo, Row } from "../_showcase/demo"
@@ -26,7 +25,7 @@ export const metadata: Metadata = { title: "Componentes" }
 export default function ComponentesPage() {
   return (
     <main id="conteudo">
-      <Container className="py-12">
+      <div className="py-12">
         <Eyebrow>Vitrine</Eyebrow>
         <h1 className="mt-4 text-h1">Componentes</h1>
         <p className="mt-4 max-w-measure text-body-lg text-ink-muted">
@@ -338,7 +337,7 @@ export default function ComponentesPage() {
             <Spinner size={24} label="Carregando projetos" />
           </Row>
         </Demo>
-      </Container>
+      </div>
     </main>
   )
 }

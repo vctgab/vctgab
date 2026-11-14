@@ -28,7 +28,7 @@ function aspect(kind: ShapeKind, bucket: ShapeBucket): string {
 
 export default function FormasPage() {
   return (
-    <main className="mx-auto max-w-page px-(--gutter) py-12">
+    <main id="conteudo" className="py-12">
       <p className="font-mono text-label text-ink-subtle">
         <Link className="text-primary-text underline underline-offset-4" href="/sistema">
           Voltar para a vitrine do sistema

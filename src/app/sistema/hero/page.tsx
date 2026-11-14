@@ -1,7 +1,6 @@
 import type { Metadata } from "next"
 import { Hero } from "@/components/hero"
 import { Eyebrow } from "@/components/ui/eyebrow"
-import { Container } from "@/components/ui/section"
 import { SCENES } from "@/components/footer-scene"
 import { THEMES } from "@/lib/theme/themes"
 
@@ -11,7 +10,7 @@ export default function HeroPage() {
   return (
     <main id="conteudo">
       <Hero seed="sistema" />
-      <Container className="py-16">
+      <div className="py-16">
         <Eyebrow>Vitrine</Eyebrow>
         <h2 className="mt-4 text-h2">Como o hero funciona</h2>
         <ul className="mt-6 flex max-w-measure list-disc flex-col gap-3 ps-5 text-body text-ink-muted">
@@ -37,7 +36,7 @@ export default function HeroPage() {
             </li>
           ))}
         </ul>
-      </Container>
+      </div>
     </main>
   )
 }
