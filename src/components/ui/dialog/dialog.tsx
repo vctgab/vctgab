@@ -25,6 +25,8 @@ interface BaseProps {
 
 export interface DialogProps extends BaseProps {
   size?: "sm" | "md" | "lg"
+  /** Para onde o foco volta ao fechar quando não há gatilho próprio. */
+  onCloseAutoFocus?: (event: Event) => void
 }
 
 export interface DrawerProps extends BaseProps {
@@ -82,6 +84,7 @@ export function Dialog({
   seed,
   className,
   closeLabel = "Fechar",
+  onCloseAutoFocus,
 }: DialogProps) {
   const shapeSeed = seed ?? `dialogo:${typeof title === "string" ? title : "painel"}`
   const host = shapeHostProps({ seed: shapeSeed, bucket: "lg" })
@@ -93,6 +96,7 @@ export function Dialog({
         <div className="pointer-events-none fixed inset-0 z-(--z-dialog) grid place-items-center p-4">
           <RadixDialog.Content
             {...host}
+            onCloseAutoFocus={onCloseAutoFocus}
             className={cn(
               "pointer-events-auto relative isolate flex max-h-[calc(100dvh-2rem)] w-full flex-col gap-6 overflow-y-auto p-6 text-ink md:p-8",
               "data-[state=closed]:animate-sumir data-[state=open]:motion-safe:animate-surgir",

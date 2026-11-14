@@ -27,6 +27,17 @@ page.on("console", (m) => {
     logs.push(`${m.type()}: ${m.text()}`)
 })
 await page.goto(`http://localhost:3100${route}`, { waitUntil: "networkidle" })
+if (process.env.FULL === "1") {
+  // Rola a página para os blocos com Reveal entrarem antes da captura inteira.
+  await page.evaluate(async () => {
+    for (let y = 0; y < document.body.scrollHeight; y += 400) {
+      window.scrollTo(0, y)
+      await new Promise((r) => setTimeout(r, 40))
+    }
+    window.scrollTo(0, 0)
+  })
+  await page.waitForTimeout(400)
+}
 await page.screenshot({ path: out, fullPage: process.env.FULL === "1" })
 console.log(logs.length ? logs.join("\n") : "sem erros no console")
 await browser.close()

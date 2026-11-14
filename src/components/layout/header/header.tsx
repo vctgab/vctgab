@@ -3,7 +3,7 @@
 import Link from "next/link"
 import type { Route } from "next"
 import { usePathname } from "next/navigation"
-import { useState, type ReactNode } from "react"
+import { useState } from "react"
 import { Button } from "@/components/ui/button"
 import { Drawer } from "@/components/ui/dialog"
 import { Logo } from "@/components/ui/logo"
@@ -12,11 +12,10 @@ import { Container } from "@/components/ui/section"
 import { ThemeSwitcher } from "@/components/ui/theme-switcher"
 import { cn } from "@/lib/cn"
 import { generateShape } from "@/lib/shapes"
+import { TerminalDialog } from "../terminal"
 import { NAV_LINKS } from "./nav-links"
 
 export interface HeaderProps {
-  /** Conteúdo aberto pelo botão `cmd` (o terminal entra na etapa 4). */
-  terminal?: (trigger: ReactNode) => ReactNode
   /** Destino do CTA "Vamos conversar". */
   ctaHref?: string
   className?: string
@@ -68,7 +67,7 @@ function NavLink({
  * Cabeçalho global: pular para o conteúdo, logo, navegação, terminal, tema
  * e CTA. No mobile, menu em Drawer. Ficha: docs/specs/header-footer.md
  */
-export function Header({ terminal, ctaHref = "/contato", className }: HeaderProps) {
+export function Header({ ctaHref = "/contato", className }: HeaderProps) {
   const pathname = usePathname()
   const [menuOpen, setMenuOpen] = useState(false)
   const cmd = (
@@ -101,7 +100,7 @@ export function Header({ terminal, ctaHref = "/contato", className }: HeaderProp
         </nav>
 
         <div className="hidden items-center gap-3 md:flex">
-          {terminal ? terminal(cmd) : cmd}
+          <TerminalDialog trigger={cmd} />
           <Popover
             title="Tema"
             align="end"
@@ -139,7 +138,7 @@ export function Header({ terminal, ctaHref = "/contato", className }: HeaderProp
                     Vamos conversar
                   </Link>
                 </Button>
-                {terminal ? terminal(cmd) : cmd}
+                <TerminalDialog trigger={cmd} />
               </>
             }
           >

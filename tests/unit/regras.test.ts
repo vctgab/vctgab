@@ -294,6 +294,18 @@ describe("processo", () => {
     header: "header-footer",
     footer: "header-footer",
     "pagina-provisoria": "header-footer",
+    divider: "p1-visuais",
+    "progress-hatch": "p1-visuais",
+    polaroid: "p1-visuais",
+    stat: "p1-visuais",
+    quote: "quote",
+    marquee: "movimento",
+    reveal: "movimento",
+    "live-clock": "movimento",
+    accordion: "accordion-terminal",
+    "terminal-shell": "accordion-terminal",
+    terminal: "accordion-terminal",
+    achados: "achados",
   }
 
   const folders = ["src/components/ui", "src/components/layout"].flatMap((base) =>

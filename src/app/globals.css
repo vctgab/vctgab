@@ -150,6 +150,20 @@
     var(--motion-ease-out) both;
   --animate-esmaecer: esmaecer var(--duration-state) var(--motion-ease-out) both;
 
+  --animate-pulo: pulo var(--duration-state) var(--motion-ease-hand) both;
+  --animate-faixa: faixa var(--faixa-duracao, 52s) linear infinite;
+
+  @keyframes pulo {
+    40% {
+      translate: 0 -6px;
+      scale: 1.08;
+    }
+  }
+  @keyframes faixa {
+    to {
+      translate: -50% 0;
+    }
+  }
   @keyframes surgir {
     from {
       opacity: 0;

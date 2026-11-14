@@ -97,6 +97,7 @@ export function setTheme(id: string): void {
 
 /** Reaplica o tema se o atributo sumiu (remontagem do Strict Mode em desenvolvimento). */
 export function ensureThemeAttribute(): void {
+  document.documentElement.setAttribute("data-js", "")
   const attr = document.documentElement.getAttribute("data-theme")
   if (!isThemeId(attr)) applyAttribute(resolveTheme())
 }

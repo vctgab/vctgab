@@ -61,7 +61,7 @@ Spinner com `prefers-reduced-motion`: não gira; o arco fica parado e o texto "C
 - [x] CA-1 Spinner sozinho expõe `role="status"` com nome "Carregando" ou o rótulo dado.
 - [x] CA-2 Spinner decorativo tem `aria-hidden`.
 - [x] CA-3 Com movimento reduzido não há animação (classe `motion-safe:` apenas).
-- [ ] CA-4 Skeleton é `aria-hidden` e reserva a altura pedida.
+- [x] CA-4 Skeleton é `aria-hidden` e reserva a altura pedida.
 - [x] CA-5 jest-axe sem violações.
 
 ## Plan
@@ -72,6 +72,6 @@ Spinner com `prefers-reduced-motion`: não gira; o arco fica parado e o texto "C
 
 - [x] Ficha
 - [x] Spinner
-- [ ] Skeleton (etapa 4)
+- [x] Skeleton (etapa 4)
 - [x] Testes
-- [ ] Vitrine
+- [x] Vitrine

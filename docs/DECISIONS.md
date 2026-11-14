@@ -74,6 +74,22 @@ Todas as outras sementes sugeridas passaram sem ajuste. Os demais acertos foram 
 | D-311 | Novos tokens: `surface-hover`, `surface-active`, `primary-soft-hover`, `--duration-spin`. Ícone novo `seletor`.                               | Padrão de estados (um e dois passos) em superfícies; giro do Spinner por token (ES-02).                                                                                |
 | D-312 | Ferramentas `tests/tools/el.mjs` (captura de elemento em 2x) e log de respostas HTTP ≥ 400 no `shot.mjs`.                                     | Revisão visual por componente e caça de 404.                                                                                                                           |
 
+## Componentes P1 e Achados (etapa 4)
+
+| ID    | Decisão                                                                                                                                      | Motivo                                                                                             |
+| ----- | -------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------- |
+| D-401 | Achados em `useSyncExternalStore` com snapshot de servidor `null`: o servidor mostra "Lendo o caderno" e o chip reserva a largura do número. | Zero erro de hidratação e nenhum salto quando o `localStorage` é lido.                             |
+| D-402 | O caderno é um só, montado pelo `AchadosProvider`; os chips só o abrem e devolvem o foco por `onCloseAutoFocus`.                             | Dois chips (rodapé e barra fixa) compartilham o mesmo estado e o mesmo diálogo.                    |
+| D-403 | O estado "indisponível" dos Achados é o `AvisoPaginaSecreta` ("Esta página abre com 7 achados. Você tem N.").                                | É onde a falta de achados bloqueia algo; o caderno cobre carregando, vazio, erro e com dados.      |
+| D-404 | A barra de achados no mobile reserva o próprio espaço (`h-20`) no fim da página.                                                             | Não cobre o rodapé nem o fim do conteúdo.                                                          |
+| D-405 | Reveal só esconde com `[data-js]` (marcado pelo script do `<head>`) e com movimento permitido.                                               | Sem JavaScript ou com movimento reduzido, nada fica invisível.                                     |
+| D-406 | Marquee só em CSS, com a cópia `aria-hidden` e `inert`.                                                                                      | Os links da cópia não entram na ordem de foco nem na leitura.                                      |
+| D-407 | Quote começa sem troca automática; ligada, tem botão de pausa e para com foco ou ponteiro dentro.                                            | WCAG 2.2.2 (pausar conteúdo que muda sozinho).                                                     |
+| D-408 | Header monta o terminal por conta própria (`TerminalDialog`).                                                                                | O Header é Client Component dentro do layout de servidor; não pode receber função por prop.        |
+| D-409 | `TerminalShell` usa `focusOnMount` em vez de `autoFocus`.                                                                                    | O jsx-a11y barra `autoFocus`; aqui o foco no campo é o comportamento esperado ao abrir o terminal. |
+| D-410 | A vitrine de Achados mostra só a pinha; os outros seis continuam escondidos.                                                                 | Não estragar a camada de mistério.                                                                 |
+| D-411 | A ferramenta `shot.mjs` rola a página antes da captura inteira.                                                                              | Blocos com Reveal só aparecem ao entrar na tela.                                                   |
+
 ## Dependências
 
 | Pacote                                                                                                       | Tipo    | Por que existe                                                                                                                                                        |

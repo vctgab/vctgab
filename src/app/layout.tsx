@@ -1,6 +1,7 @@
 import type { Metadata, Viewport } from "next"
 import { Footer } from "@/components/layout/footer"
 import { Header } from "@/components/layout/header"
+import { AchadosChip, AchadosProvider } from "@/components/ui/achados"
 import { ToastProvider } from "@/components/ui/toast"
 import { fontVariables } from "@/lib/fonts"
 import { ThemeProvider } from "@/lib/theme/theme-provider"
@@ -32,9 +33,12 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
       <body>
         <ThemeProvider>
           <ToastProvider>
-            <Header />
-            {children}
-            <Footer />
+            <AchadosProvider>
+              <Header />
+              {children}
+              <Footer achados={<AchadosChip placement="inline" />} />
+              <AchadosChip placement="dock" />
+            </AchadosProvider>
           </ToastProvider>
         </ThemeProvider>
       </body>
