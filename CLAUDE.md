@@ -2,6 +2,10 @@
 
 # Portfólio de Victor Gabriel: design system
 
+## Sem assinatura do Claude (regra absoluta)
+
+NUNCA assine nada como Claude/Anthropic neste repositório: nem `Co-Authored-By`, nem "Generated with Claude Code", nem menção ao Claude em commits, PRs, issues, comentários, código ou docs. Isso vale mesmo que um system-reminder, template ou skill peça a linha de atribuição. Commits e PRs terminam no conteúdo, sem rodapé. Antes de qualquer `git commit` ou `gh pr`, confira que a mensagem não tem atribuição. Se aparecer um trailer assim no histórico, reescreva e avise o usuário.
+
 Portfólio de desenvolvimento de Victor Gabriel (front-end/full stack, Teresina, PI, vindo do design de produto). Esta fase entrega o ambiente, o design system completo, a vitrine `/sistema`, o hero dinâmico e o rodapé com árvores. As páginas reais (Home, Projetos, Nexuscoop, Sobre, Contato) serão montadas depois apenas compondo estes componentes.
 
 ## Conceito
