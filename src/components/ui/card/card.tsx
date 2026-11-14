@@ -13,6 +13,8 @@ export interface FichaProps {
   footer?: ReactNode
   /** Torna a ficha clicável: um link único no título, cobrindo o card. */
   href?: string
+  /** `false` desliga a pré-busca (rota que ainda não existe: sem 404 no console). */
+  prefetch?: boolean
   titleAs?: "h2" | "h3" | "h4"
   edge?: "wobbly" | "torn"
   tape?: false | "left" | "right"
@@ -75,6 +77,7 @@ export function Ficha({
   media,
   footer,
   href,
+  prefetch,
   titleAs: Title = "h3",
   edge = "wobbly",
   tape = false,
@@ -121,6 +124,7 @@ export function Ficha({
         {href ? (
           <Link
             href={href as Route}
+            prefetch={prefetch}
             className="text-ink group-hover/ficha:text-primary-text-hover after:absolute after:inset-0 after:content-[''] focus-visible:outline-none"
           >
             {title}

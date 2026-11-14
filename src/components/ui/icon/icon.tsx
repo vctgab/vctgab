@@ -66,6 +66,7 @@ export const ACAO_ICONE: ReadonlyArray<{ acao: string; icone: IconName }> = [
   { acao: "Recolher, remover", icone: "menos" },
   { acao: "Tema claro", icone: "sol" },
   { acao: "Tema escuro", icone: "lua" },
+  { acao: "Escolher tema", icone: "tema" },
   { acao: "E-mail", icone: "mail" },
   { acao: "GitHub", icone: "github" },
   { acao: "LinkedIn", icone: "linkedin" },

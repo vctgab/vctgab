@@ -4,7 +4,7 @@
 
 ### Propósito
 
-- **Header:** identificação e navegação global: logo, Projetos, Sobre, Contato, botão `cmd`, CTA "Vamos conversar", seletor de tema e link para pular ao conteúdo. No mobile, menu em Drawer.
+- **Header:** identificação e navegação global: logo, Projetos, Sobre, Contato, seletor de tema (botão com ícone `tema` que abre Popover com as 4 amostras), CTA "Vamos conversar" e link para pular ao conteúdo. No mobile, menu em Drawer. Fase 2: o botão `cmd` sai até o terminal existir; o CTA vai ao WhatsApp ou, com o número pendente, a `#contato` (`/#contato` fora da Home).
 - **Footer:** logo, "Victor Gabriel © 2026", links, chip de achados e a cena de árvores (etapa 5).
 - **Logo:** pinheiro desenhado num círculo irregular + nome em Fraunces.
 - **ThemeSwitcher:** escolher entre os temas com amostras desenhadas.
@@ -14,7 +14,7 @@
 
 ### Anatomia
 
-Header: link "Pular para o conteúdo" (primeiro focável, visível no foco) → Logo → `nav` "Principal" com `LinkText` → botão `cmd` (Button ghost com ícone `terminal`) → ThemeSwitcher compacto (Popover) → CTA. Mobile (< 768 px): Logo + botão "Abrir menu" (ícone) → Drawer com os mesmos itens.
+Header: link "Pular para o conteúdo" (primeiro focável, visível no foco) → Logo → `nav` "Principal" com `LinkText` → ThemeSwitcher compacto (Popover aberto por botão de ícone, `aria-label` "Escolher tema") → CTA. (O botão `cmd` volta quando o terminal existir.) Mobile (< 768 px): Logo + botão "Abrir menu" (ícone) → Drawer com os mesmos itens.
 
 Footer: faixa `footer-bg` com borda de cima rasgada (`clip-path` do motor) → Logo invertido → texto de direitos → `nav` "Rodapé" → slot `achados` → slot `scene`.
 
@@ -76,6 +76,10 @@ Logo: círculo `blob` com seed fixa. Footer: borda rasgada `tornEdge` em `clip-p
 ## Plan
 
 `src/components/ui/logo/*`, `src/components/layout/{header,footer}/*`, `src/components/ui/theme-switcher/*`. Os links de Projetos, Sobre e Contato apontam para rotas futuras; até lá, a vitrine usa âncoras.
+
+### Fase 2
+
+- Botão de tema com ícone `tema`; sem `cmd`; CTA por `talkHref`; menu que fecha indo para uma âncora não devolve o foco ao botão (a página não volta ao topo). Testes em `tests/e2e/home.spec.ts`.
 
 ## Tarefas
 

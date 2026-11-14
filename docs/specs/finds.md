@@ -81,6 +81,11 @@ Chip e caderno com bordas reais; achados riscados (texto) além da cor. Moviment
 
 `src/lib/finds/*` (dados e store), `src/components/achados/*` (componentes). O store lê o armazenamento só no cliente; o servidor renderiza o estado "carregando" do caderno e o chip sem número (reserva de largura) para não haver erro de hidratação.
 
+### Fase 2
+
+- Coruja do correio escondida na Home, ao lado dos canais de contato (desenho `Coruja` em `drawings.tsx`, nome "Algo pousado perto do correio"). Teste em `tests/e2e/home.spec.ts` (CA-12).
+- Chip com duas caixas de largura fixa para a troca de fonte não deslocar o conteúdo (D-1009).
+
 ## Tarefas
 
 - [x] Ficha

@@ -21,6 +21,8 @@ export interface LinkTextProps extends Omit<
 }
 
 const isExternalHref = (href: string) => /^https?:\/\//.test(href)
+/** mailto: e tel: abrem o app do sistema: link simples, sem nova aba. */
+const isAppHref = (href: string) => /^(mailto|tel):/.test(href)
 
 /**
  * Link com sublinhado de pincel. O traço é sempre visível (segundo
@@ -95,6 +97,14 @@ export function LinkText({
       </svg>
     ) : null
 
+  if (isAppHref(href)) {
+    return (
+      <a {...rest} href={href} className={classes}>
+        {children}
+        {underline}
+      </a>
+    )
+  }
   if (isExternal) {
     return (
       <a

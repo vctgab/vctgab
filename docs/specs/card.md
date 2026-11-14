@@ -16,15 +16,16 @@ Card de papel do sistema: projetos, serviços, citações, contato. **Quando nã
 
 ### Variantes e tamanhos
 
-| Prop      | Valores                                                                             |
-| --------- | ----------------------------------------------------------------------------------- |
-| `edge`    | `wobbly` (padrão, `wobblyRect`) ou `torn` (`tornEdge` com a borda de baixo rasgada) |
-| `tape`    | `false` (padrão), `left`, `right`                                                   |
-| `holes`   | `false` (padrão), `true`                                                            |
-| `href`    | torna a ficha clicável: um link único no título cobrindo o card                     |
-| `titleAs` | `h2`, `h3` (padrão), `h4`                                                           |
-| `padding` | `md` (padrão), `lg`                                                                 |
-| `rotate`  | `true` (padrão) ou `false`                                                          |
+| Prop       | Valores                                                                                                                    |
+| ---------- | -------------------------------------------------------------------------------------------------------------------------- |
+| `edge`     | `wobbly` (padrão, `wobblyRect`) ou `torn` (`tornEdge` com a borda de baixo rasgada)                                        |
+| `tape`     | `false` (padrão), `left`, `right`                                                                                          |
+| `holes`    | `false` (padrão), `true`                                                                                                   |
+| `href`     | torna a ficha clicável: um link único no título cobrindo o card                                                            |
+| `prefetch` | (fase 2) `false` desliga a pré-busca do link; use em links para rotas que ainda não existem, para não gerar 404 no console |
+| `titleAs`  | `h2`, `h3` (padrão), `h4`                                                                                                  |
+| `padding`  | `md` (padrão), `lg`                                                                                                        |
+| `rotate`   | `true` (padrão) ou `false`                                                                                                 |
 
 ### Estados
 

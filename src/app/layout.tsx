@@ -3,20 +3,33 @@ import { FooterScene } from "@/components/footer-scene"
 import { Footer } from "@/components/layout/footer"
 import { Header } from "@/components/layout/header"
 import { AchadosChip, AchadosProvider } from "@/components/ui/finds"
-import { ToastProvider } from "@/components/ui/toast"
+import { HOME } from "@/content/home"
+import { SITE } from "@/content/site"
 import { fontVariables, PRELOADED_FONTS } from "@/lib/fonts"
+import { SITE_URL } from "@/lib/site-url"
 import { ThemeProvider } from "@/lib/theme/theme-provider"
 import { themeScript } from "@/lib/theme/theme-script"
 import { getThemeInfo, DEFAULT_THEME } from "@/lib/theme/themes"
 import "./globals.css"
 
 export const metadata: Metadata = {
+  metadataBase: new URL(SITE_URL),
   title: {
-    default: "Victor Gabriel, desenvolvedor front-end",
-    template: "%s · Victor Gabriel",
+    default: HOME.meta.title,
+    template: `%s · ${SITE.name}`,
   },
-  description:
-    "Portfólio de Victor Gabriel, desenvolvedor front-end em Teresina que veio do design de produto.",
+  description: HOME.meta.description,
+  applicationName: SITE.name,
+  authors: [{ name: SITE.name, url: SITE_URL }],
+  openGraph: {
+    type: "website",
+    locale: "pt_BR",
+    siteName: SITE.name,
+    title: HOME.meta.title,
+    description: HOME.meta.description,
+    url: "/",
+  },
+  twitter: { card: "summary_large_image", title: HOME.meta.title },
 }
 
 export const viewport: Viewport = {
@@ -45,17 +58,15 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
       </head>
       <body>
         <ThemeProvider>
-          <ToastProvider>
-            <AchadosProvider>
-              <Header />
-              {children}
-              <Footer
-                achados={<AchadosChip placement="inline" />}
-                scene={<FooterScene />}
-              />
-              <AchadosChip placement="dock" />
-            </AchadosProvider>
-          </ToastProvider>
+          <AchadosProvider>
+            <Header />
+            {children}
+            <Footer
+              achados={<AchadosChip placement="inline" />}
+              scene={<FooterScene />}
+            />
+            <AchadosChip placement="dock" />
+          </AchadosProvider>
         </ThemeProvider>
       </body>
     </html>

@@ -12,10 +12,10 @@ Conjunto de ícones desenhados à mão em grade 24, traço 1,75 e pontas arredon
 
 ### Variantes e tamanhos
 
-| Prop   | Valores                                                                                                                                                                                  |
-| ------ | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `name` | `seta`, `seta-diagonal`, `externo`, `fechar`, `menu`, `check`, `mais`, `menos`, `sol`, `lua`, `mail`, `github`, `linkedin`, `whatsapp`, `terminal`, `busca`, `alerta`, `info`, `seletor` |
-| `size` | 16, 20 (padrão), 24                                                                                                                                                                      |
+| Prop   | Valores                                                                                                                                                                                          |
+| ------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| `name` | `seta`, `seta-diagonal`, `externo`, `fechar`, `menu`, `check`, `mais`, `menos`, `sol`, `lua`, `tema`, `mail`, `github`, `linkedin`, `whatsapp`, `terminal`, `busca`, `alerta`, `info`, `seletor` |
+| `size` | 16, 20 (padrão), 24                                                                                                                                                                              |
 
 ### Estados
 
@@ -53,6 +53,7 @@ Um significado, um ícone. O mapa `ACAO_ICONE` em `icon.tsx` é a fonte e a vitr
 | Recolher, remover                     | `menos`         |
 | Tema claro                            | `sol`           |
 | Tema escuro                           | `lua`           |
+| Escolher tema (fase 2)                | `tema`          |
 | E-mail                                | `mail`          |
 | GitHub                                | `github`        |
 | LinkedIn                              | `linkedin`      |
@@ -94,6 +95,7 @@ Um significado, um ícone. O mapa `ACAO_ICONE` em `icon.tsx` é a fonte e a vitr
 
 - [x] Ficha
 - [x] Desenhar os 19 ícones
+- [x] Fase 2: ícone `tema` (paleta), botão do seletor de tema no cabeçalho
 - [x] Componente e tipos
 - [x] Testes
 - [ ] Quadro na vitrine

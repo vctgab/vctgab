@@ -25,11 +25,14 @@ describe("Hero", () => {
     expect(screen.getByRole("heading", { level: 1 })).toHaveTextContent(
       "Front-end com visão de produto.",
     )
+    // WhatsApp pendente: o CTA leva ao contato da própria Home (D-1015).
     expect(screen.getByRole("link", { name: "Vamos conversar" })).toHaveAttribute(
       "href",
-      "/contato",
+      "#contato",
     )
-    expect(screen.getByText("[a confirmar: mês]")).toBeInTheDocument()
+    expect(screen.getByText("[a confirmar: mês da agenda aberta]")).toHaveAttribute(
+      "data-pendente",
+    )
     expect(screen.getByText("Teresina • Brasil")).toBeInTheDocument()
   })
 

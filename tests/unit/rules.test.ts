@@ -320,6 +320,9 @@ describe("processo", () => {
     finds: "finds",
     hero: "hero-footer",
     "footer-scene": "hero-footer",
+    home: "pages/home",
+    fact: "fact",
+    "video-clip": "video-clip",
   }
 
   const isDir = (p: string) => statSync(join(ROOT, p)).isDirectory()

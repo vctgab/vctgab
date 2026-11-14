@@ -90,6 +90,10 @@ Formas pelo motor com seed `hero:<página>:<i>`. A energia do tema multiplica a 
 
 `src/components/hero/*` (Hero, HeroBackdrop) e `src/components/footer-scene/*` (FooterScene, scenes.ts, geometria das árvores). Hero em `/sistema/hero`; FooterScene no Footer do layout. Risco: custo de pintura do morph em formas grandes; limitado a 3 formas e 24 fps.
 
+### Fase 2
+
+- O hero vai para a Home e lê os textos de `src/content/home.ts`; o mês da agenda vem de `site.ts` por `Fact`. CTA por `talkHref` (WhatsApp ou `#contato`). "Front-end" sem quebra no hífen (D-1014).
+
 ## Tarefas
 
 - [x] Ficha

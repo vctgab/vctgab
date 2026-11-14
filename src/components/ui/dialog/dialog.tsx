@@ -31,6 +31,11 @@ export interface DialogProps extends BaseProps {
 
 export interface DrawerProps extends BaseProps {
   side?: "right" | "left"
+  /**
+   * Ao fechar, o foco volta ao gatilho. Chame `event.preventDefault()` quando
+   * a ação que fechou levou a outro ponto da página (link para âncora).
+   */
+  onCloseAutoFocus?: (event: Event) => void
 }
 
 const SIZE = { sm: "max-w-sm", md: "max-w-lg", lg: "max-w-2xl" } as const
@@ -135,6 +140,7 @@ export function Drawer({
   seed,
   className,
   closeLabel = "Fechar",
+  onCloseAutoFocus,
 }: DrawerProps) {
   const shapeSeed = seed ?? `gaveta:${typeof title === "string" ? title : "painel"}`
   return (
@@ -144,6 +150,7 @@ export function Drawer({
         <RadixDialog.Overlay className="fixed inset-0 z-(--z-overlay) bg-overlay data-[state=closed]:animate-sumir data-[state=open]:motion-safe:animate-esmaecer" />
         <RadixDialog.Content
           data-shape-host=""
+          onCloseAutoFocus={onCloseAutoFocus}
           className={cn(
             "fixed inset-y-0 isolate z-(--z-dialog) flex w-full max-w-sm flex-col text-ink",
             side === "right" ? "right-0" : "left-0",

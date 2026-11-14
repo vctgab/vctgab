@@ -8,7 +8,7 @@ Link de navegação com sublinhado de pincel. **Quando não usar:** ações que 
 
 ### Anatomia
 
-1. `<a>` (interno via `next/link`, externo nativo).
+1. `<a>` (interno via `next/link`, externo nativo). Fase 2: `mailto:` e `tel:` saem como `<a>` simples, sem nova aba e sem ícone de externo.
 2. Rótulo.
 3. Sublinhado: `Shape` `handLine` com `pathLength=1`, sempre visível (segundo indicador além da cor, VI-06).
 4. Externo: ícone `externo` decorativo + texto oculto " (abre em nova aba)".

@@ -11,6 +11,9 @@ import { Reveal } from "@/components/ui/reveal"
 import { Skeleton } from "@/components/ui/skeleton"
 import { Stat } from "@/components/ui/stat"
 import { TerminalShell } from "@/components/ui/terminal-shell"
+import { Fact } from "@/components/ui/fact"
+import { VideoClip } from "@/components/ui/video-clip"
+import { pending } from "@/content/pending"
 import { formatNumber, formatPercent } from "@/lib/format"
 import { Demo, Row } from "../_showcase/demo"
 import { QuoteDemo } from "../_showcase/demos-client"
@@ -77,6 +80,37 @@ export default function ConteudoPage() {
             value={formatPercent(89)}
             method="Taxa de acerto em teste de árvore, antes e depois da nova navegação (exemplo fictício da vitrine)."
           />
+        </Demo>
+
+        <Demo
+          id="fact"
+          title="Fact"
+          description="Valor do conteúdo ou a pendência exata, destacada com fundo e sublinhado tracejado."
+        >
+          <div className="flex flex-col gap-2 text-body">
+            <p>
+              Agenda de <Fact value="dezembro" /> aberta (valor fictício confirmado).
+            </p>
+            <p>
+              Agenda de <Fact value={pending("mês da agenda aberta")} /> aberta.
+            </p>
+          </div>
+        </Demo>
+
+        <Demo
+          id="video-clip"
+          title="VideoClip"
+          description="Vídeo curto sem som, com legenda e controles. Pendente, vira Ficha marcada; nunca um player vazio. Não há vídeo real no repositório: os estados com vídeo, carregando e erro são cobertos pelo teste."
+        >
+          <div className="grid gap-8 md:grid-cols-2">
+            <VideoClip
+              title="Indisponível"
+              seed="vitrine:pendente"
+              src={pending("vídeo do projeto fictício")}
+              captions={pending("legenda")}
+            />
+            <VideoClip title="Vazio" seed="vitrine:vazio" src={null} captions="" />
+          </div>
         </Demo>
 
         <Demo

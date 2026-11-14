@@ -3,20 +3,24 @@
 import Link from "next/link"
 import type { Route } from "next"
 import { usePathname } from "next/navigation"
-import { useState } from "react"
+import { useRef, useState } from "react"
 import { Button } from "@/components/ui/button"
 import { Drawer } from "@/components/ui/dialog"
 import { Logo } from "@/components/ui/logo"
 import { Popover } from "@/components/ui/popover"
 import { Container } from "@/components/ui/section"
 import { ThemeSwitcher } from "@/components/ui/theme-switcher"
+import { HOME } from "@/content/home"
 import { cn } from "@/lib/cn"
+import { talkHref } from "@/lib/contact"
 import { generateShape } from "@/lib/shapes"
-import { TerminalDialog } from "../terminal"
 import { NAV_LINKS } from "./nav-links"
 
 export interface HeaderProps {
-  /** Destino do CTA "Vamos conversar". */
+  /**
+   * Destino do CTA "Vamos conversar". Padrão: WhatsApp quando houver número;
+   * senão, o contato da Home (D-1015).
+   */
   ctaHref?: string
   className?: string
 }
@@ -64,23 +68,21 @@ function NavLink({
 }
 
 /**
- * Cabeçalho global: pular para o conteúdo, logo, navegação, terminal, tema
- * e CTA. No mobile, menu em Drawer. Ficha: docs/specs/header-footer.md
+ * Cabeçalho global: pular para o conteúdo, logo, navegação, tema e CTA. No
+ * mobile, menu em Drawer. O botão `cmd` volta quando o terminal existir.
+ * Ficha: docs/specs/header-footer.md
  */
-export function Header({ ctaHref = "/contato", className }: HeaderProps) {
+export function Header({ ctaHref, className }: HeaderProps) {
   const pathname = usePathname()
   const [menuOpen, setMenuOpen] = useState(false)
-  const cmd = (
-    <Button
-      variant="secondary"
-      size="sm"
-      iconLeft="terminal"
-      seed="cabecalho:cmd"
-      className="font-mono text-sm"
-    >
-      cmd
-    </Button>
-  )
+  // Link do menu para uma âncora (#contato): o foco não volta ao botão do
+  // menu, senão a página rolaria de volta ao topo.
+  const toAnchor = useRef(false)
+  const closeMenu = (href: string) => {
+    toAnchor.current = href.includes("#")
+    setMenuOpen(false)
+  }
+  const cta = ctaHref ?? talkHref(HOME.hero.ctaMessage, pathname === "/")
 
   return (
     <header className={cn("relative z-(--z-header)", className)}>
@@ -100,20 +102,23 @@ export function Header({ ctaHref = "/contato", className }: HeaderProps) {
         </nav>
 
         <div className="hidden items-center gap-3 lg:flex">
-          <TerminalDialog trigger={cmd} />
           <Popover
             title="Tema"
             align="end"
             trigger={
-              <Button variant="ghost" size="sm" seed="cabecalho:tema">
-                Escolher tema
-              </Button>
+              <Button
+                iconOnly="tema"
+                aria-label="Escolher tema"
+                variant="ghost"
+                size="sm"
+                seed="cabecalho:tema"
+              />
             }
           >
             <ThemeSwitcher layout="compact" className="mt-1" />
           </Popover>
           <Button asChild size="sm" iconRight="seta" seed="cabecalho:cta">
-            <Link href={ctaHref as Route}>Vamos conversar</Link>
+            <Link href={cta as Route}>Vamos conversar</Link>
           </Button>
         </div>
 
@@ -122,6 +127,10 @@ export function Header({ ctaHref = "/contato", className }: HeaderProps) {
             title="Menu"
             open={menuOpen}
             onOpenChange={setMenuOpen}
+            onCloseAutoFocus={(event) => {
+              if (toAnchor.current) event.preventDefault()
+              toAnchor.current = false
+            }}
             closeLabel="Fechar menu"
             trigger={
               <Button
@@ -134,11 +143,10 @@ export function Header({ ctaHref = "/contato", className }: HeaderProps) {
             footer={
               <>
                 <Button asChild iconRight="seta" seed="menu:cta">
-                  <Link href={ctaHref as Route} onClick={() => setMenuOpen(false)}>
+                  <Link href={cta as Route} onClick={() => closeMenu(cta)}>
                     Vamos conversar
                   </Link>
                 </Button>
-                <TerminalDialog trigger={cmd} />
               </>
             }
           >
@@ -149,7 +157,7 @@ export function Header({ ctaHref = "/contato", className }: HeaderProps) {
                     <Link
                       href={link.href as Route}
                       aria-current={pathname === link.href ? "page" : undefined}
-                      onClick={() => setMenuOpen(false)}
+                      onClick={() => closeMenu(link.href)}
                       className="font-soft flex min-h-12 items-center font-display text-h3 text-ink aria-[current=page]:text-primary-text"
                     >
                       {link.label}

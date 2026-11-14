@@ -60,7 +60,8 @@ export function AchadosChip({ placement = "dock", className }: AchadosChipProps)
   return (
     <>
       {/* Reserva o espaço da barra no mobile para ela não cobrir o fim da página. */}
-      <div aria-hidden="true" className="h-20 md:hidden" />
+      {/* Espaço do chip fixo, na cor do rodapé: continua a faixa escura. */}
+      <div aria-hidden="true" className="h-20 bg-footer-bg md:hidden" />
       <div
         className={cn(
           "fixed inset-x-0 bottom-0 z-(--z-dock) flex justify-center border-t-2 border-dashed border-border bg-surface-raised px-4 py-3",

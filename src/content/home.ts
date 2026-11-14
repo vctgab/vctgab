@@ -14,6 +14,12 @@ export interface Testimonial {
   text: Maybe<string>
 }
 
+/** Foto com texto alternativo (obrigatório quando houver). */
+export interface Photo {
+  src: string
+  alt: string
+}
+
 export interface Service {
   marker: string
   title: string
@@ -45,7 +51,7 @@ export const HOME = {
     title: "Projetos em destaque",
     allLabel: "Ver todos os projetos",
     allHref: "/projetos",
-    labels: { client: "para", role: "Papel", type: "Tipo", delivery: "Entrega" },
+    labels: { client: "para a", role: "Papel", type: "Tipo", delivery: "Entrega" },
   },
 
   services: {
@@ -128,7 +134,7 @@ export const HOME = {
       pending("foto 2 de Victor"),
       pending("foto 3 de Victor"),
       pending("foto 4 de Victor"),
-    ] as readonly Maybe<string>[],
+    ] as readonly Maybe<Photo>[],
     cta: "Mais sobre mim",
     ctaHref: "/sobre",
   },

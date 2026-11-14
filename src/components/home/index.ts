@@ -1,0 +1,6 @@
+export { About } from "./about"
+export { Contact } from "./contact"
+export { ProjectsStrip } from "./projects-strip"
+export { Proof } from "./proof"
+export { Services } from "./services"
+export { Testimonials } from "./testimonials"

@@ -63,3 +63,13 @@ describe("LinkText", () => {
     expect(await axe(container)).toHaveNoViolations()
   })
 })
+
+describe("LinkText com mailto", () => {
+  it("fase 2: mailto sai como link simples, sem nova aba nem ícone de externo", () => {
+    render(<LinkText href="mailto:nome@exemplo.com">nome@exemplo.com</LinkText>)
+    const link = screen.getByRole("link", { name: "nome@exemplo.com" })
+    expect(link).toHaveAttribute("href", "mailto:nome@exemplo.com")
+    expect(link).not.toHaveAttribute("target")
+    expect(link.querySelector("[data-icon='externo']")).toBeNull()
+  })
+})

@@ -1,5 +1,6 @@
 import type { Metadata } from "next"
 import { ThemeSwitcher } from "@/components/ui/theme-switcher"
+import { ToastProvider } from "@/components/ui/toast"
 import { SystemNav } from "./_showcase/system-nav"
 
 export const metadata: Metadata = {
@@ -20,7 +21,8 @@ export default function SistemaLayout({ children }: LayoutProps<"/sistema">) {
           <p className="font-mono text-label text-ink-subtle">Tema da vitrine</p>
           <ThemeSwitcher layout="compact" className="w-full max-w-md" />
         </div>
-        {children}
+        {/* Só a vitrine usa toast: o provider fica fora das páginas públicas (D-1019). */}
+        <ToastProvider>{children}</ToastProvider>
       </div>
     </div>
   )
