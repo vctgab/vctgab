@@ -13,5 +13,8 @@ export default defineConfig({
     setupFiles: ["./tests/setup.ts"],
     include: ["src/**/*.test.{ts,tsx}", "tests/unit/**/*.test.{ts,tsx}"],
     css: false,
+    // Metade dos núcleos: com o servidor do Next rodando junto, mais workers
+    // derrubavam o pool por falta de memória nesta máquina.
+    maxWorkers: "50%",
   },
 })

@@ -7,7 +7,7 @@
     "dev": "next dev",
     "build": "pnpm tokens:build && next build",
     "start": "next start",
-    "lint": "eslint --max-warnings 0 .",
+    "lint": "eslint --max-warnings 0 --cache --cache-location node_modules/.cache/eslint/ .",
     "typecheck": "next typegen && tsc --noEmit",
     "test": "vitest run",
     "test:watch": "vitest",
