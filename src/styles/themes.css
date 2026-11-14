@@ -143,7 +143,11 @@
   --shape-rotation-max: 1.4;
   color-scheme: light;
 
-  --footer-accent: var(--primary-300);
+  /* árvores alaranjadas, escuras o bastante para os links do rodapé */
+  --footer-tree-far: color-mix(in srgb, var(--seed-primary) 38%, #2a2420);
+  --footer-tree-mid: color-mix(in srgb, var(--seed-primary) 32%, #1d1815);
+  --footer-tree-near: color-mix(in srgb, var(--seed-primary) 24%, #0d0b0a);
+  --footer-accent: var(--primary-400);
 }
 
 /* ---------- inverno (claro, azul-gelo) ---------- */

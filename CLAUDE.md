@@ -28,9 +28,13 @@ pnpm check          # lint + typecheck + test + build
 
 ## Método (SDD)
 
-Nenhum componente sem ficha. Antes do código, escreva `docs/specs/<componente>.md` a partir de `docs/specs/_MODELO.md`: Spec (o quê, por quê, critérios de aceite), Plan (como, arquivos, riscos) e Tarefas, com Ficha de Texto e Grade de Tom. Pronto só quando cada critério tiver teste ou captura. Toda decisão e toda dependência nova vão para `docs/DECISIONS.md`.
+Nenhum componente sem ficha. Antes do código, escreva `docs/specs/<componente>.md` a partir de `docs/specs/_TEMPLATE.md`: Spec (o quê, por quê, critérios de aceite), Plan (como, arquivos, riscos) e Tarefas, com Ficha de Texto e Grade de Tom. Pronto só quando cada critério tiver teste ou captura. Toda decisão e toda dependência nova vão para `docs/DECISIONS.md`.
 
-## Regras de texto (resumo; a fonte é `docs/REGRAS.md`)
+## Nomes de arquivo
+
+Todo arquivo e pasta tem nome em inglês (`card.tsx`, `docs/RULES.md`, `specs/fields.md`). Texto visível e conteúdo dos documentos ficam em português. Exceção: segmentos de rota, que são URLs do site (`/sistema`, `/projetos`).
+
+## Regras de texto (resumo; a fonte é `docs/RULES.md`)
 
 - Português do Brasil. Só a primeira letra maiúscula em títulos, botões e rótulos (exceto siglas e nomes próprios).
 - Voz de sistema (erro, formulário, confirmação, vazio, carregando): sem "Ops", "Uau", gíria, humor, emoji, caixa-alta ou exclamação. Nunca culpar quem usa: diga o que informar.
@@ -39,13 +43,13 @@ Nenhum componente sem ficha. Antes do código, escreva `docs/specs/<componente>.
 - Falha: "Não foi possível <verbo> <objeto>", causa, o que fazer, o que houve com os dados. Nada técnico. Erro inline, nunca toast.
 - Cinco estados em todo componente com dados: carregando, vazio (primeiro uso, filtro, falha), erro, indisponível, com dados.
 - Números e datas só por `@/lib/format`. Dados fictícios marcados; fato ausente vira `[a confirmar: o que falta]`.
-- Termos: ver `docs/GLOSSARIO.md` ("achados", "tema", "projeto", "caso").
+- Termos: ver `docs/GLOSSARY.md` ("achados", "tema", "projeto", "caso").
 
 ## Regras de qualidade
 
 - Contraste calculado: texto 4,5:1, componentes e foco 3:1, todos os estados e temas (`pnpm tokens:build`).
 - Rosa: preenchimento com texto branco no passo 600 (hover 700, ativo 800); texto em primária no 600+; passo 500 só decoração, títulos 24 px+ e foco.
-- Sem hex nem espaçamento arbitrário (`p-[13px]`) fora de `src/styles/tokens.css`, `src/styles/themes.css` e `src/lib/color`. Varredura em `tests/unit/regras.test.ts`.
+- Sem hex nem espaçamento arbitrário (`p-[13px]`) fora de `src/styles/tokens.css`, `src/styles/themes.css` e `src/lib/color`. Varredura em `tests/unit/rules.test.ts`.
 - Padrão de estados copiado do Button: hover um passo mais escuro, ativo dois, foco desenhado a 3:1, desabilitado com motivo. Movimento de estado até 200 ms; decorativo sempre com equivalente estático em `prefers-reduced-motion`.
 - Até 3 camadas SVG por componente; nenhum filtro SVG em elemento interativo; `forced-colors` troca camadas por bordas reais.
 - Next 16 com `cacheComponents`: nada de valor aleatório ou relógio no render do servidor; relógio só após montar.

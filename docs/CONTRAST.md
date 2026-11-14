@@ -270,9 +270,9 @@ Claro, laranja queimado com oliva e vinho. Esquema claro. Energia 1.25, rotaçã
 | `danger-fill` sobre `surface-raised` | Borda de campo com erro | componente | 3,00:1 | 7,62:1 | aprovado |
 | `footer-ink` sobre `footer-bg` | Texto do rodapé | texto | 4,50:1 | 15,83:1 | aprovado |
 | `footer-link` sobre `footer-bg` | Link do rodapé | texto | 4,50:1 | 15,83:1 | aprovado |
-| `footer-link` sobre `footer-tree-far` | Link sobre árvore do fundo | texto | 4,50:1 | 9,29:1 | aprovado |
-| `footer-link` sobre `footer-tree-mid` | Link sobre árvore do meio | texto | 4,50:1 | 10,65:1 | aprovado |
-| `footer-link` sobre `footer-tree-near` | Link sobre árvore da frente | texto | 4,50:1 | 14,15:1 | aprovado |
+| `footer-link` sobre `footer-tree-far` | Link sobre árvore do fundo | texto | 4,50:1 | 8,85:1 | aprovado |
+| `footer-link` sobre `footer-tree-mid` | Link sobre árvore do meio | texto | 4,50:1 | 10,78:1 | aprovado |
+| `footer-link` sobre `footer-tree-near` | Link sobre árvore da frente | texto | 4,50:1 | 13,81:1 | aprovado |
 | `footer-focus` sobre `footer-bg` | Anel de foco no rodapé | foco | 3,00:1 | 8,77:1 | aprovado |
 | `ink` sobre `hero-plate` | Texto do hero sobre a placa de apoio | texto | 4,50:1 | 17,36:1 | aprovado |
 | `ink-muted` sobre `hero-plate` | Parágrafo do hero | texto | 4,50:1 | 8,29:1 | aprovado |

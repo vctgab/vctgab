@@ -13,13 +13,13 @@ import { TextField } from "@/components/ui/text-field"
 import { ThemeSwitcher } from "@/components/ui/theme-switcher"
 import { Tooltip } from "@/components/ui/tooltip"
 import { Eyebrow } from "@/components/ui/eyebrow"
-import { Ficha } from "@/components/ui/ficha"
+import { Ficha } from "@/components/ui/card"
 import { LinkText } from "@/components/ui/link-text"
 import { Container } from "@/components/ui/section"
 import { Spinner } from "@/components/ui/spinner"
 import { Tag } from "@/components/ui/tag"
-import { Demo, Row } from "../_vitrine/demo"
-import { FormDemo, ToastDemo } from "../_vitrine/demos-client"
+import { Demo, Row } from "../_showcase/demo"
+import { FormDemo, ToastDemo } from "../_showcase/demos-client"
 
 export const metadata: Metadata = { title: "Componentes" }
 

@@ -8,4 +8,4 @@ pnpm install
 pnpm dev
 ```
 
-Documentação: [`docs/DESIGN-SYSTEM.md`](docs/DESIGN-SYSTEM.md), [`docs/REGRAS.md`](docs/REGRAS.md), [`docs/DECISIONS.md`](docs/DECISIONS.md) e [`CLAUDE.md`](CLAUDE.md).
+Documentação: [`docs/DESIGN-SYSTEM.md`](docs/DESIGN-SYSTEM.md), [`docs/RULES.md`](docs/RULES.md), [`docs/DECISIONS.md`](docs/DECISIONS.md) e [`CLAUDE.md`](CLAUDE.md).

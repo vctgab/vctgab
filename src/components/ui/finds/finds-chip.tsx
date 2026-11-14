@@ -5,7 +5,7 @@ import { Icon } from "@/components/ui/icon"
 import { Shape, shapeHostProps } from "@/components/ui/shape"
 import { cn } from "@/lib/cn"
 import { formatCount } from "@/lib/format"
-import { useAchados } from "./achados-provider"
+import { useAchados } from "./finds-provider"
 
 export interface AchadosChipProps {
   /** `dock`: fixo no canto (barra inferior no mobile); `inline`: no fluxo (rodapé). */
@@ -13,7 +13,7 @@ export interface AchadosChipProps {
   className?: string
 }
 
-/** "Achados: 3 de 7". Abre o caderno. Ficha: docs/specs/achados.md */
+/** "Achados: 3 de 7". Abre o caderno. Ficha: docs/specs/finds.md */
 export function AchadosChip({ placement = "dock", className }: AchadosChipProps) {
   const { state, count, total, openCard } = useAchados()
   const id = useId()

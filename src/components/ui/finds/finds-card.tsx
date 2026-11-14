@@ -6,8 +6,8 @@ import { Dialog } from "@/components/ui/dialog"
 import { Icon } from "@/components/ui/icon"
 import { ProgressHatch } from "@/components/ui/progress-hatch"
 import { Skeleton } from "@/components/ui/skeleton"
-import { ACHADOS, TOTAL_ACHADOS } from "@/lib/achados/achados"
-import { resetAchados, type AchadosState } from "@/lib/achados/store"
+import { ACHADOS, TOTAL_ACHADOS } from "@/lib/finds/finds"
+import { resetAchados, type AchadosState } from "@/lib/finds/store"
 
 export interface AchadosCardProps {
   open: boolean
@@ -19,7 +19,7 @@ export interface AchadosCardProps {
 
 /**
  * Corpo do caderno de achados nos estados carregando, vazio, erro e com
- * dados (o indisponível é o `AvisoPaginaSecreta`). Ficha: docs/specs/achados.md
+ * dados (o indisponível é o `AvisoPaginaSecreta`). Ficha: docs/specs/finds.md
  */
 export function AchadosCardBody({ state }: { state: AchadosState | null }) {
   if (state === null) {

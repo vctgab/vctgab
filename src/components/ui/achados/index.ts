@@ -1,5 +1,0 @@
-export { AchadosCard, AchadosCardBody, type AchadosCardProps } from "./achados-card"
-export { AchadosChip, type AchadosChipProps } from "./achados-chip"
-export { AchadosProvider, useAchados, type AchadosContextValue } from "./achados-provider"
-export { Achavel, type AchavelProps } from "./achavel"
-export { AvisoPaginaSecreta } from "./aviso-pagina-secreta"

@@ -69,7 +69,7 @@ function Header({
 
 /**
  * Painel modal desenhado à mão. Foco preso, Esc fecha, foco volta ao
- * gatilho. Ficha: docs/specs/sobreposicoes.md
+ * gatilho. Ficha: docs/specs/overlays.md
  */
 export function Dialog({
   title,

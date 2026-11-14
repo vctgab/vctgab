@@ -1,4 +1,4 @@
-import { ACHADOS, isAchadoId, TOTAL_ACHADOS, type AchadoId } from "./achados"
+import { ACHADOS, isAchadoId, TOTAL_ACHADOS, type AchadoId } from "./finds"
 
 /**
  * Store dos achados para `useSyncExternalStore`. Lê o armazenamento só no

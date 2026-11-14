@@ -10,7 +10,7 @@ import {
   useSyncExternalStore,
   type ReactNode,
 } from "react"
-import { getAchado, TOTAL_ACHADOS, type AchadoId } from "@/lib/achados/achados"
+import { getAchado, TOTAL_ACHADOS, type AchadoId } from "@/lib/finds/finds"
 import {
   findAchado,
   getAchadosServerSnapshot,
@@ -18,9 +18,9 @@ import {
   resetAchados,
   subscribeAchados,
   type AchadosState,
-} from "@/lib/achados/store"
+} from "@/lib/finds/store"
 import { formatCount } from "@/lib/format"
-import { AchadosCard } from "./achados-card"
+import { AchadosCard } from "./finds-card"
 
 export interface AchadosContextValue {
   /** `null` enquanto o caderno não foi lido (servidor e hidratação). */
@@ -39,7 +39,7 @@ const AchadosContext = createContext<AchadosContextValue | null>(null)
 
 /**
  * Estado dos achados, região de anúncio e o caderno (um só, aberto por
- * qualquer chip). Ficha: docs/specs/achados.md
+ * qualquer chip). Ficha: docs/specs/finds.md
  */
 export function AchadosProvider({ children }: { children: ReactNode }) {
   const state = useSyncExternalStore(

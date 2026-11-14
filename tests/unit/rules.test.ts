@@ -1,5 +1,5 @@
 /**
- * Varreduras das regras de docs/REGRAS.md. Cada teste é uma busca ou
+ * Varreduras das regras de docs/RULES.md. Cada teste é uma busca ou
  * contagem que outra pessoa refaz sem opinião.
  */
 import { readdirSync, readFileSync, statSync } from "node:fs"
@@ -266,7 +266,7 @@ describe("texto", () => {
 describe("processo", () => {
   /** Pasta do componente → ficha. */
   const SPEC: Record<string, string> = {
-    shape: "motor-de-formas",
+    shape: "shape-engine",
     icon: "icon",
     spinner: "spinner",
     skeleton: "spinner",
@@ -276,43 +276,50 @@ describe("processo", () => {
     section: "section",
     tag: "tag-chip",
     chip: "tag-chip",
-    ficha: "ficha",
-    field: "campos",
-    "text-field": "campos",
-    textarea: "campos",
-    select: "campos",
-    checkbox: "controles",
-    "radio-group": "controles",
-    switch: "controles",
-    "segmented-control": "controles",
-    dialog: "sobreposicoes",
-    tooltip: "sobreposicoes",
-    popover: "sobreposicoes",
-    toast: "sobreposicoes",
+    card: "card",
+    field: "fields",
+    "text-field": "fields",
+    textarea: "fields",
+    select: "fields",
+    checkbox: "controls",
+    "radio-group": "controls",
+    switch: "controls",
+    "segmented-control": "controls",
+    dialog: "overlays",
+    tooltip: "overlays",
+    popover: "overlays",
+    toast: "overlays",
     logo: "header-footer",
     "theme-switcher": "header-footer",
     header: "header-footer",
     footer: "header-footer",
-    "pagina-provisoria": "header-footer",
-    divider: "p1-visuais",
-    "progress-hatch": "p1-visuais",
-    polaroid: "p1-visuais",
-    stat: "p1-visuais",
+    "placeholder-page": "header-footer",
+    divider: "p1-visuals",
+    "progress-hatch": "p1-visuals",
+    polaroid: "p1-visuals",
+    stat: "p1-visuals",
     quote: "quote",
-    marquee: "movimento",
-    reveal: "movimento",
-    "live-clock": "movimento",
+    marquee: "motion",
+    reveal: "motion",
+    "live-clock": "motion",
     accordion: "accordion-terminal",
     "terminal-shell": "accordion-terminal",
     terminal: "accordion-terminal",
-    achados: "achados",
+    finds: "finds",
+    hero: "hero-footer",
+    "footer-scene": "hero-footer",
   }
 
-  const folders = ["src/components/ui", "src/components/layout"].flatMap((base) =>
-    readdirSync(join(ROOT, base)).filter((d) =>
-      statSync(join(ROOT, base, d)).isDirectory(),
-    ),
-  )
+  const isDir = (p: string) => statSync(join(ROOT, p)).isDirectory()
+  const folders = readdirSync(join(ROOT, "src/components"))
+    .filter((d) => isDir(`src/components/${d}`))
+    .flatMap((d) =>
+      d === "ui" || d === "layout"
+        ? readdirSync(join(ROOT, "src/components", d)).filter((s) =>
+            isDir(`src/components/${d}/${s}`),
+          )
+        : [d],
+    )
 
   it.each(folders)(
     "PR-01: %s tem ficha com Spec, Plan, Tarefas, Ficha de Texto e critérios",

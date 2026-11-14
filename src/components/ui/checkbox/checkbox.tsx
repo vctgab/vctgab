@@ -29,7 +29,7 @@ const BOX = { w: 24, h: 24 }
 /**
  * Caixa desenhada à mão. A linha inteira (rótulo incluso) é o alvo de toque.
  * Marcado: preenchimento primário e marca de check; indeterminado: traço.
- * Ficha: docs/specs/controles.md
+ * Ficha: docs/specs/controls.md
  */
 export function Checkbox({
   label,

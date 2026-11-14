@@ -34,7 +34,7 @@ export type TextFieldProps = Native &
     id?: string
   }
 
-/** Campo de texto com contorno desenhado. Ficha: docs/specs/campos.md */
+/** Campo de texto com contorno desenhado. Ficha: docs/specs/fields.md */
 export function TextField({
   label,
   hint,

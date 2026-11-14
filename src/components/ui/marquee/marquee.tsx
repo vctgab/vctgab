@@ -13,7 +13,7 @@ export interface MarqueeProps {
 /**
  * Faixa em laço horizontal, só CSS. Pausa com hover, foco ou toque; com
  * movimento reduzido vira rolagem manual e a cópia some. A cópia é
- * `aria-hidden` e `inert`. Ficha: docs/specs/movimento.md
+ * `aria-hidden` e `inert`. Ficha: docs/specs/motion.md
  */
 export function Marquee({ label, children, durationS = 52, className }: MarqueeProps) {
   const style = { "--faixa-duracao": `${durationS}s` } as CSSProperties

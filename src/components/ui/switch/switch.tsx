@@ -29,7 +29,7 @@ const TRACK = { w: 48, h: 28 }
 /**
  * Liga/desliga com efeito imediato. Ligado: trilho primário, botão à
  * direita e ícone de check (posição e ícone além da cor).
- * Ficha: docs/specs/controles.md
+ * Ficha: docs/specs/controls.md
  */
 export function Switch({
   label,

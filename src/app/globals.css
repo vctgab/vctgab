@@ -151,12 +151,52 @@
   --animate-esmaecer: esmaecer var(--duration-state) var(--motion-ease-out) both;
 
   --animate-pulo: pulo var(--duration-state) var(--motion-ease-hand) both;
+  --animate-cair: cair 12s linear infinite;
+  --animate-nevar: nevar 12s linear infinite;
+  --animate-balanco: balanco 7s ease-in-out infinite alternate;
+  --animate-deriva: deriva var(--deriva-duracao, 24s) ease-in-out infinite alternate;
   --animate-faixa: faixa var(--faixa-duracao, 52s) linear infinite;
 
   @keyframes pulo {
     40% {
       translate: 0 -6px;
       scale: 1.08;
+    }
+  }
+  @keyframes cair {
+    from {
+      translate: 0 -20px;
+      rotate: 0deg;
+    }
+    to {
+      translate: 40px 240px;
+      rotate: 340deg;
+    }
+  }
+  @keyframes nevar {
+    from {
+      translate: 0 -20px;
+    }
+    to {
+      translate: 14px 240px;
+    }
+  }
+  @keyframes balanco {
+    from {
+      rotate: -0.5deg;
+    }
+    to {
+      rotate: 0.5deg;
+    }
+  }
+  @keyframes deriva {
+    from {
+      translate: 0 0;
+      rotate: 0deg;
+    }
+    to {
+      translate: var(--deriva-x, 12px) var(--deriva-y, 8px);
+      rotate: var(--deriva-giro, 1deg);
     }
   }
   @keyframes faixa {

@@ -4,32 +4,13 @@ import {
   AchadosChip,
   Achavel,
   AvisoPaginaSecreta,
-} from "@/components/ui/achados"
+} from "@/components/ui/finds"
+import { Pinha } from "@/components/ui/finds/drawings"
 import { Eyebrow } from "@/components/ui/eyebrow"
 import { Container } from "@/components/ui/section"
-import { Demo, Row } from "../_vitrine/demo"
+import { Demo, Row } from "../_showcase/demo"
 
 export const metadata: Metadata = { title: "Achados" }
-
-/** Pinha desenhada à mão (decorativa; o nome vem do Achavel). */
-function Pinha() {
-  return (
-    <svg width="40" height="44" viewBox="0 0 40 44" className="rotate-12 text-ink">
-      <path
-        d="M20 4c7 3 12 11 12 20 0 9-5 16-12 16S8 33 8 24C8 15 13 7 20 4Z"
-        className="fill-secondary-2-soft stroke-current"
-        strokeWidth={2}
-      />
-      <path
-        d="M11 18c5 2 13 2 18 0M10 25c6 2 14 2 20 0M12 32c5 1.6 11 1.6 16 0M20 6v34"
-        fill="none"
-        className="stroke-current"
-        strokeWidth={1.6}
-        strokeLinecap="round"
-      />
-    </svg>
-  )
-}
 
 export default function AchadosPage() {
   return (
@@ -49,7 +30,7 @@ export default function AchadosPage() {
         >
           <Row label="Achavel (pinha) e chip no fluxo">
             <Achavel id="pinha" label="Algo entre as formas do hero">
-              <Pinha />
+              <Pinha className="rotate-12" />
             </Achavel>
             <AchadosChip placement="inline" />
           </Row>

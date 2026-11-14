@@ -1,12 +1,12 @@
 "use client"
 
 import { formatNumber } from "@/lib/format"
-import { useAchados } from "./achados-provider"
+import { useAchados } from "./finds-provider"
 import { Skeleton } from "@/components/ui/skeleton"
 
 /**
  * Estado indisponível da página secreta: diz o que falta, de forma factual.
- * Ficha: docs/specs/achados.md
+ * Ficha: docs/specs/finds.md
  */
 export function AvisoPaginaSecreta({ className }: { className?: string }) {
   const { state, count, total, unlocked, openCard } = useAchados()

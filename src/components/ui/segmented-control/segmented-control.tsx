@@ -28,7 +28,7 @@ export type SegmentedControlProps = DisabledProps & {
 /**
  * Alterna entre 2 a 4 visões equivalentes. Segmentos de largura igual, então
  * o indicador desliza por `translate` calculado pelo índice, sem medir nada.
- * Ficha: docs/specs/controles.md
+ * Ficha: docs/specs/controls.md
  */
 export function SegmentedControl({
   label,

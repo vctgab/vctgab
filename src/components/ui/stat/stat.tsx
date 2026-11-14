@@ -15,7 +15,7 @@ export interface StatProps {
   className?: string
 }
 
-/** Número grande com a legenda do método. Ficha: docs/specs/p1-visuais.md */
+/** Número grande com a legenda do método. Ficha: docs/specs/p1-visuals.md */
 export function Stat({ value, from, method, className }: StatProps) {
   const sentence = from ? `De ${from} para ${value}` : value
   return (

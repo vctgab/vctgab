@@ -20,7 +20,7 @@ const DELAY = [
 /**
  * Entrada suave ao rolar. Só esconde quando há JavaScript (`[data-js]` no
  * <html>) e movimento permitido; sem isso, o conteúdo já nasce visível.
- * Ficha: docs/specs/movimento.md
+ * Ficha: docs/specs/motion.md
  */
 export function Reveal({ children, delay = 0, as: Tag = "div", className }: RevealProps) {
   const ref = useRef<HTMLElement | null>(null)

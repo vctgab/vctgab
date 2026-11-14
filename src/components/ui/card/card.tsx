@@ -66,7 +66,7 @@ function Holes({ seed }: { seed: string }) {
 
 /**
  * Ficha de papel com sombra dura suave, contorno desenhado, fita e furos
- * opcionais e rotação fixa por seed. Ficha: docs/specs/ficha.md
+ * opcionais e rotação fixa por seed. Ficha: docs/specs/card.md
  */
 export function Ficha({
   title,

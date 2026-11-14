@@ -3,7 +3,7 @@
  *
  * Lê `src/styles/tokens.css` e `src/styles/themes.css`, resolve cada tema,
  * grava `src/styles/tokens.generated.json` (consumido pela vitrine e pelo
- * script de tema) e `docs/CONTRASTE.md`, e encerra com erro se algum par
+ * script de tema) e `docs/CONTRAST.md`, e encerra com erro se algum par
  * obrigatório de contraste reprovar ou se algum token não resolver.
  */
 import { readFileSync, writeFileSync } from "node:fs"
@@ -58,7 +58,7 @@ const md = [
   "",
   ...report.themes.map(themeSection),
 ].join("\n")
-writeFileSync(join(root, "docs/CONTRASTE.md"), md)
+writeFileSync(join(root, "docs/CONTRAST.md"), md)
 
 const total = report.themes.reduce((n, t) => n + t.pairs.length, 0)
 if (problems.length > 0) {

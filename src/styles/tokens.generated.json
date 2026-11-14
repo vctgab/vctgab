@@ -3543,10 +3543,10 @@
         "footer-ink": "#F5F0F0",
         "footer-link": "#F5F0F0",
         "footer-focus": "#E2A98F",
-        "footer-tree-far": "#3F412B",
-        "footer-tree-mid": "#363823",
-        "footer-tree-near": "#212314",
-        "footer-accent": "#E2A98F",
+        "footer-tree-far": "#653620",
+        "footer-tree-mid": "#532B18",
+        "footer-tree-near": "#391C0F",
+        "footer-accent": "#D47E57",
         "footer-sky-accent": "#EBE6E5",
         "hero-shape-1": "#ECC8B7",
         "hero-shape-2": "#E7EADE",
@@ -4192,7 +4192,7 @@
           "kind": "texto",
           "uso": "Link sobre árvore do fundo",
           "min": 4.5,
-          "ratio": 9.29,
+          "ratio": 8.85,
           "pass": true
         },
         {
@@ -4201,7 +4201,7 @@
           "kind": "texto",
           "uso": "Link sobre árvore do meio",
           "min": 4.5,
-          "ratio": 10.65,
+          "ratio": 10.78,
           "pass": true
         },
         {
@@ -4210,7 +4210,7 @@
           "kind": "texto",
           "uso": "Link sobre árvore da frente",
           "min": 4.5,
-          "ratio": 14.15,
+          "ratio": 13.81,
           "pass": true
         },
         {

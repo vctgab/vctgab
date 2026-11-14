@@ -16,7 +16,7 @@ export interface ProgressHatchProps {
 
 /**
  * Barra de progresso em hachura, com `role="progressbar"` e valor em texto.
- * Ficha: docs/specs/p1-visuais.md
+ * Ficha: docs/specs/p1-visuals.md
  */
 export function ProgressHatch({
   value,

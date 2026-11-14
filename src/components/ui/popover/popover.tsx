@@ -18,7 +18,7 @@ export interface PopoverProps {
   className?: string
 }
 
-/** Conteúdo complementar ancorado num controle. Ficha: docs/specs/sobreposicoes.md */
+/** Conteúdo complementar ancorado num controle. Ficha: docs/specs/overlays.md */
 export function Popover({
   trigger,
   title,

@@ -1,10 +1,10 @@
 "use client"
 
 import type { ReactNode } from "react"
-import { getAchado, type AchadoId } from "@/lib/achados/achados"
+import { getAchado, type AchadoId } from "@/lib/finds/finds"
 import { cn } from "@/lib/cn"
 import { generateShape } from "@/lib/shapes"
-import { useAchados } from "./achados-provider"
+import { useAchados } from "./finds-provider"
 
 export interface AchavelProps {
   id: AchadoId
@@ -18,7 +18,7 @@ export interface AchavelProps {
 /**
  * Torna um elemento descobrível. Botão com alvo de 44 px ou mais; ao achar,
  * dá um pulo curto, ganha a marca tracejada e o provider anuncia.
- * Ficha: docs/specs/achados.md
+ * Ficha: docs/specs/finds.md
  */
 export function Achavel({ id, label, children, className }: AchavelProps) {
   const { state, find } = useAchados()

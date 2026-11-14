@@ -8,7 +8,7 @@ export interface DividerProps {
   className?: string
 }
 
-/** Separador desenhado à mão. Ficha: docs/specs/p1-visuais.md */
+/** Separador desenhado à mão. Ficha: docs/specs/p1-visuals.md */
 export function Divider({ variant = "wave", seed = "divisor", className }: DividerProps) {
   const line = generateShape({
     kind: "handLine",

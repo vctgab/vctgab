@@ -35,7 +35,7 @@ export type SelectProps = DisabledProps & {
   id?: string
 }
 
-/** Lista de escolha única com gatilho desenhado. Ficha: docs/specs/campos.md */
+/** Lista de escolha única com gatilho desenhado. Ficha: docs/specs/fields.md */
 export function Select({
   label,
   options,

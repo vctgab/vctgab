@@ -29,7 +29,7 @@ export type TextareaProps = Native &
     id?: string
   }
 
-/** Área de texto com contorno desenhado. Ficha: docs/specs/campos.md */
+/** Área de texto com contorno desenhado. Ficha: docs/specs/fields.md */
 export function Textarea({
   label,
   hint,

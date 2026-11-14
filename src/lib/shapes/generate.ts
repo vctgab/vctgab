@@ -1,6 +1,6 @@
 /**
  * Motor de formas irregulares. Puro, determinístico e memoizado.
- * Ficha: docs/specs/motor-de-formas.md
+ * Ficha: docs/specs/shape-engine.md
  */
 import { createRandom, type Random, type Seed } from "./prng"
 import { catmullRomPath, clamp, polygonPath, r4, type Point } from "./path"

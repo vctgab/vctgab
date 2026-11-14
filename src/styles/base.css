@@ -4,6 +4,21 @@
  */
 
 @layer base {
+  /*
+   * As variáveis de estado de uma forma (--shape-fill etc.) não vazam para
+   * formas aninhadas. `:where` deixa a especificidade em zero, então as
+   * classes do próprio hospedeiro aninhado continuam valendo. Fica em
+   * @layer base: fora de camada, venceria os utilitários do Tailwind.
+   */
+  :where([data-shape-host] [data-shape-host], .shape-scope) {
+    --shape-fill: initial;
+    --shape-stroke: initial;
+    --shape-dash: initial;
+    --shape-shadow-x: initial;
+    --shape-shadow-y: initial;
+    --shape-shadow-color: initial;
+  }
+
   html {
     background-color: var(--surface-base);
     color: var(--ink);
@@ -98,20 +113,6 @@
     clip-path: inset(50%);
     white-space: nowrap;
   }
-}
-
-/*
- * As variáveis de estado de uma forma (--shape-fill etc.) não vazam para
- * formas aninhadas. `:where` deixa a especificidade em zero, então as
- * classes do próprio hospedeiro aninhado continuam valendo.
- */
-:where([data-shape-host] [data-shape-host], .shape-scope) {
-  --shape-fill: initial;
-  --shape-stroke: initial;
-  --shape-dash: initial;
-  --shape-shadow-x: initial;
-  --shape-shadow-y: initial;
-  --shape-shadow-color: initial;
 }
 
 /*

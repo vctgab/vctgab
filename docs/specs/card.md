@@ -80,7 +80,7 @@ Clicável: Tab foca o link do título, Enter navega. Não há outros focáveis d
 
 ## Plan
 
-`src/components/ui/ficha/*`. Server Component (`useId` no servidor). Risco: rotação deixa texto levemente inclinado; mantido abaixo de 1,5° e sem `will-change`.
+`src/components/ui/card/*`. Server Component (`useId` no servidor). Risco: rotação deixa texto levemente inclinado; mantido abaixo de 1,5° e sem `will-change`.
 
 ## Tarefas
 

@@ -18,7 +18,7 @@ export type PolaroidProps = Photo & {
   className?: string
 }
 
-/** Moldura de foto torta com legenda em Caveat. Ficha: docs/specs/p1-visuais.md */
+/** Moldura de foto torta com legenda em Caveat. Ficha: docs/specs/p1-visuals.md */
 export function Polaroid({
   src,
   alt,

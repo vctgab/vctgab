@@ -12,7 +12,7 @@ export interface TooltipProps {
   delayDuration?: number
 }
 
-/** Nome curto de um controle, no foco e no hover. Ficha: docs/specs/sobreposicoes.md */
+/** Nome curto de um controle, no foco e no hover. Ficha: docs/specs/overlays.md */
 export function Tooltip({
   content,
   children,

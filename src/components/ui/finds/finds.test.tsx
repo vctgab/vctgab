@@ -1,12 +1,12 @@
 import { act, render, screen, within } from "@testing-library/react"
 import userEvent from "@testing-library/user-event"
 import { axe } from "jest-axe"
-import { ACHADOS } from "@/lib/achados/achados"
+import { ACHADOS } from "@/lib/finds/finds"
 import {
   __resetAchadosStore,
   ACHADOS_COMPLETE_EVENT,
   ACHADOS_STORAGE_KEY,
-} from "@/lib/achados/store"
+} from "@/lib/finds/store"
 import {
   AchadosCardBody,
   AchadosChip,

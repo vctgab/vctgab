@@ -32,7 +32,7 @@ export type RadioGroupProps = DisabledProps & {
 
 const DOT = { w: 24, h: 24 }
 
-/** Escolha única com círculos desenhados. Ficha: docs/specs/controles.md */
+/** Escolha única com círculos desenhados. Ficha: docs/specs/controls.md */
 export function RadioGroup({
   legend,
   options,

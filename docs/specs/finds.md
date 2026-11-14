@@ -79,7 +79,7 @@ Chip e caderno com bordas reais; achados riscados (texto) além da cor. Moviment
 
 ## Plan
 
-`src/lib/achados/*` (dados e store), `src/components/achados/*` (componentes). O store lê o armazenamento só no cliente; o servidor renderiza o estado "carregando" do caderno e o chip sem número (reserva de largura) para não haver erro de hidratação.
+`src/lib/finds/*` (dados e store), `src/components/achados/*` (componentes). O store lê o armazenamento só no cliente; o servidor renderiza o estado "carregando" do caderno e o chip sem número (reserva de largura) para não haver erro de hidratação.
 
 ## Tarefas
 

@@ -1,5 +1,5 @@
 import type { Metadata } from "next"
-import { PaginaProvisoria } from "@/components/layout/pagina-provisoria"
+import { PaginaProvisoria } from "@/components/layout/placeholder-page"
 
 export const metadata: Metadata = { title: "Contato" }
 

@@ -25,7 +25,7 @@ export interface LiveClockProps {
 /**
  * Hora de Teresina, atualizada a cada segundo. Reserva a largura no
  * servidor para não haver salto nem erro de hidratação.
- * Ficha: docs/specs/movimento.md
+ * Ficha: docs/specs/motion.md
  */
 export function LiveClock({
   seconds = true,
