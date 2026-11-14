@@ -16,6 +16,9 @@ Claro, rosa do ipê com pinheiro e âmbar. Esquema claro. Energia 1, rotação m
 | `ink-muted` sobre `surface-base` | Texto secundário | texto | 4,50:1 | 8,10:1 | aprovado |
 | `ink-muted` sobre `surface-raised` | Texto secundário | texto | 4,50:1 | 8,38:1 | aprovado |
 | `ink-muted` sobre `surface-sunken` | Texto secundário | texto | 4,50:1 | 6,80:1 | aprovado |
+| `ink` sobre `surface-hover` | Controle em hover | texto | 4,50:1 | 14,27:1 | aprovado |
+| `ink` sobre `surface-active` | Controle pressionado | texto | 4,50:1 | 12,30:1 | aprovado |
+| `stroke` sobre `surface-active` | Contorno de controle pressionado | componente | 3,00:1 | 12,30:1 | aprovado |
 | `ink-subtle` sobre `surface-base` | Metadados e rótulos mono | texto | 4,50:1 | 5,61:1 | aprovado |
 | `ink-subtle` sobre `surface-raised` | Metadados e rótulos mono | texto | 4,50:1 | 5,80:1 | aprovado |
 | `ink-subtle` sobre `surface-sunken` | Metadados e rótulos mono | texto | 4,50:1 | 4,71:1 | aprovado |
@@ -30,6 +33,7 @@ Claro, rosa do ipê com pinheiro e âmbar. Esquema claro. Energia 1, rotação m
 | `primary-text-hover` sobre `surface-sunken` | Link em hover | texto | 4,50:1 | 7,86:1 | aprovado |
 | `primary-text` sobre `primary-soft` | Texto em primária sobre fundo suave | texto | 4,50:1 | 6,19:1 | aprovado |
 | `ink` sobre `primary-soft` | Chip selecionado | texto | 4,50:1 | 15,80:1 | aprovado |
+| `ink` sobre `primary-soft-hover` | Chip selecionado em hover | texto | 4,50:1 | 14,03:1 | aprovado |
 | `primary-decor` sobre `surface-base` | Títulos de 24 px ou mais e ícones com rótulo | texto-grande | 3,00:1 | 3,89:1 | aprovado |
 | `primary-decor` sobre `surface-raised` | Títulos de 24 px ou mais e ícones com rótulo | texto-grande | 3,00:1 | 4,03:1 | aprovado |
 | `on-primary` sobre `primary-fill` | Botão primário | texto | 4,50:1 | 5,10:1 | aprovado |
@@ -107,6 +111,9 @@ Escuro, as mesmas sementes do ipê sobre papel noturno. Esquema escuro. Energia 
 | `ink-muted` sobre `surface-base` | Texto secundário | texto | 4,50:1 | 13,02:1 | aprovado |
 | `ink-muted` sobre `surface-raised` | Texto secundário | texto | 4,50:1 | 11,47:1 | aprovado |
 | `ink-muted` sobre `surface-sunken` | Texto secundário | texto | 4,50:1 | 13,71:1 | aprovado |
+| `ink` sobre `surface-hover` | Controle em hover | texto | 4,50:1 | 12,56:1 | aprovado |
+| `ink` sobre `surface-active` | Controle pressionado | texto | 4,50:1 | 10,86:1 | aprovado |
+| `stroke` sobre `surface-active` | Contorno de controle pressionado | componente | 3,00:1 | 8,50:1 | aprovado |
 | `ink-subtle` sobre `surface-base` | Metadados e rótulos mono | texto | 4,50:1 | 10,33:1 | aprovado |
 | `ink-subtle` sobre `surface-raised` | Metadados e rótulos mono | texto | 4,50:1 | 9,10:1 | aprovado |
 | `ink-subtle` sobre `surface-sunken` | Metadados e rótulos mono | texto | 4,50:1 | 10,87:1 | aprovado |
@@ -121,6 +128,7 @@ Escuro, as mesmas sementes do ipê sobre papel noturno. Esquema escuro. Energia 
 | `primary-text-hover` sobre `surface-sunken` | Link em hover | texto | 4,50:1 | 12,22:1 | aprovado |
 | `primary-text` sobre `primary-soft` | Texto em primária sobre fundo suave | texto | 4,50:1 | 8,18:1 | aprovado |
 | `ink` sobre `primary-soft` | Chip selecionado | texto | 4,50:1 | 15,51:1 | aprovado |
+| `ink` sobre `primary-soft-hover` | Chip selecionado em hover | texto | 4,50:1 | 12,08:1 | aprovado |
 | `primary-decor` sobre `surface-base` | Títulos de 24 px ou mais e ícones com rótulo | texto-grande | 3,00:1 | 6,03:1 | aprovado |
 | `primary-decor` sobre `surface-raised` | Títulos de 24 px ou mais e ícones com rótulo | texto-grande | 3,00:1 | 5,32:1 | aprovado |
 | `on-primary` sobre `primary-fill` | Botão primário | texto | 4,50:1 | 6,03:1 | aprovado |
@@ -198,6 +206,9 @@ Claro, laranja queimado com oliva e vinho. Esquema claro. Energia 1.25, rotaçã
 | `ink-muted` sobre `surface-base` | Texto secundário | texto | 4,50:1 | 8,10:1 | aprovado |
 | `ink-muted` sobre `surface-raised` | Texto secundário | texto | 4,50:1 | 8,29:1 | aprovado |
 | `ink-muted` sobre `surface-sunken` | Texto secundário | texto | 4,50:1 | 6,81:1 | aprovado |
+| `ink` sobre `surface-hover` | Controle em hover | texto | 4,50:1 | 14,25:1 | aprovado |
+| `ink` sobre `surface-active` | Controle pressionado | texto | 4,50:1 | 12,26:1 | aprovado |
+| `stroke` sobre `surface-active` | Contorno de controle pressionado | componente | 3,00:1 | 12,26:1 | aprovado |
 | `ink-subtle` sobre `surface-base` | Metadados e rótulos mono | texto | 4,50:1 | 5,61:1 | aprovado |
 | `ink-subtle` sobre `surface-raised` | Metadados e rótulos mono | texto | 4,50:1 | 5,74:1 | aprovado |
 | `ink-subtle` sobre `surface-sunken` | Metadados e rótulos mono | texto | 4,50:1 | 4,71:1 | aprovado |
@@ -212,6 +223,7 @@ Claro, laranja queimado com oliva e vinho. Esquema claro. Energia 1.25, rotaçã
 | `primary-text-hover` sobre `surface-sunken` | Link em hover | texto | 4,50:1 | 8,34:1 | aprovado |
 | `primary-text` sobre `primary-soft` | Texto em primária sobre fundo suave | texto | 4,50:1 | 6,72:1 | aprovado |
 | `ink` sobre `primary-soft` | Chip selecionado | texto | 4,50:1 | 15,84:1 | aprovado |
+| `ink` sobre `primary-soft-hover` | Chip selecionado em hover | texto | 4,50:1 | 14,21:1 | aprovado |
 | `primary-decor` sobre `surface-base` | Títulos de 24 px ou mais e ícones com rótulo | texto-grande | 3,00:1 | 4,36:1 | aprovado |
 | `primary-decor` sobre `surface-raised` | Títulos de 24 px ou mais e ícones com rótulo | texto-grande | 3,00:1 | 4,47:1 | aprovado |
 | `on-primary` sobre `primary-fill` | Botão primário | texto | 4,50:1 | 5,61:1 | aprovado |
@@ -289,6 +301,9 @@ Claro, azul-gelo com pinheiro nevado e lilás frio. Esquema claro. Energia 0.7, 
 | `ink-muted` sobre `surface-base` | Texto secundário | texto | 4,50:1 | 8,00:1 | aprovado |
 | `ink-muted` sobre `surface-raised` | Texto secundário | texto | 4,50:1 | 8,21:1 | aprovado |
 | `ink-muted` sobre `surface-sunken` | Texto secundário | texto | 4,50:1 | 6,71:1 | aprovado |
+| `ink` sobre `surface-hover` | Controle em hover | texto | 4,50:1 | 14,26:1 | aprovado |
+| `ink` sobre `surface-active` | Controle pressionado | texto | 4,50:1 | 12,29:1 | aprovado |
+| `stroke` sobre `surface-active` | Contorno de controle pressionado | componente | 3,00:1 | 12,29:1 | aprovado |
 | `ink-subtle` sobre `surface-base` | Metadados e rótulos mono | texto | 4,50:1 | 5,58:1 | aprovado |
 | `ink-subtle` sobre `surface-raised` | Metadados e rótulos mono | texto | 4,50:1 | 5,74:1 | aprovado |
 | `ink-subtle` sobre `surface-sunken` | Metadados e rótulos mono | texto | 4,50:1 | 4,68:1 | aprovado |
@@ -303,6 +318,7 @@ Claro, azul-gelo com pinheiro nevado e lilás frio. Esquema claro. Energia 0.7, 
 | `primary-text-hover` sobre `surface-sunken` | Link em hover | texto | 4,50:1 | 8,25:1 | aprovado |
 | `primary-text` sobre `primary-soft` | Texto em primária sobre fundo suave | texto | 4,50:1 | 6,70:1 | aprovado |
 | `ink` sobre `primary-soft` | Chip selecionado | texto | 4,50:1 | 16,03:1 | aprovado |
+| `ink` sobre `primary-soft-hover` | Chip selecionado em hover | texto | 4,50:1 | 14,45:1 | aprovado |
 | `primary-decor` sobre `surface-base` | Títulos de 24 px ou mais e ícones com rótulo | texto-grande | 3,00:1 | 4,32:1 | aprovado |
 | `primary-decor` sobre `surface-raised` | Títulos de 24 px ou mais e ícones com rótulo | texto-grande | 3,00:1 | 4,44:1 | aprovado |
 | `on-primary` sobre `primary-fill` | Botão primário | texto | 4,50:1 | 5,51:1 | aprovado |

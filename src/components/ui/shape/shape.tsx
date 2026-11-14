@@ -49,6 +49,8 @@ export interface ShapeProps {
   points?: number
   /** Só `handLine`: ondas regulares. */
   waves?: number
+  /** Tamanho nominal em px para elementos fora do bucket. */
+  nominal?: { w: number; h: number }
   /** Preenchimento padrão; o hospedeiro pode trocar por estado com `--shape-fill`. */
   fill?: ShapeColor | "none"
   /** Contorno padrão; o hospedeiro pode trocar com `--shape-stroke`. */
@@ -104,6 +106,7 @@ function Layer({
           strokeLinecap="round"
           strokeLinejoin="round"
           vectorEffect="non-scaling-stroke"
+          style={{ strokeDasharray: "var(--shape-dash, none)" }}
         />
       ) : (
         <path d={shape.path} fill="currentColor" />
@@ -125,6 +128,7 @@ export function Shape({
   edges,
   points,
   waves,
+  nominal,
   fill = "surface-raised",
   stroke = "stroke",
   strokeWidth = 2,
@@ -140,6 +144,7 @@ export function Shape({
     edges,
     points,
     waves,
+    nominal,
   })
   const open = !fillShape.closed
 
@@ -187,6 +192,7 @@ export interface ShapeHostOptions {
   /** Rotação máxima em graus; `false` desliga. */
   rotate?: boolean
   interactive?: boolean
+  nominal?: { w: number; h: number }
 }
 
 /**
@@ -201,12 +207,13 @@ export function shapeHostProps({
   irregularity,
   rotate = false,
   interactive = false,
+  nominal,
 }: ShapeHostOptions): {
   "data-shape-host": ""
   "data-interactive"?: ""
   style: CSSProperties
 } {
-  const { fill } = generateShapePair({ kind, seed, bucket, irregularity })
+  const { fill } = generateShapePair({ kind, seed, bucket, irregularity, nominal })
   const style: CSSProperties = { borderRadius: fill.borderRadius }
   if (rotate && fill.rotation !== 0) {
     style.rotate = `calc(${fill.rotation} * var(--shape-rotation-max) * 1deg)`

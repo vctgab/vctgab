@@ -1,4 +1,7 @@
 import type { Metadata, Viewport } from "next"
+import { Footer } from "@/components/layout/footer"
+import { Header } from "@/components/layout/header"
+import { ToastProvider } from "@/components/ui/toast"
 import { fontVariables } from "@/lib/fonts"
 import { ThemeProvider } from "@/lib/theme/theme-provider"
 import { themeScript } from "@/lib/theme/theme-script"
@@ -27,7 +30,13 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
         <script dangerouslySetInnerHTML={{ __html: themeScript() }} />
       </head>
       <body>
-        <ThemeProvider>{children}</ThemeProvider>
+        <ThemeProvider>
+          <ToastProvider>
+            <Header />
+            {children}
+            <Footer />
+          </ToastProvider>
+        </ThemeProvider>
       </body>
     </html>
   )

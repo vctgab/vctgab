@@ -101,6 +101,20 @@
 }
 
 /*
+ * As variáveis de estado de uma forma (--shape-fill etc.) não vazam para
+ * formas aninhadas. `:where` deixa a especificidade em zero, então as
+ * classes do próprio hospedeiro aninhado continuam valendo.
+ */
+:where([data-shape-host] [data-shape-host], .shape-scope) {
+  --shape-fill: initial;
+  --shape-stroke: initial;
+  --shape-dash: initial;
+  --shape-shadow-x: initial;
+  --shape-shadow-y: initial;
+  --shape-shadow-color: initial;
+}
+
+/*
  * Movimento reduzido: rede de segurança global. Cada componente também
  * declara o próprio equivalente estático.
  */

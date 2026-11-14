@@ -53,6 +53,8 @@
   --surface-base: color-mix(in srgb, var(--seed-primary) 8%, #0b0a0b);
   --surface-raised: color-mix(in srgb, var(--seed-primary) 9%, #1a171a);
   --surface-sunken: color-mix(in srgb, var(--seed-primary) 6%, #050405);
+  --surface-hover: color-mix(in srgb, var(--seed-primary) 12%, #262226);
+  --surface-active: color-mix(in srgb, var(--seed-primary) 14%, #312c31);
   --ink: var(--neutral-50);
   --ink-muted: var(--neutral-200);
   --ink-subtle: var(--neutral-300);
@@ -69,6 +71,7 @@
   --primary-text: var(--primary-300);
   --primary-text-hover: var(--primary-200);
   --primary-soft: var(--primary-950);
+  --primary-soft-hover: var(--primary-900);
   --primary-decor: var(--primary-400);
   --focus-ring: var(--primary-400);
 

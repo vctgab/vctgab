@@ -18,6 +18,9 @@ if (theme) {
   await context.addInitScript((t) => localStorage.setItem("vg-tema", t), theme)
 }
 const page = await context.newPage()
+page.on("response", (r) => {
+  if (r.status() >= 400) console.log(`HTTP ${r.status()}: ${r.url()}`)
+})
 const logs = []
 page.on("console", (m) => {
   if (m.type() === "error" || m.type() === "warning")

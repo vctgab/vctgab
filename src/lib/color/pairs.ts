@@ -33,6 +33,14 @@ const onSurfaces = (
 export const PAIRS: ContrastPair[] = [
   ...onSurfaces("ink", "texto", "Texto principal"),
   ...onSurfaces("ink-muted", "texto", "Texto secundário"),
+  { fg: "ink", bg: "surface-hover", kind: "texto", uso: "Controle em hover" },
+  { fg: "ink", bg: "surface-active", kind: "texto", uso: "Controle pressionado" },
+  {
+    fg: "stroke",
+    bg: "surface-active",
+    kind: "componente",
+    uso: "Contorno de controle pressionado",
+  },
   ...onSurfaces("ink-subtle", "texto", "Metadados e rótulos mono"),
   ...onSurfaces(
     "ink-disabled",
@@ -48,6 +56,12 @@ export const PAIRS: ContrastPair[] = [
     uso: "Texto em primária sobre fundo suave",
   },
   { fg: "ink", bg: "primary-soft", kind: "texto", uso: "Chip selecionado" },
+  {
+    fg: "ink",
+    bg: "primary-soft-hover",
+    kind: "texto",
+    uso: "Chip selecionado em hover",
+  },
   ...onSurfaces(
     "primary-decor",
     "texto-grande",
@@ -184,6 +198,8 @@ export const SEMANTIC_TOKENS = [
   "surface-base",
   "surface-raised",
   "surface-sunken",
+  "surface-hover",
+  "surface-active",
   "ink",
   "ink-muted",
   "ink-subtle",
@@ -198,6 +214,7 @@ export const SEMANTIC_TOKENS = [
   "primary-text",
   "primary-text-hover",
   "primary-soft",
+  "primary-soft-hover",
   "primary-decor",
   "focus-ring",
   "secondary-1-fill",

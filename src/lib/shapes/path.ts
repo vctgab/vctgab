@@ -105,3 +105,8 @@ export function isValidPath(d: string): boolean {
   }
   return true
 }
+
+/** Converte pontos normalizados em `clip-path: polygon(…)` (fitas sem SVG). */
+export function toClipPath(points: readonly Point[]): string {
+  return `polygon(${points.map((p) => `${r4(p.x * 100)}% ${r4(p.y * 100)}%`).join(", ")})`
+}

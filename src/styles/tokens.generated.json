@@ -661,6 +661,8 @@
         "surface-base": "#FEF8FB",
         "surface-raised": "#FFFDFE",
         "surface-sunken": "#ECE4E8",
+        "surface-hover": "#ECE4E8",
+        "surface-active": "#DED4D8",
         "ink": "#21141A",
         "ink-muted": "#574950",
         "ink-subtle": "#6E6168",
@@ -675,6 +677,7 @@
         "primary-text": "#AB1A55",
         "primary-text-hover": "#831441",
         "primary-soft": "#FEEDF4",
+        "primary-soft-hover": "#FCDCE9",
         "primary-decor": "#EE2476",
         "focus-ring": "#EE2476",
         "secondary-1-fill": "#295E41",
@@ -777,6 +780,33 @@
           "uso": "Texto secundário",
           "min": 4.5,
           "ratio": 6.8,
+          "pass": true
+        },
+        {
+          "fg": "ink",
+          "bg": "surface-hover",
+          "kind": "texto",
+          "uso": "Controle em hover",
+          "min": 4.5,
+          "ratio": 14.27,
+          "pass": true
+        },
+        {
+          "fg": "ink",
+          "bg": "surface-active",
+          "kind": "texto",
+          "uso": "Controle pressionado",
+          "min": 4.5,
+          "ratio": 12.3,
+          "pass": true
+        },
+        {
+          "fg": "stroke",
+          "bg": "surface-active",
+          "kind": "componente",
+          "uso": "Contorno de controle pressionado",
+          "min": 3,
+          "ratio": 12.3,
           "pass": true
         },
         {
@@ -903,6 +933,15 @@
           "uso": "Chip selecionado",
           "min": 4.5,
           "ratio": 15.8,
+          "pass": true
+        },
+        {
+          "fg": "ink",
+          "bg": "primary-soft-hover",
+          "kind": "texto",
+          "uso": "Chip selecionado em hover",
+          "min": 4.5,
+          "ratio": 14.03,
           "pass": true
         },
         {
@@ -2036,6 +2075,8 @@
         "surface-base": "#1D0C14",
         "surface-raised": "#2D1822",
         "surface-sunken": "#13060C",
+        "surface-hover": "#3E2230",
+        "surface-active": "#4B2B3B",
         "ink": "#F6EFF2",
         "ink-muted": "#DED4D8",
         "ink-subtle": "#C8BDC2",
@@ -2050,6 +2091,7 @@
         "primary-text": "#F792BB",
         "primary-text-hover": "#FAB9D3",
         "primary-soft": "#34081A",
+        "primary-soft-hover": "#5A0E2D",
         "primary-decor": "#F25B98",
         "focus-ring": "#F25B98",
         "secondary-1-fill": "#97B5A5",
@@ -2152,6 +2194,33 @@
           "uso": "Texto secundário",
           "min": 4.5,
           "ratio": 13.71,
+          "pass": true
+        },
+        {
+          "fg": "ink",
+          "bg": "surface-hover",
+          "kind": "texto",
+          "uso": "Controle em hover",
+          "min": 4.5,
+          "ratio": 12.56,
+          "pass": true
+        },
+        {
+          "fg": "ink",
+          "bg": "surface-active",
+          "kind": "texto",
+          "uso": "Controle pressionado",
+          "min": 4.5,
+          "ratio": 10.86,
+          "pass": true
+        },
+        {
+          "fg": "stroke",
+          "bg": "surface-active",
+          "kind": "componente",
+          "uso": "Contorno de controle pressionado",
+          "min": 3,
+          "ratio": 8.5,
           "pass": true
         },
         {
@@ -2278,6 +2347,15 @@
           "uso": "Chip selecionado",
           "min": 4.5,
           "ratio": 15.51,
+          "pass": true
+        },
+        {
+          "fg": "ink",
+          "bg": "primary-soft-hover",
+          "kind": "texto",
+          "uso": "Chip selecionado em hover",
+          "min": 4.5,
+          "ratio": 12.08,
           "pass": true
         },
         {
@@ -3411,6 +3489,8 @@
         "surface-base": "#FDFAF8",
         "surface-raised": "#FEFDFD",
         "surface-sunken": "#EBE6E5",
+        "surface-hover": "#EBE6E5",
+        "surface-active": "#DCD6D4",
         "ink": "#1F1715",
         "ink-muted": "#554B4B",
         "ink-subtle": "#6C6363",
@@ -3425,6 +3505,7 @@
         "primary-text": "#8E3C16",
         "primary-text-hover": "#6C2E11",
         "primary-soft": "#FAF1ED",
+        "primary-soft-hover": "#F6E3DB",
         "primary-decor": "#C5531F",
         "focus-ring": "#C5531F",
         "secondary-1-fill": "#5E6B29",
@@ -3527,6 +3608,33 @@
           "uso": "Texto secundário",
           "min": 4.5,
           "ratio": 6.81,
+          "pass": true
+        },
+        {
+          "fg": "ink",
+          "bg": "surface-hover",
+          "kind": "texto",
+          "uso": "Controle em hover",
+          "min": 4.5,
+          "ratio": 14.25,
+          "pass": true
+        },
+        {
+          "fg": "ink",
+          "bg": "surface-active",
+          "kind": "texto",
+          "uso": "Controle pressionado",
+          "min": 4.5,
+          "ratio": 12.26,
+          "pass": true
+        },
+        {
+          "fg": "stroke",
+          "bg": "surface-active",
+          "kind": "componente",
+          "uso": "Contorno de controle pressionado",
+          "min": 3,
+          "ratio": 12.26,
           "pass": true
         },
         {
@@ -3653,6 +3761,15 @@
           "uso": "Chip selecionado",
           "min": 4.5,
           "ratio": 15.84,
+          "pass": true
+        },
+        {
+          "fg": "ink",
+          "bg": "primary-soft-hover",
+          "kind": "texto",
+          "uso": "Chip selecionado em hover",
+          "min": 4.5,
+          "ratio": 14.21,
           "pass": true
         },
         {
@@ -4786,6 +4903,8 @@
         "surface-base": "#F9FBFC",
         "surface-raised": "#FDFEFE",
         "surface-sunken": "#E6E7E9",
+        "surface-hover": "#E6E7E9",
+        "surface-active": "#D7D7DA",
         "ink": "#16191C",
         "ink-muted": "#4D4E53",
         "ink-subtle": "#65656A",
@@ -4800,6 +4919,7 @@
         "primary-text": "#2A5B74",
         "primary-text-hover": "#204559",
         "primary-soft": "#EFF5F7",
+        "primary-soft-hover": "#E0EAF0",
         "primary-decor": "#3B7EA1",
         "focus-ring": "#3B7EA1",
         "secondary-1-fill": "#294F42",
@@ -4902,6 +5022,33 @@
           "uso": "Texto secundário",
           "min": 4.5,
           "ratio": 6.71,
+          "pass": true
+        },
+        {
+          "fg": "ink",
+          "bg": "surface-hover",
+          "kind": "texto",
+          "uso": "Controle em hover",
+          "min": 4.5,
+          "ratio": 14.26,
+          "pass": true
+        },
+        {
+          "fg": "ink",
+          "bg": "surface-active",
+          "kind": "texto",
+          "uso": "Controle pressionado",
+          "min": 4.5,
+          "ratio": 12.29,
+          "pass": true
+        },
+        {
+          "fg": "stroke",
+          "bg": "surface-active",
+          "kind": "componente",
+          "uso": "Contorno de controle pressionado",
+          "min": 3,
+          "ratio": 12.29,
           "pass": true
         },
         {
@@ -5028,6 +5175,15 @@
           "uso": "Chip selecionado",
           "min": 4.5,
           "ratio": 16.03,
+          "pass": true
+        },
+        {
+          "fg": "ink",
+          "bg": "primary-soft-hover",
+          "kind": "texto",
+          "uso": "Chip selecionado em hover",
+          "min": 4.5,
+          "ratio": 14.45,
           "pass": true
         },
         {

@@ -37,6 +37,8 @@ export interface ShapeOptions {
   edges?: readonly TornSide[]
   /** Só `handLine`: número de ondas regulares (divisor ondulado). */
   waves?: number
+  /** Tamanho nominal em px quando o elemento foge do bucket (caixas de 24 px, trilhos). */
+  nominal?: { w: number; h: number }
 }
 
 export interface ShapeResult {
@@ -192,17 +194,19 @@ function rectLike(
   const irr = irregularityOf(o)
   const amp = spec.amp * irr * 2 * (pill ? 0.7 : 1)
   const inset = amp * 1.25 + 0.75
-  const { w, h } = spec
+  const { w, h } = o.nominal ?? spec
   const x0 = inset
   const y0 = inset
   const x1 = w - inset
   const y1 = h - inset
   const maxR = Math.min((x1 - x0) / 2, (y1 - y0) / 2)
   const radiusRand = createRandom(`${o.seed}:r`)
+  // Elementos menores que o bucket (caixa de 24 px) ganham raios proporcionais.
+  const rScale = Math.min(1, Math.min(w, h) / spec.h)
   const radius = () =>
     pill
       ? maxR * radiusRand.range(0.92, 1)
-      : Math.min(maxR, radiusRand.range(spec.rMin, spec.rMax))
+      : Math.min(maxR, radiusRand.range(spec.rMin, spec.rMax) * rScale)
   const radii = [radius(), radius(), radius(), radius()] as const
 
   const rand = createRandom(`${o.seed}:${o.variant ?? "f"}`)
@@ -279,7 +283,7 @@ function tornEdge(
   const bucket = o.bucket ?? "md"
   const spec = BUCKETS[bucket]
   const irr = irregularityOf(o)
-  const { w, h } = spec
+  const { w, h } = o.nominal ?? spec
   const edges = new Set<TornSide>(
     o.edges ?? (bucket === "sm" ? ["left", "right"] : ["bottom"]),
   )
@@ -386,6 +390,7 @@ function cacheKey(o: ShapeOptions): string {
     o.variant ?? "f",
     o.edges ?? null,
     o.waves ?? null,
+    o.nominal ? [o.nominal.w, o.nominal.h] : null,
   ])
 }
 
