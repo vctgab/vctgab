@@ -5,4 +5,5 @@ reference
 docs/screenshots
 playwright-report
 test-results
-src/styles/contrast.generated.json
+src/styles/tokens.generated.json
+docs/CONTRASTE.md

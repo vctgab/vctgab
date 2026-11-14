@@ -19,7 +19,7 @@ const eslintConfig = defineConfig([
           object: "Math",
           property: "random",
           message:
-            "Use o PRNG com seed de @/lib/shapes (regra FM-01). Math.random quebra a hidratação.",
+            "Use o PRNG com seed de @/lib/shapes (regra SH-01). Math.random quebra a hidratação.",
         },
       ],
     },

@@ -1,0 +1,250 @@
+/*
+ * Tokens do design system.
+ *
+ * Fonte da verdade das cores: este arquivo (fórmulas e mapeamento semântico
+ * padrão) e `themes.css` (sementes e ajustes por tema). Um dos dois únicos
+ * lugares onde cor literal é permitida (regra TK-01).
+ *
+ * O seletor `:root, [data-theme]` faz cada elemento com tema recalcular as
+ * escalas a partir das próprias sementes; por isso a vitrine pode mostrar os
+ * quatro temas lado a lado.
+ *
+ * Escalas de 11 passos: branco (claros) ou preto (escuros) sobre a semente,
+ * em sRGB. 50: 92% de branco, 100: 84%, 200: 68%, 300: 50%, 400: 25%,
+ * 500: semente, 600: 12% de preto, 700: 28%, 800: 45%, 900: 62%, 950: 78%.
+ */
+
+:root,
+[data-theme] {
+  /* ---------- escalas derivadas ---------- */
+  --primary-50: color-mix(in srgb, white 92%, var(--seed-primary));
+  --primary-100: color-mix(in srgb, white 84%, var(--seed-primary));
+  --primary-200: color-mix(in srgb, white 68%, var(--seed-primary));
+  --primary-300: color-mix(in srgb, white 50%, var(--seed-primary));
+  --primary-400: color-mix(in srgb, white 25%, var(--seed-primary));
+  --primary-500: var(--seed-primary);
+  --primary-600: color-mix(in srgb, black 12%, var(--seed-primary));
+  --primary-700: color-mix(in srgb, black 28%, var(--seed-primary));
+  --primary-800: color-mix(in srgb, black 45%, var(--seed-primary));
+  --primary-900: color-mix(in srgb, black 62%, var(--seed-primary));
+  --primary-950: color-mix(in srgb, black 78%, var(--seed-primary));
+
+  --secondary-1-50: color-mix(in srgb, white 92%, var(--seed-secondary-1));
+  --secondary-1-100: color-mix(in srgb, white 84%, var(--seed-secondary-1));
+  --secondary-1-200: color-mix(in srgb, white 68%, var(--seed-secondary-1));
+  --secondary-1-300: color-mix(in srgb, white 50%, var(--seed-secondary-1));
+  --secondary-1-400: color-mix(in srgb, white 25%, var(--seed-secondary-1));
+  --secondary-1-500: var(--seed-secondary-1);
+  --secondary-1-600: color-mix(in srgb, black 12%, var(--seed-secondary-1));
+  --secondary-1-700: color-mix(in srgb, black 28%, var(--seed-secondary-1));
+  --secondary-1-800: color-mix(in srgb, black 45%, var(--seed-secondary-1));
+  --secondary-1-900: color-mix(in srgb, black 62%, var(--seed-secondary-1));
+  --secondary-1-950: color-mix(in srgb, black 78%, var(--seed-secondary-1));
+
+  --secondary-2-50: color-mix(in srgb, white 92%, var(--seed-secondary-2));
+  --secondary-2-100: color-mix(in srgb, white 84%, var(--seed-secondary-2));
+  --secondary-2-200: color-mix(in srgb, white 68%, var(--seed-secondary-2));
+  --secondary-2-300: color-mix(in srgb, white 50%, var(--seed-secondary-2));
+  --secondary-2-400: color-mix(in srgb, white 25%, var(--seed-secondary-2));
+  --secondary-2-500: var(--seed-secondary-2);
+  --secondary-2-600: color-mix(in srgb, black 12%, var(--seed-secondary-2));
+  --secondary-2-700: color-mix(in srgb, black 28%, var(--seed-secondary-2));
+  --secondary-2-800: color-mix(in srgb, black 45%, var(--seed-secondary-2));
+  --secondary-2-900: color-mix(in srgb, black 62%, var(--seed-secondary-2));
+  --secondary-2-950: color-mix(in srgb, black 78%, var(--seed-secondary-2));
+
+  --success-50: color-mix(in srgb, white 92%, var(--seed-success));
+  --success-100: color-mix(in srgb, white 84%, var(--seed-success));
+  --success-200: color-mix(in srgb, white 68%, var(--seed-success));
+  --success-300: color-mix(in srgb, white 50%, var(--seed-success));
+  --success-400: color-mix(in srgb, white 25%, var(--seed-success));
+  --success-500: var(--seed-success);
+  --success-600: color-mix(in srgb, black 12%, var(--seed-success));
+  --success-700: color-mix(in srgb, black 28%, var(--seed-success));
+  --success-800: color-mix(in srgb, black 45%, var(--seed-success));
+  --success-900: color-mix(in srgb, black 62%, var(--seed-success));
+  --success-950: color-mix(in srgb, black 78%, var(--seed-success));
+
+  --warning-50: color-mix(in srgb, white 92%, var(--seed-warning));
+  --warning-100: color-mix(in srgb, white 84%, var(--seed-warning));
+  --warning-200: color-mix(in srgb, white 68%, var(--seed-warning));
+  --warning-300: color-mix(in srgb, white 50%, var(--seed-warning));
+  --warning-400: color-mix(in srgb, white 25%, var(--seed-warning));
+  --warning-500: var(--seed-warning);
+  --warning-600: color-mix(in srgb, black 12%, var(--seed-warning));
+  --warning-700: color-mix(in srgb, black 28%, var(--seed-warning));
+  --warning-800: color-mix(in srgb, black 45%, var(--seed-warning));
+  --warning-900: color-mix(in srgb, black 62%, var(--seed-warning));
+  --warning-950: color-mix(in srgb, black 78%, var(--seed-warning));
+
+  --danger-50: color-mix(in srgb, white 92%, var(--seed-danger));
+  --danger-100: color-mix(in srgb, white 84%, var(--seed-danger));
+  --danger-200: color-mix(in srgb, white 68%, var(--seed-danger));
+  --danger-300: color-mix(in srgb, white 50%, var(--seed-danger));
+  --danger-400: color-mix(in srgb, white 25%, var(--seed-danger));
+  --danger-500: var(--seed-danger);
+  --danger-600: color-mix(in srgb, black 12%, var(--seed-danger));
+  --danger-700: color-mix(in srgb, black 28%, var(--seed-danger));
+  --danger-800: color-mix(in srgb, black 45%, var(--seed-danger));
+  --danger-900: color-mix(in srgb, black 62%, var(--seed-danger));
+  --danger-950: color-mix(in srgb, black 78%, var(--seed-danger));
+
+  /*
+   * Neutros: cinzas com 3% a 6% da primária, para o papel e a tinta herdarem
+   * o clima do tema. Os cinzas-base são fixos; o tom vem da semente.
+   */
+  --neutral-0: color-mix(in srgb, var(--seed-primary) 3%, #ffffff);
+  --neutral-50: color-mix(in srgb, var(--seed-primary) 3%, #f6f5f6);
+  --neutral-100: color-mix(in srgb, var(--seed-primary) 3.5%, #ecebec);
+  --neutral-200: color-mix(in srgb, var(--seed-primary) 4%, #dddbdc);
+  --neutral-300: color-mix(in srgb, var(--seed-primary) 4%, #c6c3c5);
+  --neutral-400: color-mix(in srgb, var(--seed-primary) 4.5%, #a29fa1);
+  --neutral-500: color-mix(in srgb, var(--seed-primary) 5%, #838083);
+  --neutral-600: color-mix(in srgb, var(--seed-primary) 5%, #676467);
+  --neutral-700: color-mix(in srgb, var(--seed-primary) 5.5%, #4e4b4e);
+  --neutral-800: color-mix(in srgb, var(--seed-primary) 6%, #373537);
+  --neutral-900: color-mix(in srgb, var(--seed-primary) 6%, #232123);
+  --neutral-950: color-mix(in srgb, var(--seed-primary) 6%, #141314);
+
+  /* ---------- tokens semânticos (padrão claro) ---------- */
+  --surface-base: var(--neutral-0);
+  --surface-raised: color-mix(in srgb, white 65%, var(--neutral-0));
+  --surface-sunken: var(--neutral-100);
+  --ink: var(--neutral-950);
+  --ink-muted: var(--neutral-700);
+  --ink-subtle: var(--neutral-600);
+  --ink-disabled: var(--neutral-500);
+  --border: var(--neutral-300);
+  --border-strong: var(--neutral-600);
+  --stroke: var(--neutral-950);
+
+  --primary-fill: var(--primary-600);
+  --primary-fill-hover: var(--primary-700);
+  --primary-fill-active: var(--primary-800);
+  --on-primary: white;
+  --primary-text: var(--primary-700);
+  --primary-text-hover: var(--primary-800);
+  --primary-soft: var(--primary-50);
+  --primary-decor: var(--primary-500);
+  --focus-ring: var(--primary-500);
+
+  --secondary-1-fill: var(--secondary-1-600);
+  --secondary-1-fill-hover: var(--secondary-1-700);
+  --on-secondary-1: white;
+  --secondary-1-text: var(--secondary-1-700);
+  --secondary-1-soft: var(--secondary-1-50);
+
+  --secondary-2-fill: var(--secondary-2-600);
+  --secondary-2-fill-hover: var(--secondary-2-700);
+  --on-secondary-2: white;
+  --secondary-2-text: var(--secondary-2-700);
+  --secondary-2-soft: var(--secondary-2-50);
+
+  --success-fill: var(--success-600);
+  --on-success: white;
+  --success-text: var(--success-700);
+  --success-soft: var(--success-50);
+
+  --warning-fill: var(--warning-400);
+  --on-warning: var(--neutral-950);
+  --warning-text: var(--warning-800);
+  --warning-soft: var(--warning-50);
+
+  --danger-fill: var(--danger-600);
+  --on-danger: white;
+  --danger-text: var(--danger-700);
+  --danger-soft: var(--danger-50);
+
+  --overlay: color-mix(in srgb, var(--neutral-950) 55%, transparent);
+  --shadow-ink: var(--neutral-950);
+  --shadow-soft: var(--neutral-200);
+  --tape: color-mix(in srgb, var(--neutral-500) 42%, transparent);
+  --hatch-a: var(--neutral-100);
+  --hatch-b: var(--neutral-0);
+  --hole: var(--neutral-100);
+  --hole-rim: var(--neutral-500);
+  --selection: var(--primary-200);
+
+  /* rodapé: faixa escura com cena de árvores */
+  --footer-bg: color-mix(in srgb, var(--seed-primary) 7%, #121012);
+  --footer-ink: var(--neutral-50);
+  --footer-link: var(--neutral-50);
+  --footer-focus: var(--primary-300);
+  --footer-tree-far: color-mix(in srgb, var(--seed-secondary-1) 32%, #2a2629);
+  --footer-tree-mid: color-mix(in srgb, var(--seed-secondary-1) 30%, #1f1c1e);
+  --footer-tree-near: color-mix(in srgb, var(--seed-secondary-1) 22%, #0c0b0c);
+  --footer-accent: var(--primary-400);
+  --footer-sky-accent: var(--neutral-100);
+
+  /* hero: paleta da composição de formas */
+  --hero-shape-1: var(--primary-200);
+  --hero-shape-2: var(--secondary-1-100);
+  --hero-shape-3: var(--secondary-2-100);
+  --hero-shape-4: var(--primary-100);
+  --hero-shape-5: var(--neutral-100);
+  --hero-plate: var(--surface-raised);
+
+  /* ---------- motor de formas (parâmetros globais do tema) ---------- */
+  --shape-energy: 1;
+  --shape-rotation-max: 1.2;
+
+  color-scheme: light;
+}
+
+/* ---------- tokens que não são de cor ---------- */
+:root {
+  /* tipografia fluida */
+  --font-size-display: clamp(2.75rem, 1.6rem + 5.2vw, 5.5rem);
+  --font-size-h1: clamp(2.25rem, 1.5rem + 3.2vw, 4rem);
+  --font-size-h2: clamp(1.75rem, 1.3rem + 1.9vw, 2.75rem);
+  --font-size-h3: clamp(1.375rem, 1.2rem + 0.8vw, 1.75rem);
+  --font-size-body-lg: 1.1875rem;
+  --font-size-body: 1rem;
+  --font-size-sm: 0.875rem;
+  --font-size-label: 0.75rem;
+  --font-size-hand: 1.375rem;
+  --measure: 65ch;
+
+  /* layout */
+  --layout-page: 75rem;
+  --gutter: 1rem;
+
+  /* sombras duras deslocadas, sem desfoque */
+  --shadow-offset-sm: 2px;
+  --shadow-offset-md: 4px;
+  --shadow-offset-lg: 6px;
+
+  /* movimento */
+  --duration-instant: 120ms;
+  --duration-state: 200ms;
+  --duration-slow: 320ms;
+  --duration-scene: 600ms;
+  --motion-ease-hand: cubic-bezier(0.34, 1.4, 0.64, 1);
+  --motion-ease-out: cubic-bezier(0.22, 1, 0.36, 1);
+  --theme-transition: 300ms;
+
+  /* camadas nomeadas */
+  --z-below: -1;
+  --z-base: 0;
+  --z-raised: 10;
+  --z-sticky: 30;
+  --z-header: 40;
+  --z-dock: 50;
+  --z-popover: 70;
+  --z-overlay: 80;
+  --z-dialog: 90;
+  --z-toast: 100;
+  --z-skip: 110;
+}
+
+@media (min-width: 48rem) {
+  :root {
+    --gutter: 2rem;
+  }
+}
+
+@media (min-width: 80rem) {
+  :root {
+    --gutter: 3rem;
+  }
+}

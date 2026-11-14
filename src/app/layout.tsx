@@ -1,15 +1,34 @@
-import type { Metadata } from "next"
+import type { Metadata, Viewport } from "next"
+import { fontVariables } from "@/lib/fonts"
+import { ThemeProvider } from "@/lib/theme/theme-provider"
+import { themeScript } from "@/lib/theme/theme-script"
+import { getThemeInfo, DEFAULT_THEME } from "@/lib/theme/themes"
 import "./globals.css"
 
 export const metadata: Metadata = {
-  title: "Victor Gabriel",
-  description: "Portfólio de desenvolvimento de Victor Gabriel.",
+  title: {
+    default: "Victor Gabriel, desenvolvedor front-end",
+    template: "%s · Victor Gabriel",
+  },
+  description:
+    "Portfólio de Victor Gabriel, desenvolvedor front-end em Teresina que veio do design de produto.",
+}
+
+export const viewport: Viewport = {
+  themeColor: getThemeInfo(DEFAULT_THEME).themeColor,
 }
 
 export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
-    <html lang="pt-BR">
-      <body>{children}</body>
+    // suppressHydrationWarning só por causa de data-theme, que o script do
+    // <head> define antes da hidratação.
+    <html lang="pt-BR" className={fontVariables} suppressHydrationWarning>
+      <head>
+        <script dangerouslySetInnerHTML={{ __html: themeScript() }} />
+      </head>
+      <body>
+        <ThemeProvider>{children}</ThemeProvider>
+      </body>
     </html>
   )
 }
