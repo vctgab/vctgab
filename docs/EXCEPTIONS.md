@@ -5,14 +5,21 @@ Exceções às regras de `docs/RULES.md`. Só valem com todos os campos preenchi
 | ID  | Regra | Componente | Motivo | Aprovado por Victor | Data limite |
 | --- | ----- | ---------- | ------ | ------------------- | ----------- |
 
-Nenhuma exceção registrada.
+Nenhuma exceção a regra registrada.
 
 ## Divergências entre navegadores sem correção
 
-Diferenças de motor que o código não consegue corrigir (etapa 0.3 da fase 2). Nenhuma quebra uma regra: o resultado continua legível e acessível, só menos refinado. Ficam aqui com data para reavaliar; passada a data, rodar de novo `tests/e2e/engines.spec.ts` e atualizar.
+Diferenças de motor que o código não consegue corrigir (etapa 0.3 da fase 2). Nenhuma quebra uma regra: o resultado continua legível e acessível, só menos refinado. Passada a data limite, rodar de novo `tests/e2e/engines.spec.ts` e decidir de novo.
 
-| ID    | Motor               | O que diverge                                                                                                                                               | Efeito e alternativa                                                                                                                                                                       | Aprovado por Victor | Data limite |
-| ----- | ------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------- | ----------- |
-| NV-01 | Firefox 159         | Sem `text-wrap: pretty` (`CSS.supports` falso).                                                                                                             | Parágrafos usam a quebra padrão: às vezes sobra uma palavra sozinha na última linha. Títulos usam `balance`, que o Firefox tem.                                                            | pendente            | 14/05/2027  |
-| NV-02 | WebKit (Playwright) | Não hifeniza pt-BR (sem dicionário nesta build). O Safari no macOS e no iOS hifeniza.                                                                       | Palavras longas quebram sem hífen; `overflow-wrap: break-word` impede transbordo. Conferir num Safari real.                                                                                | pendente            | 14/05/2027  |
-| NV-03 | WebKit / Safari     | Com a configuração padrão, o Tab pula links; só Option+Tab (ou "Pressionar Tab para realçar cada item") chega a eles. No WebKit do Playwright, nem Alt+Tab. | Comportamento do navegador, não do site. Os testes de teclado no WebKit focam o link diretamente e conferem visibilidade e destino; Chromium e Firefox percorrem a ordem completa com Tab. | pendente            | 14/05/2027  |
+| ID    | Motor               | O que diverge                                                                         | Efeito e alternativa                                                                                                            | Aprovado por Victor | Data limite |
+| ----- | ------------------- | ------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------- | ------------------- | ----------- |
+| NV-01 | Firefox 159         | Sem `text-wrap: pretty` (`CSS.supports` falso).                                       | Parágrafos usam a quebra padrão: às vezes sobra uma palavra sozinha na última linha. Títulos usam `balance`, que o Firefox tem. | sim, 14/11/2026     | 14/05/2027  |
+| NV-02 | WebKit (Playwright) | Não hifeniza pt-BR (sem dicionário nesta build). O Safari no macOS e no iOS hifeniza. | Palavras longas quebram sem hífen; `overflow-wrap: break-word` impede transbordo. Conferir num Safari real.                     | sim, 14/11/2026     | 14/05/2027  |
+
+## Comportamentos conhecidos dos navegadores
+
+Configuração ou comportamento do próprio navegador, não do site. Não são exceção: não há nada a corrigir nem data limite. Ficam aqui para quem testar não confundir com defeito.
+
+| ID    | Navegador       | Comportamento                                                                                                                                                              | Como os testes lidam                                                                                                                                       |
+| ----- | --------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| CN-01 | Safari / WebKit | Com a configuração padrão, o Tab pula links; Option+Tab ou "Pressionar Tab para realçar cada item" (Ajustes do Safari) chega a eles. No WebKit do Playwright, nem Alt+Tab. | Nos testes de teclado do WebKit, o link de pular é focado direto e confere visibilidade e destino; o percurso completo por Tab roda em Chromium e Firefox. |

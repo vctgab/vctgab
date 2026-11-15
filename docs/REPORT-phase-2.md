@@ -48,9 +48,9 @@ O CI fez o que devia: achou um defeito que esta máquina não mostra. No Linux n
 - **Termos `cooperado`, `convênio`, `operadora`, `faturamento`, `/painel`, `Valentim`:** zero ocorrências em qualquer revisão.
 - **Nomes autorizados** (Felicoop, Nexuscoop, Houer Tecnologia, OIA): aparecem só onde previsto. Os nomes de depoentes desta fase (seção E da Home) entram por pedido de Victor.
 
-### Comando de reescrita (preparado, NÃO executado)
+### Comando de reescrita (preparado; decisão de Victor: não reescrever)
 
-Só rodar depois de Victor escrever "Autorizo reescrever o histórico e fazer push --force-with-lease". Faz backup, reescreve num clone novo e envia com proteção de concorrência.
+**Decisão de Victor (14/11/2026): o histórico não será reescrito** (D-1036). O comando fica só como registro do que seria feito; não deve ser executado.
 
 ```bash
 # 0. Ferramenta (não vem com o Git)
@@ -110,7 +110,7 @@ Projetos `chromium`, `webkit` e `firefox` no Playwright, para o e2e e para as ca
 | Hifenização pt-BR                              | sim                          | **não** (sem dicionário na build do Playwright)          | sim                                         | Sem correção no código; `overflow-wrap` evita transbordo (NV-02). Conferir num Safari real.                                  |
 | Script de tema antes da primeira pintura       | ok                           | ok                                                       | ok                                          | Teste: o `data-theme` salvo já está no `<html>` quando o `<body>` entra; sistema escuro abre no noturno.                     |
 | LiveClock                                      | ok                           | ok                                                       | ok                                          | Teste: hora de Teresina (±1 min), avança, nome acessível e console sem aviso.                                                |
-| Tab em links                                   | ok                           | **pula links** (padrão do Safari)                        | ok                                          | Comportamento do navegador (NV-03). No WebKit os testes focam o link direto.                                                 |
+| Tab em links                                   | ok                           | **pula links** (padrão do Safari)                        | ok                                          | Comportamento do navegador (CN-01, comportamento conhecido, não exceção). No WebKit os testes focam o link direto.           |
 | Pré-carga de fontes                            | ok                           | ok                                                       | **baixava duas vezes** e avisava no console | Corrigido (D-1010): pré-carga no HTML com `crossorigin="anonymous"`. Agora 4 requisições de fonte nos três motores.          |
 | Espelhos nativos do Radix                      | fora da medição              | contavam como alvo de 12 × 12 px                         | fora da medição                             | O teste de alvo ignora `aria-hidden` com `tabindex=-1` (não são alvo).                                                       |
 | H1 do hero a 390 px                            | quebrava em "Front-" / "end" | ok                                                       | ok                                          | Corrigido: "Front-end" sem quebra (D-1014).                                                                                  |
@@ -168,7 +168,7 @@ Ficha em `docs/specs/pages/home.md` (tipo, tarefa do visitante, seções, estado
 
 | Porta                                          | Resultado                                                                                                                                                                                                       |
 | ---------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `pnpm test:e2e` local (3 motores, sem repetir) | **223 aprovados, 0 falhas, 11 pulados** (o CLS só tem API no Chromium; o percurso por Tab é pulado no WebKit pela NV-03). Nenhuma nova tentativa.                                                               |
+| `pnpm test:e2e` local (3 motores, sem repetir) | **223 aprovados, 0 falhas, 11 pulados** (o CLS só tem API no Chromium; o percurso por Tab é pulado no WebKit pela CN-01). Nenhuma nova tentativa.                                                               |
 | axe na Home                                    | 0 violação nos 4 temas × 3 motores (WCAG 2.0 a 2.2 A e AA), console sem erro nem aviso de hidratação.                                                                                                           |
 | axe na vitrine                                 | 0 violação nas 11 páginas × 4 temas × 3 motores.                                                                                                                                                                |
 | CLS                                            | 0 na Home e na vitrine, mobile e desktop, com as fontes sem pré-carga atrasadas; 0 também com todas atrasadas; 0 no Lighthouse.                                                                                 |
@@ -188,8 +188,8 @@ Todas em `docs/DECISIONS.md` (D-1001 a D-1031). As que mudam o que foi pedido:
 
 - **Lighthouse 90 no método padrão: não atingido** (Home 85 no CI e 70 local; devtools 88 no CI e 68 local). Os motivos, com números, estão na seção "Lighthouse"; falta medir num preview real.
 - **Nome do relatório:** `docs/REPORT-phase-2.md` em vez de `REPORT-fase-2.md`, pela regra de nomes em inglês; `docs/REGRAS.md` e `docs/EXCECOES.md` do pedido são `docs/RULES.md` e `docs/EXCEPTIONS.md` (D-1004).
-- **Reescrita do histórico não executada**, como pedido. A assinatura do `9bcd76a` já tinha saído do `main` antes desta fase; o que sobra é o objeto no reflog local e, possivelmente, no cache do GitHub (precisa de pedido ao suporte).
-- **Divergências de navegador sem correção** (NV-01 a NV-03) ficam em `docs/EXCEPTIONS.md` com data limite de 14/05/2027 e aprovação **pendente** de Victor.
+- **Histórico não será reescrito**, por decisão de Victor (D-1036). A assinatura do `9bcd76a` já tinha saído do `main` antes desta fase; o objeto antigo só existe no reflog local e, possivelmente, no cache do GitHub. O trecho do D-801 com ferramentas do outro projeto continua nos commits antigos (já públicos) e saiu da revisão atual.
+- **Divergências de navegador sem correção:** NV-01 (Firefox sem `text-wrap: pretty`) e NV-02 (WebKit sem hifenização pt-BR) aprovadas por Victor em 14/11/2026, com data limite de 14/05/2027. O Tab do Safari ficou registrado como comportamento conhecido (CN-01), não como exceção.
 - **"Solicitar orçamento"** cai para e-mail com assunto (não para `#contato`, que seria a própria seção) enquanto o WhatsApp estiver pendente (D-1015).
 - **Rótulos do hero** continuam como pílulas (`Tag`), em minúsculas como no pedido (D-1020).
 - **`release:check`** também acusa links para páginas provisórias (`/projetos`, `/sobre`, `/contato`) e marcas `[a confirmar]` escritas direto no código (D-1018).
@@ -199,11 +199,11 @@ Todas em `docs/DECISIONS.md` (D-1001 a D-1031). As que mudam o que foi pedido:
 
 ## Lista do release:check
 
-Saída de `pnpm release:check` no fim da fase: **37 itens**.
+Saída de `pnpm release:check` no fim da fase: **38 itens**. Todo dado pendente está em `src/content/` (D-1035).
 
-**Pendências no conteúdo (25):** número do WhatsApp; perfil do LinkedIn; mês da agenda aberta; cargo e empresa, e depoimento, de Natália Oliveira, Diogo Reis, Eduardo Silva e Jecielly Mota (8); vídeo do Nexuscoop (até 30 s, sem som), legenda, quadro de capa e descrição do vídeo (4); fotos 1 a 4 de Victor (4); tipo do projeto Nexuscoop, OIA, Cinnatra e Kasb Health (4); entrega do OIA e do Cinnatra (2).
+**Pendências no conteúdo (29):** conteúdo das páginas provisórias Projetos, Sobre e Contato (3); página secreta (1); número do WhatsApp; perfil do LinkedIn; mês da agenda aberta; cargo e empresa, e depoimento, de Natália Oliveira, Diogo Reis, Eduardo Silva e Jecielly Mota (8); vídeo do Nexuscoop (até 30 s, sem som), legenda, quadro de capa e descrição do vídeo (4); fotos 1 a 4 de Victor (4); tipo do projeto Nexuscoop, OIA, Cinnatra e Kasb Health (4); entrega do OIA e do Cinnatra (2).
 
-**Marcas escritas no código (3):** conteúdo das páginas provisórias (`placeholder-page.tsx`); conteúdo da página secreta (`finds-card.tsx` e `secret-page-notice.tsx`).
+**Marcas escritas no código (0):** as três que existiam (páginas provisórias e página secreta) foram para `src/content/pages.ts`.
 
 **Links para rotas inexistentes (4):** `/projetos/nexuscoop`, `/projetos/oia`, `/projetos/cinnatra`, `/projetos/kasb-health` (fichas da faixa; hoje levam à 404 "Trilha perdida").
 
@@ -213,12 +213,12 @@ Observação: o papel no OIA e no Cinnatra não foi informado e não aparece nas
 
 ## Próximos passos sugeridos
 
-1. **Autorizar (ou não) a reescrita do histórico** com a frase combinada; depois, pedir ao suporte do GitHub a remoção do `9bcd76a` em cache. Se o repositório for público, considerar trocar o e-mail pessoal dos commits pelo `noreply` do GitHub na mesma reescrita.
+1. **Histórico:** sem reescrita (D-1036). Se o objeto `9bcd76a` em cache incomodar, o único caminho que não reescreve nada é pedir ao suporte do GitHub que o remova. Se o e-mail pessoal nos commits incomodar, dá para usar o `noreply` do GitHub nos commits novos (`git config user.email`).
 2. **Ligar a Vercel ao repositório** e medir o Lighthouse na URL de preview; com o número real, atacar o HTML das formas (`<use>`) e os botões que são links, se ainda faltar para 90.
 3. **Projetos:** página de lista (`/projetos`) com filtro por tipo e as quatro páginas `/projetos/<slug>`; com elas, o `release:check` deixa de acusar os links. Achados da chave e da bússola.
 4. **Caso Nexuscoop:** página longa com o vídeo de 30 s (o `VideoClip` já está pronto) e o resultado do teste de árvore com o método.
 5. **Sobre:** texto, fotos e os achados do lápis e da pena.
 6. **Contato com o achado da mesa:** formulário quando houver backend (estados de envio, erro que preserva o texto, MS-02).
 7. **Terminal `cmd`:** comandos e a volta do botão ao cabeçalho.
-8. **Preencher as 25 pendências** em `src/content/` e rodar `pnpm release:check` até aprovar; então tornar o job de release do CI bloqueante.
+8. **Preencher as 29 pendências** em `src/content/` e rodar `pnpm release:check` até aprovar; então tornar o job de release do CI bloqueante.
 9. **Máquina local:** diagnóstico de memória do Windows e Node 26 LTS (D-511, D-701).

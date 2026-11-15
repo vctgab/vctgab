@@ -112,7 +112,7 @@ test("CA-5: ficha da faixa leva à 404 'Trilha perdida', com volta à Home", asy
 })
 
 test("CA-6: teclado de ponta a ponta no desktop", async ({ page, browserName }) => {
-  test.skip(browserName === "webkit", "No WebKit o Tab pula links (NV-03)")
+  test.skip(browserName === "webkit", "No WebKit o Tab pula links (CN-01)")
   await page.setViewportSize({ width: 1366, height: 900 })
   await page.goto("/", { waitUntil: "networkidle" })
   const order: string[] = []

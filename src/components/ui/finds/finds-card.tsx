@@ -3,9 +3,11 @@
 
 import { Button } from "@/components/ui/button"
 import { Dialog } from "@/components/ui/dialog"
+import { Fact } from "@/components/ui/fact"
 import { Icon } from "@/components/ui/icon"
 import { ProgressHatch } from "@/components/ui/progress-hatch"
 import { Skeleton } from "@/components/ui/skeleton"
+import { SECRET_PAGE } from "@/content/pages"
 import { ACHADOS, TOTAL_ACHADOS } from "@/lib/finds/finds"
 import { resetAchados, type AchadosState } from "@/lib/finds/store"
 
@@ -81,7 +83,7 @@ export function AchadosCardBody({ state }: { state: AchadosState | null }) {
       </ol>
       {count === TOTAL_ACHADOS ? (
         <p className="font-marker text-marker text-ink">
-          Sete de sete. Página secreta liberada: [a confirmar: página secreta]
+          Sete de sete. Página secreta liberada: <Fact value={SECRET_PAGE.href} />
         </p>
       ) : null}
     </div>

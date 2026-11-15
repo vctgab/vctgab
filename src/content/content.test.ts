@@ -53,3 +53,13 @@ describe("conteúdo", () => {
     expect(items.every((t) => isPending(t.text) && isPending(t.role))).toBe(true)
   })
 })
+
+describe("páginas pendentes", () => {
+  it("páginas provisórias e página secreta ficam como pendência no conteúdo", async () => {
+    const { PROVISIONAL_PAGES, SECRET_PAGE } = await import("./pages")
+    expect(Object.keys(PROVISIONAL_PAGES)).toEqual(["projetos", "sobre", "contato"])
+    for (const page of Object.values(PROVISIONAL_PAGES))
+      expect(isPending(page.content)).toBe(true)
+    expect(isPending(SECRET_PAGE.href)).toBe(true)
+  })
+})

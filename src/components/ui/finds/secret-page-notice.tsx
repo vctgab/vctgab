@@ -1,5 +1,7 @@
 "use client"
 
+import { Fact } from "@/components/ui/fact"
+import { SECRET_PAGE } from "@/content/pages"
 import { formatNumber } from "@/lib/format"
 import { useAchados } from "./finds-provider"
 import { Skeleton } from "@/components/ui/skeleton"
@@ -15,7 +17,7 @@ export function AvisoPaginaSecreta({ className }: { className?: string }) {
   if (unlocked) {
     return (
       <p role="status" className={className}>
-        Página secreta liberada. [a confirmar: página secreta]
+        Página secreta liberada. <Fact value={SECRET_PAGE.href} />
       </p>
     )
   }

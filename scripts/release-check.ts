@@ -12,6 +12,7 @@ import { readdirSync, readFileSync, statSync } from "node:fs"
 import { join, relative, sep } from "node:path"
 import ts from "typescript"
 import { HOME } from "../src/content/home.ts"
+import { PROVISIONAL_PAGES, SECRET_PAGE } from "../src/content/pages.ts"
 import { isPending, type Pending } from "../src/content/pending.ts"
 import { PROJECTS, projectHref } from "../src/content/projects.ts"
 import { SITE } from "../src/content/site.ts"
@@ -52,6 +53,8 @@ const pendings: Found[] = []
 collectPending(SITE, "site", pendings)
 collectPending(HOME, "home", pendings)
 collectPending(PROJECTS, "projects", pendings)
+collectPending(PROVISIONAL_PAGES, "pages.provisional", pendings)
+collectPending(SECRET_PAGE, "pages.secret", pendings)
 
 // 2. Marcas escritas no código e 3. links internos -------------------------
 
