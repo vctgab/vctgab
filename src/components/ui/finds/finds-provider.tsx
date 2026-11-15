@@ -20,7 +20,15 @@ import {
   type AchadosState,
 } from "@/lib/finds/store"
 import { formatCount } from "@/lib/format"
-import { AchadosCard } from "./finds-card"
+import dynamic from "next/dynamic"
+
+/**
+ * O caderno (Dialog) só é baixado e montado na primeira abertura (D-1028):
+ * tira o código do diálogo do carregamento de toda página.
+ */
+const AchadosCard = dynamic(() => import("./finds-card").then((m) => m.AchadosCard), {
+  ssr: false,
+})
 
 export interface AchadosContextValue {
   /** `null` enquanto o caderno não foi lido (servidor e hidratação). */
@@ -49,6 +57,7 @@ export function AchadosProvider({ children }: { children: ReactNode }) {
   )
   const [announcement, setAnnouncement] = useState("")
   const [open, setOpen] = useState(false)
+  const [everOpened, setEverOpened] = useState(false)
   const opener = useRef<HTMLElement | null>(null)
 
   const find = useCallback((id: AchadoId) => {
@@ -62,6 +71,7 @@ export function AchadosProvider({ children }: { children: ReactNode }) {
 
   const openCard = useCallback((el?: HTMLElement | null) => {
     opener.current = el ?? null
+    setEverOpened(true)
     setOpen(true)
   }, [])
 
@@ -85,17 +95,19 @@ export function AchadosProvider({ children }: { children: ReactNode }) {
       <p role="status" aria-live="polite" className="sr-only" data-anuncio-achados="">
         {announcement}
       </p>
-      <AchadosCard
-        state={state}
-        open={open}
-        onOpenChange={setOpen}
-        onCloseAutoFocus={(event) => {
-          if (opener.current) {
-            event.preventDefault()
-            opener.current.focus()
-          }
-        }}
-      />
+      {everOpened ? (
+        <AchadosCard
+          state={state}
+          open={open}
+          onOpenChange={setOpen}
+          onCloseAutoFocus={(event) => {
+            if (opener.current) {
+              event.preventDefault()
+              opener.current.focus()
+            }
+          }}
+        />
+      ) : null}
     </AchadosContext>
   )
 }

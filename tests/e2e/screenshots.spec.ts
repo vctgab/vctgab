@@ -46,6 +46,8 @@ for (const theme of THEMES) {
       mkdirSync(dir, { recursive: true })
       const context = await browser.newContext({
         viewport: { width: vp.width, height: vp.height },
+        // 1x nos três motores (o perfil do Safari viria em 2x): comparáveis e leves.
+        deviceScaleFactor: 1,
       })
       const page = await context.newPage()
       await applyTheme(page, theme)
@@ -67,6 +69,8 @@ for (const theme of THEMES) {
       mkdirSync(dir, { recursive: true })
       const context = await browser.newContext({
         viewport: { width: vp.width, height: vp.height },
+        // 1x nos três motores (o perfil do Safari viria em 2x): comparáveis e leves.
+        deviceScaleFactor: 1,
       })
       const page = await context.newPage()
       await applyTheme(page, theme)
@@ -116,6 +120,20 @@ const EDGES: readonly Edge[] = [
     selector: "main h1 svg",
     at: "right-end",
   },
+  // Home (fase 2).
+  {
+    slug: "home-cta",
+    path: "/",
+    selector: "main section a:has-text('Vamos conversar')",
+    at: "top-right",
+  },
+  {
+    slug: "home-ficha",
+    path: "/",
+    selector: "[data-faixa] > div:first-child article",
+    at: "top-right",
+  },
+  { slug: "home-polaroid", path: "/", selector: "#sobre figure", at: "top-right" },
   {
     slug: "sublinhado-link",
     path: "/sistema/componentes",
@@ -130,6 +148,8 @@ async function cropEdges(browser: Browser, theme: ThemeId) {
   const context = await browser.newContext({
     viewport: { width: 1366, height: 900 },
     deviceScaleFactor: 2,
+    // A faixa da Home fica parada para o recorte.
+    reducedMotion: "reduce",
   })
   const page = await context.newPage()
   await applyTheme(page, theme)

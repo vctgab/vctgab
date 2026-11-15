@@ -1,6 +1,13 @@
 "use client"
 
-import { useEffect, useMemo, useRef, type CSSProperties, type RefObject } from "react"
+import {
+  useEffect,
+  useMemo,
+  useRef,
+  useState,
+  type CSSProperties,
+  type RefObject,
+} from "react"
 import { prefersReducedMotion, useShapeMorph } from "@/lib/shapes/use-shape-morph"
 import { useTheme } from "@/lib/theme/theme-provider"
 import { buildComposition, type HeroShape } from "./composition"
@@ -21,10 +28,22 @@ function MorphPath({
   return <path ref={ref} d={shape.path} />
 }
 
+/** Eventos que contam como primeira interação (o morph começa aqui). */
+const FIRST_INTERACTION = [
+  "pointermove",
+  "pointerdown",
+  "scroll",
+  "keydown",
+  "touchstart",
+]
+
 /**
  * Fundo do hero: formas em camadas, deriva lenta (CSS), morph em até três
  * blobs, paralaxe ao rolar e resposta leve ao ponteiro (desktop). Pausa fora
  * da tela e fica parado com movimento reduzido. Decorativo.
+ * O morph começa na primeira interação (D-1027): até lá, a deriva em CSS já
+ * dá vida ao fundo e a hidratação não disputa o processador com a troca de
+ * caminhos a 24 fps.
  * Ficha: docs/specs/hero-footer.md
  */
 export function HeroBackdrop({ seed, count }: { seed: string; count?: number }) {
@@ -34,6 +53,20 @@ export function HeroBackdrop({ seed, count }: { seed: string; count?: number }) 
     [seed, count, info.energy],
   )
   const root = useRef<HTMLDivElement>(null)
+  const [live, setLive] = useState(false)
+
+  useEffect(() => {
+    if (prefersReducedMotion()) return
+    const start = () => {
+      setLive(true)
+      for (const type of FIRST_INTERACTION) window.removeEventListener(type, start)
+    }
+    for (const type of FIRST_INTERACTION)
+      window.addEventListener(type, start, { passive: true, once: true })
+    return () => {
+      for (const type of FIRST_INTERACTION) window.removeEventListener(type, start)
+    }
+  }, [])
 
   useEffect(() => {
     const el = root.current
@@ -116,7 +149,7 @@ export function HeroBackdrop({ seed, count }: { seed: string; count?: number }) 
               className="block size-full overflow-visible fill-current motion-safe:animate-deriva"
               style={inner}
             >
-              {shape.poses ? (
+              {shape.poses && live ? (
                 <MorphPath shape={shape} observe={root} />
               ) : (
                 <path d={shape.path} />

@@ -1,0 +1,56 @@
+{
+  "rota": "/",
+  "base": "http://localhost:3100",
+  "rotulo": "v3-devtools",
+  "execucoes": 3,
+  "metodos": {
+    "devtools": {
+      "mediana": {
+        "desempenho": 68,
+        "acessibilidade": 100,
+        "boasPraticas": 100,
+        "seo": 100,
+        "fcpMs": 1923,
+        "lcpMs": 2408,
+        "tbtMs": 2313,
+        "siMs": 2544,
+        "cls": 0
+      },
+      "execucoes": [
+        {
+          "desempenho": 66,
+          "acessibilidade": 100,
+          "boasPraticas": 100,
+          "seo": 100,
+          "fcpMs": 1923,
+          "lcpMs": 2616,
+          "tbtMs": 2416,
+          "siMs": 2702,
+          "cls": 0
+        },
+        {
+          "desempenho": 68,
+          "acessibilidade": 100,
+          "boasPraticas": 100,
+          "seo": 100,
+          "fcpMs": 2008,
+          "lcpMs": 2408,
+          "tbtMs": 1945,
+          "siMs": 2544,
+          "cls": 0
+        },
+        {
+          "desempenho": 68,
+          "acessibilidade": 100,
+          "boasPraticas": 100,
+          "seo": 100,
+          "fcpMs": 1844,
+          "lcpMs": 2311,
+          "tbtMs": 2313,
+          "siMs": 2433,
+          "cls": 0
+        }
+      ]
+    }
+  }
+}

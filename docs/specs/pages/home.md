@@ -113,8 +113,8 @@ Herdados dos componentes: `forced-colors` troca camadas por bordas; com moviment
 - [x] CA-7 CLS 0 com as fontes sem pré-carga atrasadas, em mobile e desktop (e2e `cls.spec.ts`).
 - [x] CA-8 Vídeo pendente vira Ficha marcada, sem `<video>` na página; o `VideoClip` cobre os cinco estados (unidade).
 - [x] CA-9 Metadados: `metadataBase` da `SITE_URL`, título e descrição em pt-BR, imagem Open Graph 1200 × 630 gerada por `next/og`, `sitemap.xml` sem `/sistema`, `robots.txt` bloqueando `/sistema`, JSON-LD `Person` só com nome, cargo, URL e GitHub (e2e).
-- [ ] CA-10 Lighthouse mobile no método padrão ≥ 90, relatado com o devtools ao lado; acessibilidade ≥ 95 (`docs/qa/phase-2/`).
-- [ ] CA-11 Capturas em 390×844, 768×1024, 1366×768 e 1440×900 nos 4 temas, nos três motores, revisadas (`docs/screenshots/home/`).
+- [ ] CA-10 (não atingido: Home 70 no simulado e 68 no devtools; ver docs/REPORT-phase-2.md) Lighthouse mobile no método padrão ≥ 90, relatado com o devtools ao lado; acessibilidade ≥ 95 (`docs/qa/phase-2/`).
+- [x] CA-11 Capturas em 390×844, 768×1024, 1366×768 e 1440×900 nos 4 temas, nos três motores, revisadas (`docs/screenshots/home/`).
 - [x] CA-12 Achados: a pinha e a coruja contam no caderno; a coruja tem alvo de 44 px (e2e).
 
 ## Plan
@@ -132,5 +132,5 @@ Herdados dos componentes: `forced-colors` troca camadas por bordas; com moviment
 - [x] Seções da Home e página
 - [x] 404 "Trilha perdida"
 - [x] Metadados, Open Graph, sitemap, robots, JSON-LD
-- [ ] Testes (um por critério)
+- [x] Testes (um por critério)
 - [x] Seção na vitrine (`Fact`, `VideoClip`, ícone `tema`)

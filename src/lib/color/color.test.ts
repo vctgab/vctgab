@@ -130,5 +130,13 @@ describe("tokens (VI-05, CR-01)", () => {
   it("tem o JSON gerado em dia com o CSS (rode pnpm tokens:build)", () => {
     const committed = readFileSync("src/styles/tokens.generated.json", "utf8")
     expect(JSON.parse(committed)).toEqual(JSON.parse(JSON.stringify(report)))
+    const slim = JSON.parse(readFileSync("src/styles/themes.generated.json", "utf8")) as {
+      defaultTheme: string
+      themes: { id: string; themeColor: string }[]
+    }
+    expect(slim.defaultTheme).toBe(report.defaultTheme)
+    expect(slim.themes.map((t) => [t.id, t.themeColor])).toEqual(
+      report.themes.map((t) => [t.id, t.themeColor]),
+    )
   })
 })

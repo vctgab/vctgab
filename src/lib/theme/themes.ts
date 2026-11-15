@@ -1,4 +1,6 @@
-import tokens from "@/styles/tokens.generated.json"
+// Só a lista enxuta de temas (D-1029): o tokens.generated.json inteiro (82 KB,
+// com a matriz de contraste) iria para o JavaScript de toda página.
+import tokens from "@/styles/themes.generated.json"
 
 /**
  * Temas disponíveis, derivados de `src/styles/themes.css` pelo

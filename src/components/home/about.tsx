@@ -26,7 +26,10 @@ export function About() {
             </Button>
           </div>
         </div>
-        <ul className="grid grid-cols-2 gap-x-5 gap-y-8 sm:gap-x-8" aria-label="Fotos">
+        <ul
+          className="grid max-w-xl grid-cols-2 gap-x-5 gap-y-8 sm:gap-x-8 lg:max-w-none"
+          aria-label="Fotos"
+        >
           {photos.map((photo, i) => (
             <li key={i} className={i % 2 === 1 ? "mt-6" : undefined}>
               {isPending(photo) ? (

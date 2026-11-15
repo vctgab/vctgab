@@ -1,0 +1,41 @@
+{
+  "defaultTheme": "ipe",
+  "themes": [
+    {
+      "id": "ipe",
+      "label": "Ipê",
+      "description": "Claro, rosa do ipê com pinheiro e âmbar.",
+      "colorScheme": "light",
+      "themeColor": "#FEF8FB",
+      "energy": 1,
+      "rotationMax": 1.2
+    },
+    {
+      "id": "noturno",
+      "label": "Noturno",
+      "description": "Escuro, as mesmas sementes do ipê sobre papel noturno.",
+      "colorScheme": "dark",
+      "themeColor": "#1D0C14",
+      "energy": 0.8,
+      "rotationMax": 0.9
+    },
+    {
+      "id": "outono",
+      "label": "Outono",
+      "description": "Claro, laranja queimado com oliva e vinho.",
+      "colorScheme": "light",
+      "themeColor": "#FDFAF8",
+      "energy": 1.25,
+      "rotationMax": 1.4
+    },
+    {
+      "id": "inverno",
+      "label": "Inverno",
+      "description": "Claro, azul-gelo com pinheiro nevado e lilás frio.",
+      "colorScheme": "light",
+      "themeColor": "#F9FBFC",
+      "energy": 0.7,
+      "rotationMax": 0.8
+    }
+  ]
+}

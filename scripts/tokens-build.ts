@@ -21,6 +21,27 @@ const { report, problems } = buildTokenReport(
 const json = JSON.stringify(report, null, 2) + "\n"
 writeFileSync(join(root, "src/styles/tokens.generated.json"), json)
 
+// Versão enxuta para o cliente (src/lib/theme/themes.ts, D-1029): só o que o
+// seletor e o script de tema usam, sem escalas nem matriz de contraste.
+function themeList(r: typeof report) {
+  return {
+    defaultTheme: r.defaultTheme,
+    themes: r.themes.map((t) => ({
+      id: t.id,
+      label: t.label,
+      description: t.description,
+      colorScheme: t.colorScheme,
+      themeColor: t.themeColor,
+      energy: t.energy,
+      rotationMax: t.rotationMax,
+    })),
+  }
+}
+writeFileSync(
+  join(root, "src/styles/themes.generated.json"),
+  `${JSON.stringify(themeList(report), null, 2)}\n`,
+)
+
 const fmt = (n: number) => n.toFixed(2).replace(".", ",")
 
 function themeSection(t: ThemeReport): string {

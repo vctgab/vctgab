@@ -34,7 +34,7 @@ jobs:
         run: pnpm tokens:build
 
       - name: Arquivos gerados em dia
-        run: git diff --exit-code -- src/styles/tokens.generated.json docs/CONTRAST.md
+        run: git diff --exit-code -- src/styles/tokens.generated.json src/styles/themes.generated.json docs/CONTRAST.md
 
       - name: pnpm check (lint, tipos, testes e build)
         run: pnpm check
@@ -100,3 +100,44 @@ jobs:
 
       - name: pnpm release:check
         run: pnpm release:check
+
+  lighthouse:
+    name: Lighthouse mobile (informativo)
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    # Número independente da máquina local (D-1031). Informativo: não bloqueia.
+    continue-on-error: true
+    steps:
+      - uses: actions/checkout@v5
+
+      - uses: pnpm/action-setup@v4
+
+      - uses: actions/setup-node@v5
+        with:
+          node-version-file: .nvmrc
+          cache: pnpm
+
+      - run: pnpm install --frozen-lockfile
+
+      - name: Chromium do Playwright
+        run: pnpm exec playwright install --with-deps chromium
+
+      - name: Build e servidor de produção
+        run: |
+          pnpm build
+          (pnpm start --port 3100 &) 
+          npx --yes wait-on@8 http://localhost:3100/ --timeout 120000
+
+      - name: Lighthouse nos dois métodos (Home e vitrine)
+        run: |
+          export CHROME_PATH="$(node -e "console.log(require('@playwright/test').chromium.executablePath())")"
+          node tests/tools/lighthouse.mjs / ambos ci 3
+          node tests/tools/lighthouse.mjs /sistema ambos ci 3
+
+      - name: Resumos do Lighthouse
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: lighthouse
+          path: docs/qa/phase-2/*.summary.json
+          retention-days: 30
