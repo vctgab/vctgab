@@ -34,19 +34,25 @@ export const caveat = Caveat({
   subsets: ["latin"],
   display: "swap",
   preload: false,
+  adjustFontFallback: false,
+  fallback: ["Caveat Ajuste", "cursive"],
   variable: "--font-caveat",
 })
 
 /**
- * Patrick Hand: botões e etiquetas manuscritas. O fallback automático
- * (Arial a 81,43%) erra menos de 1 px em "Vamos conversar"; o chip de
- * achados tem caixas de largura fixa para a troca não movê-lo (D-1009).
+ * Patrick Hand: botões e etiquetas manuscritas. Fallback com as métricas
+ * que o next/font calcula (Arial a 81,43%, erra menos de 1 px em "Vamos
+ * conversar"), mas em face própria que também aceita Liberation Sans e
+ * Arimo: sem elas, no Linux, a troca caía num cursivo qualquer e deslocava
+ * o layout (D-1032). O chip de achados tem caixas de largura fixa (D-1009).
  */
 export const patrickHand = Patrick_Hand({
   subsets: ["latin"],
   display: "swap",
   weight: "400",
   preload: false,
+  adjustFontFallback: false,
+  fallback: ["Patrick Hand Ajuste", "cursive"],
   variable: "--font-patrick-hand",
 })
 

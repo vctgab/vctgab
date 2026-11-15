@@ -74,6 +74,29 @@
   line-gap-override: 0%;
 }
 
+/*
+ * Fallbacks das fontes manuscritas (D-1032): as métricas que o next/font
+ * gerava, mas aceitando também as fontes métricas-compatíveis com o Arial
+ * (Liberation Sans, Arimo), que existem no Linux.
+ */
+@font-face {
+  font-family: "Patrick Hand Ajuste";
+  src: local("Arial"), local("ArialMT"), local("Liberation Sans"), local("Arimo");
+  ascent-override: 127.97%;
+  descent-override: 38.32%;
+  line-gap-override: 0%;
+  size-adjust: 81.43%;
+}
+
+@font-face {
+  font-family: "Caveat Ajuste";
+  src: local("Arial"), local("ArialMT"), local("Liberation Sans"), local("Arimo");
+  ascent-override: 124.77%;
+  descent-override: 38.99%;
+  line-gap-override: 0%;
+  size-adjust: 76.94%;
+}
+
 :root {
   --font-fraunces: "Fraunces", "Fraunces Ajuste";
   --font-dm-sans: "DM Sans", "DM Sans Ajuste";

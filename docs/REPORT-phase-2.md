@@ -86,6 +86,8 @@ git push --force-with-lease=main:$REMOTE_SHA origin main
 #    (apaga do disco os inalcançáveis 9bcd76a, a6450b3 e e85729c)
 ```
 
+**O repositório já é público** (conferido com `gh repo view` no fim da fase). Os commits antigos com o trecho do D-801 já estão visíveis; os da fase 2 foram enviados com push normal, sem reescrita.
+
 **O que a reescrita não resolve sozinha:** o `9bcd76a` já foi enviado ao GitHub uma vez. Mesmo fora de qualquer branch, o GitHub pode mantê-lo acessível pelo hash até a coleta de lixo do servidor. Para apagar de vez, abrir um pedido no suporte do GitHub ("remove cached views / unreachable commits") citando `9bcd76a9820347dbcea85330d73a33c5684b0c37` e, depois da reescrita, os hashes antigos dos commits `90a2226` em diante.
 
 ## Navegadores (0.3)

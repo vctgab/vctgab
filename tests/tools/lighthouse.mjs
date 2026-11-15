@@ -46,7 +46,8 @@ for (const method of methods) {
         "--only-categories=performance,accessibility,best-practices,seo",
         "--output=json",
         `--output-path=${out}`,
-        '--chrome-flags="--headless=new --no-first-run"',
+        // No runner Linux do CI, o Chrome só abre sem sandbox.
+        `--chrome-flags="--headless=new --no-first-run${process.env.CI ? " --no-sandbox" : ""}"`,
         "--quiet",
         ...(chromes[0] ? [`--chrome-path="${chromes[0]}"`] : []),
       ],
