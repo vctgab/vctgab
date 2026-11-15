@@ -5,13 +5,21 @@
 - **Etapa 0 (fundação):** CI no GitHub Actions (lint, tipos, testes, build, tokens e e2e com axe em chromium, webkit e firefox, sem novas tentativas); varredura de todas as revisões do histórico com o comando de reescrita pronto e **não executado**; três motores no Playwright com um spec só para os pontos de risco; fontes da primeira dobra com pré-carga que o Firefox reaproveita e CLS 0 sem pré-carregar as outras; todo texto e dado em `src/content/` com pendência tipada e `pnpm release:check`.
 - **Etapa 1 (Home):** ficha `docs/specs/pages/home.md`, as nove seções pedidas, `Fact` e `VideoClip` novos (com ficha e vitrine), 404 "Trilha perdida", imagem Open Graph, sitemap, robots e JSON-LD.
 - **Etapa 2 (QA):** axe sem violações nos 4 temas e nos três motores, teclado de ponta a ponta, CLS 0, capturas em 4 tamanhos × 4 temas × 3 motores, recortes de borda a 400%.
-- **Meta não atingida:** Lighthouse mobile da Home no método padrão ficou em **70** (devtools 68), abaixo de 90. A seção "Lighthouse" diz, com números, o que limita.
+- **Meta não atingida:** Lighthouse mobile da Home no método padrão deu **85 no CI** (devtools 88) e 70 nesta máquina (devtools 68), abaixo de 90. A `/sistema` deu 88 e 91 no CI. A seção "Lighthouse" diz, com números, o que limita.
 
-Commits da fase (todos sem assinatura de ferramenta): `29e4ede`, `74a5a18` (mudanças que já estavam pendentes na árvore de trabalho antes da fase: regra de não assinar e foco dos campos, D-901 e D-902), `be16fda` (0.1), `9d9f515` (0.2), `592ce7a` (0.3), `b52a9d4` (0.4), `825dc48` (0.5), `1ddb2ae` (Home) e o commit da etapa 2.
+Commits da fase (todos sem assinatura de ferramenta): `29e4ede`, `74a5a18` (mudanças que já estavam pendentes na árvore de trabalho antes da fase: regra de não assinar e foco dos campos, D-901 e D-902), `be16fda` (0.1), `9d9f515` (0.2), `592ce7a` (0.3), `b52a9d4` (0.4), `825dc48` (0.5), `1ddb2ae` (Home), `78ce86c` (etapa 2), `d53bd17` e `ba1fd08` (correções que o CI apontou) e o commit deste relatório.
 
 ## Resultado do CI (0.1)
 
-PENDENTE_CI
+Workflow `.github/workflows/ci.yml`, ativo no GitHub Actions (habilitado sem precisar de nada manual). Três execuções nesta fase, todas sem novas tentativas:
+
+| Execução    | Commit    | Lint, tipos, testes e build | E2E chromium       | E2E webkit   | E2E firefox  | Lighthouse (informativo)           | release:check (informativo) |
+| ----------- | --------- | --------------------------- | ------------------ | ------------ | ------------ | ---------------------------------- | --------------------------- |
+| 43658971136 | `78ce86c` | aprovado                    | **4 falhas (CLS)** | aprovado     | aprovado     | falhou (Chrome sem `--no-sandbox`) | reprovado (esperado)        |
+| 43660822836 | `d53bd17` | aprovado                    | **2 falhas (CLS)** | aprovado     | aprovado     | aprovado                           | reprovado (esperado)        |
+| 43662081231 | `ba1fd08` | **aprovado**                | **aprovado**       | **aprovado** | **aprovado** | **aprovado**                       | reprovado (esperado)        |
+
+O CI fez o que devia: achou um defeito que esta máquina não mostra. No Linux não existem Arial nem as fontes que os fallbacks procuravam, e a troca da Patrick Hand deslocava o chip de achados e o grupo da direita do cabeçalho. Corrigido em dois passos (D-1032: faces de ajuste que aceitam Liberation Sans e Arimo; D-1034: CTA do cabeçalho com largura fixa). O job de release falha por causa das 37 pendências listadas abaixo e não bloqueia, como pedido.
 
 ## Varredura do histórico (0.2)
 
@@ -116,21 +124,23 @@ Projetos `chromium`, `webkit` e `firefox` no Playwright, para o e2e e para as ca
 
 ## Lighthouse (mobile, mediana de 3, servidor de produção local)
 
-Não há preview da Vercel ligado ao repositório nesta máquina (sem `.vercel` e sem acesso à API do GitHub nesta sessão), então todos os números são locais. O job `lighthouse` do CI (D-1031) passa a dar uma medida independente a cada push.
+Não há preview da Vercel ligado ao repositório (sem `.vercel`), então não há o número que prevaleceria. As linhas "local" são desta máquina; as linhas "CI" vêm do job `lighthouse` do GitHub Actions (D-1031), execução 43660822836, mesmo código da Home final: é a medida independente, e a mais confiável que existe hoje.
 
-| Página e momento                                                    | Simulado (padrão) | Devtools | FCP sim. | LCP sim. | TBT sim. | TBT devtools | CLS | Acessib. |
-| ------------------------------------------------------------------- | ----------------- | -------- | -------- | -------- | -------- | ------------ | --- | -------- |
-| `/sistema` antes das fontes                                         | 79                | 73       | 2,12 s   | 3,92 s   | 327 ms   | 1.307 ms     | 0   | 98       |
-| `/sistema` depois das fontes                                        | **81**            | **75**   | 1,53 s   | 3,85 s   | 310 ms   | 855 ms       | 0   | 98       |
-| Home, primeira versão                                               | 69                | 68       | 1,67 s   | 4,12 s   | 659 ms   | 2.369 ms     | 0   | 100      |
-| Home final (morph na interação, caderno sob demanda, temas enxutos) | **70**            | **68**   | 1,69 s   | 4,07 s   | 629 ms   | 2.313 ms     | 0   | 100      |
+| Página e momento                                                           | Simulado (padrão) | Devtools | FCP sim. | LCP sim. | TBT sim. | TBT devtools | CLS | Acessib. |
+| -------------------------------------------------------------------------- | ----------------- | -------- | -------- | -------- | -------- | ------------ | --- | -------- |
+| `/sistema` antes das fontes                                                | 79                | 73       | 2,12 s   | 3,92 s   | 327 ms   | 1.307 ms     | 0   | 98       |
+| `/sistema` depois das fontes                                               | **81**            | **75**   | 1,53 s   | 3,85 s   | 310 ms   | 855 ms       | 0   | 98       |
+| Home, primeira versão                                                      | 69                | 68       | 1,67 s   | 4,12 s   | 659 ms   | 2.369 ms     | 0   | 100      |
+| Home final, local (morph na interação, caderno sob demanda, temas enxutos) | **70**            | **68**   | 1,69 s   | 4,07 s   | 629 ms   | 2.313 ms     | 0   | 100      |
+| **CI (GitHub Actions, runner Linux): Home**                                | **85**            | **88**   | 1,67 s   | 3,40 s   | 298 ms   | 422 ms       | 0   | 100      |
+| **CI (GitHub Actions, runner Linux): `/sistema`**                          | **88**            | **91**   | 1,51 s   | 3,23 s   | 277 ms   | 362 ms       | 0   | 98       |
 
 SEO 60 na `/sistema` é o `noindex` proposital; na Home, SEO e boas práticas dão 100. Uma rodada devtools da Home teve duas execuções com nota 0 (o Lighthouse não terminou; TBT nulo). Foi refeita e é a que está na tabela (instabilidade da máquina, D-701). Resumos em `docs/qa/phase-2/*.summary.json`.
 
 **O que limita, com números:**
 
-1. **LCP simulado de 4,07 s, quase todo "atraso de render" (3,6 s).** O elemento é o parágrafo do hero, pintado junto com o FCP. No traço observado (sem limitação), a primeira pintura acontece em 637 ms, _depois_ de todo o JavaScript local terminar de carregar (574 ms). O Lantern então põe os 208 KB de JS (gzip) e a avaliação deles na cadeia do LCP, com rede de 1,6 Mbps e CPU 4× mais lenta. No devtools, com limitação real, o LCP é 2,4 s. É o mesmo artefato do D-709, e o LCP pesa 25% da nota.
-2. **TBT de 629 ms (simulado) e 2,3 s (devtools).** As tarefas longas são a hidratação do React e do roteador do Next (117 KB gzip de framework, fixos) e o parse e layout do documento (444 KB de HTML, 100 KB com gzip; metade da marcação é caminho SVG das formas, que se repete no payload RSC). Desligar todas as animações, o fundo do hero, a faixa ou a cena do rodapé não mudou o bloqueio além do ruído (790 a 1.200 ms entre execuções idênticas a 4× de CPU).
+1. **LCP simulado (4,07 s local, 3,40 s no CI), quase todo "atraso de render".** O elemento é o parágrafo do hero, pintado junto com o FCP. No traço observado (sem limitação), a primeira pintura acontece em 637 ms, _depois_ de todo o JavaScript local terminar de carregar (574 ms). O Lantern então põe os 208 KB de JS (gzip) e a avaliação deles na cadeia do LCP, com rede de 1,6 Mbps e CPU 4× mais lenta. No devtools, com limitação real, o LCP é 2,4 s. É o mesmo artefato do D-709, e o LCP pesa 25% da nota.
+2. **TBT de 629 ms simulado local (298 ms no CI) e 2,3 s devtools local (422 ms no CI).** As tarefas longas são a hidratação do React e do roteador do Next (117 KB gzip de framework, fixos) e o parse e layout do documento (444 KB de HTML, 100 KB com gzip; metade da marcação é caminho SVG das formas, que se repete no payload RSC). Desligar todas as animações, o fundo do hero, a faixa ou a cena do rodapé não mudou o bloqueio além do ruído (790 a 1.200 ms entre execuções idênticas a 4× de CPU).
 3. **A máquina:** a mesma `/sistema` deu 90 a 92 no devtools na fase 1 e 73 a 75 hoje. O número local oscila mais que o efeito das mudanças.
 
 **O que foi feito:** fontes (FCP simulado da vitrine de 2,12 s para 1,53 s, CLS 0); `tokens.generated.json` fora do cliente (82 KB para 1 KB); caderno de achados sob demanda; toast e terminal fora das páginas públicas; morph do hero só depois da primeira interação. Testado e descartado: `content-visibility` nas seções (D-1030).
@@ -156,17 +166,17 @@ Ficha em `docs/specs/pages/home.md` (tipo, tarefa do visitante, seções, estado
 
 ## QA da Home (etapa 2)
 
-| Porta                                    | Resultado                                                                                                                                                                                                       |
-| ---------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `pnpm test:e2e` (3 motores, sem repetir) | **223 aprovados, 0 falhas, 11 pulados** (o CLS só tem API no Chromium; o percurso por Tab é pulado no WebKit pela NV-03). Nenhuma nova tentativa.                                                               |
-| axe na Home                              | 0 violação nos 4 temas × 3 motores (WCAG 2.0 a 2.2 A e AA), console sem erro nem aviso de hidratação.                                                                                                           |
-| axe na vitrine                           | 0 violação nas 11 páginas × 4 temas × 3 motores.                                                                                                                                                                |
-| CLS                                      | 0 na Home e na vitrine, mobile e desktop, com as fontes sem pré-carga atrasadas; 0 também com todas atrasadas; 0 no Lighthouse.                                                                                 |
-| Teclado                                  | Percurso completo da Home por Tab (Chromium e Firefox), seletor de tema (abre, seta troca, Esc fecha e devolve o foco, persiste), menu mobile (Esc, foco de volta, CTA para a âncora), pinha e coruja (2 de 7). |
-| Alvo de toque                            | Todo controle da Home com 44 px ou mais, a 390 e a 1366 px.                                                                                                                                                     |
-| Movimento reduzido                       | Nenhuma animação rodando na Home.                                                                                                                                                                               |
-| Capturas                                 | 390×844, 768×1024, 1366×768 e 1440×900, nos 4 temas e nos 3 motores, página inteira (`docs/screenshots/home/<motor>/<tema>/`).                                                                                  |
-| Recortes a 400%                          | CTA do hero, ficha da faixa e polaroid da Home, além de botão, chip, ficha e traços da vitrine, nos 3 motores (`docs/screenshots/bordas/<motor>/`): bordas vetoriais nítidas.                                   |
+| Porta                                          | Resultado                                                                                                                                                                                                       |
+| ---------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `pnpm test:e2e` local (3 motores, sem repetir) | **223 aprovados, 0 falhas, 11 pulados** (o CLS só tem API no Chromium; o percurso por Tab é pulado no WebKit pela NV-03). Nenhuma nova tentativa.                                                               |
+| axe na Home                                    | 0 violação nos 4 temas × 3 motores (WCAG 2.0 a 2.2 A e AA), console sem erro nem aviso de hidratação.                                                                                                           |
+| axe na vitrine                                 | 0 violação nas 11 páginas × 4 temas × 3 motores.                                                                                                                                                                |
+| CLS                                            | 0 na Home e na vitrine, mobile e desktop, com as fontes sem pré-carga atrasadas; 0 também com todas atrasadas; 0 no Lighthouse.                                                                                 |
+| Teclado                                        | Percurso completo da Home por Tab (Chromium e Firefox), seletor de tema (abre, seta troca, Esc fecha e devolve o foco, persiste), menu mobile (Esc, foco de volta, CTA para a âncora), pinha e coruja (2 de 7). |
+| Alvo de toque                                  | Todo controle da Home com 44 px ou mais, a 390 e a 1366 px.                                                                                                                                                     |
+| Movimento reduzido                             | Nenhuma animação rodando na Home.                                                                                                                                                                               |
+| Capturas                                       | 390×844, 768×1024, 1366×768 e 1440×900, nos 4 temas e nos 3 motores, página inteira (`docs/screenshots/home/<motor>/<tema>/`).                                                                                  |
+| Recortes a 400%                                | CTA do hero, ficha da faixa e polaroid da Home, além de botão, chip, ficha e traços da vitrine, nos 3 motores (`docs/screenshots/bordas/<motor>/`): bordas vetoriais nítidas.                                   |
 
 **Olhando as capturas, foi corrigido:** canais de contato que quebravam de jeitos diferentes no mobile (agora empilhados); faixa clara do espaço do chip fixo abaixo do rodapé escuro (agora na cor do rodapé); polaroids enormes no tablet (grade limitada abaixo de 1024 px); "Front-" / "end" no H1 do Chromium; sublinhado longo demais na imagem Open Graph.
 
@@ -176,7 +186,7 @@ Ficha em `docs/specs/pages/home.md` (tipo, tarefa do visitante, seções, estado
 
 Todas em `docs/DECISIONS.md` (D-1001 a D-1031). As que mudam o que foi pedido:
 
-- **Lighthouse 90 no método padrão: não atingido** (Home 70, devtools 68). Os motivos, com números, estão na seção "Lighthouse"; falta medir num preview real.
+- **Lighthouse 90 no método padrão: não atingido** (Home 85 no CI e 70 local; devtools 88 no CI e 68 local). Os motivos, com números, estão na seção "Lighthouse"; falta medir num preview real.
 - **Nome do relatório:** `docs/REPORT-phase-2.md` em vez de `REPORT-fase-2.md`, pela regra de nomes em inglês; `docs/REGRAS.md` e `docs/EXCECOES.md` do pedido são `docs/RULES.md` e `docs/EXCEPTIONS.md` (D-1004).
 - **Reescrita do histórico não executada**, como pedido. A assinatura do `9bcd76a` já tinha saído do `main` antes desta fase; o que sobra é o objeto no reflog local e, possivelmente, no cache do GitHub (precisa de pedido ao suporte).
 - **Divergências de navegador sem correção** (NV-01 a NV-03) ficam em `docs/EXCEPTIONS.md` com data limite de 14/05/2027 e aprovação **pendente** de Victor.
