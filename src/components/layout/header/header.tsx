@@ -117,7 +117,15 @@ export function Header({ ctaHref, className }: HeaderProps) {
           >
             <ThemeSwitcher layout="compact" className="mt-1" />
           </Popover>
-          <Button asChild size="sm" iconRight="seta" seed="cabecalho:cta">
+          {/* Largura fixa, texto no início e seta no fim: a troca de fonte não move
+              o grupo alinhado à direita, em qualquer sistema (D-1034). */}
+          <Button
+            asChild
+            size="sm"
+            iconRight="seta"
+            seed="cabecalho:cta"
+            className="w-48 justify-between"
+          >
             <Link href={cta as Route}>Vamos conversar</Link>
           </Button>
         </div>
