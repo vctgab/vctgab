@@ -10,7 +10,7 @@ Um termo por conceito (regra VC-01). Se um texto precisar de um conceito que nã
 | página secreta     | Página liberada ao chegar a 7 de 7.                                                                   | área VIP, bônus                                           |
 | tema               | Combinação de estação (primavera, verão, outono, inverno) e modo (claro, escuro).                     | skin, visual                                              |
 | estação            | Eixo do tema que define cores, cena do rodapé, paleta do hero e energia das formas.                   | stação, época, season                                     |
-| modo               | Eixo do tema que define claro ou escuro; "do sistema" segue a preferência do aparelho.                | dark mode (em texto visível), skin                        |
+| modo               | Eixo do tema que define claro ou escuro; na primeira visita segue a preferência do aparelho.          | dark mode (em texto visível), skin                        |
 | projeto            | Trabalho listado no portfólio.                                                                        | job, trabalho, portfólio (para um item)                   |
 | caso               | Página longa que conta um projeto (ex.: "Ler o caso Nexuscoop").                                      | case, estudo de caso                                      |
 | ficha              | Card de papel do sistema (componente `Ficha`).                                                        | card (em texto visível)                                   |

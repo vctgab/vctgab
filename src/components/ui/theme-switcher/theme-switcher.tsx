@@ -19,49 +19,27 @@ export interface ThemeSwitcherProps {
   className?: string
 }
 
-/** Valor do rádio "Automática": segue o calendário (a escolha salva some). */
-const AUTO = "automatica"
-/** Valor do segmento "Do sistema": segue `prefers-color-scheme`. */
-const SYSTEM = "sistema"
-
-const MODE_OPTIONS = [
-  ...MODES.map((m) => ({ value: m.id, label: m.label })),
-  { value: SYSTEM, label: "Do sistema" },
-]
+const MODE_OPTIONS = MODES.map((m) => ({ value: m.id, label: m.label }))
 
 /**
- * Escolha de tema em dois controles independentes: estação (quatro amostras
- * mais "Automática") e modo (claro, escuro, do sistema). Cada amostra vive
+ * Escolha de tema em dois controles independentes: estação (quatro amostras)
+ * e modo (claro e escuro). Quem não escolheu vê marcada a combinação que o
+ * calendário e o sistema deram na abertura (D-1116). Cada amostra vive
  * dentro de um `data-season` e `data-mode` próprios, então mostra as cores
  * reais da estação no modo atual.
  * Ficha: docs/specs/themes-seasons.md
  */
 export function ThemeSwitcher({ layout = "compact", className }: ThemeSwitcherProps) {
-  const { state, mode, seasonPref, modePref, autoSeason, seasons, setSeason, setMode } =
-    useTheme()
+  const { state, season, mode, seasons, setSeason, setMode } = useTheme()
   const id = useId()
   const grid = layout === "grid"
   const bar = layout === "bar"
   const swatchMode = mode ?? DEFAULT_MODE
-  const autoId = autoSeason ?? DEFAULT_SEASON
-  const autoLabel = seasons.find((s) => s.id === autoId)?.label ?? ""
-
-  const options = [
-    ...seasons.map((s) => ({
-      value: s.id,
-      label: s.label,
-      description: s.description,
-      swatch: s.id,
-      auto: false,
-    })),
-    {
-      value: AUTO,
-      label: "Automática",
-      description: `Segue o calendário. Agora: ${autoLabel}.`,
-      swatch: autoId,
-      auto: true,
-    },
-  ]
+  const options = seasons.map((s) => ({
+    value: s.id,
+    label: s.label,
+    description: s.description,
+  }))
 
   return (
     <div
@@ -79,12 +57,12 @@ export function ThemeSwitcher({ layout = "compact", className }: ThemeSwitcherPr
         </p>
         <RadioGroup.Root
           aria-labelledby={`${id}-estacao`}
-          value={state ? (seasonPref ?? AUTO) : ""}
-          onValueChange={(value) => setSeason(value === AUTO ? null : value)}
+          value={state ? (season ?? DEFAULT_SEASON) : ""}
+          onValueChange={setSeason}
           orientation="horizontal"
           className={cn(
             bar ? "flex flex-wrap gap-2" : "grid gap-3",
-            grid && "grid-cols-2 md:grid-cols-5",
+            grid && "grid-cols-2 md:grid-cols-4",
             !grid && !bar && "grid-cols-2",
           )}
         >
@@ -101,7 +79,6 @@ export function ThemeSwitcher({ layout = "compact", className }: ThemeSwitcherPr
                   "[--shape-fill:transparent] hover:[--shape-fill:var(--surface-hover)] active:[--shape-fill:var(--surface-active)]",
                   "data-[state=checked]:[--shape-fill:var(--primary-soft)]",
                   grid ? "flex-col items-start" : "items-center",
-                  layout === "compact" && option.auto && "col-span-2",
                 )}
               >
                 <Shape
@@ -112,7 +89,7 @@ export function ThemeSwitcher({ layout = "compact", className }: ThemeSwitcherPr
                   misalign={false}
                 />
                 <span
-                  data-season={option.swatch}
+                  data-season={option.value}
                   data-mode={swatchMode}
                   aria-hidden="true"
                   className={cn(
@@ -146,9 +123,6 @@ export function ThemeSwitcher({ layout = "compact", className }: ThemeSwitcherPr
                     )}
                   >
                     {option.label}
-                    {!grid && option.auto ? (
-                      <span className="sr-only">, agora {autoLabel}</span>
-                    ) : null}
                     {grid ? (
                       <Icon
                         name="check"
@@ -160,10 +134,6 @@ export function ThemeSwitcher({ layout = "compact", className }: ThemeSwitcherPr
                   </span>
                   {grid ? (
                     <span className="text-sm text-ink-muted">{option.description}</span>
-                  ) : option.auto && !bar ? (
-                    <span aria-hidden="true" className="text-label text-ink-muted">
-                      Agora: {autoLabel}
-                    </span>
                   ) : null}
                 </span>
                 {grid ? null : (
@@ -188,8 +158,8 @@ export function ThemeSwitcher({ layout = "compact", className }: ThemeSwitcherPr
           label="Modo"
           block={layout === "compact"}
           options={MODE_OPTIONS}
-          value={state ? (modePref ?? SYSTEM) : ""}
-          onValueChange={(value) => setMode(value === SYSTEM ? null : value)}
+          value={state ? (mode ?? DEFAULT_MODE) : ""}
+          onValueChange={setMode}
           seed="tema:modo"
         />
       </div>

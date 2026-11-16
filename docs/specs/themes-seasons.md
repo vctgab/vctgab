@@ -42,15 +42,15 @@ A mesma cena da estação nos dois modos. No escuro, a cena vira noite: as cores
 
 1. **Estação**: a escolha manual salva; sem ela, a do calendário brasileiro (hemisfério sul) na data de hoje no fuso `America/Sao_Paulo`: primavera de 22/09 a 20/12, verão de 21/12 a 19/03, outono de 20/03 a 20/06, inverno de 21/06 a 21/09. Calculada no script bloqueante do `<head>`, antes da primeira pintura.
 2. **Modo**: a escolha manual salva; sem ela, `prefers-color-scheme` do sistema.
-3. Duas chaves de `localStorage`, separadas, sempre em `try/catch`: `vg-estacao` e `vg-modo`. Sem chave, vale o automático (calendário ou sistema). Escolher "automática" ou "do sistema" apaga a chave.
+3. Duas chaves de `localStorage`, separadas, sempre em `try/catch`: `vg-estacao` e `vg-modo`. Sem chave, vale o automático (calendário ou sistema). O seletor não oferece "Automática" nem "Do sistema" (D-1116); o store ainda aceita `null` para apagar a chave.
 4. Migração de `vg-tema`: `ipe` vira primavera clara, `noturno` vira primavera escura, `outono` e `inverno` viram a estação de mesmo nome no modo claro (eram temas claros). A chave antiga é apagada.
 
 ### Seletor de tema (ThemeSwitcher)
 
 Dois controles:
 
-- **Estação:** `radiogroup` "Estação" com 4 amostras desenhadas pelo motor de formas, cada uma pintada com as cores reais da estação no modo atual, mais a opção "Automática", que mostra qual estação está valendo ("Automática: agora, Primavera").
-- **Modo:** `SegmentedControl` "Modo" com Claro, Escuro e Do sistema.
+- **Estação:** `radiogroup` "Estação" com 4 amostras desenhadas pelo motor de formas, cada uma pintada com as cores reais da estação no modo atual, sem opção "Automática": a estação em vigor (do calendário ou salva) aparece marcada.
+- **Modo:** `SegmentedControl` "Modo" com Claro e Escuro; o modo em vigor aparece marcado.
 
 Teclado completo (setas no radiogroup e no segmentado), estado marcado com ícone além da cor, alvos de 44 px.
 
@@ -68,7 +68,7 @@ Cinco estados não se aplicam (não há dados): o seletor é sempre local. Estad
 
 ### ARIA e nome acessível
 
-`radiogroup` "Estação" com `radio` "Primavera", "Verão", "Outono", "Inverno" e "Automática, agora Verão". Grupo "Modo" com os três segmentos. Amostras `aria-hidden`; o nome vem do texto.
+`radiogroup` "Estação" com `radio` "Primavera", "Verão", "Outono" e "Inverno". Grupo "Modo" com os dois segmentos. Amostras `aria-hidden`; o nome vem do texto.
 
 ### Irregularidade
 
@@ -83,8 +83,8 @@ Amostras: `blob` do motor com seed `estacao:<id>`. Cada estação define `--shap
 1. Quem lê: qualquer visitante, em qualquer página.
 2. Linha da Grade de Tom: controle de interface, voz de sistema, sem humor.
 3. Título e subtítulo: "Estação" e "Modo" (rótulos dos grupos).
-4. Ações e rótulos: "Primavera", "Verão", "Outono", "Inverno", "Automática", "Claro", "Escuro", "Do sistema"; botão do cabeçalho "Escolher tema".
-5. Ajuda: descrição curta de cada estação na vitrine; "Automática" diz a estação em vigor.
+4. Ações e rótulos: "Primavera", "Verão", "Outono", "Inverno", "Claro", "Escuro"; botão do cabeçalho "Escolher tema".
+5. Ajuda: descrição curta de cada estação na vitrine.
 6. Termos: "tema" passa a significar estação mais modo (ver `docs/GLOSSARY.md`).
 7. Estados: não se aplica (controle local).
 8. Erros previstos: sem armazenamento, o tema vale até sair da página; nada a mostrar.
@@ -98,11 +98,11 @@ Amostras: `blob` do motor com seed `estacao:<id>`. Cada estação define `--shap
 - [x] CA-1 `data-season` e `data-mode` existem no `<html>` antes da primeira pintura, com `color-scheme` e `theme-color` da combinação. (teste do script e e2e)
 - [x] CA-2 A estação inicial segue o calendário brasileiro no fuso `America/Sao_Paulo`, inclusive nos dias de virada e perto da meia-noite. (teste unitário da regra e do script)
 - [x] CA-3 O modo inicial segue `prefers-color-scheme`; a escolha manual de estação e de modo prevalece e fica salva em chaves separadas. (teste do store e e2e)
-- [x] CA-4 "Automática" volta a seguir o calendário e "Do sistema" volta a seguir o sistema, apagando a chave. (teste do store)
+- [x] CA-4 Sem escolha salva, valem o calendário e o sistema, e o seletor mostra marcada a combinação em vigor; `setSeason(null)` e `setMode(null)` apagam a chave (D-1116). (teste do store e de componente)
 - [x] CA-5 `vg-tema` antigo migra: `ipe` para primavera clara, `noturno` para primavera escura. (teste do script e do store)
 - [x] CA-6 `pnpm tokens:build` valida a matriz de contraste nas 8 combinações e falha se algum par reprovar; sucesso e primária do verão ficam a 25° ou mais. (`tokens:build`, `color.test.ts`)
 - [x] CA-7 Os ids `ipe` e `noturno` não aparecem em código nem testes. (varredura em `rules.test.ts`)
-- [x] CA-8 O seletor tem `radiogroup` "Estação" (4 estações e "Automática") e `SegmentedControl` "Modo"; operável só pelo teclado. (teste de componente e e2e)
+- [x] CA-8 O seletor tem `radiogroup` "Estação" (4 estações) e `SegmentedControl` "Modo"; operável só pelo teclado. (teste de componente e e2e)
 - [x] CA-9 O rodapé mostra a cena da estação, com lua e estrelas no escuro e o sol só no claro. (teste da regra de visibilidade e captura)
 - [x] CA-10 axe sem violação em todas as páginas da vitrine nas 8 combinações (Chromium); Home nas 8 combinações em WebKit e Firefox; demais páginas em primavera clara e escura. (e2e)
 - [x] CA-11 A vitrine mostra as 8 combinações lado a lado, com a matriz de contraste de cada uma. (teste da vitrine e captura)

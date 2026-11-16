@@ -66,9 +66,10 @@ describe("ThemeSwitcher (CA-8)", () => {
     )
     const group = screen.getByRole("radiogroup", { name: "Estação" })
     const radios = within(group).getAllByRole("radio")
-    // Quatro estações e "Automática".
-    expect(radios).toHaveLength(5)
-    expect(within(group).getByRole("radio", { name: /Automática/ })).toBeChecked()
+    // Quatro estações; a do calendário já vem marcada, sem opção "Automática".
+    expect(radios).toHaveLength(4)
+    expect(within(group).queryByRole("radio", { name: /Automática/ })).toBeNull()
+    expect(group.querySelectorAll('[role="radio"][aria-checked="true"]')).toHaveLength(1)
 
     await user.click(within(group).getByRole("radio", { name: /Verão/ }))
     expect(document.documentElement.getAttribute("data-season")).toBe("verao")
@@ -77,7 +78,9 @@ describe("ThemeSwitcher (CA-8)", () => {
     expect(within(group).getByRole("radio", { name: /Verão/ })).toBeChecked()
 
     const mode = screen.getByRole("radiogroup", { name: "Modo" })
-    expect(within(mode).getByRole("radio", { name: "Do sistema" })).toBeChecked()
+    expect(within(mode).getAllByRole("radio")).toHaveLength(2)
+    expect(within(mode).queryByRole("radio", { name: "Do sistema" })).toBeNull()
+    expect(within(mode).getByRole("radio", { name: "Claro" })).toBeChecked()
     await user.click(within(mode).getByRole("radio", { name: "Escuro" }))
     expect(document.documentElement.getAttribute("data-mode")).toBe("escuro")
     expect(document.documentElement.getAttribute("data-season")).toBe("verao")
@@ -85,22 +88,16 @@ describe("ThemeSwitcher (CA-8)", () => {
     expect(within(mode).getByRole("radio", { name: "Escuro" })).toBeChecked()
   })
 
-  it("'Automática' volta ao calendário e 'Do sistema' volta ao sistema (CA-4)", async () => {
-    const user = userEvent.setup()
-    window.localStorage.setItem("vg-estacao", "outono")
-    window.localStorage.setItem("vg-modo", "escuro")
+  it("sem escolha salva, marca a estação do calendário e o modo do sistema (CA-4)", () => {
     render(
       <ThemeProvider>
         <ThemeSwitcher layout="compact" />
       </ThemeProvider>,
     )
     const group = screen.getByRole("radiogroup", { name: "Estação" })
-    await user.click(within(group).getByRole("radio", { name: /Automática/ }))
+    expect(group.querySelectorAll('[role="radio"][aria-checked="true"]')).toHaveLength(1)
     expect(window.localStorage.getItem("vg-estacao")).toBeNull()
-    const mode = screen.getByRole("radiogroup", { name: "Modo" })
-    await user.click(within(mode).getByRole("radio", { name: "Do sistema" }))
     expect(window.localStorage.getItem("vg-modo")).toBeNull()
-    expect(document.documentElement.getAttribute("data-mode")).toBe("claro")
   })
 
   it("é operável só pelo teclado (setas e espaço)", async () => {

@@ -7,7 +7,7 @@
 - **Header:** identificação e navegação global: logo, Projetos, Sobre, Contato, seletor de tema (botão com ícone `tema` que abre Popover com o seletor de estação e de modo), CTA "Vamos conversar" e link para pular ao conteúdo. No mobile, menu em Drawer. Fase 2: o botão `cmd` sai até o terminal existir; o CTA vai ao WhatsApp ou, com o número pendente, a `#contato` (`/#contato` fora da Home).
 - **Footer:** logo, "Victor Gabriel © 2026", links, chip de achados e a cena de árvores (etapa 5).
 - **Logo:** pinheiro desenhado num círculo irregular + nome em Fraunces.
-- **ThemeSwitcher:** escolher a estação (4 amostras desenhadas e "Automática") e o modo (claro, escuro, do sistema). Modelo e regras em `themes-seasons.md`.
+- **ThemeSwitcher:** escolher a estação (4 amostras desenhadas) e o modo (claro e escuro). Modelo e regras em `themes-seasons.md`.
 - **PaginaProvisoria:** estado indisponível das rotas Projetos, Sobre e Contato até as páginas reais existirem: diz o que falta e oferece um caminho, para os links globais nunca darem 404.
 
 **Quando não usar:** o Header não leva ações de página (essas ficam no conteúdo).
@@ -18,7 +18,7 @@ Header: link "Pular para o conteúdo" (primeiro focável, visível no foco) → 
 
 Footer: faixa `footer-bg` com borda de cima rasgada (`clip-path` do motor) → Logo invertido → texto de direitos → `nav` "Rodapé" → slot `achados` → slot `scene`.
 
-ThemeSwitcher: `radiogroup` "Estação" com uma amostra por estação mais "Automática"; cada amostra é um `blob` pintado com as cores da própria estação no modo atual (`data-season` e `data-mode` locais) e o nome visível. Abaixo, `SegmentedControl` "Modo" (Claro, Escuro, Do sistema).
+ThemeSwitcher: `radiogroup` "Estação" com uma amostra por estação; cada amostra é um `blob` pintado com as cores da própria estação no modo atual (`data-season` e `data-mode` locais) e o nome visível. Abaixo, `SegmentedControl` "Modo" (Claro e Escuro).
 
 ### Variantes
 

@@ -98,15 +98,14 @@ test.describe("teclado e alvo", () => {
     await expectTheme(page, "inverno-escuro")
     await page.reload({ waitUntil: "networkidle" })
     await expectTheme(page, "inverno-escuro")
-    // "Automática" e "Do sistema" apagam as escolhas e voltam ao calendário e ao sistema.
-    await group.getByRole("radio", { name: /Automática/ }).click()
-    await mode.getByRole("radio", { name: "Do sistema" }).click()
-    await expect(page.locator("html")).toHaveAttribute("data-mode", "claro")
+    // Cada eixo se guarda à parte; não há opção "Automática" nem "Do sistema" (D-1116).
     const stored = await page.evaluate(() => [
       window.localStorage.getItem("vg-estacao"),
       window.localStorage.getItem("vg-modo"),
     ])
-    expect(stored).toEqual([null, null])
+    expect(stored).toEqual(["inverno", "escuro"])
+    await expect(group.getByRole("radio")).toHaveCount(4)
+    await expect(mode.getByRole("radio")).toHaveCount(2)
   })
 
   test("rádio marca com as setas no navegador real", async ({ page }) => {

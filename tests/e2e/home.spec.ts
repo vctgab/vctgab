@@ -4,7 +4,14 @@
  */
 import AxeBuilder from "@axe-core/playwright"
 import { expect, test, type Page } from "@playwright/test"
-import { applyTheme, collectConsole, expectTheme, scrollThrough, THEMES } from "./helpers"
+import {
+  applyTheme,
+  collectConsole,
+  expectTheme,
+  scrollThrough,
+  THEMES,
+  type ThemeId,
+} from "./helpers"
 
 const AXE_TAGS = ["wcag2a", "wcag2aa", "wcag21a", "wcag21aa", "wcag22aa"]
 
@@ -158,24 +165,27 @@ test("CA-6: tema pelo teclado: abre, troca estação e modo, fecha com Esc e per
   await page.keyboard.press("Enter")
   const group = page.getByRole("radiogroup", { name: "Estação" })
   await expect(group).toBeVisible()
-  // Tab até o grupo (cai na opção marcada: "Automática") e seta segurada, como uma pessoa (D-707).
-  const auto = group.getByRole("radio", { name: /Automática/ })
+  // Tab até o grupo (cai na opção marcada, a estação do calendário) e seta segurada, como uma pessoa (D-707).
+  const current = group.getByRole("radio", { checked: true })
+  await expect(current).toHaveCount(1)
   for (
     let i = 0;
-    i < 4 && !(await auto.evaluate((el) => el === document.activeElement));
+    i < 4 && !(await current.evaluate((el) => el === document.activeElement));
     i++
   )
     await page.keyboard.press("Tab")
-  await expect(auto).toBeFocused()
+  await expect(current).toBeFocused()
+  const order = ["primavera", "verao", "outono", "inverno"]
+  const start = (await page.locator("html").getAttribute("data-season")) ?? "primavera"
+  const previous = order[(order.indexOf(start) + 3) % 4] as string
   await page.keyboard.down("ArrowLeft")
   await page.waitForTimeout(60)
   await page.keyboard.up("ArrowLeft")
-  await expect(page.locator("html")).toHaveAttribute("data-season", "inverno")
-  await expect(group.getByRole("radio", { name: /Inverno/ })).toBeChecked()
-  // Tab leva ao modo (cai em "Do sistema"); no segmentado a seta move o foco e Espaço marca.
+  await expect(page.locator("html")).toHaveAttribute("data-season", previous)
+  // Tab leva ao modo (cai em "Claro", o do sistema); no segmentado a seta move o foco e Espaço marca.
   await page.keyboard.press("Tab")
   const mode = page.getByRole("radiogroup", { name: "Modo" })
-  await expect(mode.getByRole("radio", { name: "Do sistema" })).toBeFocused()
+  await expect(mode.getByRole("radio", { name: "Claro" })).toBeFocused()
   await page.keyboard.press("ArrowLeft")
   // O Radix move o foco depois da seta (D-707): espera chegar antes do Espaço.
   await expect(mode.getByRole("radio", { name: "Escuro" })).toBeFocused()
@@ -186,7 +196,7 @@ test("CA-6: tema pelo teclado: abre, troca estação e modo, fecha com Esc e per
   await expect(group).toBeHidden()
   await expect(trigger).toBeFocused()
   await page.reload({ waitUntil: "networkidle" })
-  await expectTheme(page, "inverno-escuro")
+  await expectTheme(page, `${previous}-escuro` as ThemeId)
 })
 
 test("CA-6: menu mobile em Drawer, com Esc e foco de volta", async ({ page }) => {
