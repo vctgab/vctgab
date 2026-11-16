@@ -17,9 +17,11 @@ export default function SistemaLayout({ children }: LayoutProps<"/sistema">) {
         <SystemNav />
       </aside>
       <div className="min-w-0">
-        <div className="z-(--z-sticky) mt-4 flex flex-wrap items-center justify-end gap-3 border-b-2 border-dashed border-border bg-surface-base py-2 lg:sticky lg:top-0 lg:mt-0">
-          <p className="font-mono text-label text-ink-subtle">Tema da vitrine</p>
-          <ThemeSwitcher layout="compact" className="w-full max-w-md" />
+        <div className="z-(--z-sticky) mt-4 flex items-center gap-4 border-b-2 border-dashed border-border bg-surface-base py-2 lg:sticky lg:top-0 lg:mt-0">
+          <p className="w-32 shrink-0 font-mono text-label text-ink-subtle">
+            Tema da vitrine
+          </p>
+          <ThemeSwitcher layout="bar" className="min-w-0 flex-1 justify-end" />
         </div>
         {/* Só a vitrine usa toast: o provider fica fora das páginas públicas (D-1019). */}
         <ToastProvider>{children}</ToastProvider>

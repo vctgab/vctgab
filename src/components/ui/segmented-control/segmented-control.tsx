@@ -119,12 +119,24 @@ export function SegmentedControl({
             key={option.value}
             value={option.value}
             className={cn(
-              "relative min-h-11 cursor-pointer px-4 text-body text-ink-muted outline-offset-1 select-none",
+              "relative min-h-11 cursor-pointer text-body text-ink-muted outline-offset-1 select-none",
+              block ? "px-1 text-sm whitespace-nowrap" : "px-4",
               "hover:text-ink data-[state=on]:font-medium data-[state=on]:text-ink",
               "disabled:cursor-not-allowed disabled:text-ink-disabled",
             )}
           >
-            {option.label}
+            {/* O texto marcado fica em negrito e mais largo: uma cópia invisível
+                em negrito reserva a largura, e o controle não se mexe ao marcar
+                (nem na hidratação). */}
+            <span className="grid justify-items-center">
+              <span className="col-start-1 row-start-1">{option.label}</span>
+              <span
+                aria-hidden="true"
+                className="invisible col-start-1 row-start-1 font-medium"
+              >
+                {option.label}
+              </span>
+            </span>
           </ToggleGroup.Item>
         ))}
       </ToggleGroup.Root>

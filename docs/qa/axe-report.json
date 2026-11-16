@@ -1,9 +1,41 @@
 {
-  "geradoEm": "2026-11-14T15:36:59.767Z",
+  "geradoEm": "2026-11-16T14:57:15.027Z",
   "tags": ["wcag2a", "wcag2aa", "wcag21a", "wcag21aa", "wcag22aa"],
   "resultados": [
     {
-      "tema": "ipe",
+      "tema": "primavera-claro",
+      "pagina": "/",
+      "tentativas": 1,
+      "violations": [],
+      "passes": 28,
+      "console": []
+    },
+    {
+      "tema": "primavera-claro",
+      "pagina": "/projetos",
+      "tentativas": 1,
+      "violations": [],
+      "passes": 25,
+      "console": []
+    },
+    {
+      "tema": "primavera-claro",
+      "pagina": "/sobre",
+      "tentativas": 1,
+      "violations": [],
+      "passes": 25,
+      "console": []
+    },
+    {
+      "tema": "primavera-claro",
+      "pagina": "/contato",
+      "tentativas": 1,
+      "violations": [],
+      "passes": 25,
+      "console": []
+    },
+    {
+      "tema": "primavera-claro",
       "pagina": "/sistema",
       "tentativas": 1,
       "violations": [],
@@ -11,15 +43,15 @@
       "console": []
     },
     {
-      "tema": "ipe",
+      "tema": "primavera-claro",
       "pagina": "/sistema/cores",
-      "tentativas": 7,
+      "tentativas": 1,
       "violations": [],
       "passes": 27,
       "console": []
     },
     {
-      "tema": "ipe",
+      "tema": "primavera-claro",
       "pagina": "/sistema/tipografia",
       "tentativas": 1,
       "violations": [],
@@ -27,97 +59,7 @@
       "console": []
     },
     {
-      "tema": "ipe",
-      "pagina": "/sistema/espaco",
-      "tentativas": 10,
-      "violations": [],
-      "console": [],
-      "metodo": "axe-light (só violações; resultado completo corrompido pela máquina, ver D-701)",
-      "tentativasModoLeve": 2
-    },
-    {
-      "tema": "ipe",
-      "pagina": "/sistema/formas",
-      "tentativas": 1,
-      "violations": [],
-      "passes": 29,
-      "console": []
-    },
-    {
-      "tema": "ipe",
-      "pagina": "/sistema/componentes",
-      "tentativas": 4,
-      "violations": [],
-      "passes": 30,
-      "console": []
-    },
-    {
-      "tema": "ipe",
-      "pagina": "/sistema/conteudo",
-      "tentativas": 1,
-      "violations": [],
-      "passes": 30,
-      "console": []
-    },
-    {
-      "tema": "ipe",
-      "pagina": "/sistema/achados",
-      "tentativas": 1,
-      "violations": [],
-      "passes": 26,
-      "console": []
-    },
-    {
-      "tema": "ipe",
-      "pagina": "/sistema/hero",
-      "tentativas": 1,
-      "violations": [],
-      "passes": 25,
-      "console": []
-    },
-    {
-      "tema": "ipe",
-      "pagina": "/sistema/temas",
-      "tentativas": 1,
-      "violations": [],
-      "passes": 27,
-      "console": []
-    },
-    {
-      "tema": "ipe",
-      "pagina": "/sistema/acessibilidade",
-      "tentativas": 2,
-      "violations": [],
-      "passes": 29,
-      "console": []
-    },
-    {
-      "tema": "noturno",
-      "pagina": "/sistema",
-      "tentativas": 1,
-      "violations": [],
-      "passes": 25,
-      "console": []
-    },
-    {
-      "tema": "noturno",
-      "pagina": "/sistema/cores",
-      "tentativas": 10,
-      "violations": [],
-      "console": [],
-      "metodo": "axe-light (só violações; resultado completo corrompido pela máquina, ver D-701)",
-      "tentativasModoLeve": 2
-    },
-    {
-      "tema": "noturno",
-      "pagina": "/sistema/tipografia",
-      "tentativas": 1,
-      "violations": [],
-      "passes": 25,
-      "console": []
-    },
-    {
-      "tema": "noturno",
+      "tema": "primavera-claro",
       "pagina": "/sistema/espaco",
       "tentativas": 1,
       "violations": [],
@@ -125,7 +67,7 @@
       "console": []
     },
     {
-      "tema": "noturno",
+      "tema": "primavera-claro",
       "pagina": "/sistema/formas",
       "tentativas": 1,
       "violations": [],
@@ -133,15 +75,15 @@
       "console": []
     },
     {
-      "tema": "noturno",
+      "tema": "primavera-claro",
       "pagina": "/sistema/componentes",
-      "tentativas": 4,
+      "tentativas": 1,
       "violations": [],
       "passes": 30,
       "console": []
     },
     {
-      "tema": "noturno",
+      "tema": "primavera-claro",
       "pagina": "/sistema/conteudo",
       "tentativas": 1,
       "violations": [],
@@ -149,7 +91,7 @@
       "console": []
     },
     {
-      "tema": "noturno",
+      "tema": "primavera-claro",
       "pagina": "/sistema/achados",
       "tentativas": 1,
       "violations": [],
@@ -157,23 +99,23 @@
       "console": []
     },
     {
-      "tema": "noturno",
+      "tema": "primavera-claro",
       "pagina": "/sistema/hero",
-      "tentativas": 2,
+      "tentativas": 1,
       "violations": [],
       "passes": 25,
       "console": []
     },
     {
-      "tema": "noturno",
+      "tema": "primavera-claro",
       "pagina": "/sistema/temas",
       "tentativas": 1,
       "violations": [],
-      "passes": 27,
+      "passes": 28,
       "console": []
     },
     {
-      "tema": "noturno",
+      "tema": "primavera-claro",
       "pagina": "/sistema/acessibilidade",
       "tentativas": 1,
       "violations": [],
@@ -181,7 +123,39 @@
       "console": []
     },
     {
-      "tema": "outono",
+      "tema": "primavera-escuro",
+      "pagina": "/",
+      "tentativas": 1,
+      "violations": [],
+      "passes": 28,
+      "console": []
+    },
+    {
+      "tema": "primavera-escuro",
+      "pagina": "/projetos",
+      "tentativas": 1,
+      "violations": [],
+      "passes": 25,
+      "console": []
+    },
+    {
+      "tema": "primavera-escuro",
+      "pagina": "/sobre",
+      "tentativas": 1,
+      "violations": [],
+      "passes": 25,
+      "console": []
+    },
+    {
+      "tema": "primavera-escuro",
+      "pagina": "/contato",
+      "tentativas": 1,
+      "violations": [],
+      "passes": 25,
+      "console": []
+    },
+    {
+      "tema": "primavera-escuro",
       "pagina": "/sistema",
       "tentativas": 1,
       "violations": [],
@@ -189,7 +163,7 @@
       "console": []
     },
     {
-      "tema": "outono",
+      "tema": "primavera-escuro",
       "pagina": "/sistema/cores",
       "tentativas": 1,
       "violations": [],
@@ -197,7 +171,7 @@
       "console": []
     },
     {
-      "tema": "outono",
+      "tema": "primavera-escuro",
       "pagina": "/sistema/tipografia",
       "tentativas": 1,
       "violations": [],
@@ -205,31 +179,31 @@
       "console": []
     },
     {
-      "tema": "outono",
+      "tema": "primavera-escuro",
       "pagina": "/sistema/espaco",
-      "tentativas": 3,
+      "tentativas": 1,
       "violations": [],
       "passes": 25,
       "console": []
     },
     {
-      "tema": "outono",
+      "tema": "primavera-escuro",
       "pagina": "/sistema/formas",
-      "tentativas": 2,
+      "tentativas": 1,
       "violations": [],
       "passes": 29,
       "console": []
     },
     {
-      "tema": "outono",
+      "tema": "primavera-escuro",
       "pagina": "/sistema/componentes",
-      "tentativas": 8,
+      "tentativas": 1,
       "violations": [],
       "passes": 30,
       "console": []
     },
     {
-      "tema": "outono",
+      "tema": "primavera-escuro",
       "pagina": "/sistema/conteudo",
       "tentativas": 1,
       "violations": [],
@@ -237,15 +211,15 @@
       "console": []
     },
     {
-      "tema": "outono",
+      "tema": "primavera-escuro",
       "pagina": "/sistema/achados",
-      "tentativas": 2,
+      "tentativas": 1,
       "violations": [],
       "passes": 26,
       "console": []
     },
     {
-      "tema": "outono",
+      "tema": "primavera-escuro",
       "pagina": "/sistema/hero",
       "tentativas": 1,
       "violations": [],
@@ -253,15 +227,15 @@
       "console": []
     },
     {
-      "tema": "outono",
+      "tema": "primavera-escuro",
       "pagina": "/sistema/temas",
       "tentativas": 1,
       "violations": [],
-      "passes": 27,
+      "passes": 28,
       "console": []
     },
     {
-      "tema": "outono",
+      "tema": "primavera-escuro",
       "pagina": "/sistema/acessibilidade",
       "tentativas": 1,
       "violations": [],
@@ -269,7 +243,39 @@
       "console": []
     },
     {
-      "tema": "inverno",
+      "tema": "verao-claro",
+      "pagina": "/",
+      "tentativas": 1,
+      "violations": [],
+      "passes": 28,
+      "console": []
+    },
+    {
+      "tema": "verao-claro",
+      "pagina": "/projetos",
+      "tentativas": 1,
+      "violations": [],
+      "passes": 25,
+      "console": []
+    },
+    {
+      "tema": "verao-claro",
+      "pagina": "/sobre",
+      "tentativas": 1,
+      "violations": [],
+      "passes": 25,
+      "console": []
+    },
+    {
+      "tema": "verao-claro",
+      "pagina": "/contato",
+      "tentativas": 1,
+      "violations": [],
+      "passes": 25,
+      "console": []
+    },
+    {
+      "tema": "verao-claro",
       "pagina": "/sistema",
       "tentativas": 1,
       "violations": [],
@@ -277,7 +283,7 @@
       "console": []
     },
     {
-      "tema": "inverno",
+      "tema": "verao-claro",
       "pagina": "/sistema/cores",
       "tentativas": 1,
       "violations": [],
@@ -285,7 +291,7 @@
       "console": []
     },
     {
-      "tema": "inverno",
+      "tema": "verao-claro",
       "pagina": "/sistema/tipografia",
       "tentativas": 1,
       "violations": [],
@@ -293,15 +299,15 @@
       "console": []
     },
     {
-      "tema": "inverno",
+      "tema": "verao-claro",
       "pagina": "/sistema/espaco",
-      "tentativas": 4,
+      "tentativas": 1,
       "violations": [],
       "passes": 25,
       "console": []
     },
     {
-      "tema": "inverno",
+      "tema": "verao-claro",
       "pagina": "/sistema/formas",
       "tentativas": 1,
       "violations": [],
@@ -309,7 +315,7 @@
       "console": []
     },
     {
-      "tema": "inverno",
+      "tema": "verao-claro",
       "pagina": "/sistema/componentes",
       "tentativas": 1,
       "violations": [],
@@ -317,7 +323,7 @@
       "console": []
     },
     {
-      "tema": "inverno",
+      "tema": "verao-claro",
       "pagina": "/sistema/conteudo",
       "tentativas": 1,
       "violations": [],
@@ -325,15 +331,15 @@
       "console": []
     },
     {
-      "tema": "inverno",
+      "tema": "verao-claro",
       "pagina": "/sistema/achados",
-      "tentativas": 2,
+      "tentativas": 1,
       "violations": [],
       "passes": 26,
       "console": []
     },
     {
-      "tema": "inverno",
+      "tema": "verao-claro",
       "pagina": "/sistema/hero",
       "tentativas": 1,
       "violations": [],
@@ -341,25 +347,620 @@
       "console": []
     },
     {
-      "tema": "inverno",
+      "tema": "verao-claro",
       "pagina": "/sistema/temas",
+      "tentativas": 1,
+      "violations": [],
+      "passes": 28,
+      "console": []
+    },
+    {
+      "tema": "verao-claro",
+      "pagina": "/sistema/acessibilidade",
+      "tentativas": 1,
+      "violations": [],
+      "passes": 29,
+      "console": []
+    },
+    {
+      "tema": "verao-escuro",
+      "pagina": "/",
+      "tentativas": 1,
+      "violations": [],
+      "passes": 28,
+      "console": []
+    },
+    {
+      "tema": "verao-escuro",
+      "pagina": "/projetos",
+      "tentativas": 1,
+      "violations": [],
+      "passes": 25,
+      "console": []
+    },
+    {
+      "tema": "verao-escuro",
+      "pagina": "/sobre",
+      "tentativas": 1,
+      "violations": [],
+      "passes": 25,
+      "console": []
+    },
+    {
+      "tema": "verao-escuro",
+      "pagina": "/contato",
+      "tentativas": 1,
+      "violations": [],
+      "passes": 25,
+      "console": []
+    },
+    {
+      "tema": "verao-escuro",
+      "pagina": "/sistema",
+      "tentativas": 1,
+      "violations": [],
+      "passes": 25,
+      "console": []
+    },
+    {
+      "tema": "verao-escuro",
+      "pagina": "/sistema/cores",
       "tentativas": 1,
       "violations": [],
       "passes": 27,
       "console": []
     },
     {
-      "tema": "inverno",
+      "tema": "verao-escuro",
+      "pagina": "/sistema/tipografia",
+      "tentativas": 1,
+      "violations": [],
+      "passes": 25,
+      "console": []
+    },
+    {
+      "tema": "verao-escuro",
+      "pagina": "/sistema/espaco",
+      "tentativas": 1,
+      "violations": [],
+      "passes": 25,
+      "console": []
+    },
+    {
+      "tema": "verao-escuro",
+      "pagina": "/sistema/formas",
+      "tentativas": 1,
+      "violations": [],
+      "passes": 29,
+      "console": []
+    },
+    {
+      "tema": "verao-escuro",
+      "pagina": "/sistema/componentes",
+      "tentativas": 1,
+      "violations": [],
+      "passes": 30,
+      "console": []
+    },
+    {
+      "tema": "verao-escuro",
+      "pagina": "/sistema/conteudo",
+      "tentativas": 1,
+      "violations": [],
+      "passes": 30,
+      "console": []
+    },
+    {
+      "tema": "verao-escuro",
+      "pagina": "/sistema/achados",
+      "tentativas": 1,
+      "violations": [],
+      "passes": 26,
+      "console": []
+    },
+    {
+      "tema": "verao-escuro",
+      "pagina": "/sistema/hero",
+      "tentativas": 1,
+      "violations": [],
+      "passes": 25,
+      "console": []
+    },
+    {
+      "tema": "verao-escuro",
+      "pagina": "/sistema/temas",
+      "tentativas": 1,
+      "violations": [],
+      "passes": 28,
+      "console": []
+    },
+    {
+      "tema": "verao-escuro",
+      "pagina": "/sistema/acessibilidade",
+      "tentativas": 1,
+      "violations": [],
+      "passes": 29,
+      "console": []
+    },
+    {
+      "tema": "outono-claro",
+      "pagina": "/",
+      "tentativas": 1,
+      "violations": [],
+      "passes": 28,
+      "console": []
+    },
+    {
+      "tema": "outono-claro",
+      "pagina": "/projetos",
+      "tentativas": 1,
+      "violations": [],
+      "passes": 25,
+      "console": []
+    },
+    {
+      "tema": "outono-claro",
+      "pagina": "/sobre",
+      "tentativas": 1,
+      "violations": [],
+      "passes": 25,
+      "console": []
+    },
+    {
+      "tema": "outono-claro",
+      "pagina": "/contato",
+      "tentativas": 1,
+      "violations": [],
+      "passes": 25,
+      "console": []
+    },
+    {
+      "tema": "outono-claro",
+      "pagina": "/sistema",
+      "tentativas": 1,
+      "violations": [],
+      "passes": 25,
+      "console": []
+    },
+    {
+      "tema": "outono-claro",
+      "pagina": "/sistema/cores",
+      "tentativas": 1,
+      "violations": [],
+      "passes": 27,
+      "console": []
+    },
+    {
+      "tema": "outono-claro",
+      "pagina": "/sistema/tipografia",
+      "tentativas": 1,
+      "violations": [],
+      "passes": 25,
+      "console": []
+    },
+    {
+      "tema": "outono-claro",
+      "pagina": "/sistema/espaco",
+      "tentativas": 1,
+      "violations": [],
+      "passes": 25,
+      "console": []
+    },
+    {
+      "tema": "outono-claro",
+      "pagina": "/sistema/formas",
+      "tentativas": 1,
+      "violations": [],
+      "passes": 29,
+      "console": []
+    },
+    {
+      "tema": "outono-claro",
+      "pagina": "/sistema/componentes",
+      "tentativas": 1,
+      "violations": [],
+      "passes": 30,
+      "console": []
+    },
+    {
+      "tema": "outono-claro",
+      "pagina": "/sistema/conteudo",
+      "tentativas": 1,
+      "violations": [],
+      "passes": 30,
+      "console": []
+    },
+    {
+      "tema": "outono-claro",
+      "pagina": "/sistema/achados",
+      "tentativas": 1,
+      "violations": [],
+      "passes": 26,
+      "console": []
+    },
+    {
+      "tema": "outono-claro",
+      "pagina": "/sistema/hero",
+      "tentativas": 1,
+      "violations": [],
+      "passes": 25,
+      "console": []
+    },
+    {
+      "tema": "outono-claro",
+      "pagina": "/sistema/temas",
+      "tentativas": 1,
+      "violations": [],
+      "passes": 28,
+      "console": []
+    },
+    {
+      "tema": "outono-claro",
+      "pagina": "/sistema/acessibilidade",
+      "tentativas": 1,
+      "violations": [],
+      "passes": 29,
+      "console": []
+    },
+    {
+      "tema": "outono-escuro",
+      "pagina": "/",
+      "tentativas": 1,
+      "violations": [],
+      "passes": 28,
+      "console": []
+    },
+    {
+      "tema": "outono-escuro",
+      "pagina": "/projetos",
+      "tentativas": 1,
+      "violations": [],
+      "passes": 25,
+      "console": []
+    },
+    {
+      "tema": "outono-escuro",
+      "pagina": "/sobre",
+      "tentativas": 1,
+      "violations": [],
+      "passes": 25,
+      "console": []
+    },
+    {
+      "tema": "outono-escuro",
+      "pagina": "/contato",
+      "tentativas": 1,
+      "violations": [],
+      "passes": 25,
+      "console": []
+    },
+    {
+      "tema": "outono-escuro",
+      "pagina": "/sistema",
+      "tentativas": 1,
+      "violations": [],
+      "passes": 25,
+      "console": []
+    },
+    {
+      "tema": "outono-escuro",
+      "pagina": "/sistema/cores",
+      "tentativas": 1,
+      "violations": [],
+      "passes": 27,
+      "console": []
+    },
+    {
+      "tema": "outono-escuro",
+      "pagina": "/sistema/tipografia",
+      "tentativas": 1,
+      "violations": [],
+      "passes": 25,
+      "console": []
+    },
+    {
+      "tema": "outono-escuro",
+      "pagina": "/sistema/espaco",
+      "tentativas": 1,
+      "violations": [],
+      "passes": 25,
+      "console": []
+    },
+    {
+      "tema": "outono-escuro",
+      "pagina": "/sistema/formas",
+      "tentativas": 1,
+      "violations": [],
+      "passes": 29,
+      "console": []
+    },
+    {
+      "tema": "outono-escuro",
+      "pagina": "/sistema/componentes",
+      "tentativas": 1,
+      "violations": [],
+      "passes": 30,
+      "console": []
+    },
+    {
+      "tema": "outono-escuro",
+      "pagina": "/sistema/conteudo",
+      "tentativas": 1,
+      "violations": [],
+      "passes": 30,
+      "console": []
+    },
+    {
+      "tema": "outono-escuro",
+      "pagina": "/sistema/achados",
+      "tentativas": 1,
+      "violations": [],
+      "passes": 26,
+      "console": []
+    },
+    {
+      "tema": "outono-escuro",
+      "pagina": "/sistema/hero",
+      "tentativas": 1,
+      "violations": [],
+      "passes": 25,
+      "console": []
+    },
+    {
+      "tema": "outono-escuro",
+      "pagina": "/sistema/temas",
+      "tentativas": 1,
+      "violations": [],
+      "passes": 28,
+      "console": []
+    },
+    {
+      "tema": "outono-escuro",
+      "pagina": "/sistema/acessibilidade",
+      "tentativas": 1,
+      "violations": [],
+      "passes": 29,
+      "console": []
+    },
+    {
+      "tema": "inverno-claro",
+      "pagina": "/",
+      "tentativas": 1,
+      "violations": [],
+      "passes": 28,
+      "console": []
+    },
+    {
+      "tema": "inverno-claro",
+      "pagina": "/projetos",
+      "tentativas": 1,
+      "violations": [],
+      "passes": 25,
+      "console": []
+    },
+    {
+      "tema": "inverno-claro",
+      "pagina": "/sobre",
+      "tentativas": 1,
+      "violations": [],
+      "passes": 25,
+      "console": []
+    },
+    {
+      "tema": "inverno-claro",
+      "pagina": "/contato",
+      "tentativas": 1,
+      "violations": [],
+      "passes": 25,
+      "console": []
+    },
+    {
+      "tema": "inverno-claro",
+      "pagina": "/sistema",
+      "tentativas": 1,
+      "violations": [],
+      "passes": 25,
+      "console": []
+    },
+    {
+      "tema": "inverno-claro",
+      "pagina": "/sistema/cores",
+      "tentativas": 1,
+      "violations": [],
+      "passes": 27,
+      "console": []
+    },
+    {
+      "tema": "inverno-claro",
+      "pagina": "/sistema/tipografia",
+      "tentativas": 1,
+      "violations": [],
+      "passes": 25,
+      "console": []
+    },
+    {
+      "tema": "inverno-claro",
+      "pagina": "/sistema/espaco",
+      "tentativas": 1,
+      "violations": [],
+      "passes": 25,
+      "console": []
+    },
+    {
+      "tema": "inverno-claro",
+      "pagina": "/sistema/formas",
+      "tentativas": 1,
+      "violations": [],
+      "passes": 29,
+      "console": []
+    },
+    {
+      "tema": "inverno-claro",
+      "pagina": "/sistema/componentes",
+      "tentativas": 1,
+      "violations": [],
+      "passes": 30,
+      "console": []
+    },
+    {
+      "tema": "inverno-claro",
+      "pagina": "/sistema/conteudo",
+      "tentativas": 1,
+      "violations": [],
+      "passes": 30,
+      "console": []
+    },
+    {
+      "tema": "inverno-claro",
+      "pagina": "/sistema/achados",
+      "tentativas": 1,
+      "violations": [],
+      "passes": 26,
+      "console": []
+    },
+    {
+      "tema": "inverno-claro",
+      "pagina": "/sistema/hero",
+      "tentativas": 1,
+      "violations": [],
+      "passes": 25,
+      "console": []
+    },
+    {
+      "tema": "inverno-claro",
+      "pagina": "/sistema/temas",
+      "tentativas": 1,
+      "violations": [],
+      "passes": 28,
+      "console": []
+    },
+    {
+      "tema": "inverno-claro",
+      "pagina": "/sistema/acessibilidade",
+      "tentativas": 1,
+      "violations": [],
+      "passes": 29,
+      "console": []
+    },
+    {
+      "tema": "inverno-escuro",
+      "pagina": "/",
+      "tentativas": 1,
+      "violations": [],
+      "passes": 28,
+      "console": []
+    },
+    {
+      "tema": "inverno-escuro",
+      "pagina": "/projetos",
+      "tentativas": 1,
+      "violations": [],
+      "passes": 25,
+      "console": []
+    },
+    {
+      "tema": "inverno-escuro",
+      "pagina": "/sobre",
+      "tentativas": 1,
+      "violations": [],
+      "passes": 25,
+      "console": []
+    },
+    {
+      "tema": "inverno-escuro",
+      "pagina": "/contato",
+      "tentativas": 1,
+      "violations": [],
+      "passes": 25,
+      "console": []
+    },
+    {
+      "tema": "inverno-escuro",
+      "pagina": "/sistema",
+      "tentativas": 1,
+      "violations": [],
+      "passes": 25,
+      "console": []
+    },
+    {
+      "tema": "inverno-escuro",
+      "pagina": "/sistema/cores",
+      "tentativas": 1,
+      "violations": [],
+      "passes": 27,
+      "console": []
+    },
+    {
+      "tema": "inverno-escuro",
+      "pagina": "/sistema/tipografia",
+      "tentativas": 1,
+      "violations": [],
+      "passes": 25,
+      "console": []
+    },
+    {
+      "tema": "inverno-escuro",
+      "pagina": "/sistema/espaco",
+      "tentativas": 1,
+      "violations": [],
+      "passes": 25,
+      "console": []
+    },
+    {
+      "tema": "inverno-escuro",
+      "pagina": "/sistema/formas",
+      "tentativas": 1,
+      "violations": [],
+      "passes": 29,
+      "console": []
+    },
+    {
+      "tema": "inverno-escuro",
+      "pagina": "/sistema/componentes",
+      "tentativas": 1,
+      "violations": [],
+      "passes": 30,
+      "console": []
+    },
+    {
+      "tema": "inverno-escuro",
+      "pagina": "/sistema/conteudo",
+      "tentativas": 1,
+      "violations": [],
+      "passes": 30,
+      "console": []
+    },
+    {
+      "tema": "inverno-escuro",
+      "pagina": "/sistema/achados",
+      "tentativas": 1,
+      "violations": [],
+      "passes": 26,
+      "console": []
+    },
+    {
+      "tema": "inverno-escuro",
+      "pagina": "/sistema/hero",
+      "tentativas": 1,
+      "violations": [],
+      "passes": 25,
+      "console": []
+    },
+    {
+      "tema": "inverno-escuro",
+      "pagina": "/sistema/temas",
+      "tentativas": 1,
+      "violations": [],
+      "passes": 28,
+      "console": []
+    },
+    {
+      "tema": "inverno-escuro",
       "pagina": "/sistema/acessibilidade",
       "tentativas": 1,
       "violations": [],
       "passes": 29,
       "console": []
     }
-  ],
-  "resumo": {
-    "auditorias": 44,
-    "comViolacao": 0,
-    "semResultado": 0
-  }
+  ]
 }

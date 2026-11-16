@@ -10,8 +10,12 @@ import { useTheme } from "@/lib/theme/theme-provider"
 import { DEFAULT_MODE, DEFAULT_SEASON, MODES } from "@/lib/theme/themes"
 
 export interface ThemeSwitcherProps {
-  /** `grid`: amostras grandes com descrição; `compact`: amostras com o nome, para Popover e Drawer. */
-  layout?: "grid" | "compact"
+  /**
+   * `grid`: amostras grandes com descrição (vitrine); `compact`: amostras com o
+   * nome em duas colunas, para Popover e Drawer; `bar`: tudo numa faixa baixa,
+   * sem os títulos dos grupos (barra fixa da vitrine).
+   */
+  layout?: "grid" | "compact" | "bar"
   className?: string
 }
 
@@ -37,6 +41,7 @@ export function ThemeSwitcher({ layout = "compact", className }: ThemeSwitcherPr
     useTheme()
   const id = useId()
   const grid = layout === "grid"
+  const bar = layout === "bar"
   const swatchMode = mode ?? DEFAULT_MODE
   const autoId = autoSeason ?? DEFAULT_SEASON
   const autoLabel = seasons.find((s) => s.id === autoId)?.label ?? ""
@@ -59,9 +64,17 @@ export function ThemeSwitcher({ layout = "compact", className }: ThemeSwitcherPr
   ]
 
   return (
-    <div className={cn("flex flex-col gap-5", className)}>
-      <div className="flex flex-col gap-2">
-        <p id={`${id}-estacao`} className="font-mono text-label text-ink-subtle">
+    <div
+      className={cn(
+        bar ? "flex flex-wrap items-center gap-x-4 gap-y-2" : "flex flex-col gap-5",
+        className,
+      )}
+    >
+      <div className={cn("flex gap-2", !bar && "flex-col")}>
+        <p
+          id={`${id}-estacao`}
+          className={cn("font-mono text-label text-ink-subtle", bar && "sr-only")}
+        >
           Estação
         </p>
         <RadioGroup.Root
@@ -70,8 +83,9 @@ export function ThemeSwitcher({ layout = "compact", className }: ThemeSwitcherPr
           onValueChange={(value) => setSeason(value === AUTO ? null : value)}
           orientation="horizontal"
           className={cn(
-            "grid gap-3",
-            grid ? "grid-cols-2 md:grid-cols-5" : "grid-cols-2",
+            bar ? "flex flex-wrap gap-2" : "grid gap-3",
+            grid && "grid-cols-2 md:grid-cols-5",
+            !grid && !bar && "grid-cols-2",
           )}
         >
           {options.map((option) => {
@@ -87,7 +101,7 @@ export function ThemeSwitcher({ layout = "compact", className }: ThemeSwitcherPr
                   "[--shape-fill:transparent] hover:[--shape-fill:var(--surface-hover)] active:[--shape-fill:var(--surface-active)]",
                   "data-[state=checked]:[--shape-fill:var(--primary-soft)]",
                   grid ? "flex-col items-start" : "items-center",
-                  !grid && option.auto && "col-span-2",
+                  layout === "compact" && option.auto && "col-span-2",
                 )}
               >
                 <Shape
@@ -103,7 +117,7 @@ export function ThemeSwitcher({ layout = "compact", className }: ThemeSwitcherPr
                   aria-hidden="true"
                   className={cn(
                     "shape-scope relative isolate grid shrink-0 place-items-center",
-                    grid ? "size-16" : "size-9",
+                    grid ? "size-16" : bar ? "size-8" : "size-9",
                   )}
                 >
                   <Shape
@@ -146,7 +160,7 @@ export function ThemeSwitcher({ layout = "compact", className }: ThemeSwitcherPr
                   </span>
                   {grid ? (
                     <span className="text-sm text-ink-muted">{option.description}</span>
-                  ) : option.auto ? (
+                  ) : option.auto && !bar ? (
                     <span aria-hidden="true" className="text-label text-ink-muted">
                       Agora: {autoLabel}
                     </span>
@@ -166,11 +180,13 @@ export function ThemeSwitcher({ layout = "compact", className }: ThemeSwitcherPr
         </RadioGroup.Root>
       </div>
 
-      <div className="flex flex-col gap-2">
-        <p className="font-mono text-label text-ink-subtle">Modo</p>
+      <div className={cn("flex gap-2", !bar && "flex-col")}>
+        <p className={cn("font-mono text-label text-ink-subtle", bar && "sr-only")}>
+          Modo
+        </p>
         <SegmentedControl
           label="Modo"
-          block={!grid}
+          block={layout === "compact"}
           options={MODE_OPTIONS}
           value={state ? (modePref ?? SYSTEM) : ""}
           onValueChange={(value) => setMode(value === SYSTEM ? null : value)}

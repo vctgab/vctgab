@@ -11,8 +11,16 @@ import {
 
 const AXE_TAGS = ["wcag2a", "wcag2aa", "wcag21a", "wcag21aa", "wcag22aa"]
 
+// Chromium audita as 8 combinações em todas as páginas; WebKit e Firefox, só a
+// primavera clara e escura (a Home passa pelas 8 nos três motores, em home.spec.ts).
+const OTHER_ENGINES: readonly string[] = ["primavera-claro", "primavera-escuro"]
+
 for (const theme of THEMES) {
   test.describe(`tema ${theme}`, () => {
+    test.skip(
+      ({ browserName }) => browserName !== "chromium" && !OTHER_ENGINES.includes(theme),
+      "Fora do Chromium, as páginas da vitrine só rodam em primavera clara e escura.",
+    )
     for (const path of SYSTEM_PAGES) {
       test(`${path}: axe sem violações e console limpo`, async ({ page }) => {
         const messages = collectConsole(page)

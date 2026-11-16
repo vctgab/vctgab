@@ -1,5 +1,5 @@
 /**
- * Home (docs/specs/pages/home.md): estrutura, axe nos 4 temas, chamadas,
+ * Home (docs/specs/pages/home.md): estrutura, axe nas 8 combinações de estação e modo, chamadas,
  * pendências, 404, teclado, achados e metadados. Roda nos três motores.
  */
 import AxeBuilder from "@axe-core/playwright"
@@ -177,6 +177,8 @@ test("CA-6: tema pelo teclado: abre, troca estação e modo, fecha com Esc e per
   const mode = page.getByRole("radiogroup", { name: "Modo" })
   await expect(mode.getByRole("radio", { name: "Do sistema" })).toBeFocused()
   await page.keyboard.press("ArrowLeft")
+  // O Radix move o foco depois da seta (D-707): espera chegar antes do Espaço.
+  await expect(mode.getByRole("radio", { name: "Escuro" })).toBeFocused()
   await page.keyboard.press("Space")
   await expect(mode.getByRole("radio", { name: "Escuro" })).toBeChecked()
   await expect(page.locator("html")).toHaveAttribute("data-mode", "escuro")

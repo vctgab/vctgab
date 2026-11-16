@@ -22,7 +22,7 @@ const chromes = [
   process.env.CHROME_PATH ?? "",
   join(homedir(), "AppData/Local/ms-playwright/chromium-1254/chrome-win64/chrome.exe"),
 ].filter((p) => p && existsSync(p))
-const dir = join("docs/qa/phase-2")
+const dir = join(process.env.QA_DIR ?? "docs/qa/phase-2")
 mkdirSync(dir, { recursive: true })
 
 const median = (xs) => {

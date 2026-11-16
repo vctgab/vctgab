@@ -16,7 +16,8 @@ const RESUMO: Record<string, string> = {
   "/sistema/conteudo": "Componentes P1: depoimentos, faixa, polaroids, números e mais.",
   "/sistema/achados": "O sistema de encontráveis e os estados do caderno.",
   "/sistema/hero": "O hero dinâmico e as cenas do rodapé.",
-  "/sistema/temas": "Os quatro temas lado a lado.",
+  "/sistema/temas":
+    "As 8 combinações de estação e modo lado a lado, com a matriz de contraste.",
   "/sistema/acessibilidade": "Relatório de contraste e comportamento de teclado.",
 }
 
