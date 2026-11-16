@@ -87,6 +87,31 @@ describe("cor", () => {
   })
 })
 
+describe("temas", () => {
+  /** Só a migração de `vg-tema` (D-1105) e os testes dela (unitário e e2e) conhecem os ids antigos. */
+  const LEGACY_OK = new Set([
+    "src/lib/theme/themes.ts",
+    "src/lib/theme/theme.test.ts",
+    "tests/e2e/engines.spec.ts",
+  ])
+
+  it("TM-01: nenhum id de tema antigo (ipe, noturno) nem data-theme em src, tests e scripts", () => {
+    const files = [
+      ...SRC,
+      ...walk(join(ROOT, "tests")).map(rel),
+      ...walk(join(ROOT, "scripts")).map(rel),
+    ].filter(
+      (f) =>
+        /\.(tsx?|mjs|css)$/.test(f) &&
+        !LEGACY_OK.has(f) &&
+        f !== "tests/unit/rules.test.ts",
+    )
+    expect(
+      offenders(files, /["'`]ipe["'`]|\bnoturno\b|data-theme(?!-transition)/i),
+    ).toEqual([])
+  })
+})
+
 describe("formas", () => {
   it("SH-01: nenhum Math.random em src", () => {
     expect(

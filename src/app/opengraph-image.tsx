@@ -8,8 +8,8 @@ import tokens from "@/styles/tokens.generated.json"
 
 /*
  * Imagem Open Graph (1200 × 630) na linguagem do site: papel, formas do
- * motor com seed fixa e placa com o título em Fraunces. Cores do tema ipê
- * vindas do build de tokens (nada de cor solta). Fontes: subconjuntos TTF
+ * motor com seed fixa e placa com o título em Fraunces. Cores da primavera
+ * clara (a combinação padrão) vindas do build de tokens (nada de cor solta). Fontes: subconjuntos TTF
  * com só os caracteres usados (o next/og não lê woff2), em src/assets/og;
  * licença OFL em public/fonts. Gerada no build, sem rede.
  */
@@ -18,8 +18,11 @@ export const alt = `${SITE.name}, ${SITE.role.toLowerCase()}: ${HOME.hero.titleS
 export const size = { width: 1200, height: 630 }
 export const contentType = "image/png"
 
-const ipe = tokens.themes.find((t) => t.id === "ipe")?.semantic as Record<string, string>
-const color = (name: string): string => ipe[name] ?? ipe.ink ?? "currentColor"
+const base = tokens.themes.find((t) => t.id === "primavera-claro")?.semantic as Record<
+  string,
+  string
+>
+const color = (name: string): string => base[name] ?? base.ink ?? "currentColor"
 
 const fonts = Promise.all([
   readFile(join(process.cwd(), "src/assets/og/fraunces-og-v1.ttf")),

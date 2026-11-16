@@ -1,10 +1,24 @@
 {
-  "defaultTheme": "ipe",
+  "defaultSeason": "primavera",
+  "defaultMode": "claro",
+  "seasons": [
+    "primavera",
+    "verao",
+    "outono",
+    "inverno"
+  ],
+  "modes": [
+    "claro",
+    "escuro"
+  ],
   "themes": [
     {
-      "id": "ipe",
-      "label": "Ipê",
-      "description": "Claro, rosa do ipê com pinheiro e âmbar.",
+      "id": "primavera-claro",
+      "season": "primavera",
+      "mode": "claro",
+      "label": "Primavera, claro",
+      "seasonLabel": "Primavera",
+      "description": "Rosa do ipê com pinheiro e âmbar.",
       "colorScheme": "light",
       "themeColor": "#FEF8FB",
       "energy": 1,
@@ -1459,16 +1473,20 @@
           "pass": true
         }
       ],
-      "dangerHueDistance": 33.89
+      "dangerHueDistance": 33.89,
+      "successHueDistance": 171.36
     },
     {
-      "id": "noturno",
-      "label": "Noturno",
-      "description": "Escuro, as mesmas sementes do ipê sobre papel noturno.",
+      "id": "primavera-escuro",
+      "season": "primavera",
+      "mode": "escuro",
+      "label": "Primavera, escuro",
+      "seasonLabel": "Primavera",
+      "description": "Rosa do ipê com pinheiro e âmbar.",
       "colorScheme": "dark",
       "themeColor": "#1D0C14",
-      "energy": 0.8,
-      "rotationMax": 0.9,
+      "energy": 1,
+      "rotationMax": 1.2,
       "seeds": {
         "primary": "#EE2476",
         "secondary-1": "#2F6B4A",
@@ -2176,10 +2194,10 @@
         "footer-ink": "#ECE4E8",
         "footer-link": "#ECE4E8",
         "footer-focus": "#F25B98",
-        "footer-tree-far": "#3F2833",
-        "footer-tree-mid": "#2C1A23",
-        "footer-tree-near": "#0C0206",
-        "footer-accent": "#F6E1B6",
+        "footer-tree-far": "#2C3130",
+        "footer-tree-mid": "#1D2121",
+        "footer-tree-near": "#030604",
+        "footer-accent": "#AA1C56",
         "footer-sky-accent": "#ECE4E8",
         "hero-shape-1": "#5A0E2D",
         "hero-shape-2": "#12291C",
@@ -2870,7 +2888,7 @@
           "kind": "texto",
           "uso": "Link sobre árvore do fundo",
           "min": 4.5,
-          "ratio": 10.77,
+          "ratio": 10.59,
           "pass": true
         },
         {
@@ -2879,7 +2897,7 @@
           "kind": "texto",
           "uso": "Link sobre árvore do meio",
           "min": 4.5,
-          "ratio": 13.16,
+          "ratio": 13.03,
           "pass": true
         },
         {
@@ -2888,7 +2906,7 @@
           "kind": "texto",
           "uso": "Link sobre árvore da frente",
           "min": 4.5,
-          "ratio": 16.39,
+          "ratio": 16.31,
           "pass": true
         },
         {
@@ -2919,12 +2937,2944 @@
           "pass": true
         }
       ],
-      "dangerHueDistance": 33.89
+      "dangerHueDistance": 33.89,
+      "successHueDistance": 171.36
     },
     {
-      "id": "outono",
-      "label": "Outono",
-      "description": "Claro, laranja queimado com oliva e vinho.",
+      "id": "verao-claro",
+      "season": "verao",
+      "mode": "claro",
+      "label": "Verão, claro",
+      "seasonLabel": "Verão",
+      "description": "Verde de folha cheia com mar e sol.",
+      "colorScheme": "light",
+      "themeColor": "#F8FCFA",
+      "energy": 1.1,
+      "rotationMax": 1.3,
+      "seeds": {
+        "primary": "#12924E",
+        "secondary-1": "#1D7FB3",
+        "secondary-2": "#F2B53A",
+        "success": "#0F766E",
+        "warning": "#E3A21A",
+        "danger": "#C93A1F"
+      },
+      "scales": {
+        "primary": [
+          {
+            "step": 50,
+            "token": "primary-50",
+            "hex": "#ECF6F1",
+            "mix": "92% branco",
+            "vsPaper": 1.07,
+            "vsInk": 15.86
+          },
+          {
+            "step": 100,
+            "token": "primary-100",
+            "hex": "#D9EEE3",
+            "mix": "84% branco",
+            "vsPaper": 1.17,
+            "vsInk": 14.42
+          },
+          {
+            "step": 200,
+            "token": "primary-200",
+            "hex": "#B3DCC6",
+            "mix": "68% branco",
+            "vsPaper": 1.45,
+            "vsInk": 11.65
+          },
+          {
+            "step": 300,
+            "token": "primary-300",
+            "hex": "#89C9A7",
+            "mix": "50% branco",
+            "vsPaper": 1.85,
+            "vsInk": 9.16
+          },
+          {
+            "step": 400,
+            "token": "primary-400",
+            "hex": "#4DAD7A",
+            "mix": "25% branco",
+            "vsPaper": 2.68,
+            "vsInk": 6.32
+          },
+          {
+            "step": 500,
+            "token": "primary-500",
+            "hex": "#12924E",
+            "mix": "semente",
+            "vsPaper": 3.87,
+            "vsInk": 4.38
+          },
+          {
+            "step": 600,
+            "token": "primary-600",
+            "hex": "#108045",
+            "mix": "12% preto",
+            "vsPaper": 4.84,
+            "vsInk": 3.5
+          },
+          {
+            "step": 700,
+            "token": "primary-700",
+            "hex": "#0D6938",
+            "mix": "28% preto",
+            "vsPaper": 6.56,
+            "vsInk": 2.58
+          },
+          {
+            "step": 800,
+            "token": "primary-800",
+            "hex": "#0A502B",
+            "mix": "45% preto",
+            "vsPaper": 9.25,
+            "vsInk": 1.83
+          },
+          {
+            "step": 900,
+            "token": "primary-900",
+            "hex": "#07371E",
+            "mix": "62% preto",
+            "vsPaper": 12.89,
+            "vsInk": 1.31
+          },
+          {
+            "step": 950,
+            "token": "primary-950",
+            "hex": "#042011",
+            "mix": "78% preto",
+            "vsPaper": 16.64,
+            "vsInk": 1.02
+          }
+        ],
+        "secondary-1": [
+          {
+            "step": 50,
+            "token": "secondary-1-50",
+            "hex": "#EDF5F9",
+            "mix": "92% branco",
+            "vsPaper": 1.07,
+            "vsInk": 15.87
+          },
+          {
+            "step": 100,
+            "token": "secondary-1-100",
+            "hex": "#DBEBF3",
+            "mix": "84% branco",
+            "vsPaper": 1.18,
+            "vsInk": 14.34
+          },
+          {
+            "step": 200,
+            "token": "secondary-1-200",
+            "hex": "#B7D6E7",
+            "mix": "68% branco",
+            "vsPaper": 1.47,
+            "vsInk": 11.5
+          },
+          {
+            "step": 300,
+            "token": "secondary-1-300",
+            "hex": "#8EBFD9",
+            "mix": "50% branco",
+            "vsPaper": 1.91,
+            "vsInk": 8.85
+          },
+          {
+            "step": 400,
+            "token": "secondary-1-400",
+            "hex": "#569FC6",
+            "mix": "25% branco",
+            "vsPaper": 2.83,
+            "vsInk": 5.98
+          },
+          {
+            "step": 500,
+            "token": "secondary-1-500",
+            "hex": "#1D7FB3",
+            "mix": "semente",
+            "vsPaper": 4.28,
+            "vsInk": 3.95
+          },
+          {
+            "step": 600,
+            "token": "secondary-1-600",
+            "hex": "#1A709E",
+            "mix": "12% preto",
+            "vsPaper": 5.26,
+            "vsInk": 3.22
+          },
+          {
+            "step": 700,
+            "token": "secondary-1-700",
+            "hex": "#155B81",
+            "mix": "28% preto",
+            "vsPaper": 7.13,
+            "vsInk": 2.37
+          },
+          {
+            "step": 800,
+            "token": "secondary-1-800",
+            "hex": "#104662",
+            "mix": "45% preto",
+            "vsPaper": 9.78,
+            "vsInk": 1.73
+          },
+          {
+            "step": 900,
+            "token": "secondary-1-900",
+            "hex": "#0B3044",
+            "mix": "62% preto",
+            "vsPaper": 13.35,
+            "vsInk": 1.27
+          },
+          {
+            "step": 950,
+            "token": "secondary-1-950",
+            "hex": "#061C27",
+            "mix": "78% preto",
+            "vsPaper": 16.87,
+            "vsInk": 1
+          }
+        ],
+        "secondary-2": [
+          {
+            "step": 50,
+            "token": "secondary-2-50",
+            "hex": "#FEF9EF",
+            "mix": "92% branco",
+            "vsPaper": 1.01,
+            "vsInk": 16.69
+          },
+          {
+            "step": 100,
+            "token": "secondary-2-100",
+            "hex": "#FDF3DF",
+            "mix": "84% branco",
+            "vsPaper": 1.06,
+            "vsInk": 15.9
+          },
+          {
+            "step": 200,
+            "token": "secondary-2-200",
+            "hex": "#FBE7C0",
+            "mix": "68% branco",
+            "vsPaper": 1.17,
+            "vsInk": 14.42
+          },
+          {
+            "step": 300,
+            "token": "secondary-2-300",
+            "hex": "#F9DA9D",
+            "mix": "50% branco",
+            "vsPaper": 1.31,
+            "vsInk": 12.96
+          },
+          {
+            "step": 400,
+            "token": "secondary-2-400",
+            "hex": "#F5C86B",
+            "mix": "25% branco",
+            "vsPaper": 1.52,
+            "vsInk": 11.14
+          },
+          {
+            "step": 500,
+            "token": "secondary-2-500",
+            "hex": "#F2B53A",
+            "mix": "semente",
+            "vsPaper": 1.77,
+            "vsInk": 9.55
+          },
+          {
+            "step": 600,
+            "token": "secondary-2-600",
+            "hex": "#D59F33",
+            "mix": "12% preto",
+            "vsPaper": 2.3,
+            "vsInk": 7.37
+          },
+          {
+            "step": 700,
+            "token": "secondary-2-700",
+            "hex": "#AE822A",
+            "mix": "28% preto",
+            "vsPaper": 3.37,
+            "vsInk": 5.03
+          },
+          {
+            "step": 800,
+            "token": "secondary-2-800",
+            "hex": "#856420",
+            "mix": "45% preto",
+            "vsPaper": 5.28,
+            "vsInk": 3.2
+          },
+          {
+            "step": 900,
+            "token": "secondary-2-900",
+            "hex": "#5C4516",
+            "mix": "62% preto",
+            "vsPaper": 8.76,
+            "vsInk": 1.93
+          },
+          {
+            "step": 950,
+            "token": "secondary-2-950",
+            "hex": "#35280D",
+            "mix": "78% preto",
+            "vsPaper": 13.89,
+            "vsInk": 1.22
+          }
+        ],
+        "success": [
+          {
+            "step": 50,
+            "token": "success-50",
+            "hex": "#ECF4F3",
+            "mix": "92% branco",
+            "vsPaper": 1.08,
+            "vsInk": 15.68
+          },
+          {
+            "step": 100,
+            "token": "success-100",
+            "hex": "#D9E9E8",
+            "mix": "84% branco",
+            "vsPaper": 1.21,
+            "vsInk": 13.99
+          },
+          {
+            "step": 200,
+            "token": "success-200",
+            "hex": "#B2D3D1",
+            "mix": "68% branco",
+            "vsPaper": 1.55,
+            "vsInk": 10.95
+          },
+          {
+            "step": 300,
+            "token": "success-300",
+            "hex": "#87BBB7",
+            "mix": "50% branco",
+            "vsPaper": 2.07,
+            "vsInk": 8.19
+          },
+          {
+            "step": 400,
+            "token": "success-400",
+            "hex": "#4B9892",
+            "mix": "25% branco",
+            "vsPaper": 3.27,
+            "vsInk": 5.18
+          },
+          {
+            "step": 500,
+            "token": "success-500",
+            "hex": "#0F766E",
+            "mix": "semente",
+            "vsPaper": 5.29,
+            "vsInk": 3.2
+          },
+          {
+            "step": 600,
+            "token": "success-600",
+            "hex": "#0D6861",
+            "mix": "12% preto",
+            "vsPaper": 6.4,
+            "vsInk": 2.64
+          },
+          {
+            "step": 700,
+            "token": "success-700",
+            "hex": "#0B554F",
+            "mix": "28% preto",
+            "vsPaper": 8.36,
+            "vsInk": 2.02
+          },
+          {
+            "step": 800,
+            "token": "success-800",
+            "hex": "#08413D",
+            "mix": "45% preto",
+            "vsPaper": 11.07,
+            "vsInk": 1.53
+          },
+          {
+            "step": 900,
+            "token": "success-900",
+            "hex": "#062D2A",
+            "mix": "62% preto",
+            "vsPaper": 14.33,
+            "vsInk": 1.18
+          },
+          {
+            "step": 950,
+            "token": "success-950",
+            "hex": "#031A18",
+            "mix": "78% preto",
+            "vsPaper": 17.42,
+            "vsInk": 1.03
+          }
+        ],
+        "warning": [
+          {
+            "step": 50,
+            "token": "warning-50",
+            "hex": "#FDF8ED",
+            "mix": "92% branco",
+            "vsPaper": 1.02,
+            "vsInk": 16.54
+          },
+          {
+            "step": 100,
+            "token": "warning-100",
+            "hex": "#FBF0DA",
+            "mix": "84% branco",
+            "vsPaper": 1.09,
+            "vsInk": 15.5
+          },
+          {
+            "step": 200,
+            "token": "warning-200",
+            "hex": "#F6E1B6",
+            "mix": "68% branco",
+            "vsPaper": 1.24,
+            "vsInk": 13.65
+          },
+          {
+            "step": 300,
+            "token": "warning-300",
+            "hex": "#F1D18D",
+            "mix": "50% branco",
+            "vsPaper": 1.42,
+            "vsInk": 11.88
+          },
+          {
+            "step": 400,
+            "token": "warning-400",
+            "hex": "#EAB953",
+            "mix": "25% branco",
+            "vsPaper": 1.76,
+            "vsInk": 9.64
+          },
+          {
+            "step": 500,
+            "token": "warning-500",
+            "hex": "#E3A21A",
+            "mix": "semente",
+            "vsPaper": 2.15,
+            "vsInk": 7.88
+          },
+          {
+            "step": 600,
+            "token": "warning-600",
+            "hex": "#C88F17",
+            "mix": "12% preto",
+            "vsPaper": 2.74,
+            "vsInk": 6.17
+          },
+          {
+            "step": 700,
+            "token": "warning-700",
+            "hex": "#A37513",
+            "mix": "28% preto",
+            "vsPaper": 3.97,
+            "vsInk": 4.26
+          },
+          {
+            "step": 800,
+            "token": "warning-800",
+            "hex": "#7D590E",
+            "mix": "45% preto",
+            "vsPaper": 6.14,
+            "vsInk": 2.76
+          },
+          {
+            "step": 900,
+            "token": "warning-900",
+            "hex": "#563E0A",
+            "mix": "62% preto",
+            "vsPaper": 9.72,
+            "vsInk": 1.74
+          },
+          {
+            "step": 950,
+            "token": "warning-950",
+            "hex": "#322406",
+            "mix": "78% preto",
+            "vsPaper": 14.6,
+            "vsInk": 1.16
+          }
+        ],
+        "danger": [
+          {
+            "step": 50,
+            "token": "danger-50",
+            "hex": "#FBEFED",
+            "mix": "92% branco",
+            "vsPaper": 1.09,
+            "vsInk": 15.57
+          },
+          {
+            "step": 100,
+            "token": "danger-100",
+            "hex": "#F6DFDB",
+            "mix": "84% branco",
+            "vsPaper": 1.23,
+            "vsInk": 13.76
+          },
+          {
+            "step": 200,
+            "token": "danger-200",
+            "hex": "#EEC0B7",
+            "mix": "68% branco",
+            "vsPaper": 1.58,
+            "vsInk": 10.73
+          },
+          {
+            "step": 300,
+            "token": "danger-300",
+            "hex": "#E49D8F",
+            "mix": "50% branco",
+            "vsPaper": 2.13,
+            "vsInk": 7.94
+          },
+          {
+            "step": 400,
+            "token": "danger-400",
+            "hex": "#D76B57",
+            "mix": "25% branco",
+            "vsPaper": 3.31,
+            "vsInk": 5.11
+          },
+          {
+            "step": 500,
+            "token": "danger-500",
+            "hex": "#C93A1F",
+            "mix": "semente",
+            "vsPaper": 4.94,
+            "vsInk": 3.43
+          },
+          {
+            "step": 600,
+            "token": "danger-600",
+            "hex": "#B1331B",
+            "mix": "12% preto",
+            "vsPaper": 6.04,
+            "vsInk": 2.8
+          },
+          {
+            "step": 700,
+            "token": "danger-700",
+            "hex": "#912A16",
+            "mix": "28% preto",
+            "vsPaper": 7.97,
+            "vsInk": 2.12
+          },
+          {
+            "step": 800,
+            "token": "danger-800",
+            "hex": "#6F2011",
+            "mix": "45% preto",
+            "vsPaper": 10.74,
+            "vsInk": 1.58
+          },
+          {
+            "step": 900,
+            "token": "danger-900",
+            "hex": "#4C160C",
+            "mix": "62% preto",
+            "vsPaper": 14.22,
+            "vsInk": 1.19
+          },
+          {
+            "step": 950,
+            "token": "danger-950",
+            "hex": "#2C0D07",
+            "mix": "78% preto",
+            "vsPaper": 17.38,
+            "vsInk": 1.03
+          }
+        ]
+      },
+      "neutrals": [
+        {
+          "step": 0,
+          "token": "neutral-0",
+          "hex": "#F8FCFA",
+          "mix": "cinza + primária",
+          "vsPaper": 1,
+          "vsInk": 16.93
+        },
+        {
+          "step": 50,
+          "token": "neutral-50",
+          "hex": "#EFF2F1",
+          "mix": "cinza + primária",
+          "vsPaper": 1.09,
+          "vsInk": 15.55
+        },
+        {
+          "step": 100,
+          "token": "neutral-100",
+          "hex": "#E4E8E6",
+          "mix": "cinza + primária",
+          "vsPaper": 1.19,
+          "vsInk": 14.17
+        },
+        {
+          "step": 200,
+          "token": "neutral-200",
+          "hex": "#D5D8D6",
+          "mix": "cinza + primária",
+          "vsPaper": 1.39,
+          "vsInk": 12.2
+        },
+        {
+          "step": 300,
+          "token": "neutral-300",
+          "hex": "#BFC1C0",
+          "mix": "cinza + primária",
+          "vsPaper": 1.75,
+          "vsInk": 9.68
+        },
+        {
+          "step": 400,
+          "token": "neutral-400",
+          "hex": "#9C9E9D",
+          "mix": "cinza + primária",
+          "vsPaper": 2.6,
+          "vsInk": 6.5
+        },
+        {
+          "step": 500,
+          "token": "neutral-500",
+          "hex": "#7D8180",
+          "mix": "cinza + primária",
+          "vsPaper": 3.81,
+          "vsInk": 4.44
+        },
+        {
+          "step": 600,
+          "token": "neutral-600",
+          "hex": "#636666",
+          "mix": "cinza + primária",
+          "vsPaper": 5.6,
+          "vsInk": 3.02
+        },
+        {
+          "step": 700,
+          "token": "neutral-700",
+          "hex": "#4B4F4E",
+          "mix": "cinza + primária",
+          "vsPaper": 8.03,
+          "vsInk": 2.11
+        },
+        {
+          "step": 800,
+          "token": "neutral-800",
+          "hex": "#353B38",
+          "mix": "cinza + primária",
+          "vsPaper": 11.07,
+          "vsInk": 1.53
+        },
+        {
+          "step": 900,
+          "token": "neutral-900",
+          "hex": "#222826",
+          "mix": "cinza + primária",
+          "vsPaper": 14.5,
+          "vsInk": 1.17
+        },
+        {
+          "step": 950,
+          "token": "neutral-950",
+          "hex": "#141B17",
+          "mix": "cinza + primária",
+          "vsPaper": 16.93,
+          "vsInk": 1
+        }
+      ],
+      "semantic": {
+        "surface-base": "#F8FCFA",
+        "surface-raised": "#FDFEFD",
+        "surface-sunken": "#E4E8E6",
+        "surface-hover": "#E4E8E6",
+        "surface-active": "#D5D8D6",
+        "ink": "#141B17",
+        "ink-muted": "#4B4F4E",
+        "ink-subtle": "#636666",
+        "ink-disabled": "#7D8180",
+        "border": "#BFC1C0",
+        "border-strong": "#636666",
+        "stroke": "#141B17",
+        "primary-fill": "#108045",
+        "primary-fill-hover": "#0D6938",
+        "primary-fill-active": "#0A502B",
+        "on-primary": "#FFFFFF",
+        "primary-text": "#0D6938",
+        "primary-text-hover": "#0A502B",
+        "primary-soft": "#ECF6F1",
+        "primary-soft-hover": "#D9EEE3",
+        "primary-decor": "#12924E",
+        "focus-ring": "#12924E",
+        "field-focus-stroke": "#042011",
+        "secondary-1-fill": "#1A709E",
+        "secondary-1-fill-hover": "#155B81",
+        "on-secondary-1": "#FFFFFF",
+        "secondary-1-text": "#155B81",
+        "secondary-1-soft": "#EDF5F9",
+        "secondary-2-fill": "#F5C86B",
+        "secondary-2-fill-hover": "#F2B53A",
+        "on-secondary-2": "#141B17",
+        "secondary-2-text": "#856420",
+        "secondary-2-soft": "#FEF9EF",
+        "success-fill": "#0D6861",
+        "on-success": "#FFFFFF",
+        "success-text": "#0B554F",
+        "success-soft": "#ECF4F3",
+        "warning-fill": "#EAB953",
+        "on-warning": "#141B17",
+        "warning-text": "#7D590E",
+        "warning-soft": "#FDF8ED",
+        "danger-fill": "#B1331B",
+        "on-danger": "#FFFFFF",
+        "danger-text": "#912A16",
+        "danger-soft": "#FBEFED",
+        "overlay": "#141B178C",
+        "shadow-ink": "#141B17",
+        "shadow-soft": "#D5D8D6",
+        "tape": "#7D81806B",
+        "hatch-a": "#E4E8E6",
+        "hatch-b": "#F8FCFA",
+        "hole": "#E4E8E6",
+        "hole-rim": "#7D8180",
+        "selection": "#B3DCC6",
+        "footer-bg": "#121916",
+        "footer-ink": "#EFF2F1",
+        "footer-link": "#EFF2F1",
+        "footer-focus": "#89C9A7",
+        "footer-tree-far": "#224935",
+        "footer-tree-mid": "#1B3F2C",
+        "footer-tree-near": "#0D291B",
+        "footer-accent": "#4DAD7A",
+        "footer-sky-accent": "#E4E8E6",
+        "hero-shape-1": "#B3DCC6",
+        "hero-shape-2": "#DBEBF3",
+        "hero-shape-3": "#FDF3DF",
+        "hero-shape-4": "#D9EEE3",
+        "hero-shape-5": "#E4E8E6",
+        "hero-plate": "#FDFEFD"
+      },
+      "pairs": [
+        {
+          "fg": "ink",
+          "bg": "surface-base",
+          "kind": "texto",
+          "uso": "Texto principal",
+          "min": 4.5,
+          "ratio": 16.93,
+          "pass": true
+        },
+        {
+          "fg": "ink",
+          "bg": "surface-raised",
+          "kind": "texto",
+          "uso": "Texto principal",
+          "min": 4.5,
+          "ratio": 17.33,
+          "pass": true
+        },
+        {
+          "fg": "ink",
+          "bg": "surface-sunken",
+          "kind": "texto",
+          "uso": "Texto principal",
+          "min": 4.5,
+          "ratio": 14.17,
+          "pass": true
+        },
+        {
+          "fg": "ink-muted",
+          "bg": "surface-base",
+          "kind": "texto",
+          "uso": "Texto secundário",
+          "min": 4.5,
+          "ratio": 8.03,
+          "pass": true
+        },
+        {
+          "fg": "ink-muted",
+          "bg": "surface-raised",
+          "kind": "texto",
+          "uso": "Texto secundário",
+          "min": 4.5,
+          "ratio": 8.22,
+          "pass": true
+        },
+        {
+          "fg": "ink-muted",
+          "bg": "surface-sunken",
+          "kind": "texto",
+          "uso": "Texto secundário",
+          "min": 4.5,
+          "ratio": 6.72,
+          "pass": true
+        },
+        {
+          "fg": "ink",
+          "bg": "surface-hover",
+          "kind": "texto",
+          "uso": "Controle em hover",
+          "min": 4.5,
+          "ratio": 14.17,
+          "pass": true
+        },
+        {
+          "fg": "ink",
+          "bg": "surface-active",
+          "kind": "texto",
+          "uso": "Controle pressionado",
+          "min": 4.5,
+          "ratio": 12.2,
+          "pass": true
+        },
+        {
+          "fg": "stroke",
+          "bg": "surface-active",
+          "kind": "componente",
+          "uso": "Contorno de controle pressionado",
+          "min": 3,
+          "ratio": 12.2,
+          "pass": true
+        },
+        {
+          "fg": "ink-subtle",
+          "bg": "surface-base",
+          "kind": "texto",
+          "uso": "Metadados e rótulos mono",
+          "min": 4.5,
+          "ratio": 5.6,
+          "pass": true
+        },
+        {
+          "fg": "ink-subtle",
+          "bg": "surface-raised",
+          "kind": "texto",
+          "uso": "Metadados e rótulos mono",
+          "min": 4.5,
+          "ratio": 5.73,
+          "pass": true
+        },
+        {
+          "fg": "ink-subtle",
+          "bg": "surface-sunken",
+          "kind": "texto",
+          "uso": "Metadados e rótulos mono",
+          "min": 4.5,
+          "ratio": 4.69,
+          "pass": true
+        },
+        {
+          "fg": "ink-disabled",
+          "bg": "surface-base",
+          "kind": "desabilitado",
+          "uso": "Texto desabilitado (com outro indicador)",
+          "min": 3,
+          "ratio": 3.81,
+          "pass": true
+        },
+        {
+          "fg": "ink-disabled",
+          "bg": "surface-raised",
+          "kind": "desabilitado",
+          "uso": "Texto desabilitado (com outro indicador)",
+          "min": 3,
+          "ratio": 3.9,
+          "pass": true
+        },
+        {
+          "fg": "ink-disabled",
+          "bg": "surface-sunken",
+          "kind": "desabilitado",
+          "uso": "Texto desabilitado (com outro indicador)",
+          "min": 3,
+          "ratio": 3.19,
+          "pass": true
+        },
+        {
+          "fg": "primary-text",
+          "bg": "surface-base",
+          "kind": "texto",
+          "uso": "Link e texto em primária",
+          "min": 4.5,
+          "ratio": 6.56,
+          "pass": true
+        },
+        {
+          "fg": "primary-text",
+          "bg": "surface-raised",
+          "kind": "texto",
+          "uso": "Link e texto em primária",
+          "min": 4.5,
+          "ratio": 6.71,
+          "pass": true
+        },
+        {
+          "fg": "primary-text",
+          "bg": "surface-sunken",
+          "kind": "texto",
+          "uso": "Link e texto em primária",
+          "min": 4.5,
+          "ratio": 5.49,
+          "pass": true
+        },
+        {
+          "fg": "primary-text-hover",
+          "bg": "surface-base",
+          "kind": "texto",
+          "uso": "Link em hover",
+          "min": 4.5,
+          "ratio": 9.25,
+          "pass": true
+        },
+        {
+          "fg": "primary-text-hover",
+          "bg": "surface-raised",
+          "kind": "texto",
+          "uso": "Link em hover",
+          "min": 4.5,
+          "ratio": 9.46,
+          "pass": true
+        },
+        {
+          "fg": "primary-text-hover",
+          "bg": "surface-sunken",
+          "kind": "texto",
+          "uso": "Link em hover",
+          "min": 4.5,
+          "ratio": 7.74,
+          "pass": true
+        },
+        {
+          "fg": "primary-text",
+          "bg": "primary-soft",
+          "kind": "texto",
+          "uso": "Texto em primária sobre fundo suave",
+          "min": 4.5,
+          "ratio": 6.15,
+          "pass": true
+        },
+        {
+          "fg": "ink",
+          "bg": "primary-soft",
+          "kind": "texto",
+          "uso": "Chip selecionado e campo em foco",
+          "min": 4.5,
+          "ratio": 15.86,
+          "pass": true
+        },
+        {
+          "fg": "ink-subtle",
+          "bg": "primary-soft",
+          "kind": "texto",
+          "uso": "Placeholder de campo em foco",
+          "min": 4.5,
+          "ratio": 5.25,
+          "pass": true
+        },
+        {
+          "fg": "ink-muted",
+          "bg": "primary-soft",
+          "kind": "texto",
+          "uso": "Ícone e contador de campo em foco",
+          "min": 4.5,
+          "ratio": 7.52,
+          "pass": true
+        },
+        {
+          "fg": "ink",
+          "bg": "primary-soft-hover",
+          "kind": "texto",
+          "uso": "Chip selecionado em hover",
+          "min": 4.5,
+          "ratio": 14.42,
+          "pass": true
+        },
+        {
+          "fg": "primary-decor",
+          "bg": "surface-base",
+          "kind": "texto-grande",
+          "uso": "Títulos de 24 px ou mais e ícones com rótulo",
+          "min": 3,
+          "ratio": 3.87,
+          "pass": true
+        },
+        {
+          "fg": "primary-decor",
+          "bg": "surface-raised",
+          "kind": "texto-grande",
+          "uso": "Títulos de 24 px ou mais e ícones com rótulo",
+          "min": 3,
+          "ratio": 3.96,
+          "pass": true
+        },
+        {
+          "fg": "on-primary",
+          "bg": "primary-fill",
+          "kind": "texto",
+          "uso": "Botão primário",
+          "min": 4.5,
+          "ratio": 5.01,
+          "pass": true
+        },
+        {
+          "fg": "on-primary",
+          "bg": "primary-fill-hover",
+          "kind": "texto",
+          "uso": "Botão primário em hover",
+          "min": 4.5,
+          "ratio": 6.79,
+          "pass": true
+        },
+        {
+          "fg": "on-primary",
+          "bg": "primary-fill-active",
+          "kind": "texto",
+          "uso": "Botão primário pressionado",
+          "min": 4.5,
+          "ratio": 9.57,
+          "pass": true
+        },
+        {
+          "fg": "primary-fill",
+          "bg": "surface-base",
+          "kind": "componente",
+          "uso": "Botão primário contra o papel",
+          "min": 3,
+          "ratio": 4.84,
+          "pass": true
+        },
+        {
+          "fg": "primary-fill",
+          "bg": "surface-raised",
+          "kind": "componente",
+          "uso": "Botão primário contra o papel",
+          "min": 3,
+          "ratio": 4.95,
+          "pass": true
+        },
+        {
+          "fg": "stroke",
+          "bg": "surface-base",
+          "kind": "componente",
+          "uso": "Contorno desenhado",
+          "min": 3,
+          "ratio": 16.93,
+          "pass": true
+        },
+        {
+          "fg": "stroke",
+          "bg": "surface-raised",
+          "kind": "componente",
+          "uso": "Contorno desenhado",
+          "min": 3,
+          "ratio": 17.33,
+          "pass": true
+        },
+        {
+          "fg": "stroke",
+          "bg": "surface-sunken",
+          "kind": "componente",
+          "uso": "Contorno desenhado",
+          "min": 3,
+          "ratio": 14.17,
+          "pass": true
+        },
+        {
+          "fg": "border-strong",
+          "bg": "surface-base",
+          "kind": "componente",
+          "uso": "Borda de campo e controle",
+          "min": 3,
+          "ratio": 5.6,
+          "pass": true
+        },
+        {
+          "fg": "border-strong",
+          "bg": "surface-raised",
+          "kind": "componente",
+          "uso": "Borda de campo e controle",
+          "min": 3,
+          "ratio": 5.73,
+          "pass": true
+        },
+        {
+          "fg": "border-strong",
+          "bg": "surface-sunken",
+          "kind": "componente",
+          "uso": "Borda de campo e controle",
+          "min": 3,
+          "ratio": 4.69,
+          "pass": true
+        },
+        {
+          "fg": "focus-ring",
+          "bg": "surface-base",
+          "kind": "foco",
+          "uso": "Anel de foco",
+          "min": 3,
+          "ratio": 3.87,
+          "pass": true
+        },
+        {
+          "fg": "focus-ring",
+          "bg": "surface-raised",
+          "kind": "foco",
+          "uso": "Anel de foco",
+          "min": 3,
+          "ratio": 3.96,
+          "pass": true
+        },
+        {
+          "fg": "focus-ring",
+          "bg": "surface-sunken",
+          "kind": "foco",
+          "uso": "Anel de foco",
+          "min": 3,
+          "ratio": 3.24,
+          "pass": true
+        },
+        {
+          "fg": "field-focus-stroke",
+          "bg": "surface-base",
+          "kind": "foco",
+          "uso": "Contorno de campo em foco",
+          "min": 3,
+          "ratio": 16.64,
+          "pass": true
+        },
+        {
+          "fg": "field-focus-stroke",
+          "bg": "surface-raised",
+          "kind": "foco",
+          "uso": "Contorno de campo em foco",
+          "min": 3,
+          "ratio": 17.03,
+          "pass": true
+        },
+        {
+          "fg": "field-focus-stroke",
+          "bg": "primary-soft",
+          "kind": "foco",
+          "uso": "Contorno de campo em foco",
+          "min": 3,
+          "ratio": 15.59,
+          "pass": true
+        },
+        {
+          "fg": "on-secondary-1",
+          "bg": "secondary-1-fill",
+          "kind": "texto",
+          "uso": "Preenchimento secundário 1",
+          "min": 4.5,
+          "ratio": 5.45,
+          "pass": true
+        },
+        {
+          "fg": "on-secondary-1",
+          "bg": "secondary-1-fill-hover",
+          "kind": "texto",
+          "uso": "Secundário 1 em hover",
+          "min": 4.5,
+          "ratio": 7.38,
+          "pass": true
+        },
+        {
+          "fg": "secondary-1-text",
+          "bg": "surface-base",
+          "kind": "texto",
+          "uso": "Texto secundário 1",
+          "min": 4.5,
+          "ratio": 7.13,
+          "pass": true
+        },
+        {
+          "fg": "secondary-1-text",
+          "bg": "surface-raised",
+          "kind": "texto",
+          "uso": "Texto secundário 1",
+          "min": 4.5,
+          "ratio": 7.3,
+          "pass": true
+        },
+        {
+          "fg": "secondary-1-text",
+          "bg": "secondary-1-soft",
+          "kind": "texto",
+          "uso": "Texto sobre secundário 1 suave",
+          "min": 4.5,
+          "ratio": 6.69,
+          "pass": true
+        },
+        {
+          "fg": "on-secondary-2",
+          "bg": "secondary-2-fill",
+          "kind": "texto",
+          "uso": "Preenchimento secundário 2",
+          "min": 4.5,
+          "ratio": 11.14,
+          "pass": true
+        },
+        {
+          "fg": "on-secondary-2",
+          "bg": "secondary-2-fill-hover",
+          "kind": "texto",
+          "uso": "Secundário 2 em hover",
+          "min": 4.5,
+          "ratio": 9.55,
+          "pass": true
+        },
+        {
+          "fg": "secondary-2-text",
+          "bg": "surface-base",
+          "kind": "texto",
+          "uso": "Texto secundário 2",
+          "min": 4.5,
+          "ratio": 5.28,
+          "pass": true
+        },
+        {
+          "fg": "secondary-2-text",
+          "bg": "surface-raised",
+          "kind": "texto",
+          "uso": "Texto secundário 2",
+          "min": 4.5,
+          "ratio": 5.41,
+          "pass": true
+        },
+        {
+          "fg": "secondary-2-text",
+          "bg": "secondary-2-soft",
+          "kind": "texto",
+          "uso": "Texto sobre secundário 2 suave",
+          "min": 4.5,
+          "ratio": 5.21,
+          "pass": true
+        },
+        {
+          "fg": "on-success",
+          "bg": "success-fill",
+          "kind": "texto",
+          "uso": "Sucesso preenchido",
+          "min": 4.5,
+          "ratio": 6.62,
+          "pass": true
+        },
+        {
+          "fg": "success-text",
+          "bg": "surface-base",
+          "kind": "texto",
+          "uso": "Texto de sucesso",
+          "min": 4.5,
+          "ratio": 8.36,
+          "pass": true
+        },
+        {
+          "fg": "success-text",
+          "bg": "surface-raised",
+          "kind": "texto",
+          "uso": "Texto de sucesso",
+          "min": 4.5,
+          "ratio": 8.56,
+          "pass": true
+        },
+        {
+          "fg": "success-text",
+          "bg": "success-soft",
+          "kind": "texto",
+          "uso": "Aviso de sucesso",
+          "min": 4.5,
+          "ratio": 7.75,
+          "pass": true
+        },
+        {
+          "fg": "ink",
+          "bg": "success-soft",
+          "kind": "texto",
+          "uso": "Texto em aviso de sucesso",
+          "min": 4.5,
+          "ratio": 15.68,
+          "pass": true
+        },
+        {
+          "fg": "on-warning",
+          "bg": "warning-fill",
+          "kind": "texto",
+          "uso": "Atenção preenchido",
+          "min": 4.5,
+          "ratio": 9.64,
+          "pass": true
+        },
+        {
+          "fg": "warning-text",
+          "bg": "surface-base",
+          "kind": "texto",
+          "uso": "Texto de atenção",
+          "min": 4.5,
+          "ratio": 6.14,
+          "pass": true
+        },
+        {
+          "fg": "warning-text",
+          "bg": "surface-raised",
+          "kind": "texto",
+          "uso": "Texto de atenção",
+          "min": 4.5,
+          "ratio": 6.28,
+          "pass": true
+        },
+        {
+          "fg": "warning-text",
+          "bg": "warning-soft",
+          "kind": "texto",
+          "uso": "Aviso de atenção",
+          "min": 4.5,
+          "ratio": 5.99,
+          "pass": true
+        },
+        {
+          "fg": "ink",
+          "bg": "warning-soft",
+          "kind": "texto",
+          "uso": "Texto em aviso de atenção",
+          "min": 4.5,
+          "ratio": 16.54,
+          "pass": true
+        },
+        {
+          "fg": "on-danger",
+          "bg": "danger-fill",
+          "kind": "texto",
+          "uso": "Perigo preenchido",
+          "min": 4.5,
+          "ratio": 6.25,
+          "pass": true
+        },
+        {
+          "fg": "danger-text",
+          "bg": "surface-base",
+          "kind": "texto",
+          "uso": "Mensagem de erro",
+          "min": 4.5,
+          "ratio": 7.97,
+          "pass": true
+        },
+        {
+          "fg": "danger-text",
+          "bg": "surface-raised",
+          "kind": "texto",
+          "uso": "Mensagem de erro",
+          "min": 4.5,
+          "ratio": 8.16,
+          "pass": true
+        },
+        {
+          "fg": "danger-text",
+          "bg": "surface-sunken",
+          "kind": "texto",
+          "uso": "Mensagem de erro",
+          "min": 4.5,
+          "ratio": 6.67,
+          "pass": true
+        },
+        {
+          "fg": "danger-text",
+          "bg": "danger-soft",
+          "kind": "texto",
+          "uso": "Erro sobre fundo suave",
+          "min": 4.5,
+          "ratio": 7.33,
+          "pass": true
+        },
+        {
+          "fg": "ink",
+          "bg": "danger-soft",
+          "kind": "texto",
+          "uso": "Texto em aviso de erro",
+          "min": 4.5,
+          "ratio": 15.57,
+          "pass": true
+        },
+        {
+          "fg": "danger-fill",
+          "bg": "surface-base",
+          "kind": "componente",
+          "uso": "Borda de campo com erro",
+          "min": 3,
+          "ratio": 6.04,
+          "pass": true
+        },
+        {
+          "fg": "danger-fill",
+          "bg": "surface-raised",
+          "kind": "componente",
+          "uso": "Borda de campo com erro",
+          "min": 3,
+          "ratio": 6.18,
+          "pass": true
+        },
+        {
+          "fg": "footer-ink",
+          "bg": "footer-bg",
+          "kind": "texto",
+          "uso": "Texto do rodapé",
+          "min": 4.5,
+          "ratio": 15.85,
+          "pass": true
+        },
+        {
+          "fg": "footer-link",
+          "bg": "footer-bg",
+          "kind": "texto",
+          "uso": "Link do rodapé",
+          "min": 4.5,
+          "ratio": 15.85,
+          "pass": true
+        },
+        {
+          "fg": "footer-link",
+          "bg": "footer-tree-far",
+          "kind": "texto",
+          "uso": "Link sobre árvore do fundo",
+          "min": 4.5,
+          "ratio": 8.99,
+          "pass": true
+        },
+        {
+          "fg": "footer-link",
+          "bg": "footer-tree-mid",
+          "kind": "texto",
+          "uso": "Link sobre árvore do meio",
+          "min": 4.5,
+          "ratio": 10.39,
+          "pass": true
+        },
+        {
+          "fg": "footer-link",
+          "bg": "footer-tree-near",
+          "kind": "texto",
+          "uso": "Link sobre árvore da frente",
+          "min": 4.5,
+          "ratio": 13.81,
+          "pass": true
+        },
+        {
+          "fg": "footer-focus",
+          "bg": "footer-bg",
+          "kind": "foco",
+          "uso": "Anel de foco no rodapé",
+          "min": 3,
+          "ratio": 9.33,
+          "pass": true
+        },
+        {
+          "fg": "ink",
+          "bg": "hero-plate",
+          "kind": "texto",
+          "uso": "Texto do hero sobre a placa de apoio",
+          "min": 4.5,
+          "ratio": 17.33,
+          "pass": true
+        },
+        {
+          "fg": "ink-muted",
+          "bg": "hero-plate",
+          "kind": "texto",
+          "uso": "Parágrafo do hero",
+          "min": 4.5,
+          "ratio": 8.22,
+          "pass": true
+        }
+      ],
+      "dangerHueDistance": 138.6,
+      "successHueDistance": 27.21
+    },
+    {
+      "id": "verao-escuro",
+      "season": "verao",
+      "mode": "escuro",
+      "label": "Verão, escuro",
+      "seasonLabel": "Verão",
+      "description": "Verde de folha cheia com mar e sol.",
+      "colorScheme": "dark",
+      "themeColor": "#0C1510",
+      "energy": 1.1,
+      "rotationMax": 1.3,
+      "seeds": {
+        "primary": "#12924E",
+        "secondary-1": "#1D7FB3",
+        "secondary-2": "#F2B53A",
+        "success": "#0F766E",
+        "warning": "#E3A21A",
+        "danger": "#C93A1F"
+      },
+      "scales": {
+        "primary": [
+          {
+            "step": 50,
+            "token": "primary-50",
+            "hex": "#ECF6F1",
+            "mix": "92% branco",
+            "vsPaper": 16.83,
+            "vsInk": 1.02
+          },
+          {
+            "step": 100,
+            "token": "primary-100",
+            "hex": "#D9EEE3",
+            "mix": "84% branco",
+            "vsPaper": 15.3,
+            "vsInk": 1.08
+          },
+          {
+            "step": 200,
+            "token": "primary-200",
+            "hex": "#B3DCC6",
+            "mix": "68% branco",
+            "vsPaper": 12.36,
+            "vsInk": 1.33
+          },
+          {
+            "step": 300,
+            "token": "primary-300",
+            "hex": "#89C9A7",
+            "mix": "50% branco",
+            "vsPaper": 9.71,
+            "vsInk": 1.7
+          },
+          {
+            "step": 400,
+            "token": "primary-400",
+            "hex": "#4DAD7A",
+            "mix": "25% branco",
+            "vsPaper": 6.7,
+            "vsInk": 2.46
+          },
+          {
+            "step": 500,
+            "token": "primary-500",
+            "hex": "#12924E",
+            "mix": "semente",
+            "vsPaper": 4.64,
+            "vsInk": 3.55
+          },
+          {
+            "step": 600,
+            "token": "primary-600",
+            "hex": "#108045",
+            "mix": "12% preto",
+            "vsPaper": 3.71,
+            "vsInk": 4.44
+          },
+          {
+            "step": 700,
+            "token": "primary-700",
+            "hex": "#0D6938",
+            "mix": "28% preto",
+            "vsPaper": 2.74,
+            "vsInk": 6.02
+          },
+          {
+            "step": 800,
+            "token": "primary-800",
+            "hex": "#0A502B",
+            "mix": "45% preto",
+            "vsPaper": 1.94,
+            "vsInk": 8.49
+          },
+          {
+            "step": 900,
+            "token": "primary-900",
+            "hex": "#07371E",
+            "mix": "62% preto",
+            "vsPaper": 1.39,
+            "vsInk": 11.84
+          },
+          {
+            "step": 950,
+            "token": "primary-950",
+            "hex": "#042011",
+            "mix": "78% preto",
+            "vsPaper": 1.08,
+            "vsInk": 15.28
+          }
+        ],
+        "secondary-1": [
+          {
+            "step": 50,
+            "token": "secondary-1-50",
+            "hex": "#EDF5F9",
+            "mix": "92% branco",
+            "vsPaper": 16.83,
+            "vsInk": 1.02
+          },
+          {
+            "step": 100,
+            "token": "secondary-1-100",
+            "hex": "#DBEBF3",
+            "mix": "84% branco",
+            "vsPaper": 15.21,
+            "vsInk": 1.08
+          },
+          {
+            "step": 200,
+            "token": "secondary-1-200",
+            "hex": "#B7D6E7",
+            "mix": "68% branco",
+            "vsPaper": 12.2,
+            "vsInk": 1.35
+          },
+          {
+            "step": 300,
+            "token": "secondary-1-300",
+            "hex": "#8EBFD9",
+            "mix": "50% branco",
+            "vsPaper": 9.38,
+            "vsInk": 1.76
+          },
+          {
+            "step": 400,
+            "token": "secondary-1-400",
+            "hex": "#569FC6",
+            "mix": "25% branco",
+            "vsPaper": 6.34,
+            "vsInk": 2.6
+          },
+          {
+            "step": 500,
+            "token": "secondary-1-500",
+            "hex": "#1D7FB3",
+            "mix": "semente",
+            "vsPaper": 4.19,
+            "vsInk": 3.93
+          },
+          {
+            "step": 600,
+            "token": "secondary-1-600",
+            "hex": "#1A709E",
+            "mix": "12% preto",
+            "vsPaper": 3.41,
+            "vsInk": 4.84
+          },
+          {
+            "step": 700,
+            "token": "secondary-1-700",
+            "hex": "#155B81",
+            "mix": "28% preto",
+            "vsPaper": 2.52,
+            "vsInk": 6.55
+          },
+          {
+            "step": 800,
+            "token": "secondary-1-800",
+            "hex": "#104662",
+            "mix": "45% preto",
+            "vsPaper": 1.84,
+            "vsInk": 8.99
+          },
+          {
+            "step": 900,
+            "token": "secondary-1-900",
+            "hex": "#0B3044",
+            "mix": "62% preto",
+            "vsPaper": 1.35,
+            "vsInk": 12.26
+          },
+          {
+            "step": 950,
+            "token": "secondary-1-950",
+            "hex": "#061C27",
+            "mix": "78% preto",
+            "vsPaper": 1.06,
+            "vsInk": 15.49
+          }
+        ],
+        "secondary-2": [
+          {
+            "step": 50,
+            "token": "secondary-2-50",
+            "hex": "#FEF9EF",
+            "mix": "92% branco",
+            "vsPaper": 17.7,
+            "vsInk": 1.07
+          },
+          {
+            "step": 100,
+            "token": "secondary-2-100",
+            "hex": "#FDF3DF",
+            "mix": "84% branco",
+            "vsPaper": 16.86,
+            "vsInk": 1.02
+          },
+          {
+            "step": 200,
+            "token": "secondary-2-200",
+            "hex": "#FBE7C0",
+            "mix": "68% branco",
+            "vsPaper": 15.3,
+            "vsInk": 1.08
+          },
+          {
+            "step": 300,
+            "token": "secondary-2-300",
+            "hex": "#F9DA9D",
+            "mix": "50% branco",
+            "vsPaper": 13.75,
+            "vsInk": 1.2
+          },
+          {
+            "step": 400,
+            "token": "secondary-2-400",
+            "hex": "#F5C86B",
+            "mix": "25% branco",
+            "vsPaper": 11.82,
+            "vsInk": 1.4
+          },
+          {
+            "step": 500,
+            "token": "secondary-2-500",
+            "hex": "#F2B53A",
+            "mix": "semente",
+            "vsPaper": 10.13,
+            "vsInk": 1.63
+          },
+          {
+            "step": 600,
+            "token": "secondary-2-600",
+            "hex": "#D59F33",
+            "mix": "12% preto",
+            "vsPaper": 7.82,
+            "vsInk": 2.11
+          },
+          {
+            "step": 700,
+            "token": "secondary-2-700",
+            "hex": "#AE822A",
+            "mix": "28% preto",
+            "vsPaper": 5.33,
+            "vsInk": 3.09
+          },
+          {
+            "step": 800,
+            "token": "secondary-2-800",
+            "hex": "#856420",
+            "mix": "45% preto",
+            "vsPaper": 3.4,
+            "vsInk": 4.85
+          },
+          {
+            "step": 900,
+            "token": "secondary-2-900",
+            "hex": "#5C4516",
+            "mix": "62% preto",
+            "vsPaper": 2.05,
+            "vsInk": 8.04
+          },
+          {
+            "step": 950,
+            "token": "secondary-2-950",
+            "hex": "#35280D",
+            "mix": "78% preto",
+            "vsPaper": 1.29,
+            "vsInk": 12.76
+          }
+        ],
+        "success": [
+          {
+            "step": 50,
+            "token": "success-50",
+            "hex": "#ECF4F3",
+            "mix": "92% branco",
+            "vsPaper": 16.63,
+            "vsInk": 1.01
+          },
+          {
+            "step": 100,
+            "token": "success-100",
+            "hex": "#D9E9E8",
+            "mix": "84% branco",
+            "vsPaper": 14.84,
+            "vsInk": 1.11
+          },
+          {
+            "step": 200,
+            "token": "success-200",
+            "hex": "#B2D3D1",
+            "mix": "68% branco",
+            "vsPaper": 11.62,
+            "vsInk": 1.42
+          },
+          {
+            "step": 300,
+            "token": "success-300",
+            "hex": "#87BBB7",
+            "mix": "50% branco",
+            "vsPaper": 8.69,
+            "vsInk": 1.9
+          },
+          {
+            "step": 400,
+            "token": "success-400",
+            "hex": "#4B9892",
+            "mix": "25% branco",
+            "vsPaper": 5.49,
+            "vsInk": 3
+          },
+          {
+            "step": 500,
+            "token": "success-500",
+            "hex": "#0F766E",
+            "mix": "semente",
+            "vsPaper": 3.39,
+            "vsInk": 4.86
+          },
+          {
+            "step": 600,
+            "token": "success-600",
+            "hex": "#0D6861",
+            "mix": "12% preto",
+            "vsPaper": 2.8,
+            "vsInk": 5.88
+          },
+          {
+            "step": 700,
+            "token": "success-700",
+            "hex": "#0B554F",
+            "mix": "28% preto",
+            "vsPaper": 2.15,
+            "vsInk": 7.68
+          },
+          {
+            "step": 800,
+            "token": "success-800",
+            "hex": "#08413D",
+            "mix": "45% preto",
+            "vsPaper": 1.62,
+            "vsInk": 10.17
+          },
+          {
+            "step": 900,
+            "token": "success-900",
+            "hex": "#062D2A",
+            "mix": "62% preto",
+            "vsPaper": 1.25,
+            "vsInk": 13.16
+          },
+          {
+            "step": 950,
+            "token": "success-950",
+            "hex": "#031A18",
+            "mix": "78% preto",
+            "vsPaper": 1.03,
+            "vsInk": 16
+          }
+        ],
+        "warning": [
+          {
+            "step": 50,
+            "token": "warning-50",
+            "hex": "#FDF8ED",
+            "mix": "92% branco",
+            "vsPaper": 17.54,
+            "vsInk": 1.06
+          },
+          {
+            "step": 100,
+            "token": "warning-100",
+            "hex": "#FBF0DA",
+            "mix": "84% branco",
+            "vsPaper": 16.44,
+            "vsInk": 1
+          },
+          {
+            "step": 200,
+            "token": "warning-200",
+            "hex": "#F6E1B6",
+            "mix": "68% branco",
+            "vsPaper": 14.48,
+            "vsInk": 1.14
+          },
+          {
+            "step": 300,
+            "token": "warning-300",
+            "hex": "#F1D18D",
+            "mix": "50% branco",
+            "vsPaper": 12.6,
+            "vsInk": 1.31
+          },
+          {
+            "step": 400,
+            "token": "warning-400",
+            "hex": "#EAB953",
+            "mix": "25% branco",
+            "vsPaper": 10.23,
+            "vsInk": 1.61
+          },
+          {
+            "step": 500,
+            "token": "warning-500",
+            "hex": "#E3A21A",
+            "mix": "semente",
+            "vsPaper": 8.36,
+            "vsInk": 1.97
+          },
+          {
+            "step": 600,
+            "token": "warning-600",
+            "hex": "#C88F17",
+            "mix": "12% preto",
+            "vsPaper": 6.54,
+            "vsInk": 2.52
+          },
+          {
+            "step": 700,
+            "token": "warning-700",
+            "hex": "#A37513",
+            "mix": "28% preto",
+            "vsPaper": 4.52,
+            "vsInk": 3.65
+          },
+          {
+            "step": 800,
+            "token": "warning-800",
+            "hex": "#7D590E",
+            "mix": "45% preto",
+            "vsPaper": 2.93,
+            "vsInk": 5.64
+          },
+          {
+            "step": 900,
+            "token": "warning-900",
+            "hex": "#563E0A",
+            "mix": "62% preto",
+            "vsPaper": 1.85,
+            "vsInk": 8.92
+          },
+          {
+            "step": 950,
+            "token": "warning-950",
+            "hex": "#322406",
+            "mix": "78% preto",
+            "vsPaper": 1.23,
+            "vsInk": 13.41
+          }
+        ],
+        "danger": [
+          {
+            "step": 50,
+            "token": "danger-50",
+            "hex": "#FBEFED",
+            "mix": "92% branco",
+            "vsPaper": 16.52,
+            "vsInk": 1
+          },
+          {
+            "step": 100,
+            "token": "danger-100",
+            "hex": "#F6DFDB",
+            "mix": "84% branco",
+            "vsPaper": 14.59,
+            "vsInk": 1.13
+          },
+          {
+            "step": 200,
+            "token": "danger-200",
+            "hex": "#EEC0B7",
+            "mix": "68% branco",
+            "vsPaper": 11.38,
+            "vsInk": 1.45
+          },
+          {
+            "step": 300,
+            "token": "danger-300",
+            "hex": "#E49D8F",
+            "mix": "50% branco",
+            "vsPaper": 8.42,
+            "vsInk": 1.96
+          },
+          {
+            "step": 400,
+            "token": "danger-400",
+            "hex": "#D76B57",
+            "mix": "25% branco",
+            "vsPaper": 5.42,
+            "vsInk": 3.04
+          },
+          {
+            "step": 500,
+            "token": "danger-500",
+            "hex": "#C93A1F",
+            "mix": "semente",
+            "vsPaper": 3.63,
+            "vsInk": 4.54
+          },
+          {
+            "step": 600,
+            "token": "danger-600",
+            "hex": "#B1331B",
+            "mix": "12% preto",
+            "vsPaper": 2.97,
+            "vsInk": 5.55
+          },
+          {
+            "step": 700,
+            "token": "danger-700",
+            "hex": "#912A16",
+            "mix": "28% preto",
+            "vsPaper": 2.25,
+            "vsInk": 7.32
+          },
+          {
+            "step": 800,
+            "token": "danger-800",
+            "hex": "#6F2011",
+            "mix": "45% preto",
+            "vsPaper": 1.67,
+            "vsInk": 9.86
+          },
+          {
+            "step": 900,
+            "token": "danger-900",
+            "hex": "#4C160C",
+            "mix": "62% preto",
+            "vsPaper": 1.26,
+            "vsInk": 13.06
+          },
+          {
+            "step": 950,
+            "token": "danger-950",
+            "hex": "#2C0D07",
+            "mix": "78% preto",
+            "vsPaper": 1.03,
+            "vsInk": 15.96
+          }
+        ]
+      },
+      "neutrals": [
+        {
+          "step": 0,
+          "token": "neutral-0",
+          "hex": "#F8FCFA",
+          "mix": "cinza + primária",
+          "vsPaper": 17.95,
+          "vsInk": 1.09
+        },
+        {
+          "step": 50,
+          "token": "neutral-50",
+          "hex": "#EFF2F1",
+          "mix": "cinza + primária",
+          "vsPaper": 16.49,
+          "vsInk": 1
+        },
+        {
+          "step": 100,
+          "token": "neutral-100",
+          "hex": "#E4E8E6",
+          "mix": "cinza + primária",
+          "vsPaper": 15.03,
+          "vsInk": 1.1
+        },
+        {
+          "step": 200,
+          "token": "neutral-200",
+          "hex": "#D5D8D6",
+          "mix": "cinza + primária",
+          "vsPaper": 12.94,
+          "vsInk": 1.27
+        },
+        {
+          "step": 300,
+          "token": "neutral-300",
+          "hex": "#BFC1C0",
+          "mix": "cinza + primária",
+          "vsPaper": 10.27,
+          "vsInk": 1.61
+        },
+        {
+          "step": 400,
+          "token": "neutral-400",
+          "hex": "#9C9E9D",
+          "mix": "cinza + primária",
+          "vsPaper": 6.89,
+          "vsInk": 2.39
+        },
+        {
+          "step": 500,
+          "token": "neutral-500",
+          "hex": "#7D8180",
+          "mix": "cinza + primária",
+          "vsPaper": 4.71,
+          "vsInk": 3.5
+        },
+        {
+          "step": 600,
+          "token": "neutral-600",
+          "hex": "#636666",
+          "mix": "cinza + primária",
+          "vsPaper": 3.21,
+          "vsInk": 5.15
+        },
+        {
+          "step": 700,
+          "token": "neutral-700",
+          "hex": "#4B4F4E",
+          "mix": "cinza + primária",
+          "vsPaper": 2.24,
+          "vsInk": 7.38
+        },
+        {
+          "step": 800,
+          "token": "neutral-800",
+          "hex": "#353B38",
+          "mix": "cinza + primária",
+          "vsPaper": 1.62,
+          "vsInk": 10.16
+        },
+        {
+          "step": 900,
+          "token": "neutral-900",
+          "hex": "#222826",
+          "mix": "cinza + primária",
+          "vsPaper": 1.24,
+          "vsInk": 13.32
+        },
+        {
+          "step": 950,
+          "token": "neutral-950",
+          "hex": "#141B17",
+          "mix": "cinza + primária",
+          "vsPaper": 1.06,
+          "vsInk": 15.55
+        }
+      ],
+      "semantic": {
+        "surface-base": "#0C1510",
+        "surface-raised": "#19221F",
+        "surface-sunken": "#060D09",
+        "surface-hover": "#242F2B",
+        "surface-active": "#2D3A35",
+        "ink": "#EFF2F1",
+        "ink-muted": "#D5D8D6",
+        "ink-subtle": "#BFC1C0",
+        "ink-disabled": "#7D8180",
+        "border": "#35413C",
+        "border-strong": "#9C9E9D",
+        "stroke": "#D5D8D6",
+        "primary-fill": "#4DAD7A",
+        "primary-fill-hover": "#89C9A7",
+        "primary-fill-active": "#B3DCC6",
+        "on-primary": "#0C1510",
+        "primary-text": "#89C9A7",
+        "primary-text-hover": "#B3DCC6",
+        "primary-soft": "#042011",
+        "primary-soft-hover": "#07371E",
+        "primary-decor": "#4DAD7A",
+        "focus-ring": "#4DAD7A",
+        "field-focus-stroke": "#ECF6F1",
+        "secondary-1-fill": "#8EBFD9",
+        "secondary-1-fill-hover": "#B7D6E7",
+        "on-secondary-1": "#0C1510",
+        "secondary-1-text": "#8EBFD9",
+        "secondary-1-soft": "#061C27",
+        "secondary-2-fill": "#F5C86B",
+        "secondary-2-fill-hover": "#F9DA9D",
+        "on-secondary-2": "#0C1510",
+        "secondary-2-text": "#F9DA9D",
+        "secondary-2-soft": "#35280D",
+        "success-fill": "#87BBB7",
+        "on-success": "#0C1510",
+        "success-text": "#87BBB7",
+        "success-soft": "#031A18",
+        "warning-fill": "#EAB953",
+        "on-warning": "#0C1510",
+        "warning-text": "#F1D18D",
+        "warning-soft": "#322406",
+        "danger-fill": "#E49D8F",
+        "on-danger": "#0C1510",
+        "danger-text": "#E49D8F",
+        "danger-soft": "#2C0D07",
+        "overlay": "#000000A6",
+        "shadow-ink": "#010905",
+        "shadow-soft": "#010C06",
+        "tape": "#BFC1C04D",
+        "hatch-a": "#19221F",
+        "hatch-b": "#0C1510",
+        "hole": "#0C1510",
+        "hole-rim": "#7D8180",
+        "selection": "#0A502B",
+        "footer-bg": "#070F0C",
+        "footer-ink": "#E4E8E6",
+        "footer-link": "#E4E8E6",
+        "footer-focus": "#4DAD7A",
+        "footer-tree-far": "#283731",
+        "footer-tree-mid": "#1A2521",
+        "footer-tree-near": "#010905",
+        "footer-accent": "#10693A",
+        "footer-sky-accent": "#E4E8E6",
+        "hero-shape-1": "#07371E",
+        "hero-shape-2": "#0B3044",
+        "hero-shape-3": "#35280D",
+        "hero-shape-4": "#042011",
+        "hero-shape-5": "#1E2824",
+        "hero-plate": "#19221F"
+      },
+      "pairs": [
+        {
+          "fg": "ink",
+          "bg": "surface-base",
+          "kind": "texto",
+          "uso": "Texto principal",
+          "min": 4.5,
+          "ratio": 16.49,
+          "pass": true
+        },
+        {
+          "fg": "ink",
+          "bg": "surface-raised",
+          "kind": "texto",
+          "uso": "Texto principal",
+          "min": 4.5,
+          "ratio": 14.45,
+          "pass": true
+        },
+        {
+          "fg": "ink",
+          "bg": "surface-sunken",
+          "kind": "texto",
+          "uso": "Texto principal",
+          "min": 4.5,
+          "ratio": 17.43,
+          "pass": true
+        },
+        {
+          "fg": "ink-muted",
+          "bg": "surface-base",
+          "kind": "texto",
+          "uso": "Texto secundário",
+          "min": 4.5,
+          "ratio": 12.94,
+          "pass": true
+        },
+        {
+          "fg": "ink-muted",
+          "bg": "surface-raised",
+          "kind": "texto",
+          "uso": "Texto secundário",
+          "min": 4.5,
+          "ratio": 11.34,
+          "pass": true
+        },
+        {
+          "fg": "ink-muted",
+          "bg": "surface-sunken",
+          "kind": "texto",
+          "uso": "Texto secundário",
+          "min": 4.5,
+          "ratio": 13.68,
+          "pass": true
+        },
+        {
+          "fg": "ink",
+          "bg": "surface-hover",
+          "kind": "texto",
+          "uso": "Controle em hover",
+          "min": 4.5,
+          "ratio": 12.29,
+          "pass": true
+        },
+        {
+          "fg": "ink",
+          "bg": "surface-active",
+          "kind": "texto",
+          "uso": "Controle pressionado",
+          "min": 4.5,
+          "ratio": 10.54,
+          "pass": true
+        },
+        {
+          "fg": "stroke",
+          "bg": "surface-active",
+          "kind": "componente",
+          "uso": "Contorno de controle pressionado",
+          "min": 3,
+          "ratio": 8.27,
+          "pass": true
+        },
+        {
+          "fg": "ink-subtle",
+          "bg": "surface-base",
+          "kind": "texto",
+          "uso": "Metadados e rótulos mono",
+          "min": 4.5,
+          "ratio": 10.27,
+          "pass": true
+        },
+        {
+          "fg": "ink-subtle",
+          "bg": "surface-raised",
+          "kind": "texto",
+          "uso": "Metadados e rótulos mono",
+          "min": 4.5,
+          "ratio": 9,
+          "pass": true
+        },
+        {
+          "fg": "ink-subtle",
+          "bg": "surface-sunken",
+          "kind": "texto",
+          "uso": "Metadados e rótulos mono",
+          "min": 4.5,
+          "ratio": 10.85,
+          "pass": true
+        },
+        {
+          "fg": "ink-disabled",
+          "bg": "surface-base",
+          "kind": "desabilitado",
+          "uso": "Texto desabilitado (com outro indicador)",
+          "min": 3,
+          "ratio": 4.71,
+          "pass": true
+        },
+        {
+          "fg": "ink-disabled",
+          "bg": "surface-raised",
+          "kind": "desabilitado",
+          "uso": "Texto desabilitado (com outro indicador)",
+          "min": 3,
+          "ratio": 4.13,
+          "pass": true
+        },
+        {
+          "fg": "ink-disabled",
+          "bg": "surface-sunken",
+          "kind": "desabilitado",
+          "uso": "Texto desabilitado (com outro indicador)",
+          "min": 3,
+          "ratio": 4.98,
+          "pass": true
+        },
+        {
+          "fg": "primary-text",
+          "bg": "surface-base",
+          "kind": "texto",
+          "uso": "Link e texto em primária",
+          "min": 4.5,
+          "ratio": 9.71,
+          "pass": true
+        },
+        {
+          "fg": "primary-text",
+          "bg": "surface-raised",
+          "kind": "texto",
+          "uso": "Link e texto em primária",
+          "min": 4.5,
+          "ratio": 8.51,
+          "pass": true
+        },
+        {
+          "fg": "primary-text",
+          "bg": "surface-sunken",
+          "kind": "texto",
+          "uso": "Link e texto em primária",
+          "min": 4.5,
+          "ratio": 10.27,
+          "pass": true
+        },
+        {
+          "fg": "primary-text-hover",
+          "bg": "surface-base",
+          "kind": "texto",
+          "uso": "Link em hover",
+          "min": 4.5,
+          "ratio": 12.36,
+          "pass": true
+        },
+        {
+          "fg": "primary-text-hover",
+          "bg": "surface-raised",
+          "kind": "texto",
+          "uso": "Link em hover",
+          "min": 4.5,
+          "ratio": 10.83,
+          "pass": true
+        },
+        {
+          "fg": "primary-text-hover",
+          "bg": "surface-sunken",
+          "kind": "texto",
+          "uso": "Link em hover",
+          "min": 4.5,
+          "ratio": 13.06,
+          "pass": true
+        },
+        {
+          "fg": "primary-text",
+          "bg": "primary-soft",
+          "kind": "texto",
+          "uso": "Texto em primária sobre fundo suave",
+          "min": 4.5,
+          "ratio": 9,
+          "pass": true
+        },
+        {
+          "fg": "ink",
+          "bg": "primary-soft",
+          "kind": "texto",
+          "uso": "Chip selecionado e campo em foco",
+          "min": 4.5,
+          "ratio": 15.28,
+          "pass": true
+        },
+        {
+          "fg": "ink-subtle",
+          "bg": "primary-soft",
+          "kind": "texto",
+          "uso": "Placeholder de campo em foco",
+          "min": 4.5,
+          "ratio": 9.51,
+          "pass": true
+        },
+        {
+          "fg": "ink-muted",
+          "bg": "primary-soft",
+          "kind": "texto",
+          "uso": "Ícone e contador de campo em foco",
+          "min": 4.5,
+          "ratio": 11.99,
+          "pass": true
+        },
+        {
+          "fg": "ink",
+          "bg": "primary-soft-hover",
+          "kind": "texto",
+          "uso": "Chip selecionado em hover",
+          "min": 4.5,
+          "ratio": 11.84,
+          "pass": true
+        },
+        {
+          "fg": "primary-decor",
+          "bg": "surface-base",
+          "kind": "texto-grande",
+          "uso": "Títulos de 24 px ou mais e ícones com rótulo",
+          "min": 3,
+          "ratio": 6.7,
+          "pass": true
+        },
+        {
+          "fg": "primary-decor",
+          "bg": "surface-raised",
+          "kind": "texto-grande",
+          "uso": "Títulos de 24 px ou mais e ícones com rótulo",
+          "min": 3,
+          "ratio": 5.87,
+          "pass": true
+        },
+        {
+          "fg": "on-primary",
+          "bg": "primary-fill",
+          "kind": "texto",
+          "uso": "Botão primário",
+          "min": 4.5,
+          "ratio": 6.7,
+          "pass": true
+        },
+        {
+          "fg": "on-primary",
+          "bg": "primary-fill-hover",
+          "kind": "texto",
+          "uso": "Botão primário em hover",
+          "min": 4.5,
+          "ratio": 9.71,
+          "pass": true
+        },
+        {
+          "fg": "on-primary",
+          "bg": "primary-fill-active",
+          "kind": "texto",
+          "uso": "Botão primário pressionado",
+          "min": 4.5,
+          "ratio": 12.36,
+          "pass": true
+        },
+        {
+          "fg": "primary-fill",
+          "bg": "surface-base",
+          "kind": "componente",
+          "uso": "Botão primário contra o papel",
+          "min": 3,
+          "ratio": 6.7,
+          "pass": true
+        },
+        {
+          "fg": "primary-fill",
+          "bg": "surface-raised",
+          "kind": "componente",
+          "uso": "Botão primário contra o papel",
+          "min": 3,
+          "ratio": 5.87,
+          "pass": true
+        },
+        {
+          "fg": "stroke",
+          "bg": "surface-base",
+          "kind": "componente",
+          "uso": "Contorno desenhado",
+          "min": 3,
+          "ratio": 12.94,
+          "pass": true
+        },
+        {
+          "fg": "stroke",
+          "bg": "surface-raised",
+          "kind": "componente",
+          "uso": "Contorno desenhado",
+          "min": 3,
+          "ratio": 11.34,
+          "pass": true
+        },
+        {
+          "fg": "stroke",
+          "bg": "surface-sunken",
+          "kind": "componente",
+          "uso": "Contorno desenhado",
+          "min": 3,
+          "ratio": 13.68,
+          "pass": true
+        },
+        {
+          "fg": "border-strong",
+          "bg": "surface-base",
+          "kind": "componente",
+          "uso": "Borda de campo e controle",
+          "min": 3,
+          "ratio": 6.89,
+          "pass": true
+        },
+        {
+          "fg": "border-strong",
+          "bg": "surface-raised",
+          "kind": "componente",
+          "uso": "Borda de campo e controle",
+          "min": 3,
+          "ratio": 6.04,
+          "pass": true
+        },
+        {
+          "fg": "border-strong",
+          "bg": "surface-sunken",
+          "kind": "componente",
+          "uso": "Borda de campo e controle",
+          "min": 3,
+          "ratio": 7.29,
+          "pass": true
+        },
+        {
+          "fg": "focus-ring",
+          "bg": "surface-base",
+          "kind": "foco",
+          "uso": "Anel de foco",
+          "min": 3,
+          "ratio": 6.7,
+          "pass": true
+        },
+        {
+          "fg": "focus-ring",
+          "bg": "surface-raised",
+          "kind": "foco",
+          "uso": "Anel de foco",
+          "min": 3,
+          "ratio": 5.87,
+          "pass": true
+        },
+        {
+          "fg": "focus-ring",
+          "bg": "surface-sunken",
+          "kind": "foco",
+          "uso": "Anel de foco",
+          "min": 3,
+          "ratio": 7.08,
+          "pass": true
+        },
+        {
+          "fg": "field-focus-stroke",
+          "bg": "surface-base",
+          "kind": "foco",
+          "uso": "Contorno de campo em foco",
+          "min": 3,
+          "ratio": 16.83,
+          "pass": true
+        },
+        {
+          "fg": "field-focus-stroke",
+          "bg": "surface-raised",
+          "kind": "foco",
+          "uso": "Contorno de campo em foco",
+          "min": 3,
+          "ratio": 14.74,
+          "pass": true
+        },
+        {
+          "fg": "field-focus-stroke",
+          "bg": "primary-soft",
+          "kind": "foco",
+          "uso": "Contorno de campo em foco",
+          "min": 3,
+          "ratio": 15.59,
+          "pass": true
+        },
+        {
+          "fg": "on-secondary-1",
+          "bg": "secondary-1-fill",
+          "kind": "texto",
+          "uso": "Preenchimento secundário 1",
+          "min": 4.5,
+          "ratio": 9.38,
+          "pass": true
+        },
+        {
+          "fg": "on-secondary-1",
+          "bg": "secondary-1-fill-hover",
+          "kind": "texto",
+          "uso": "Secundário 1 em hover",
+          "min": 4.5,
+          "ratio": 12.2,
+          "pass": true
+        },
+        {
+          "fg": "secondary-1-text",
+          "bg": "surface-base",
+          "kind": "texto",
+          "uso": "Texto secundário 1",
+          "min": 4.5,
+          "ratio": 9.38,
+          "pass": true
+        },
+        {
+          "fg": "secondary-1-text",
+          "bg": "surface-raised",
+          "kind": "texto",
+          "uso": "Texto secundário 1",
+          "min": 4.5,
+          "ratio": 8.22,
+          "pass": true
+        },
+        {
+          "fg": "secondary-1-text",
+          "bg": "secondary-1-soft",
+          "kind": "texto",
+          "uso": "Texto sobre secundário 1 suave",
+          "min": 4.5,
+          "ratio": 8.81,
+          "pass": true
+        },
+        {
+          "fg": "on-secondary-2",
+          "bg": "secondary-2-fill",
+          "kind": "texto",
+          "uso": "Preenchimento secundário 2",
+          "min": 4.5,
+          "ratio": 11.82,
+          "pass": true
+        },
+        {
+          "fg": "on-secondary-2",
+          "bg": "secondary-2-fill-hover",
+          "kind": "texto",
+          "uso": "Secundário 2 em hover",
+          "min": 4.5,
+          "ratio": 13.75,
+          "pass": true
+        },
+        {
+          "fg": "secondary-2-text",
+          "bg": "surface-base",
+          "kind": "texto",
+          "uso": "Texto secundário 2",
+          "min": 4.5,
+          "ratio": 13.75,
+          "pass": true
+        },
+        {
+          "fg": "secondary-2-text",
+          "bg": "surface-raised",
+          "kind": "texto",
+          "uso": "Texto secundário 2",
+          "min": 4.5,
+          "ratio": 12.05,
+          "pass": true
+        },
+        {
+          "fg": "secondary-2-text",
+          "bg": "secondary-2-soft",
+          "kind": "texto",
+          "uso": "Texto sobre secundário 2 suave",
+          "min": 4.5,
+          "ratio": 10.64,
+          "pass": true
+        },
+        {
+          "fg": "on-success",
+          "bg": "success-fill",
+          "kind": "texto",
+          "uso": "Sucesso preenchido",
+          "min": 4.5,
+          "ratio": 8.69,
+          "pass": true
+        },
+        {
+          "fg": "success-text",
+          "bg": "surface-base",
+          "kind": "texto",
+          "uso": "Texto de sucesso",
+          "min": 4.5,
+          "ratio": 8.69,
+          "pass": true
+        },
+        {
+          "fg": "success-text",
+          "bg": "surface-raised",
+          "kind": "texto",
+          "uso": "Texto de sucesso",
+          "min": 4.5,
+          "ratio": 7.61,
+          "pass": true
+        },
+        {
+          "fg": "success-text",
+          "bg": "success-soft",
+          "kind": "texto",
+          "uso": "Aviso de sucesso",
+          "min": 4.5,
+          "ratio": 8.43,
+          "pass": true
+        },
+        {
+          "fg": "ink",
+          "bg": "success-soft",
+          "kind": "texto",
+          "uso": "Texto em aviso de sucesso",
+          "min": 4.5,
+          "ratio": 16,
+          "pass": true
+        },
+        {
+          "fg": "on-warning",
+          "bg": "warning-fill",
+          "kind": "texto",
+          "uso": "Atenção preenchido",
+          "min": 4.5,
+          "ratio": 10.23,
+          "pass": true
+        },
+        {
+          "fg": "warning-text",
+          "bg": "surface-base",
+          "kind": "texto",
+          "uso": "Texto de atenção",
+          "min": 4.5,
+          "ratio": 12.6,
+          "pass": true
+        },
+        {
+          "fg": "warning-text",
+          "bg": "surface-raised",
+          "kind": "texto",
+          "uso": "Texto de atenção",
+          "min": 4.5,
+          "ratio": 11.04,
+          "pass": true
+        },
+        {
+          "fg": "warning-text",
+          "bg": "warning-soft",
+          "kind": "texto",
+          "uso": "Aviso de atenção",
+          "min": 4.5,
+          "ratio": 10.24,
+          "pass": true
+        },
+        {
+          "fg": "ink",
+          "bg": "warning-soft",
+          "kind": "texto",
+          "uso": "Texto em aviso de atenção",
+          "min": 4.5,
+          "ratio": 13.41,
+          "pass": true
+        },
+        {
+          "fg": "on-danger",
+          "bg": "danger-fill",
+          "kind": "texto",
+          "uso": "Perigo preenchido",
+          "min": 4.5,
+          "ratio": 8.42,
+          "pass": true
+        },
+        {
+          "fg": "danger-text",
+          "bg": "surface-base",
+          "kind": "texto",
+          "uso": "Mensagem de erro",
+          "min": 4.5,
+          "ratio": 8.42,
+          "pass": true
+        },
+        {
+          "fg": "danger-text",
+          "bg": "surface-raised",
+          "kind": "texto",
+          "uso": "Mensagem de erro",
+          "min": 4.5,
+          "ratio": 7.38,
+          "pass": true
+        },
+        {
+          "fg": "danger-text",
+          "bg": "surface-sunken",
+          "kind": "texto",
+          "uso": "Mensagem de erro",
+          "min": 4.5,
+          "ratio": 8.9,
+          "pass": true
+        },
+        {
+          "fg": "danger-text",
+          "bg": "danger-soft",
+          "kind": "texto",
+          "uso": "Erro sobre fundo suave",
+          "min": 4.5,
+          "ratio": 8.15,
+          "pass": true
+        },
+        {
+          "fg": "ink",
+          "bg": "danger-soft",
+          "kind": "texto",
+          "uso": "Texto em aviso de erro",
+          "min": 4.5,
+          "ratio": 15.96,
+          "pass": true
+        },
+        {
+          "fg": "danger-fill",
+          "bg": "surface-base",
+          "kind": "componente",
+          "uso": "Borda de campo com erro",
+          "min": 3,
+          "ratio": 8.42,
+          "pass": true
+        },
+        {
+          "fg": "danger-fill",
+          "bg": "surface-raised",
+          "kind": "componente",
+          "uso": "Borda de campo com erro",
+          "min": 3,
+          "ratio": 7.38,
+          "pass": true
+        },
+        {
+          "fg": "footer-ink",
+          "bg": "footer-bg",
+          "kind": "texto",
+          "uso": "Texto do rodapé",
+          "min": 4.5,
+          "ratio": 15.69,
+          "pass": true
+        },
+        {
+          "fg": "footer-link",
+          "bg": "footer-bg",
+          "kind": "texto",
+          "uso": "Link do rodapé",
+          "min": 4.5,
+          "ratio": 15.69,
+          "pass": true
+        },
+        {
+          "fg": "footer-link",
+          "bg": "footer-tree-far",
+          "kind": "texto",
+          "uso": "Link sobre árvore do fundo",
+          "min": 4.5,
+          "ratio": 10.1,
+          "pass": true
+        },
+        {
+          "fg": "footer-link",
+          "bg": "footer-tree-mid",
+          "kind": "texto",
+          "uso": "Link sobre árvore do meio",
+          "min": 4.5,
+          "ratio": 12.77,
+          "pass": true
+        },
+        {
+          "fg": "footer-link",
+          "bg": "footer-tree-near",
+          "kind": "texto",
+          "uso": "Link sobre árvore da frente",
+          "min": 4.5,
+          "ratio": 16.29,
+          "pass": true
+        },
+        {
+          "fg": "footer-focus",
+          "bg": "footer-bg",
+          "kind": "foco",
+          "uso": "Anel de foco no rodapé",
+          "min": 3,
+          "ratio": 7,
+          "pass": true
+        },
+        {
+          "fg": "ink",
+          "bg": "hero-plate",
+          "kind": "texto",
+          "uso": "Texto do hero sobre a placa de apoio",
+          "min": 4.5,
+          "ratio": 14.45,
+          "pass": true
+        },
+        {
+          "fg": "ink-muted",
+          "bg": "hero-plate",
+          "kind": "texto",
+          "uso": "Parágrafo do hero",
+          "min": 4.5,
+          "ratio": 11.34,
+          "pass": true
+        }
+      ],
+      "dangerHueDistance": 138.6,
+      "successHueDistance": 27.21
+    },
+    {
+      "id": "outono-claro",
+      "season": "outono",
+      "mode": "claro",
+      "label": "Outono, claro",
+      "seasonLabel": "Outono",
+      "description": "Laranja queimado com oliva e vinho.",
       "colorScheme": "light",
       "themeColor": "#FDFAF8",
       "energy": 1.25,
@@ -4379,12 +7329,1480 @@
           "pass": true
         }
       ],
-      "dangerHueDistance": 25.38
+      "dangerHueDistance": 25.38,
+      "successHueDistance": 128.2
     },
     {
-      "id": "inverno",
-      "label": "Inverno",
-      "description": "Claro, azul-gelo com pinheiro nevado e lilás frio.",
+      "id": "outono-escuro",
+      "season": "outono",
+      "mode": "escuro",
+      "label": "Outono, escuro",
+      "seasonLabel": "Outono",
+      "description": "Laranja queimado com oliva e vinho.",
+      "colorScheme": "dark",
+      "themeColor": "#1A100D",
+      "energy": 1.25,
+      "rotationMax": 1.4,
+      "seeds": {
+        "primary": "#C5531F",
+        "secondary-1": "#6B7A2F",
+        "secondary-2": "#7A2E4B",
+        "success": "#2F6B4A",
+        "warning": "#E3A21A",
+        "danger": "#B81D2E"
+      },
+      "scales": {
+        "primary": [
+          {
+            "step": 50,
+            "token": "primary-50",
+            "hex": "#FAF1ED",
+            "mix": "92% branco",
+            "vsPaper": 16.79,
+            "vsInk": 1.01
+          },
+          {
+            "step": 100,
+            "token": "primary-100",
+            "hex": "#F6E3DB",
+            "mix": "84% branco",
+            "vsPaper": 15.06,
+            "vsInk": 1.1
+          },
+          {
+            "step": 200,
+            "token": "primary-200",
+            "hex": "#ECC8B7",
+            "mix": "68% branco",
+            "vsPaper": 12.02,
+            "vsInk": 1.38
+          },
+          {
+            "step": 300,
+            "token": "primary-300",
+            "hex": "#E2A98F",
+            "mix": "50% branco",
+            "vsPaper": 9.17,
+            "vsInk": 1.81
+          },
+          {
+            "step": 400,
+            "token": "primary-400",
+            "hex": "#D47E57",
+            "mix": "25% branco",
+            "vsPaper": 6.16,
+            "vsInk": 2.69
+          },
+          {
+            "step": 500,
+            "token": "primary-500",
+            "hex": "#C5531F",
+            "mix": "semente",
+            "vsPaper": 4.12,
+            "vsInk": 4.02
+          },
+          {
+            "step": 600,
+            "token": "primary-600",
+            "hex": "#AD491B",
+            "mix": "12% preto",
+            "vsPaper": 3.33,
+            "vsInk": 4.97
+          },
+          {
+            "step": 700,
+            "token": "primary-700",
+            "hex": "#8E3C16",
+            "mix": "28% preto",
+            "vsPaper": 2.5,
+            "vsInk": 6.63
+          },
+          {
+            "step": 800,
+            "token": "primary-800",
+            "hex": "#6C2E11",
+            "mix": "45% preto",
+            "vsPaper": 1.81,
+            "vsInk": 9.14
+          },
+          {
+            "step": 900,
+            "token": "primary-900",
+            "hex": "#4B200C",
+            "mix": "62% preto",
+            "vsPaper": 1.34,
+            "vsInk": 12.31
+          },
+          {
+            "step": 950,
+            "token": "primary-950",
+            "hex": "#2B1207",
+            "mix": "78% preto",
+            "vsPaper": 1.06,
+            "vsInk": 15.6
+          }
+        ],
+        "secondary-1": [
+          {
+            "step": 50,
+            "token": "secondary-1-50",
+            "hex": "#F3F4EE",
+            "mix": "92% branco",
+            "vsPaper": 16.89,
+            "vsInk": 1.02
+          },
+          {
+            "step": 100,
+            "token": "secondary-1-100",
+            "hex": "#E7EADE",
+            "mix": "84% branco",
+            "vsPaper": 15.32,
+            "vsInk": 1.08
+          },
+          {
+            "step": 200,
+            "token": "secondary-1-200",
+            "hex": "#D0D4BC",
+            "mix": "68% branco",
+            "vsPaper": 12.3,
+            "vsInk": 1.35
+          },
+          {
+            "step": 300,
+            "token": "secondary-1-300",
+            "hex": "#B5BD97",
+            "mix": "50% branco",
+            "vsPaper": 9.51,
+            "vsInk": 1.74
+          },
+          {
+            "step": 400,
+            "token": "secondary-1-400",
+            "hex": "#909B63",
+            "mix": "25% branco",
+            "vsPaper": 6.28,
+            "vsInk": 2.64
+          },
+          {
+            "step": 500,
+            "token": "secondary-1-500",
+            "hex": "#6B7A2F",
+            "mix": "semente",
+            "vsPaper": 3.96,
+            "vsInk": 4.18
+          },
+          {
+            "step": 600,
+            "token": "secondary-1-600",
+            "hex": "#5E6B29",
+            "mix": "12% preto",
+            "vsPaper": 3.21,
+            "vsInk": 5.15
+          },
+          {
+            "step": 700,
+            "token": "secondary-1-700",
+            "hex": "#4D5822",
+            "mix": "28% preto",
+            "vsPaper": 2.43,
+            "vsInk": 6.8
+          },
+          {
+            "step": 800,
+            "token": "secondary-1-800",
+            "hex": "#3B431A",
+            "mix": "45% preto",
+            "vsPaper": 1.78,
+            "vsInk": 9.29
+          },
+          {
+            "step": 900,
+            "token": "secondary-1-900",
+            "hex": "#292E12",
+            "mix": "62% preto",
+            "vsPaper": 1.33,
+            "vsInk": 12.45
+          },
+          {
+            "step": 950,
+            "token": "secondary-1-950",
+            "hex": "#181B0A",
+            "mix": "78% preto",
+            "vsPaper": 1.07,
+            "vsInk": 15.5
+          }
+        ],
+        "secondary-2": [
+          {
+            "step": 50,
+            "token": "secondary-2-50",
+            "hex": "#F4EEF1",
+            "mix": "92% branco",
+            "vsPaper": 16.32,
+            "vsInk": 1.01
+          },
+          {
+            "step": 100,
+            "token": "secondary-2-100",
+            "hex": "#EADEE2",
+            "mix": "84% branco",
+            "vsPaper": 14.28,
+            "vsInk": 1.16
+          },
+          {
+            "step": 200,
+            "token": "secondary-2-200",
+            "hex": "#D4BCC5",
+            "mix": "68% branco",
+            "vsPaper": 10.5,
+            "vsInk": 1.58
+          },
+          {
+            "step": 300,
+            "token": "secondary-2-300",
+            "hex": "#BD97A5",
+            "mix": "50% branco",
+            "vsPaper": 7.24,
+            "vsInk": 2.29
+          },
+          {
+            "step": 400,
+            "token": "secondary-2-400",
+            "hex": "#9B6278",
+            "mix": "25% branco",
+            "vsPaper": 3.93,
+            "vsInk": 4.22
+          },
+          {
+            "step": 500,
+            "token": "secondary-2-500",
+            "hex": "#7A2E4B",
+            "mix": "semente",
+            "vsPaper": 2.06,
+            "vsInk": 8.02
+          },
+          {
+            "step": 600,
+            "token": "secondary-2-600",
+            "hex": "#6B2842",
+            "mix": "12% preto",
+            "vsPaper": 1.79,
+            "vsInk": 9.27
+          },
+          {
+            "step": 700,
+            "token": "secondary-2-700",
+            "hex": "#582136",
+            "mix": "28% preto",
+            "vsPaper": 1.5,
+            "vsInk": 11.04
+          },
+          {
+            "step": 800,
+            "token": "secondary-2-800",
+            "hex": "#431929",
+            "mix": "45% preto",
+            "vsPaper": 1.25,
+            "vsInk": 13.2
+          },
+          {
+            "step": 900,
+            "token": "secondary-2-900",
+            "hex": "#2E111D",
+            "mix": "62% preto",
+            "vsPaper": 1.08,
+            "vsInk": 15.32
+          },
+          {
+            "step": 950,
+            "token": "secondary-2-950",
+            "hex": "#1B0A11",
+            "mix": "78% preto",
+            "vsPaper": 1.02,
+            "vsInk": 16.94
+          }
+        ],
+        "success": [
+          {
+            "step": 50,
+            "token": "success-50",
+            "hex": "#EEF3F1",
+            "mix": "92% branco",
+            "vsPaper": 16.66,
+            "vsInk": 1.01
+          },
+          {
+            "step": 100,
+            "token": "success-100",
+            "hex": "#DEE7E2",
+            "mix": "84% branco",
+            "vsPaper": 14.8,
+            "vsInk": 1.12
+          },
+          {
+            "step": 200,
+            "token": "success-200",
+            "hex": "#BCD0C5",
+            "mix": "68% branco",
+            "vsPaper": 11.54,
+            "vsInk": 1.43
+          },
+          {
+            "step": 300,
+            "token": "success-300",
+            "hex": "#97B5A5",
+            "mix": "50% branco",
+            "vsPaper": 8.43,
+            "vsInk": 1.96
+          },
+          {
+            "step": 400,
+            "token": "success-400",
+            "hex": "#639077",
+            "mix": "25% branco",
+            "vsPaper": 5.15,
+            "vsInk": 3.22
+          },
+          {
+            "step": 500,
+            "token": "success-500",
+            "hex": "#2F6B4A",
+            "mix": "semente",
+            "vsPaper": 2.96,
+            "vsInk": 5.6
+          },
+          {
+            "step": 600,
+            "token": "success-600",
+            "hex": "#295E41",
+            "mix": "12% preto",
+            "vsPaper": 2.47,
+            "vsInk": 6.71
+          },
+          {
+            "step": 700,
+            "token": "success-700",
+            "hex": "#224D35",
+            "mix": "28% preto",
+            "vsPaper": 1.94,
+            "vsInk": 8.53
+          },
+          {
+            "step": 800,
+            "token": "success-800",
+            "hex": "#1A3B29",
+            "mix": "45% preto",
+            "vsPaper": 1.51,
+            "vsInk": 10.93
+          },
+          {
+            "step": 900,
+            "token": "success-900",
+            "hex": "#12291C",
+            "mix": "62% preto",
+            "vsPaper": 1.21,
+            "vsInk": 13.68
+          },
+          {
+            "step": 950,
+            "token": "success-950",
+            "hex": "#0A1810",
+            "mix": "78% preto",
+            "vsPaper": 1.02,
+            "vsInk": 16.16
+          }
+        ],
+        "warning": [
+          {
+            "step": 50,
+            "token": "warning-50",
+            "hex": "#FDF8ED",
+            "mix": "92% branco",
+            "vsPaper": 17.64,
+            "vsInk": 1.07
+          },
+          {
+            "step": 100,
+            "token": "warning-100",
+            "hex": "#FBF0DA",
+            "mix": "84% branco",
+            "vsPaper": 16.53,
+            "vsInk": 1
+          },
+          {
+            "step": 200,
+            "token": "warning-200",
+            "hex": "#F6E1B6",
+            "mix": "68% branco",
+            "vsPaper": 14.56,
+            "vsInk": 1.14
+          },
+          {
+            "step": 300,
+            "token": "warning-300",
+            "hex": "#F1D18D",
+            "mix": "50% branco",
+            "vsPaper": 12.68,
+            "vsInk": 1.31
+          },
+          {
+            "step": 400,
+            "token": "warning-400",
+            "hex": "#EAB953",
+            "mix": "25% branco",
+            "vsPaper": 10.29,
+            "vsInk": 1.61
+          },
+          {
+            "step": 500,
+            "token": "warning-500",
+            "hex": "#E3A21A",
+            "mix": "semente",
+            "vsPaper": 8.41,
+            "vsInk": 1.97
+          },
+          {
+            "step": 600,
+            "token": "warning-600",
+            "hex": "#C88F17",
+            "mix": "12% preto",
+            "vsPaper": 6.58,
+            "vsInk": 2.52
+          },
+          {
+            "step": 700,
+            "token": "warning-700",
+            "hex": "#A37513",
+            "mix": "28% preto",
+            "vsPaper": 4.55,
+            "vsInk": 3.64
+          },
+          {
+            "step": 800,
+            "token": "warning-800",
+            "hex": "#7D590E",
+            "mix": "45% preto",
+            "vsPaper": 2.94,
+            "vsInk": 5.63
+          },
+          {
+            "step": 900,
+            "token": "warning-900",
+            "hex": "#563E0A",
+            "mix": "62% preto",
+            "vsPaper": 1.86,
+            "vsInk": 8.91
+          },
+          {
+            "step": 950,
+            "token": "warning-950",
+            "hex": "#322406",
+            "mix": "78% preto",
+            "vsPaper": 1.24,
+            "vsInk": 13.38
+          }
+        ],
+        "danger": [
+          {
+            "step": 50,
+            "token": "danger-50",
+            "hex": "#F9EDEE",
+            "mix": "92% branco",
+            "vsPaper": 16.35,
+            "vsInk": 1.01
+          },
+          {
+            "step": 100,
+            "token": "danger-100",
+            "hex": "#F4DBDE",
+            "mix": "84% branco",
+            "vsPaper": 14.27,
+            "vsInk": 1.16
+          },
+          {
+            "step": 200,
+            "token": "danger-200",
+            "hex": "#E8B7BC",
+            "mix": "68% branco",
+            "vsPaper": 10.62,
+            "vsInk": 1.56
+          },
+          {
+            "step": 300,
+            "token": "danger-300",
+            "hex": "#DC8E97",
+            "mix": "50% branco",
+            "vsPaper": 7.44,
+            "vsInk": 2.23
+          },
+          {
+            "step": 400,
+            "token": "danger-400",
+            "hex": "#CA5662",
+            "mix": "25% branco",
+            "vsPaper": 4.47,
+            "vsInk": 3.71
+          },
+          {
+            "step": 500,
+            "token": "danger-500",
+            "hex": "#B81D2E",
+            "mix": "semente",
+            "vsPaper": 2.89,
+            "vsInk": 5.72
+          },
+          {
+            "step": 600,
+            "token": "danger-600",
+            "hex": "#A21A28",
+            "mix": "12% preto",
+            "vsPaper": 2.42,
+            "vsInk": 6.85
+          },
+          {
+            "step": 700,
+            "token": "danger-700",
+            "hex": "#841521",
+            "mix": "28% preto",
+            "vsPaper": 1.88,
+            "vsInk": 8.82
+          },
+          {
+            "step": 800,
+            "token": "danger-800",
+            "hex": "#651019",
+            "mix": "45% preto",
+            "vsPaper": 1.46,
+            "vsInk": 11.33
+          },
+          {
+            "step": 900,
+            "token": "danger-900",
+            "hex": "#460B11",
+            "mix": "62% preto",
+            "vsPaper": 1.17,
+            "vsInk": 14.13
+          },
+          {
+            "step": 950,
+            "token": "danger-950",
+            "hex": "#28060A",
+            "mix": "78% preto",
+            "vsPaper": 1,
+            "vsInk": 16.6
+          }
+        ]
+      },
+      "neutrals": [
+        {
+          "step": 0,
+          "token": "neutral-0",
+          "hex": "#FDFAF8",
+          "mix": "cinza + primária",
+          "vsPaper": 17.98,
+          "vsInk": 1.09
+        },
+        {
+          "step": 50,
+          "token": "neutral-50",
+          "hex": "#F5F0F0",
+          "mix": "cinza + primária",
+          "vsPaper": 16.55,
+          "vsInk": 1
+        },
+        {
+          "step": 100,
+          "token": "neutral-100",
+          "hex": "#EBE6E5",
+          "mix": "cinza + primária",
+          "vsPaper": 15.11,
+          "vsInk": 1.1
+        },
+        {
+          "step": 200,
+          "token": "neutral-200",
+          "hex": "#DCD6D4",
+          "mix": "cinza + primária",
+          "vsPaper": 13,
+          "vsInk": 1.27
+        },
+        {
+          "step": 300,
+          "token": "neutral-300",
+          "hex": "#C6BFBE",
+          "mix": "cinza + primária",
+          "vsPaper": 10.32,
+          "vsInk": 1.6
+        },
+        {
+          "step": 400,
+          "token": "neutral-400",
+          "hex": "#A49C9B",
+          "mix": "cinza + primária",
+          "vsPaper": 6.95,
+          "vsInk": 2.38
+        },
+        {
+          "step": 500,
+          "token": "neutral-500",
+          "hex": "#867E7E",
+          "mix": "cinza + primária",
+          "vsPaper": 4.72,
+          "vsInk": 3.51
+        },
+        {
+          "step": 600,
+          "token": "neutral-600",
+          "hex": "#6C6363",
+          "mix": "cinza + primária",
+          "vsPaper": 3.21,
+          "vsInk": 5.16
+        },
+        {
+          "step": 700,
+          "token": "neutral-700",
+          "hex": "#554B4B",
+          "mix": "cinza + primária",
+          "vsPaper": 2.22,
+          "vsInk": 7.46
+        },
+        {
+          "step": 800,
+          "token": "neutral-800",
+          "hex": "#403736",
+          "mix": "cinza + primária",
+          "vsPaper": 1.62,
+          "vsInk": 10.24
+        },
+        {
+          "step": 900,
+          "token": "neutral-900",
+          "hex": "#2D2423",
+          "mix": "cinza + primária",
+          "vsPaper": 1.24,
+          "vsInk": 13.4
+        },
+        {
+          "step": 950,
+          "token": "neutral-950",
+          "hex": "#1F1715",
+          "mix": "cinza + primária",
+          "vsPaper": 1.06,
+          "vsInk": 15.61
+        }
+      ],
+      "semantic": {
+        "surface-base": "#1A100D",
+        "surface-raised": "#291C1A",
+        "surface-sunken": "#110907",
+        "surface-hover": "#392825",
+        "surface-active": "#46312E",
+        "ink": "#F5F0F0",
+        "ink-muted": "#DCD6D4",
+        "ink-subtle": "#C6BFBE",
+        "ink-disabled": "#867E7E",
+        "border": "#4B3937",
+        "border-strong": "#A49C9B",
+        "stroke": "#DCD6D4",
+        "primary-fill": "#D47E57",
+        "primary-fill-hover": "#E2A98F",
+        "primary-fill-active": "#ECC8B7",
+        "on-primary": "#1A100D",
+        "primary-text": "#E2A98F",
+        "primary-text-hover": "#ECC8B7",
+        "primary-soft": "#2B1207",
+        "primary-soft-hover": "#4B200C",
+        "primary-decor": "#D47E57",
+        "focus-ring": "#D47E57",
+        "field-focus-stroke": "#FAF1ED",
+        "secondary-1-fill": "#B5BD97",
+        "secondary-1-fill-hover": "#D0D4BC",
+        "on-secondary-1": "#1A100D",
+        "secondary-1-text": "#B5BD97",
+        "secondary-1-soft": "#181B0A",
+        "secondary-2-fill": "#BD97A5",
+        "secondary-2-fill-hover": "#D4BCC5",
+        "on-secondary-2": "#1A100D",
+        "secondary-2-text": "#BD97A5",
+        "secondary-2-soft": "#1B0A11",
+        "success-fill": "#97B5A5",
+        "on-success": "#1A100D",
+        "success-text": "#97B5A5",
+        "success-soft": "#0A1810",
+        "warning-fill": "#EAB953",
+        "on-warning": "#1A100D",
+        "warning-text": "#F1D18D",
+        "warning-soft": "#322406",
+        "danger-fill": "#DC8E97",
+        "on-danger": "#1A100D",
+        "danger-text": "#DC8E97",
+        "danger-soft": "#28060A",
+        "overlay": "#000000A6",
+        "shadow-ink": "#0C0502",
+        "shadow-soft": "#100702",
+        "tape": "#C6BFBE4D",
+        "hatch-a": "#291C1A",
+        "hatch-b": "#1A100D",
+        "hole": "#1A100D",
+        "hole-rim": "#867E7E",
+        "selection": "#6C2E11",
+        "footer-bg": "#130A09",
+        "footer-ink": "#EBE6E5",
+        "footer-link": "#EBE6E5",
+        "footer-focus": "#D47E57",
+        "footer-tree-far": "#412E2A",
+        "footer-tree-mid": "#2C1F1C",
+        "footer-tree-near": "#0C0502",
+        "footer-accent": "#8D3D19",
+        "footer-sky-accent": "#EBE6E5",
+        "hero-shape-1": "#4B200C",
+        "hero-shape-2": "#292E12",
+        "hero-shape-3": "#1B0A11",
+        "hero-shape-4": "#2B1207",
+        "hero-shape-5": "#30221F",
+        "hero-plate": "#291C1A"
+      },
+      "pairs": [
+        {
+          "fg": "ink",
+          "bg": "surface-base",
+          "kind": "texto",
+          "uso": "Texto principal",
+          "min": 4.5,
+          "ratio": 16.55,
+          "pass": true
+        },
+        {
+          "fg": "ink",
+          "bg": "surface-raised",
+          "kind": "texto",
+          "uso": "Texto principal",
+          "min": 4.5,
+          "ratio": 14.59,
+          "pass": true
+        },
+        {
+          "fg": "ink",
+          "bg": "surface-sunken",
+          "kind": "texto",
+          "uso": "Texto principal",
+          "min": 4.5,
+          "ratio": 17.45,
+          "pass": true
+        },
+        {
+          "fg": "ink-muted",
+          "bg": "surface-base",
+          "kind": "texto",
+          "uso": "Texto secundário",
+          "min": 4.5,
+          "ratio": 13,
+          "pass": true
+        },
+        {
+          "fg": "ink-muted",
+          "bg": "surface-raised",
+          "kind": "texto",
+          "uso": "Texto secundário",
+          "min": 4.5,
+          "ratio": 11.46,
+          "pass": true
+        },
+        {
+          "fg": "ink-muted",
+          "bg": "surface-sunken",
+          "kind": "texto",
+          "uso": "Texto secundário",
+          "min": 4.5,
+          "ratio": 13.71,
+          "pass": true
+        },
+        {
+          "fg": "ink",
+          "bg": "surface-hover",
+          "kind": "texto",
+          "uso": "Controle em hover",
+          "min": 4.5,
+          "ratio": 12.37,
+          "pass": true
+        },
+        {
+          "fg": "ink",
+          "bg": "surface-active",
+          "kind": "texto",
+          "uso": "Controle pressionado",
+          "min": 4.5,
+          "ratio": 10.7,
+          "pass": true
+        },
+        {
+          "fg": "stroke",
+          "bg": "surface-active",
+          "kind": "componente",
+          "uso": "Contorno de controle pressionado",
+          "min": 3,
+          "ratio": 8.4,
+          "pass": true
+        },
+        {
+          "fg": "ink-subtle",
+          "bg": "surface-base",
+          "kind": "texto",
+          "uso": "Metadados e rótulos mono",
+          "min": 4.5,
+          "ratio": 10.32,
+          "pass": true
+        },
+        {
+          "fg": "ink-subtle",
+          "bg": "surface-raised",
+          "kind": "texto",
+          "uso": "Metadados e rótulos mono",
+          "min": 4.5,
+          "ratio": 9.09,
+          "pass": true
+        },
+        {
+          "fg": "ink-subtle",
+          "bg": "surface-sunken",
+          "kind": "texto",
+          "uso": "Metadados e rótulos mono",
+          "min": 4.5,
+          "ratio": 10.88,
+          "pass": true
+        },
+        {
+          "fg": "ink-disabled",
+          "bg": "surface-base",
+          "kind": "desabilitado",
+          "uso": "Texto desabilitado (com outro indicador)",
+          "min": 3,
+          "ratio": 4.72,
+          "pass": true
+        },
+        {
+          "fg": "ink-disabled",
+          "bg": "surface-raised",
+          "kind": "desabilitado",
+          "uso": "Texto desabilitado (com outro indicador)",
+          "min": 3,
+          "ratio": 4.16,
+          "pass": true
+        },
+        {
+          "fg": "ink-disabled",
+          "bg": "surface-sunken",
+          "kind": "desabilitado",
+          "uso": "Texto desabilitado (com outro indicador)",
+          "min": 3,
+          "ratio": 4.97,
+          "pass": true
+        },
+        {
+          "fg": "primary-text",
+          "bg": "surface-base",
+          "kind": "texto",
+          "uso": "Link e texto em primária",
+          "min": 4.5,
+          "ratio": 9.17,
+          "pass": true
+        },
+        {
+          "fg": "primary-text",
+          "bg": "surface-raised",
+          "kind": "texto",
+          "uso": "Link e texto em primária",
+          "min": 4.5,
+          "ratio": 8.08,
+          "pass": true
+        },
+        {
+          "fg": "primary-text",
+          "bg": "surface-sunken",
+          "kind": "texto",
+          "uso": "Link e texto em primária",
+          "min": 4.5,
+          "ratio": 9.67,
+          "pass": true
+        },
+        {
+          "fg": "primary-text-hover",
+          "bg": "surface-base",
+          "kind": "texto",
+          "uso": "Link em hover",
+          "min": 4.5,
+          "ratio": 12.02,
+          "pass": true
+        },
+        {
+          "fg": "primary-text-hover",
+          "bg": "surface-raised",
+          "kind": "texto",
+          "uso": "Link em hover",
+          "min": 4.5,
+          "ratio": 10.6,
+          "pass": true
+        },
+        {
+          "fg": "primary-text-hover",
+          "bg": "surface-sunken",
+          "kind": "texto",
+          "uso": "Link em hover",
+          "min": 4.5,
+          "ratio": 12.68,
+          "pass": true
+        },
+        {
+          "fg": "primary-text",
+          "bg": "primary-soft",
+          "kind": "texto",
+          "uso": "Texto em primária sobre fundo suave",
+          "min": 4.5,
+          "ratio": 8.64,
+          "pass": true
+        },
+        {
+          "fg": "ink",
+          "bg": "primary-soft",
+          "kind": "texto",
+          "uso": "Chip selecionado e campo em foco",
+          "min": 4.5,
+          "ratio": 15.6,
+          "pass": true
+        },
+        {
+          "fg": "ink-subtle",
+          "bg": "primary-soft",
+          "kind": "texto",
+          "uso": "Placeholder de campo em foco",
+          "min": 4.5,
+          "ratio": 9.73,
+          "pass": true
+        },
+        {
+          "fg": "ink-muted",
+          "bg": "primary-soft",
+          "kind": "texto",
+          "uso": "Ícone e contador de campo em foco",
+          "min": 4.5,
+          "ratio": 12.26,
+          "pass": true
+        },
+        {
+          "fg": "ink",
+          "bg": "primary-soft-hover",
+          "kind": "texto",
+          "uso": "Chip selecionado em hover",
+          "min": 4.5,
+          "ratio": 12.31,
+          "pass": true
+        },
+        {
+          "fg": "primary-decor",
+          "bg": "surface-base",
+          "kind": "texto-grande",
+          "uso": "Títulos de 24 px ou mais e ícones com rótulo",
+          "min": 3,
+          "ratio": 6.16,
+          "pass": true
+        },
+        {
+          "fg": "primary-decor",
+          "bg": "surface-raised",
+          "kind": "texto-grande",
+          "uso": "Títulos de 24 px ou mais e ícones com rótulo",
+          "min": 3,
+          "ratio": 5.43,
+          "pass": true
+        },
+        {
+          "fg": "on-primary",
+          "bg": "primary-fill",
+          "kind": "texto",
+          "uso": "Botão primário",
+          "min": 4.5,
+          "ratio": 6.16,
+          "pass": true
+        },
+        {
+          "fg": "on-primary",
+          "bg": "primary-fill-hover",
+          "kind": "texto",
+          "uso": "Botão primário em hover",
+          "min": 4.5,
+          "ratio": 9.17,
+          "pass": true
+        },
+        {
+          "fg": "on-primary",
+          "bg": "primary-fill-active",
+          "kind": "texto",
+          "uso": "Botão primário pressionado",
+          "min": 4.5,
+          "ratio": 12.02,
+          "pass": true
+        },
+        {
+          "fg": "primary-fill",
+          "bg": "surface-base",
+          "kind": "componente",
+          "uso": "Botão primário contra o papel",
+          "min": 3,
+          "ratio": 6.16,
+          "pass": true
+        },
+        {
+          "fg": "primary-fill",
+          "bg": "surface-raised",
+          "kind": "componente",
+          "uso": "Botão primário contra o papel",
+          "min": 3,
+          "ratio": 5.43,
+          "pass": true
+        },
+        {
+          "fg": "stroke",
+          "bg": "surface-base",
+          "kind": "componente",
+          "uso": "Contorno desenhado",
+          "min": 3,
+          "ratio": 13,
+          "pass": true
+        },
+        {
+          "fg": "stroke",
+          "bg": "surface-raised",
+          "kind": "componente",
+          "uso": "Contorno desenhado",
+          "min": 3,
+          "ratio": 11.46,
+          "pass": true
+        },
+        {
+          "fg": "stroke",
+          "bg": "surface-sunken",
+          "kind": "componente",
+          "uso": "Contorno desenhado",
+          "min": 3,
+          "ratio": 13.71,
+          "pass": true
+        },
+        {
+          "fg": "border-strong",
+          "bg": "surface-base",
+          "kind": "componente",
+          "uso": "Borda de campo e controle",
+          "min": 3,
+          "ratio": 6.95,
+          "pass": true
+        },
+        {
+          "fg": "border-strong",
+          "bg": "surface-raised",
+          "kind": "componente",
+          "uso": "Borda de campo e controle",
+          "min": 3,
+          "ratio": 6.12,
+          "pass": true
+        },
+        {
+          "fg": "border-strong",
+          "bg": "surface-sunken",
+          "kind": "componente",
+          "uso": "Borda de campo e controle",
+          "min": 3,
+          "ratio": 7.32,
+          "pass": true
+        },
+        {
+          "fg": "focus-ring",
+          "bg": "surface-base",
+          "kind": "foco",
+          "uso": "Anel de foco",
+          "min": 3,
+          "ratio": 6.16,
+          "pass": true
+        },
+        {
+          "fg": "focus-ring",
+          "bg": "surface-raised",
+          "kind": "foco",
+          "uso": "Anel de foco",
+          "min": 3,
+          "ratio": 5.43,
+          "pass": true
+        },
+        {
+          "fg": "focus-ring",
+          "bg": "surface-sunken",
+          "kind": "foco",
+          "uso": "Anel de foco",
+          "min": 3,
+          "ratio": 6.49,
+          "pass": true
+        },
+        {
+          "fg": "field-focus-stroke",
+          "bg": "surface-base",
+          "kind": "foco",
+          "uso": "Contorno de campo em foco",
+          "min": 3,
+          "ratio": 16.79,
+          "pass": true
+        },
+        {
+          "fg": "field-focus-stroke",
+          "bg": "surface-raised",
+          "kind": "foco",
+          "uso": "Contorno de campo em foco",
+          "min": 3,
+          "ratio": 14.8,
+          "pass": true
+        },
+        {
+          "fg": "field-focus-stroke",
+          "bg": "primary-soft",
+          "kind": "foco",
+          "uso": "Contorno de campo em foco",
+          "min": 3,
+          "ratio": 15.83,
+          "pass": true
+        },
+        {
+          "fg": "on-secondary-1",
+          "bg": "secondary-1-fill",
+          "kind": "texto",
+          "uso": "Preenchimento secundário 1",
+          "min": 4.5,
+          "ratio": 9.51,
+          "pass": true
+        },
+        {
+          "fg": "on-secondary-1",
+          "bg": "secondary-1-fill-hover",
+          "kind": "texto",
+          "uso": "Secundário 1 em hover",
+          "min": 4.5,
+          "ratio": 12.3,
+          "pass": true
+        },
+        {
+          "fg": "secondary-1-text",
+          "bg": "surface-base",
+          "kind": "texto",
+          "uso": "Texto secundário 1",
+          "min": 4.5,
+          "ratio": 9.51,
+          "pass": true
+        },
+        {
+          "fg": "secondary-1-text",
+          "bg": "surface-raised",
+          "kind": "texto",
+          "uso": "Texto secundário 1",
+          "min": 4.5,
+          "ratio": 8.38,
+          "pass": true
+        },
+        {
+          "fg": "secondary-1-text",
+          "bg": "secondary-1-soft",
+          "kind": "texto",
+          "uso": "Texto sobre secundário 1 suave",
+          "min": 4.5,
+          "ratio": 8.91,
+          "pass": true
+        },
+        {
+          "fg": "on-secondary-2",
+          "bg": "secondary-2-fill",
+          "kind": "texto",
+          "uso": "Preenchimento secundário 2",
+          "min": 4.5,
+          "ratio": 7.24,
+          "pass": true
+        },
+        {
+          "fg": "on-secondary-2",
+          "bg": "secondary-2-fill-hover",
+          "kind": "texto",
+          "uso": "Secundário 2 em hover",
+          "min": 4.5,
+          "ratio": 10.5,
+          "pass": true
+        },
+        {
+          "fg": "secondary-2-text",
+          "bg": "surface-base",
+          "kind": "texto",
+          "uso": "Texto secundário 2",
+          "min": 4.5,
+          "ratio": 7.24,
+          "pass": true
+        },
+        {
+          "fg": "secondary-2-text",
+          "bg": "surface-raised",
+          "kind": "texto",
+          "uso": "Texto secundário 2",
+          "min": 4.5,
+          "ratio": 6.38,
+          "pass": true
+        },
+        {
+          "fg": "secondary-2-text",
+          "bg": "secondary-2-soft",
+          "kind": "texto",
+          "uso": "Texto sobre secundário 2 suave",
+          "min": 4.5,
+          "ratio": 7.41,
+          "pass": true
+        },
+        {
+          "fg": "on-success",
+          "bg": "success-fill",
+          "kind": "texto",
+          "uso": "Sucesso preenchido",
+          "min": 4.5,
+          "ratio": 8.43,
+          "pass": true
+        },
+        {
+          "fg": "success-text",
+          "bg": "surface-base",
+          "kind": "texto",
+          "uso": "Texto de sucesso",
+          "min": 4.5,
+          "ratio": 8.43,
+          "pass": true
+        },
+        {
+          "fg": "success-text",
+          "bg": "surface-raised",
+          "kind": "texto",
+          "uso": "Texto de sucesso",
+          "min": 4.5,
+          "ratio": 7.42,
+          "pass": true
+        },
+        {
+          "fg": "success-text",
+          "bg": "success-soft",
+          "kind": "texto",
+          "uso": "Aviso de sucesso",
+          "min": 4.5,
+          "ratio": 8.23,
+          "pass": true
+        },
+        {
+          "fg": "ink",
+          "bg": "success-soft",
+          "kind": "texto",
+          "uso": "Texto em aviso de sucesso",
+          "min": 4.5,
+          "ratio": 16.16,
+          "pass": true
+        },
+        {
+          "fg": "on-warning",
+          "bg": "warning-fill",
+          "kind": "texto",
+          "uso": "Atenção preenchido",
+          "min": 4.5,
+          "ratio": 10.29,
+          "pass": true
+        },
+        {
+          "fg": "warning-text",
+          "bg": "surface-base",
+          "kind": "texto",
+          "uso": "Texto de atenção",
+          "min": 4.5,
+          "ratio": 12.68,
+          "pass": true
+        },
+        {
+          "fg": "warning-text",
+          "bg": "surface-raised",
+          "kind": "texto",
+          "uso": "Texto de atenção",
+          "min": 4.5,
+          "ratio": 11.17,
+          "pass": true
+        },
+        {
+          "fg": "warning-text",
+          "bg": "warning-soft",
+          "kind": "texto",
+          "uso": "Aviso de atenção",
+          "min": 4.5,
+          "ratio": 10.24,
+          "pass": true
+        },
+        {
+          "fg": "ink",
+          "bg": "warning-soft",
+          "kind": "texto",
+          "uso": "Texto em aviso de atenção",
+          "min": 4.5,
+          "ratio": 13.38,
+          "pass": true
+        },
+        {
+          "fg": "on-danger",
+          "bg": "danger-fill",
+          "kind": "texto",
+          "uso": "Perigo preenchido",
+          "min": 4.5,
+          "ratio": 7.44,
+          "pass": true
+        },
+        {
+          "fg": "danger-text",
+          "bg": "surface-base",
+          "kind": "texto",
+          "uso": "Mensagem de erro",
+          "min": 4.5,
+          "ratio": 7.44,
+          "pass": true
+        },
+        {
+          "fg": "danger-text",
+          "bg": "surface-raised",
+          "kind": "texto",
+          "uso": "Mensagem de erro",
+          "min": 4.5,
+          "ratio": 6.55,
+          "pass": true
+        },
+        {
+          "fg": "danger-text",
+          "bg": "surface-sunken",
+          "kind": "texto",
+          "uso": "Mensagem de erro",
+          "min": 4.5,
+          "ratio": 7.84,
+          "pass": true
+        },
+        {
+          "fg": "danger-text",
+          "bg": "danger-soft",
+          "kind": "texto",
+          "uso": "Erro sobre fundo suave",
+          "min": 4.5,
+          "ratio": 7.46,
+          "pass": true
+        },
+        {
+          "fg": "ink",
+          "bg": "danger-soft",
+          "kind": "texto",
+          "uso": "Texto em aviso de erro",
+          "min": 4.5,
+          "ratio": 16.6,
+          "pass": true
+        },
+        {
+          "fg": "danger-fill",
+          "bg": "surface-base",
+          "kind": "componente",
+          "uso": "Borda de campo com erro",
+          "min": 3,
+          "ratio": 7.44,
+          "pass": true
+        },
+        {
+          "fg": "danger-fill",
+          "bg": "surface-raised",
+          "kind": "componente",
+          "uso": "Borda de campo com erro",
+          "min": 3,
+          "ratio": 6.55,
+          "pass": true
+        },
+        {
+          "fg": "footer-ink",
+          "bg": "footer-bg",
+          "kind": "texto",
+          "uso": "Texto do rodapé",
+          "min": 4.5,
+          "ratio": 15.8,
+          "pass": true
+        },
+        {
+          "fg": "footer-link",
+          "bg": "footer-bg",
+          "kind": "texto",
+          "uso": "Link do rodapé",
+          "min": 4.5,
+          "ratio": 15.8,
+          "pass": true
+        },
+        {
+          "fg": "footer-link",
+          "bg": "footer-tree-far",
+          "kind": "texto",
+          "uso": "Link sobre árvore do fundo",
+          "min": 4.5,
+          "ratio": 10.3,
+          "pass": true
+        },
+        {
+          "fg": "footer-link",
+          "bg": "footer-tree-mid",
+          "kind": "texto",
+          "uso": "Link sobre árvore do meio",
+          "min": 4.5,
+          "ratio": 12.87,
+          "pass": true
+        },
+        {
+          "fg": "footer-link",
+          "bg": "footer-tree-near",
+          "kind": "texto",
+          "uso": "Link sobre árvore da frente",
+          "min": 4.5,
+          "ratio": 16.36,
+          "pass": true
+        },
+        {
+          "fg": "footer-focus",
+          "bg": "footer-bg",
+          "kind": "foco",
+          "uso": "Anel de foco no rodapé",
+          "min": 3,
+          "ratio": 6.44,
+          "pass": true
+        },
+        {
+          "fg": "ink",
+          "bg": "hero-plate",
+          "kind": "texto",
+          "uso": "Texto do hero sobre a placa de apoio",
+          "min": 4.5,
+          "ratio": 14.59,
+          "pass": true
+        },
+        {
+          "fg": "ink-muted",
+          "bg": "hero-plate",
+          "kind": "texto",
+          "uso": "Parágrafo do hero",
+          "min": 4.5,
+          "ratio": 11.46,
+          "pass": true
+        }
+      ],
+      "dangerHueDistance": 25.38,
+      "successHueDistance": 128.2
+    },
+    {
+      "id": "inverno-claro",
+      "season": "inverno",
+      "mode": "claro",
+      "label": "Inverno, claro",
+      "seasonLabel": "Inverno",
+      "description": "Azul-gelo com pinheiro nevado e lilás frio.",
       "colorScheme": "light",
       "themeColor": "#F9FBFC",
       "energy": 0.7,
@@ -5839,7 +10257,1472 @@
           "pass": true
         }
       ],
-      "dangerHueDistance": 168.94
+      "dangerHueDistance": 168.94,
+      "successHueDistance": 53.59
+    },
+    {
+      "id": "inverno-escuro",
+      "season": "inverno",
+      "mode": "escuro",
+      "label": "Inverno, escuro",
+      "seasonLabel": "Inverno",
+      "description": "Azul-gelo com pinheiro nevado e lilás frio.",
+      "colorScheme": "dark",
+      "themeColor": "#0F1317",
+      "energy": 0.7,
+      "rotationMax": 0.8,
+      "seeds": {
+        "primary": "#3B7EA1",
+        "secondary-1": "#2F5A4B",
+        "secondary-2": "#6B5B95",
+        "success": "#2F6B4A",
+        "warning": "#E3A21A",
+        "danger": "#C93A1F"
+      },
+      "scales": {
+        "primary": [
+          {
+            "step": 50,
+            "token": "primary-50",
+            "hex": "#EFF5F7",
+            "mix": "92% branco",
+            "vsPaper": 16.94,
+            "vsInk": 1.03
+          },
+          {
+            "step": 100,
+            "token": "primary-100",
+            "hex": "#E0EAF0",
+            "mix": "84% branco",
+            "vsPaper": 15.27,
+            "vsInk": 1.08
+          },
+          {
+            "step": 200,
+            "token": "primary-200",
+            "hex": "#C0D6E1",
+            "mix": "68% branco",
+            "vsPaper": 12.39,
+            "vsInk": 1.33
+          },
+          {
+            "step": 300,
+            "token": "primary-300",
+            "hex": "#9DBFD0",
+            "mix": "50% branco",
+            "vsPaper": 9.59,
+            "vsInk": 1.72
+          },
+          {
+            "step": 400,
+            "token": "primary-400",
+            "hex": "#6C9EB9",
+            "mix": "25% branco",
+            "vsPaper": 6.42,
+            "vsInk": 2.57
+          },
+          {
+            "step": 500,
+            "token": "primary-500",
+            "hex": "#3B7EA1",
+            "mix": "semente",
+            "vsPaper": 4.16,
+            "vsInk": 3.97
+          },
+          {
+            "step": 600,
+            "token": "primary-600",
+            "hex": "#346F8E",
+            "mix": "12% preto",
+            "vsPaper": 3.38,
+            "vsInk": 4.88
+          },
+          {
+            "step": 700,
+            "token": "primary-700",
+            "hex": "#2A5B74",
+            "mix": "28% preto",
+            "vsPaper": 2.53,
+            "vsInk": 6.53
+          },
+          {
+            "step": 800,
+            "token": "primary-800",
+            "hex": "#204559",
+            "mix": "45% preto",
+            "vsPaper": 1.83,
+            "vsInk": 9.03
+          },
+          {
+            "step": 900,
+            "token": "primary-900",
+            "hex": "#16303D",
+            "mix": "62% preto",
+            "vsPaper": 1.35,
+            "vsInk": 12.19
+          },
+          {
+            "step": 950,
+            "token": "primary-950",
+            "hex": "#0D1C23",
+            "mix": "78% preto",
+            "vsPaper": 1.07,
+            "vsInk": 15.39
+          }
+        ],
+        "secondary-1": [
+          {
+            "step": 50,
+            "token": "secondary-1-50",
+            "hex": "#EEF2F1",
+            "mix": "92% branco",
+            "vsPaper": 16.53,
+            "vsInk": 1
+          },
+          {
+            "step": 100,
+            "token": "secondary-1-100",
+            "hex": "#DEE5E2",
+            "mix": "84% branco",
+            "vsPaper": 14.58,
+            "vsInk": 1.13
+          },
+          {
+            "step": 200,
+            "token": "secondary-1-200",
+            "hex": "#BCCAC5",
+            "mix": "68% branco",
+            "vsPaper": 11.01,
+            "vsInk": 1.5
+          },
+          {
+            "step": 300,
+            "token": "secondary-1-300",
+            "hex": "#97ADA5",
+            "mix": "50% branco",
+            "vsPaper": 7.85,
+            "vsInk": 2.1
+          },
+          {
+            "step": 400,
+            "token": "secondary-1-400",
+            "hex": "#638378",
+            "mix": "25% branco",
+            "vsPaper": 4.48,
+            "vsInk": 3.68
+          },
+          {
+            "step": 500,
+            "token": "secondary-1-500",
+            "hex": "#2F5A4B",
+            "mix": "semente",
+            "vsPaper": 2.38,
+            "vsInk": 6.92
+          },
+          {
+            "step": 600,
+            "token": "secondary-1-600",
+            "hex": "#294F42",
+            "mix": "12% preto",
+            "vsPaper": 2.04,
+            "vsInk": 8.11
+          },
+          {
+            "step": 700,
+            "token": "secondary-1-700",
+            "hex": "#224136",
+            "mix": "28% preto",
+            "vsPaper": 1.67,
+            "vsInk": 9.9
+          },
+          {
+            "step": 800,
+            "token": "secondary-1-800",
+            "hex": "#1A3229",
+            "mix": "45% preto",
+            "vsPaper": 1.36,
+            "vsInk": 12.13
+          },
+          {
+            "step": 900,
+            "token": "secondary-1-900",
+            "hex": "#12221D",
+            "mix": "62% preto",
+            "vsPaper": 1.13,
+            "vsInk": 14.6
+          },
+          {
+            "step": 950,
+            "token": "secondary-1-950",
+            "hex": "#0A1411",
+            "mix": "78% preto",
+            "vsPaper": 1,
+            "vsInk": 16.57
+          }
+        ],
+        "secondary-2": [
+          {
+            "step": 50,
+            "token": "secondary-2-50",
+            "hex": "#F3F2F7",
+            "mix": "92% branco",
+            "vsPaper": 16.75,
+            "vsInk": 1.01
+          },
+          {
+            "step": 100,
+            "token": "secondary-2-100",
+            "hex": "#E7E5EE",
+            "mix": "84% branco",
+            "vsPaper": 14.96,
+            "vsInk": 1.1
+          },
+          {
+            "step": 200,
+            "token": "secondary-2-200",
+            "hex": "#D0CBDD",
+            "mix": "68% branco",
+            "vsPaper": 11.79,
+            "vsInk": 1.4
+          },
+          {
+            "step": 300,
+            "token": "secondary-2-300",
+            "hex": "#B5ADCA",
+            "mix": "50% branco",
+            "vsPaper": 8.7,
+            "vsInk": 1.9
+          },
+          {
+            "step": 400,
+            "token": "secondary-2-400",
+            "hex": "#9084B0",
+            "mix": "25% branco",
+            "vsPaper": 5.43,
+            "vsInk": 3.04
+          },
+          {
+            "step": 500,
+            "token": "secondary-2-500",
+            "hex": "#6B5B95",
+            "mix": "semente",
+            "vsPaper": 3.16,
+            "vsInk": 5.23
+          },
+          {
+            "step": 600,
+            "token": "secondary-2-600",
+            "hex": "#5E5083",
+            "mix": "12% preto",
+            "vsPaper": 2.62,
+            "vsInk": 6.3
+          },
+          {
+            "step": 700,
+            "token": "secondary-2-700",
+            "hex": "#4D426B",
+            "mix": "28% preto",
+            "vsPaper": 2.05,
+            "vsInk": 8.05
+          },
+          {
+            "step": 800,
+            "token": "secondary-2-800",
+            "hex": "#3B3252",
+            "mix": "45% preto",
+            "vsPaper": 1.57,
+            "vsInk": 10.53
+          },
+          {
+            "step": 900,
+            "token": "secondary-2-900",
+            "hex": "#292339",
+            "mix": "62% preto",
+            "vsPaper": 1.24,
+            "vsInk": 13.33
+          },
+          {
+            "step": 950,
+            "token": "secondary-2-950",
+            "hex": "#181421",
+            "mix": "78% preto",
+            "vsPaper": 1.03,
+            "vsInk": 16.01
+          }
+        ],
+        "success": [
+          {
+            "step": 50,
+            "token": "success-50",
+            "hex": "#EEF3F1",
+            "mix": "92% branco",
+            "vsPaper": 16.63,
+            "vsInk": 1.01
+          },
+          {
+            "step": 100,
+            "token": "success-100",
+            "hex": "#DEE7E2",
+            "mix": "84% branco",
+            "vsPaper": 14.78,
+            "vsInk": 1.12
+          },
+          {
+            "step": 200,
+            "token": "success-200",
+            "hex": "#BCD0C5",
+            "mix": "68% branco",
+            "vsPaper": 11.52,
+            "vsInk": 1.43
+          },
+          {
+            "step": 300,
+            "token": "success-300",
+            "hex": "#97B5A5",
+            "mix": "50% branco",
+            "vsPaper": 8.41,
+            "vsInk": 1.96
+          },
+          {
+            "step": 400,
+            "token": "success-400",
+            "hex": "#639077",
+            "mix": "25% branco",
+            "vsPaper": 5.14,
+            "vsInk": 3.21
+          },
+          {
+            "step": 500,
+            "token": "success-500",
+            "hex": "#2F6B4A",
+            "mix": "semente",
+            "vsPaper": 2.95,
+            "vsInk": 5.59
+          },
+          {
+            "step": 600,
+            "token": "success-600",
+            "hex": "#295E41",
+            "mix": "12% preto",
+            "vsPaper": 2.46,
+            "vsInk": 6.7
+          },
+          {
+            "step": 700,
+            "token": "success-700",
+            "hex": "#224D35",
+            "mix": "28% preto",
+            "vsPaper": 1.94,
+            "vsInk": 8.52
+          },
+          {
+            "step": 800,
+            "token": "success-800",
+            "hex": "#1A3B29",
+            "mix": "45% preto",
+            "vsPaper": 1.51,
+            "vsInk": 10.92
+          },
+          {
+            "step": 900,
+            "token": "success-900",
+            "hex": "#12291C",
+            "mix": "62% preto",
+            "vsPaper": 1.21,
+            "vsInk": 13.67
+          },
+          {
+            "step": 950,
+            "token": "success-950",
+            "hex": "#0A1810",
+            "mix": "78% preto",
+            "vsPaper": 1.02,
+            "vsInk": 16.14
+          }
+        ],
+        "warning": [
+          {
+            "step": 50,
+            "token": "warning-50",
+            "hex": "#FDF8ED",
+            "mix": "92% branco",
+            "vsPaper": 17.61,
+            "vsInk": 1.07
+          },
+          {
+            "step": 100,
+            "token": "warning-100",
+            "hex": "#FBF0DA",
+            "mix": "84% branco",
+            "vsPaper": 16.5,
+            "vsInk": 1
+          },
+          {
+            "step": 200,
+            "token": "warning-200",
+            "hex": "#F6E1B6",
+            "mix": "68% branco",
+            "vsPaper": 14.54,
+            "vsInk": 1.14
+          },
+          {
+            "step": 300,
+            "token": "warning-300",
+            "hex": "#F1D18D",
+            "mix": "50% branco",
+            "vsPaper": 12.65,
+            "vsInk": 1.3
+          },
+          {
+            "step": 400,
+            "token": "warning-400",
+            "hex": "#EAB953",
+            "mix": "25% branco",
+            "vsPaper": 10.27,
+            "vsInk": 1.61
+          },
+          {
+            "step": 500,
+            "token": "warning-500",
+            "hex": "#E3A21A",
+            "mix": "semente",
+            "vsPaper": 8.39,
+            "vsInk": 1.97
+          },
+          {
+            "step": 600,
+            "token": "warning-600",
+            "hex": "#C88F17",
+            "mix": "12% preto",
+            "vsPaper": 6.57,
+            "vsInk": 2.51
+          },
+          {
+            "step": 700,
+            "token": "warning-700",
+            "hex": "#A37513",
+            "mix": "28% preto",
+            "vsPaper": 4.54,
+            "vsInk": 3.64
+          },
+          {
+            "step": 800,
+            "token": "warning-800",
+            "hex": "#7D590E",
+            "mix": "45% preto",
+            "vsPaper": 2.94,
+            "vsInk": 5.62
+          },
+          {
+            "step": 900,
+            "token": "warning-900",
+            "hex": "#563E0A",
+            "mix": "62% preto",
+            "vsPaper": 1.86,
+            "vsInk": 8.89
+          },
+          {
+            "step": 950,
+            "token": "warning-950",
+            "hex": "#322406",
+            "mix": "78% preto",
+            "vsPaper": 1.24,
+            "vsInk": 13.36
+          }
+        ],
+        "danger": [
+          {
+            "step": 50,
+            "token": "danger-50",
+            "hex": "#FBEFED",
+            "mix": "92% branco",
+            "vsPaper": 16.58,
+            "vsInk": 1
+          },
+          {
+            "step": 100,
+            "token": "danger-100",
+            "hex": "#F6DFDB",
+            "mix": "84% branco",
+            "vsPaper": 14.65,
+            "vsInk": 1.13
+          },
+          {
+            "step": 200,
+            "token": "danger-200",
+            "hex": "#EEC0B7",
+            "mix": "68% branco",
+            "vsPaper": 11.42,
+            "vsInk": 1.45
+          },
+          {
+            "step": 300,
+            "token": "danger-300",
+            "hex": "#E49D8F",
+            "mix": "50% branco",
+            "vsPaper": 8.45,
+            "vsInk": 1.95
+          },
+          {
+            "step": 400,
+            "token": "danger-400",
+            "hex": "#D76B57",
+            "mix": "25% branco",
+            "vsPaper": 5.44,
+            "vsInk": 3.03
+          },
+          {
+            "step": 500,
+            "token": "danger-500",
+            "hex": "#C93A1F",
+            "mix": "semente",
+            "vsPaper": 3.65,
+            "vsInk": 4.52
+          },
+          {
+            "step": 600,
+            "token": "danger-600",
+            "hex": "#B1331B",
+            "mix": "12% preto",
+            "vsPaper": 2.98,
+            "vsInk": 5.53
+          },
+          {
+            "step": 700,
+            "token": "danger-700",
+            "hex": "#912A16",
+            "mix": "28% preto",
+            "vsPaper": 2.26,
+            "vsInk": 7.3
+          },
+          {
+            "step": 800,
+            "token": "danger-800",
+            "hex": "#6F2011",
+            "mix": "45% preto",
+            "vsPaper": 1.68,
+            "vsInk": 9.83
+          },
+          {
+            "step": 900,
+            "token": "danger-900",
+            "hex": "#4C160C",
+            "mix": "62% preto",
+            "vsPaper": 1.27,
+            "vsInk": 13.02
+          },
+          {
+            "step": 950,
+            "token": "danger-950",
+            "hex": "#2C0D07",
+            "mix": "78% preto",
+            "vsPaper": 1.04,
+            "vsInk": 15.91
+          }
+        ]
+      },
+      "neutrals": [
+        {
+          "step": 0,
+          "token": "neutral-0",
+          "hex": "#F9FBFC",
+          "mix": "cinza + primária",
+          "vsPaper": 17.97,
+          "vsInk": 1.09
+        },
+        {
+          "step": 50,
+          "token": "neutral-50",
+          "hex": "#F0F1F3",
+          "mix": "cinza + primária",
+          "vsPaper": 16.5,
+          "vsInk": 1
+        },
+        {
+          "step": 100,
+          "token": "neutral-100",
+          "hex": "#E6E7E9",
+          "mix": "cinza + primária",
+          "vsPaper": 15.07,
+          "vsInk": 1.09
+        },
+        {
+          "step": 200,
+          "token": "neutral-200",
+          "hex": "#D7D7DA",
+          "mix": "cinza + primária",
+          "vsPaper": 12.99,
+          "vsInk": 1.27
+        },
+        {
+          "step": 300,
+          "token": "neutral-300",
+          "hex": "#C0C0C4",
+          "mix": "cinza + primária",
+          "vsPaper": 10.28,
+          "vsInk": 1.6
+        },
+        {
+          "step": 400,
+          "token": "neutral-400",
+          "hex": "#9D9EA1",
+          "mix": "cinza + primária",
+          "vsPaper": 6.96,
+          "vsInk": 2.37
+        },
+        {
+          "step": 500,
+          "token": "neutral-500",
+          "hex": "#7F8085",
+          "mix": "cinza + primária",
+          "vsPaper": 4.73,
+          "vsInk": 3.49
+        },
+        {
+          "step": 600,
+          "token": "neutral-600",
+          "hex": "#65656A",
+          "mix": "cinza + primária",
+          "vsPaper": 3.22,
+          "vsInk": 5.13
+        },
+        {
+          "step": 700,
+          "token": "neutral-700",
+          "hex": "#4D4E53",
+          "mix": "cinza + primária",
+          "vsPaper": 2.25,
+          "vsInk": 7.34
+        },
+        {
+          "step": 800,
+          "token": "neutral-800",
+          "hex": "#37393D",
+          "mix": "cinza + primária",
+          "vsPaper": 1.61,
+          "vsInk": 10.24
+        },
+        {
+          "step": 900,
+          "token": "neutral-900",
+          "hex": "#24272B",
+          "mix": "cinza + primária",
+          "vsPaper": 1.24,
+          "vsInk": 13.27
+        },
+        {
+          "step": 950,
+          "token": "neutral-950",
+          "hex": "#16191C",
+          "mix": "cinza + primária",
+          "vsPaper": 1.06,
+          "vsInk": 15.62
+        }
+      ],
+      "semantic": {
+        "surface-base": "#0F1317",
+        "surface-raised": "#1D2026",
+        "surface-sunken": "#080B0E",
+        "surface-hover": "#292D35",
+        "surface-active": "#323741",
+        "ink": "#F0F1F3",
+        "ink-muted": "#D7D7DA",
+        "ink-subtle": "#C0C0C4",
+        "ink-disabled": "#7F8085",
+        "border": "#3A3F46",
+        "border-strong": "#9D9EA1",
+        "stroke": "#D7D7DA",
+        "primary-fill": "#6C9EB9",
+        "primary-fill-hover": "#9DBFD0",
+        "primary-fill-active": "#C0D6E1",
+        "on-primary": "#0F1317",
+        "primary-text": "#9DBFD0",
+        "primary-text-hover": "#C0D6E1",
+        "primary-soft": "#0D1C23",
+        "primary-soft-hover": "#16303D",
+        "primary-decor": "#6C9EB9",
+        "focus-ring": "#6C9EB9",
+        "field-focus-stroke": "#EFF5F7",
+        "secondary-1-fill": "#97ADA5",
+        "secondary-1-fill-hover": "#BCCAC5",
+        "on-secondary-1": "#0F1317",
+        "secondary-1-text": "#97ADA5",
+        "secondary-1-soft": "#0A1411",
+        "secondary-2-fill": "#9084B0",
+        "secondary-2-fill-hover": "#B5ADCA",
+        "on-secondary-2": "#0F1317",
+        "secondary-2-text": "#B5ADCA",
+        "secondary-2-soft": "#181421",
+        "success-fill": "#97B5A5",
+        "on-success": "#0F1317",
+        "success-text": "#97B5A5",
+        "success-soft": "#0A1810",
+        "warning-fill": "#EAB953",
+        "on-warning": "#0F1317",
+        "warning-text": "#F1D18D",
+        "warning-soft": "#322406",
+        "danger-fill": "#E49D8F",
+        "on-danger": "#0F1317",
+        "danger-text": "#E49D8F",
+        "danger-soft": "#2C0D07",
+        "overlay": "#000000A6",
+        "shadow-ink": "#04080A",
+        "shadow-soft": "#050A0D",
+        "tape": "#C0C0C44D",
+        "hatch-a": "#1D2026",
+        "hatch-b": "#0F1317",
+        "hole": "#0F1317",
+        "hole-rim": "#7F8085",
+        "selection": "#204559",
+        "footer-bg": "#0A0D12",
+        "footer-ink": "#E6E7E9",
+        "footer-link": "#E6E7E9",
+        "footer-focus": "#6C9EB9",
+        "footer-tree-far": "#2C2F30",
+        "footer-tree-mid": "#1D2021",
+        "footer-tree-near": "#030505",
+        "footer-accent": "#2D5B74",
+        "footer-sky-accent": "#E6E7E9",
+        "hero-shape-1": "#16303D",
+        "hero-shape-2": "#12221D",
+        "hero-shape-3": "#181421",
+        "hero-shape-4": "#0D1C23",
+        "hero-shape-5": "#22262C",
+        "hero-plate": "#1D2026"
+      },
+      "pairs": [
+        {
+          "fg": "ink",
+          "bg": "surface-base",
+          "kind": "texto",
+          "uso": "Texto principal",
+          "min": 4.5,
+          "ratio": 16.5,
+          "pass": true
+        },
+        {
+          "fg": "ink",
+          "bg": "surface-raised",
+          "kind": "texto",
+          "uso": "Texto principal",
+          "min": 4.5,
+          "ratio": 14.44,
+          "pass": true
+        },
+        {
+          "fg": "ink",
+          "bg": "surface-sunken",
+          "kind": "texto",
+          "uso": "Texto principal",
+          "min": 4.5,
+          "ratio": 17.45,
+          "pass": true
+        },
+        {
+          "fg": "ink-muted",
+          "bg": "surface-base",
+          "kind": "texto",
+          "uso": "Texto secundário",
+          "min": 4.5,
+          "ratio": 12.99,
+          "pass": true
+        },
+        {
+          "fg": "ink-muted",
+          "bg": "surface-raised",
+          "kind": "texto",
+          "uso": "Texto secundário",
+          "min": 4.5,
+          "ratio": 11.36,
+          "pass": true
+        },
+        {
+          "fg": "ink-muted",
+          "bg": "surface-sunken",
+          "kind": "texto",
+          "uso": "Texto secundário",
+          "min": 4.5,
+          "ratio": 13.74,
+          "pass": true
+        },
+        {
+          "fg": "ink",
+          "bg": "surface-hover",
+          "kind": "texto",
+          "uso": "Controle em hover",
+          "min": 4.5,
+          "ratio": 12.22,
+          "pass": true
+        },
+        {
+          "fg": "ink",
+          "bg": "surface-active",
+          "kind": "texto",
+          "uso": "Controle pressionado",
+          "min": 4.5,
+          "ratio": 10.57,
+          "pass": true
+        },
+        {
+          "fg": "stroke",
+          "bg": "surface-active",
+          "kind": "componente",
+          "uso": "Contorno de controle pressionado",
+          "min": 3,
+          "ratio": 8.32,
+          "pass": true
+        },
+        {
+          "fg": "ink-subtle",
+          "bg": "surface-base",
+          "kind": "texto",
+          "uso": "Metadados e rótulos mono",
+          "min": 4.5,
+          "ratio": 10.28,
+          "pass": true
+        },
+        {
+          "fg": "ink-subtle",
+          "bg": "surface-raised",
+          "kind": "texto",
+          "uso": "Metadados e rótulos mono",
+          "min": 4.5,
+          "ratio": 9,
+          "pass": true
+        },
+        {
+          "fg": "ink-subtle",
+          "bg": "surface-sunken",
+          "kind": "texto",
+          "uso": "Metadados e rótulos mono",
+          "min": 4.5,
+          "ratio": 10.88,
+          "pass": true
+        },
+        {
+          "fg": "ink-disabled",
+          "bg": "surface-base",
+          "kind": "desabilitado",
+          "uso": "Texto desabilitado (com outro indicador)",
+          "min": 3,
+          "ratio": 4.73,
+          "pass": true
+        },
+        {
+          "fg": "ink-disabled",
+          "bg": "surface-raised",
+          "kind": "desabilitado",
+          "uso": "Texto desabilitado (com outro indicador)",
+          "min": 3,
+          "ratio": 4.14,
+          "pass": true
+        },
+        {
+          "fg": "ink-disabled",
+          "bg": "surface-sunken",
+          "kind": "desabilitado",
+          "uso": "Texto desabilitado (com outro indicador)",
+          "min": 3,
+          "ratio": 5.01,
+          "pass": true
+        },
+        {
+          "fg": "primary-text",
+          "bg": "surface-base",
+          "kind": "texto",
+          "uso": "Link e texto em primária",
+          "min": 4.5,
+          "ratio": 9.59,
+          "pass": true
+        },
+        {
+          "fg": "primary-text",
+          "bg": "surface-raised",
+          "kind": "texto",
+          "uso": "Link e texto em primária",
+          "min": 4.5,
+          "ratio": 8.39,
+          "pass": true
+        },
+        {
+          "fg": "primary-text",
+          "bg": "surface-sunken",
+          "kind": "texto",
+          "uso": "Link e texto em primária",
+          "min": 4.5,
+          "ratio": 10.14,
+          "pass": true
+        },
+        {
+          "fg": "primary-text-hover",
+          "bg": "surface-base",
+          "kind": "texto",
+          "uso": "Link em hover",
+          "min": 4.5,
+          "ratio": 12.39,
+          "pass": true
+        },
+        {
+          "fg": "primary-text-hover",
+          "bg": "surface-raised",
+          "kind": "texto",
+          "uso": "Link em hover",
+          "min": 4.5,
+          "ratio": 10.84,
+          "pass": true
+        },
+        {
+          "fg": "primary-text-hover",
+          "bg": "surface-sunken",
+          "kind": "texto",
+          "uso": "Link em hover",
+          "min": 4.5,
+          "ratio": 13.1,
+          "pass": true
+        },
+        {
+          "fg": "primary-text",
+          "bg": "primary-soft",
+          "kind": "texto",
+          "uso": "Texto em primária sobre fundo suave",
+          "min": 4.5,
+          "ratio": 8.94,
+          "pass": true
+        },
+        {
+          "fg": "ink",
+          "bg": "primary-soft",
+          "kind": "texto",
+          "uso": "Chip selecionado e campo em foco",
+          "min": 4.5,
+          "ratio": 15.39,
+          "pass": true
+        },
+        {
+          "fg": "ink-subtle",
+          "bg": "primary-soft",
+          "kind": "texto",
+          "uso": "Placeholder de campo em foco",
+          "min": 4.5,
+          "ratio": 9.59,
+          "pass": true
+        },
+        {
+          "fg": "ink-muted",
+          "bg": "primary-soft",
+          "kind": "texto",
+          "uso": "Ícone e contador de campo em foco",
+          "min": 4.5,
+          "ratio": 12.11,
+          "pass": true
+        },
+        {
+          "fg": "ink",
+          "bg": "primary-soft-hover",
+          "kind": "texto",
+          "uso": "Chip selecionado em hover",
+          "min": 4.5,
+          "ratio": 12.19,
+          "pass": true
+        },
+        {
+          "fg": "primary-decor",
+          "bg": "surface-base",
+          "kind": "texto-grande",
+          "uso": "Títulos de 24 px ou mais e ícones com rótulo",
+          "min": 3,
+          "ratio": 6.42,
+          "pass": true
+        },
+        {
+          "fg": "primary-decor",
+          "bg": "surface-raised",
+          "kind": "texto-grande",
+          "uso": "Títulos de 24 px ou mais e ícones com rótulo",
+          "min": 3,
+          "ratio": 5.62,
+          "pass": true
+        },
+        {
+          "fg": "on-primary",
+          "bg": "primary-fill",
+          "kind": "texto",
+          "uso": "Botão primário",
+          "min": 4.5,
+          "ratio": 6.42,
+          "pass": true
+        },
+        {
+          "fg": "on-primary",
+          "bg": "primary-fill-hover",
+          "kind": "texto",
+          "uso": "Botão primário em hover",
+          "min": 4.5,
+          "ratio": 9.59,
+          "pass": true
+        },
+        {
+          "fg": "on-primary",
+          "bg": "primary-fill-active",
+          "kind": "texto",
+          "uso": "Botão primário pressionado",
+          "min": 4.5,
+          "ratio": 12.39,
+          "pass": true
+        },
+        {
+          "fg": "primary-fill",
+          "bg": "surface-base",
+          "kind": "componente",
+          "uso": "Botão primário contra o papel",
+          "min": 3,
+          "ratio": 6.42,
+          "pass": true
+        },
+        {
+          "fg": "primary-fill",
+          "bg": "surface-raised",
+          "kind": "componente",
+          "uso": "Botão primário contra o papel",
+          "min": 3,
+          "ratio": 5.62,
+          "pass": true
+        },
+        {
+          "fg": "stroke",
+          "bg": "surface-base",
+          "kind": "componente",
+          "uso": "Contorno desenhado",
+          "min": 3,
+          "ratio": 12.99,
+          "pass": true
+        },
+        {
+          "fg": "stroke",
+          "bg": "surface-raised",
+          "kind": "componente",
+          "uso": "Contorno desenhado",
+          "min": 3,
+          "ratio": 11.36,
+          "pass": true
+        },
+        {
+          "fg": "stroke",
+          "bg": "surface-sunken",
+          "kind": "componente",
+          "uso": "Contorno desenhado",
+          "min": 3,
+          "ratio": 13.74,
+          "pass": true
+        },
+        {
+          "fg": "border-strong",
+          "bg": "surface-base",
+          "kind": "componente",
+          "uso": "Borda de campo e controle",
+          "min": 3,
+          "ratio": 6.96,
+          "pass": true
+        },
+        {
+          "fg": "border-strong",
+          "bg": "surface-raised",
+          "kind": "componente",
+          "uso": "Borda de campo e controle",
+          "min": 3,
+          "ratio": 6.09,
+          "pass": true
+        },
+        {
+          "fg": "border-strong",
+          "bg": "surface-sunken",
+          "kind": "componente",
+          "uso": "Borda de campo e controle",
+          "min": 3,
+          "ratio": 7.36,
+          "pass": true
+        },
+        {
+          "fg": "focus-ring",
+          "bg": "surface-base",
+          "kind": "foco",
+          "uso": "Anel de foco",
+          "min": 3,
+          "ratio": 6.42,
+          "pass": true
+        },
+        {
+          "fg": "focus-ring",
+          "bg": "surface-raised",
+          "kind": "foco",
+          "uso": "Anel de foco",
+          "min": 3,
+          "ratio": 5.62,
+          "pass": true
+        },
+        {
+          "fg": "focus-ring",
+          "bg": "surface-sunken",
+          "kind": "foco",
+          "uso": "Anel de foco",
+          "min": 3,
+          "ratio": 6.79,
+          "pass": true
+        },
+        {
+          "fg": "field-focus-stroke",
+          "bg": "surface-base",
+          "kind": "foco",
+          "uso": "Contorno de campo em foco",
+          "min": 3,
+          "ratio": 16.94,
+          "pass": true
+        },
+        {
+          "fg": "field-focus-stroke",
+          "bg": "surface-raised",
+          "kind": "foco",
+          "uso": "Contorno de campo em foco",
+          "min": 3,
+          "ratio": 14.82,
+          "pass": true
+        },
+        {
+          "fg": "field-focus-stroke",
+          "bg": "primary-soft",
+          "kind": "foco",
+          "uso": "Contorno de campo em foco",
+          "min": 3,
+          "ratio": 15.8,
+          "pass": true
+        },
+        {
+          "fg": "on-secondary-1",
+          "bg": "secondary-1-fill",
+          "kind": "texto",
+          "uso": "Preenchimento secundário 1",
+          "min": 4.5,
+          "ratio": 7.85,
+          "pass": true
+        },
+        {
+          "fg": "on-secondary-1",
+          "bg": "secondary-1-fill-hover",
+          "kind": "texto",
+          "uso": "Secundário 1 em hover",
+          "min": 4.5,
+          "ratio": 11.01,
+          "pass": true
+        },
+        {
+          "fg": "secondary-1-text",
+          "bg": "surface-base",
+          "kind": "texto",
+          "uso": "Texto secundário 1",
+          "min": 4.5,
+          "ratio": 7.85,
+          "pass": true
+        },
+        {
+          "fg": "secondary-1-text",
+          "bg": "surface-raised",
+          "kind": "texto",
+          "uso": "Texto secundário 1",
+          "min": 4.5,
+          "ratio": 6.87,
+          "pass": true
+        },
+        {
+          "fg": "secondary-1-text",
+          "bg": "secondary-1-soft",
+          "kind": "texto",
+          "uso": "Texto sobre secundário 1 suave",
+          "min": 4.5,
+          "ratio": 7.88,
+          "pass": true
+        },
+        {
+          "fg": "on-secondary-2",
+          "bg": "secondary-2-fill",
+          "kind": "texto",
+          "uso": "Preenchimento secundário 2",
+          "min": 4.5,
+          "ratio": 5.43,
+          "pass": true
+        },
+        {
+          "fg": "on-secondary-2",
+          "bg": "secondary-2-fill-hover",
+          "kind": "texto",
+          "uso": "Secundário 2 em hover",
+          "min": 4.5,
+          "ratio": 8.7,
+          "pass": true
+        },
+        {
+          "fg": "secondary-2-text",
+          "bg": "surface-base",
+          "kind": "texto",
+          "uso": "Texto secundário 2",
+          "min": 4.5,
+          "ratio": 8.7,
+          "pass": true
+        },
+        {
+          "fg": "secondary-2-text",
+          "bg": "surface-raised",
+          "kind": "texto",
+          "uso": "Texto secundário 2",
+          "min": 4.5,
+          "ratio": 7.61,
+          "pass": true
+        },
+        {
+          "fg": "secondary-2-text",
+          "bg": "secondary-2-soft",
+          "kind": "texto",
+          "uso": "Texto sobre secundário 2 suave",
+          "min": 4.5,
+          "ratio": 8.44,
+          "pass": true
+        },
+        {
+          "fg": "on-success",
+          "bg": "success-fill",
+          "kind": "texto",
+          "uso": "Sucesso preenchido",
+          "min": 4.5,
+          "ratio": 8.41,
+          "pass": true
+        },
+        {
+          "fg": "success-text",
+          "bg": "surface-base",
+          "kind": "texto",
+          "uso": "Texto de sucesso",
+          "min": 4.5,
+          "ratio": 8.41,
+          "pass": true
+        },
+        {
+          "fg": "success-text",
+          "bg": "surface-raised",
+          "kind": "texto",
+          "uso": "Texto de sucesso",
+          "min": 4.5,
+          "ratio": 7.36,
+          "pass": true
+        },
+        {
+          "fg": "success-text",
+          "bg": "success-soft",
+          "kind": "texto",
+          "uso": "Aviso de sucesso",
+          "min": 4.5,
+          "ratio": 8.23,
+          "pass": true
+        },
+        {
+          "fg": "ink",
+          "bg": "success-soft",
+          "kind": "texto",
+          "uso": "Texto em aviso de sucesso",
+          "min": 4.5,
+          "ratio": 16.14,
+          "pass": true
+        },
+        {
+          "fg": "on-warning",
+          "bg": "warning-fill",
+          "kind": "texto",
+          "uso": "Atenção preenchido",
+          "min": 4.5,
+          "ratio": 10.27,
+          "pass": true
+        },
+        {
+          "fg": "warning-text",
+          "bg": "surface-base",
+          "kind": "texto",
+          "uso": "Texto de atenção",
+          "min": 4.5,
+          "ratio": 12.65,
+          "pass": true
+        },
+        {
+          "fg": "warning-text",
+          "bg": "surface-raised",
+          "kind": "texto",
+          "uso": "Texto de atenção",
+          "min": 4.5,
+          "ratio": 11.07,
+          "pass": true
+        },
+        {
+          "fg": "warning-text",
+          "bg": "warning-soft",
+          "kind": "texto",
+          "uso": "Aviso de atenção",
+          "min": 4.5,
+          "ratio": 10.24,
+          "pass": true
+        },
+        {
+          "fg": "ink",
+          "bg": "warning-soft",
+          "kind": "texto",
+          "uso": "Texto em aviso de atenção",
+          "min": 4.5,
+          "ratio": 13.36,
+          "pass": true
+        },
+        {
+          "fg": "on-danger",
+          "bg": "danger-fill",
+          "kind": "texto",
+          "uso": "Perigo preenchido",
+          "min": 4.5,
+          "ratio": 8.45,
+          "pass": true
+        },
+        {
+          "fg": "danger-text",
+          "bg": "surface-base",
+          "kind": "texto",
+          "uso": "Mensagem de erro",
+          "min": 4.5,
+          "ratio": 8.45,
+          "pass": true
+        },
+        {
+          "fg": "danger-text",
+          "bg": "surface-raised",
+          "kind": "texto",
+          "uso": "Mensagem de erro",
+          "min": 4.5,
+          "ratio": 7.4,
+          "pass": true
+        },
+        {
+          "fg": "danger-text",
+          "bg": "surface-sunken",
+          "kind": "texto",
+          "uso": "Mensagem de erro",
+          "min": 4.5,
+          "ratio": 8.94,
+          "pass": true
+        },
+        {
+          "fg": "danger-text",
+          "bg": "danger-soft",
+          "kind": "texto",
+          "uso": "Erro sobre fundo suave",
+          "min": 4.5,
+          "ratio": 8.15,
+          "pass": true
+        },
+        {
+          "fg": "ink",
+          "bg": "danger-soft",
+          "kind": "texto",
+          "uso": "Texto em aviso de erro",
+          "min": 4.5,
+          "ratio": 15.91,
+          "pass": true
+        },
+        {
+          "fg": "danger-fill",
+          "bg": "surface-base",
+          "kind": "componente",
+          "uso": "Borda de campo com erro",
+          "min": 3,
+          "ratio": 8.45,
+          "pass": true
+        },
+        {
+          "fg": "danger-fill",
+          "bg": "surface-raised",
+          "kind": "componente",
+          "uso": "Borda de campo com erro",
+          "min": 3,
+          "ratio": 7.4,
+          "pass": true
+        },
+        {
+          "fg": "footer-ink",
+          "bg": "footer-bg",
+          "kind": "texto",
+          "uso": "Texto do rodapé",
+          "min": 4.5,
+          "ratio": 15.73,
+          "pass": true
+        },
+        {
+          "fg": "footer-link",
+          "bg": "footer-bg",
+          "kind": "texto",
+          "uso": "Link do rodapé",
+          "min": 4.5,
+          "ratio": 15.73,
+          "pass": true
+        },
+        {
+          "fg": "footer-link",
+          "bg": "footer-tree-far",
+          "kind": "texto",
+          "uso": "Link sobre árvore do fundo",
+          "min": 4.5,
+          "ratio": 10.9,
+          "pass": true
+        },
+        {
+          "fg": "footer-link",
+          "bg": "footer-tree-mid",
+          "kind": "texto",
+          "uso": "Link sobre árvore do meio",
+          "min": 4.5,
+          "ratio": 13.25,
+          "pass": true
+        },
+        {
+          "fg": "footer-link",
+          "bg": "footer-tree-near",
+          "kind": "texto",
+          "uso": "Link sobre árvore da frente",
+          "min": 4.5,
+          "ratio": 16.51,
+          "pass": true
+        },
+        {
+          "fg": "footer-focus",
+          "bg": "footer-bg",
+          "kind": "foco",
+          "uso": "Anel de foco no rodapé",
+          "min": 3,
+          "ratio": 6.7,
+          "pass": true
+        },
+        {
+          "fg": "ink",
+          "bg": "hero-plate",
+          "kind": "texto",
+          "uso": "Texto do hero sobre a placa de apoio",
+          "min": 4.5,
+          "ratio": 14.44,
+          "pass": true
+        },
+        {
+          "fg": "ink-muted",
+          "bg": "hero-plate",
+          "kind": "texto",
+          "uso": "Parágrafo do hero",
+          "min": 4.5,
+          "ratio": 11.36,
+          "pass": true
+        }
+      ],
+      "dangerHueDistance": 168.94,
+      "successHueDistance": 53.59
     }
   ]
 }

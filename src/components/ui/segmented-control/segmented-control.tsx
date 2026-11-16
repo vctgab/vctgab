@@ -22,6 +22,8 @@ export type SegmentedControlProps = DisabledProps & {
   defaultValue?: string
   onValueChange?: (value: string) => void
   seed?: string
+  /** Ocupa a largura toda do contêiner (por exemplo, dentro de um Popover). */
+  block?: boolean
   className?: string
 }
 
@@ -39,6 +41,7 @@ export function SegmentedControl({
   disabled = false,
   disabledReason,
   seed,
+  block = false,
   className,
 }: SegmentedControlProps) {
   const id = useId()
@@ -48,6 +51,8 @@ export function SegmentedControl({
     0,
     options.findIndex((o) => o.value === current),
   )
+  // Valor fora das opções (estado neutro antes da hidratação): sem indicador.
+  const hasValue = options.some((o) => o.value === current)
   const count = Math.max(1, options.length)
   const shapeSeed = seed ?? `segmentado:${label}`
   const host = shapeHostProps({ seed: shapeSeed, bucket: "sm" })
@@ -58,7 +63,13 @@ export function SegmentedControl({
   }
 
   return (
-    <div className={cn("inline-flex max-w-full flex-col gap-1", className)}>
+    <div
+      className={cn(
+        "flex max-w-full flex-col gap-1",
+        block ? "w-full" : "inline-flex",
+        className,
+      )}
+    >
       <ToggleGroup.Root
         {...host}
         type="single"
@@ -73,7 +84,7 @@ export function SegmentedControl({
           onValueChange?.(next)
         }}
         style={{ ...host.style, gridTemplateColumns: `repeat(${count}, minmax(0, 1fr))` }}
-        className="relative isolate grid p-1"
+        className={cn("relative isolate grid p-1", block && "w-full")}
       >
         <Shape
           seed={shapeSeed}
@@ -87,7 +98,10 @@ export function SegmentedControl({
           data-indicador=""
           data-indice={index}
           style={indicatorStyle}
-          className="pointer-events-none absolute inset-y-1 left-1 transition-[translate] duration-(--duration-state) ease-hand motion-reduce:transition-none"
+          className={cn(
+            "pointer-events-none absolute inset-y-1 left-1 transition-[translate] duration-(--duration-state) ease-hand motion-reduce:transition-none",
+            !hasValue && "hidden",
+          )}
         >
           <span className="absolute inset-0 isolate">
             <Shape

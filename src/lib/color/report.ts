@@ -7,7 +7,9 @@ import { contrastRatio, hue, hueDistance, quantize, toHex, type Rgba } from "./c
 import { parseThemeCss, resolveColor, resolveRaw, themeDeclarations } from "./css-eval.ts"
 import {
   MIN_DANGER_HUE_DISTANCE,
+  MIN_SUCCESS_HUE_DISTANCE,
   MINIMUM,
+  MODES,
   NEUTRAL_STEPS,
   PAIRS,
   SCALE_NAMES,
@@ -39,8 +41,14 @@ export interface PairResult {
 }
 
 export interface ThemeReport {
+  /** Combinação `estacao-modo`, por exemplo `verao-escuro`. */
   id: string
+  season: string
+  mode: string
+  /** Rótulo da combinação ("Verão, escuro"). */
   label: string
+  /** Rótulo da estação ("Verão"). */
+  seasonLabel: string
   description: string
   colorScheme: "light" | "dark"
   /** Cor do `<meta name="theme-color">`: o papel do tema. */
@@ -53,10 +61,14 @@ export interface ThemeReport {
   semantic: Record<string, string>
   pairs: PairResult[]
   dangerHueDistance: number
+  successHueDistance: number
 }
 
 export interface TokenReport {
-  defaultTheme: string
+  defaultSeason: string
+  defaultMode: string
+  seasons: string[]
+  modes: string[]
   themes: ThemeReport[]
 }
 
@@ -71,6 +83,8 @@ function unquote(s: string | undefined): string {
   return (s ?? "").trim().replace(/^["']|["']$/g, "")
 }
 
+const MODE_LABEL: Record<string, string> = { claro: "claro", escuro: "escuro" }
+
 /** Gera o relatório e a lista de problemas a partir do CSS de tokens e temas. */
 export function buildTokenReport(...cssSources: string[]): {
   report: TokenReport
@@ -80,12 +94,22 @@ export function buildTokenReport(...cssSources: string[]): {
   const problems: TokenProblem[] = []
   const themes: ThemeReport[] = []
 
-  if (!parsed.defaultTheme) {
-    problems.push({ theme: "-", message: "Nenhum tema vale para :root sem data-theme." })
+  if (!parsed.defaultSeason) {
+    problems.push({
+      theme: "-",
+      message: "Nenhuma estação vale para :root sem data-season.",
+    })
+  }
+  if (!parsed.rules.some((r) => r.mode === "escuro" && r.season === null)) {
+    problems.push({ theme: "-", message: 'Falta o bloco [data-mode="escuro"].' })
   }
 
-  for (const id of parsed.themes.keys()) {
-    const decls = themeDeclarations(parsed, id)
+  const combos = parsed.seasons.flatMap((season) =>
+    MODES.map((mode) => ({ season, mode, id: `${season}-${mode}` })),
+  )
+
+  for (const { season, mode, id } of combos) {
+    const decls = themeDeclarations(parsed, season, mode)
     const color = (token: string): Rgba => resolveColor(`var(--${token})`, decls)
     const hex = (token: string) => toHex(quantize(color(token)))
     const fail = (message: string) => problems.push({ theme: id, message })
@@ -140,6 +164,15 @@ export function buildTokenReport(...cssSources: string[]): {
       )
     }
 
+    const successHueDistance = round2(
+      hueDistance(hue(color("success-fill")), hue(color("primary-fill"))),
+    )
+    if (successHueDistance < MIN_SUCCESS_HUE_DISTANCE) {
+      fail(
+        `Sucesso e primária com matizes próximas demais (${successHueDistance}° < ${MIN_SUCCESS_HUE_DISTANCE}°)`,
+      )
+    }
+
     const energy = Number(resolveRaw("--shape-energy", decls))
     const rotationMax = Number(resolveRaw("--shape-rotation-max", decls))
     if (!(energy > 0 && energy <= 2)) fail(`--shape-energy fora de (0, 2]: ${energy}`)
@@ -155,9 +188,13 @@ export function buildTokenReport(...cssSources: string[]): {
       seeds[name] = hex(`seed-${name}`)
     }
 
+    const seasonLabel = unquote(resolveRaw("--theme-label", decls)) || season
     themes.push({
       id,
-      label: unquote(resolveRaw("--theme-label", decls)) || id,
+      season,
+      mode,
+      label: `${seasonLabel}, ${MODE_LABEL[mode] ?? mode}`,
+      seasonLabel,
       description: unquote(resolveRaw("--theme-description", decls)),
       colorScheme,
       themeColor: semantic["surface-base"] ?? "",
@@ -169,11 +206,18 @@ export function buildTokenReport(...cssSources: string[]): {
       semantic,
       pairs,
       dangerHueDistance,
+      successHueDistance,
     })
   }
 
   return {
-    report: { defaultTheme: parsed.defaultTheme ?? "", themes },
+    report: {
+      defaultSeason: parsed.defaultSeason ?? "",
+      defaultMode: MODES[0],
+      seasons: parsed.seasons,
+      modes: [...MODES],
+      themes,
+    },
     problems,
   }
 }

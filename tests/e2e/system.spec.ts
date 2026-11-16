@@ -3,6 +3,7 @@ import { expect, test } from "@playwright/test"
 import {
   applyTheme,
   collectConsole,
+  expectTheme,
   scrollThrough,
   SYSTEM_PAGES,
   THEMES,
@@ -17,7 +18,7 @@ for (const theme of THEMES) {
         const messages = collectConsole(page)
         await applyTheme(page, theme)
         await page.goto(path, { waitUntil: "networkidle" })
-        await expect(page.locator("html")).toHaveAttribute("data-theme", theme)
+        await expectTheme(page, theme)
         await scrollThrough(page)
         const results = await new AxeBuilder({ page }).withTags(AXE_TAGS).analyze()
         const violations = results.violations.map((v) => ({
@@ -79,13 +80,25 @@ test.describe("teclado e alvo", () => {
     expect(small).toEqual([])
   })
 
-  test("o seletor de tema troca data-theme e persiste", async ({ page }) => {
+  test("o seletor troca estação e modo à parte e persiste", async ({ page }) => {
     await page.goto("/sistema", { waitUntil: "networkidle" })
-    const group = page.getByRole("radiogroup", { name: "Tema" }).first()
+    const group = page.getByRole("radiogroup", { name: "Estação" }).first()
     await group.getByRole("radio", { name: /Inverno/ }).click()
-    await expect(page.locator("html")).toHaveAttribute("data-theme", "inverno")
+    await expect(page.locator("html")).toHaveAttribute("data-season", "inverno")
+    const mode = page.getByRole("radiogroup", { name: "Modo" }).first()
+    await mode.getByRole("radio", { name: "Escuro" }).click()
+    await expectTheme(page, "inverno-escuro")
     await page.reload({ waitUntil: "networkidle" })
-    await expect(page.locator("html")).toHaveAttribute("data-theme", "inverno")
+    await expectTheme(page, "inverno-escuro")
+    // "Automática" e "Do sistema" apagam as escolhas e voltam ao calendário e ao sistema.
+    await group.getByRole("radio", { name: /Automática/ }).click()
+    await mode.getByRole("radio", { name: "Do sistema" }).click()
+    await expect(page.locator("html")).toHaveAttribute("data-mode", "claro")
+    const stored = await page.evaluate(() => [
+      window.localStorage.getItem("vg-estacao"),
+      window.localStorage.getItem("vg-modo"),
+    ])
+    expect(stored).toEqual([null, null])
   })
 
   test("rádio marca com as setas no navegador real", async ({ page }) => {

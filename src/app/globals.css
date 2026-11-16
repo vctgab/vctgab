@@ -6,7 +6,7 @@
 
 /*
  * O Tailwind só expõe os tokens. `inline` faz cada utilitário apontar direto
- * para a variável semântica, então um `[data-theme]` aninhado (vitrine de
+ * para a variável semântica, então um `[data-season]` aninhado (vitrine de
  * temas lado a lado) recalcula as cores sem tocar nos componentes.
  * A paleta, os raios e as sombras padrão do Tailwind são removidos.
  */

@@ -9,7 +9,7 @@ import { fontVariables, PRELOADED_FONTS } from "@/lib/fonts"
 import { SITE_URL } from "@/lib/site-url"
 import { ThemeProvider } from "@/lib/theme/theme-provider"
 import { themeScript } from "@/lib/theme/theme-script"
-import { getThemeInfo, DEFAULT_THEME } from "@/lib/theme/themes"
+import { DEFAULT_MODE, DEFAULT_SEASON, getThemeColor } from "@/lib/theme/themes"
 import "./globals.css"
 
 export const metadata: Metadata = {
@@ -33,13 +33,13 @@ export const metadata: Metadata = {
 }
 
 export const viewport: Viewport = {
-  themeColor: getThemeInfo(DEFAULT_THEME).themeColor,
+  themeColor: getThemeColor(DEFAULT_SEASON, DEFAULT_MODE),
 }
 
 export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
-    // suppressHydrationWarning só por causa de data-theme, que o script do
-    // <head> define antes da hidratação.
+    // suppressHydrationWarning só por causa de data-season e data-mode, que o
+    // script do <head> define antes da hidratação.
     <html lang="pt-BR" className={fontVariables} suppressHydrationWarning>
       <head>
         <script dangerouslySetInnerHTML={{ __html: themeScript() }} />

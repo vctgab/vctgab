@@ -4,7 +4,7 @@
  */
 import AxeBuilder from "@axe-core/playwright"
 import { expect, test, type Page } from "@playwright/test"
-import { applyTheme, collectConsole, scrollThrough, THEMES } from "./helpers"
+import { applyTheme, collectConsole, expectTheme, scrollThrough, THEMES } from "./helpers"
 
 const AXE_TAGS = ["wcag2a", "wcag2aa", "wcag21a", "wcag21aa", "wcag22aa"]
 
@@ -32,7 +32,7 @@ for (const theme of THEMES) {
     const messages = collectConsole(page)
     await applyTheme(page, theme)
     await page.goto("/", { waitUntil: "networkidle" })
-    await expect(page.locator("html")).toHaveAttribute("data-theme", theme)
+    await expectTheme(page, theme)
     await scrollThrough(page)
     const results = await new AxeBuilder({ page }).withTags(AXE_TAGS).analyze()
     const violations = results.violations.map((v) => ({
@@ -146,38 +146,45 @@ test("CA-6: teclado de ponta a ponta no desktop", async ({ page, browserName }) 
   expect(order.slice(0, expected.length)).toEqual(expected)
 })
 
-test("CA-6: tema pelo teclado: abre, troca com as setas, fecha com Esc e persiste", async ({
+test("CA-6: tema pelo teclado: abre, troca estação e modo, fecha com Esc e persiste", async ({
   page,
 }) => {
-  // Sem tema salvo e com sistema claro, começa no ipê (o applyTheme regravaria a cada reload).
+  // Sem tema salvo e com sistema claro, o modo começa claro (a estação segue o calendário).
   await page.setViewportSize({ width: 1366, height: 900 })
   await page.goto("/", { waitUntil: "networkidle" })
-  await expect(page.locator("html")).toHaveAttribute("data-theme", "ipe")
+  await expect(page.locator("html")).toHaveAttribute("data-mode", "claro")
   const trigger = page.getByRole("button", { name: "Escolher tema" })
   await trigger.focus()
   await page.keyboard.press("Enter")
-  const group = page.getByRole("radiogroup", { name: "Tema" })
+  const group = page.getByRole("radiogroup", { name: "Estação" })
   await expect(group).toBeVisible()
-  // Tab até o grupo (cai no tema marcado) e seta segurada, como uma pessoa (D-707).
+  // Tab até o grupo (cai na opção marcada: "Automática") e seta segurada, como uma pessoa (D-707).
+  const auto = group.getByRole("radio", { name: /Automática/ })
   for (
     let i = 0;
-    i < 4 &&
-    !(await group
-      .getByRole("radio", { name: /Ipê/ })
-      .evaluate((el) => el === document.activeElement));
+    i < 4 && !(await auto.evaluate((el) => el === document.activeElement));
     i++
   )
     await page.keyboard.press("Tab")
-  await expect(group.getByRole("radio", { name: /Ipê/ })).toBeFocused()
-  await page.keyboard.down("ArrowRight")
+  await expect(auto).toBeFocused()
+  await page.keyboard.down("ArrowLeft")
   await page.waitForTimeout(60)
-  await page.keyboard.up("ArrowRight")
-  await expect(page.locator("html")).toHaveAttribute("data-theme", "noturno")
+  await page.keyboard.up("ArrowLeft")
+  await expect(page.locator("html")).toHaveAttribute("data-season", "inverno")
+  await expect(group.getByRole("radio", { name: /Inverno/ })).toBeChecked()
+  // Tab leva ao modo (cai em "Do sistema"); no segmentado a seta move o foco e Espaço marca.
+  await page.keyboard.press("Tab")
+  const mode = page.getByRole("radiogroup", { name: "Modo" })
+  await expect(mode.getByRole("radio", { name: "Do sistema" })).toBeFocused()
+  await page.keyboard.press("ArrowLeft")
+  await page.keyboard.press("Space")
+  await expect(mode.getByRole("radio", { name: "Escuro" })).toBeChecked()
+  await expect(page.locator("html")).toHaveAttribute("data-mode", "escuro")
   await page.keyboard.press("Escape")
   await expect(group).toBeHidden()
   await expect(trigger).toBeFocused()
   await page.reload({ waitUntil: "networkidle" })
-  await expect(page.locator("html")).toHaveAttribute("data-theme", "noturno")
+  await expectTheme(page, "inverno-escuro")
 })
 
 test("CA-6: menu mobile em Drawer, com Esc e foco de volta", async ({ page }) => {

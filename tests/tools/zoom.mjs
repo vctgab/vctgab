@@ -2,6 +2,7 @@
 // node tests/tools/zoom.mjs <rota> <saida.png> <x> <y> <largura> <altura> [tema] [ampliação]
 // Captura a região em escala 2x e amplia sem suavização (pixel a pixel).
 import { chromium } from "@playwright/test"
+import { applyTheme } from "./theme.mjs"
 
 const [route, out, x, y, w, h, theme = "", zoom = "4"] = process.argv.slice(2)
 const clip = { x: Number(x), y: Number(y), width: Number(w), height: Number(h) }
@@ -10,7 +11,7 @@ const context = await browser.newContext({
   viewport: { width: 1366, height: 900 },
   deviceScaleFactor: 2,
 })
-if (theme) await context.addInitScript((t) => localStorage.setItem("vg-tema", t), theme)
+if (theme) await applyTheme(context, theme)
 const page = await context.newPage()
 await page.goto(`http://localhost:3100${route}`, { waitUntil: "networkidle" })
 const png = await page.screenshot({ clip })

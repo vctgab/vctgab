@@ -160,6 +160,11 @@ export function moon(): string {
   return "M1090 22a26 26 0 1 0 26 34a20 20 0 1 1 -26 -34Z"
 }
 
+/** Sol: disco e oito raios curtos, no canto onde a lua aparece à noite. */
+export function sun(): string {
+  return "M1068 50a22 22 0 1 0 44 0a22 22 0 1 0 -44 0ZM1118.0 58.2L1130.4 57.1L1119.1 51.9ZM1104.0 75.6L1113.5 83.6L1109.3 71.9ZM1081.8 78.0L1082.9 90.4L1088.1 79.1ZM1064.4 64.0L1056.4 73.5L1068.1 69.3ZM1062.0 41.8L1049.6 42.9L1060.9 48.1ZM1076.0 24.4L1066.5 16.4L1070.7 28.1ZM1098.2 22.0L1097.1 9.6L1091.9 20.9ZM1115.6 36.0L1123.6 26.5L1111.9 30.7Z"
+}
+
 /** Partículas que caem (folhas ou flocos), com atraso e duração por seed. */
 export function particles(seed: string, count: number): Dot[] {
   const rand = createRandom(seed)

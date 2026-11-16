@@ -283,7 +283,7 @@ export default function ComponentesPage() {
               title="primary-fill"
               trigger={<Button variant="ghost">Ver o token primary-fill</Button>}
             >
-              Passo 600 da primária no tema claro; 400 no noturno. Texto branco por cima a
+              Passo 600 da primária no modo claro; 400 no escuro. Texto branco por cima a
               5,10:1.
             </Popover>
           </Row>

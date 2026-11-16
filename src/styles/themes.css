@@ -1,32 +1,39 @@
 /*
- * Temas. Cada bloco define as sementes, o rótulo, o esquema de cor, os dois
- * parâmetros do motor de formas e, quando preciso, ajustes no mapeamento
- * semântico de `tokens.css`.
+ * Temas: quatro estações, cada uma clara e escura (8 combinações).
  *
- * Criar um tema: copie um bloco, troque o nome em `[data-theme="…"]`, ajuste
- * as sementes, rode `pnpm tokens:build` (que falha se algum contraste
- * reprovar) e acrescente a cena do rodapé em
+ * - `[data-season="x"]` declara as sementes da estação, o rótulo, os dois
+ *   parâmetros do motor de formas e, quando preciso, ajustes do modo claro.
+ * - `[data-mode="escuro"]` é o único bloco de modo escuro: serve às quatro
+ *   estações porque deriva tudo das sementes (superfícies com cerca de 8% da
+ *   primária, interativos no passo 400, texto de primária no 300).
+ * - `[data-season="x"][data-mode="escuro"]` ajusta o escuro de uma estação.
+ * - O modo claro é o mapeamento base de `tokens.css`.
+ *
+ * Criar uma estação: copie um bloco, troque o nome em `[data-season="…"]`,
+ * ajuste as sementes, rode `pnpm tokens:build` (que falha se algum contraste
+ * reprovar nas duas polaridades) e acrescente a cena do rodapé em
  * `src/components/footer-scene/scenes.ts`. Nenhum componente muda.
  *
- * O bloco do tema padrão também vale para `:root` sem atributo (primeira
- * pintura sem script). Os ajustes de um tema nunca vazam para outro porque
- * cada bloco só casa com o próprio `data-theme`.
+ * Ordem importa: o bloco de modo escuro vem depois dos de estação, e os
+ * ajustes de combinação por último (maior especificidade). O bloco da
+ * estação padrão também vale para `:root` sem atributo (primeira pintura sem
+ * script). Elementos aninhados sempre levam `data-season` e `data-mode`.
  */
 
-/* ---------- ipê (padrão, claro) ---------- */
-:root:not([data-theme]),
-[data-theme="ipe"] {
-  --theme-label: "Ipê";
-  --theme-description: "Claro, rosa do ipê com pinheiro e âmbar.";
+/* ---------- primavera (padrão; o rosa do ipê) ---------- */
+:root:not([data-season]),
+[data-season="primavera"] {
+  --theme-label: "Primavera";
+  --theme-description: "Rosa do ipê com pinheiro e âmbar.";
   --seed-primary: #ee2476;
   --seed-secondary-1: #2f6b4a; /* Pinheiro, também sucesso */
   --seed-secondary-2: #e3a21a; /* Âmbar, também aviso */
   --seed-success: #2f6b4a;
   --seed-warning: #e3a21a;
   --seed-danger: #c93a1f; /* Tijolo */
+  --seed-tree: #2f6b4a; /* pinheiros do rodapé */
   --shape-energy: 1;
   --shape-rotation-max: 1.2;
-  color-scheme: light;
 
   /* Âmbar é claro: preenchimento leva tinta escura, texto vai ao 800. */
   --secondary-2-fill: var(--secondary-2-400);
@@ -35,18 +42,70 @@
   --secondary-2-text: var(--secondary-2-800);
 }
 
-/* ---------- noturno (escuro) ---------- */
-[data-theme="noturno"] {
-  --theme-label: "Noturno";
-  --theme-description: "Escuro, as mesmas sementes do ipê sobre papel noturno.";
-  --seed-primary: #ee2476;
-  --seed-secondary-1: #2f6b4a;
-  --seed-secondary-2: #e3a21a;
+/* ---------- verão (verde de folha cheia) ---------- */
+[data-season="verao"] {
+  --theme-label: "Verão";
+  --theme-description: "Verde de folha cheia com mar e sol.";
+  --seed-primary: #12924e;
+  --seed-secondary-1: #1d7fb3; /* Mar */
+  --seed-secondary-2: #f2b53a; /* Sol */
+  --seed-success: #0f766e; /* verde-azulado: longe do verde da primária */
+  --seed-warning: #e3a21a;
+  --seed-danger: #c93a1f;
+  --seed-tree: #12924e; /* a secundária 1 é o mar; as árvores usam a primária */
+  --shape-energy: 1.1;
+  --shape-rotation-max: 1.3;
+
+  /* Sol é claro como o âmbar. */
+  --secondary-2-fill: var(--secondary-2-400);
+  --secondary-2-fill-hover: var(--secondary-2-500);
+  --on-secondary-2: var(--neutral-950);
+  --secondary-2-text: var(--secondary-2-800);
+
+  --footer-accent: var(--primary-400);
+  --footer-sun: var(--seed-secondary-2);
+}
+
+/* ---------- outono (laranja queimado) ---------- */
+[data-season="outono"] {
+  --theme-label: "Outono";
+  --theme-description: "Laranja queimado com oliva e vinho.";
+  --seed-primary: #c5531f;
+  --seed-secondary-1: #6b7a2f; /* Oliva */
+  --seed-secondary-2: #7a2e4b; /* Vinho */
+  --seed-success: #2f6b4a;
+  --seed-warning: #e3a21a;
+  --seed-danger: #b81d2e; /* vermelho mais frio que o laranja da primária */
+  --seed-tree: #c5531f; /* árvores alaranjadas */
+  --shape-energy: 1.25;
+  --shape-rotation-max: 1.4;
+
+  /* árvores alaranjadas, escuras o bastante para os links do rodapé */
+  --footer-tree-far: color-mix(in srgb, var(--seed-tree) 38%, #2a2420);
+  --footer-tree-mid: color-mix(in srgb, var(--seed-tree) 32%, #1d1815);
+  --footer-tree-near: color-mix(in srgb, var(--seed-tree) 24%, #0d0b0a);
+  --footer-accent: var(--primary-400);
+}
+
+/* ---------- inverno (azul-gelo) ---------- */
+[data-season="inverno"] {
+  --theme-label: "Inverno";
+  --theme-description: "Azul-gelo com pinheiro nevado e lilás frio.";
+  --seed-primary: #3b7ea1;
+  --seed-secondary-1: #2f5a4b; /* Pinheiro nevado */
+  --seed-secondary-2: #6b5b95; /* Lilás frio */
   --seed-success: #2f6b4a;
   --seed-warning: #e3a21a;
   --seed-danger: #c93a1f;
-  --shape-energy: 0.8;
-  --shape-rotation-max: 0.9;
+  --seed-tree: #2f5a4b;
+  --shape-energy: 0.7;
+  --shape-rotation-max: 0.8;
+
+  --footer-accent: var(--neutral-0);
+}
+
+/* ---------- modo escuro (vale para as quatro estações) ---------- */
+[data-mode="escuro"] {
   color-scheme: dark;
 
   /* superfícies escuras com cerca de 8% da primária */
@@ -113,14 +172,15 @@
   --hole-rim: var(--neutral-500);
   --selection: var(--primary-800);
 
+  /* rodapé à noite: a mesma cena da estação, em silhueta */
   --footer-bg: color-mix(in srgb, var(--seed-primary) 7%, #060507);
   --footer-ink: var(--neutral-100);
   --footer-link: var(--neutral-100);
   --footer-focus: var(--primary-400);
-  --footer-tree-far: color-mix(in srgb, var(--seed-primary) 10%, #2b282c);
-  --footer-tree-mid: color-mix(in srgb, var(--seed-primary) 8%, #1b191c);
-  --footer-tree-near: color-mix(in srgb, var(--seed-primary) 5%, #000000);
-  --footer-accent: var(--secondary-2-200);
+  --footer-tree-far: color-mix(in srgb, var(--seed-tree) 14%, #2b282c);
+  --footer-tree-mid: color-mix(in srgb, var(--seed-tree) 10%, #1b191c);
+  --footer-tree-near: color-mix(in srgb, var(--seed-tree) 6%, #000000);
+  --footer-accent: color-mix(in srgb, var(--primary-500) 70%, #0b0a0b);
   --footer-sky-accent: var(--neutral-100);
 
   --hero-shape-1: var(--primary-900);
@@ -130,40 +190,10 @@
   --hero-shape-5: color-mix(in srgb, var(--seed-primary) 10%, #1f1c1f);
 }
 
-/* ---------- outono (claro, laranja queimado) ---------- */
-[data-theme="outono"] {
-  --theme-label: "Outono";
-  --theme-description: "Claro, laranja queimado com oliva e vinho.";
-  --seed-primary: #c5531f;
-  --seed-secondary-1: #6b7a2f; /* Oliva */
-  --seed-secondary-2: #7a2e4b; /* Vinho */
-  --seed-success: #2f6b4a;
-  --seed-warning: #e3a21a;
-  --seed-danger: #b81d2e; /* vermelho mais frio que o laranja da primária */
-  --shape-energy: 1.25;
-  --shape-rotation-max: 1.4;
-  color-scheme: light;
+/* ---------- ajustes de uma estação no modo escuro ---------- */
 
-  /* árvores alaranjadas, escuras o bastante para os links do rodapé */
-  --footer-tree-far: color-mix(in srgb, var(--seed-primary) 38%, #2a2420);
-  --footer-tree-mid: color-mix(in srgb, var(--seed-primary) 32%, #1d1815);
-  --footer-tree-near: color-mix(in srgb, var(--seed-primary) 24%, #0d0b0a);
-  --footer-accent: var(--primary-400);
-}
-
-/* ---------- inverno (claro, azul-gelo) ---------- */
-[data-theme="inverno"] {
-  --theme-label: "Inverno";
-  --theme-description: "Claro, azul-gelo com pinheiro nevado e lilás frio.";
-  --seed-primary: #3b7ea1;
-  --seed-secondary-1: #2f5a4b; /* Pinheiro nevado */
-  --seed-secondary-2: #6b5b95; /* Lilás frio */
-  --seed-success: #2f6b4a;
-  --seed-warning: #e3a21a;
-  --seed-danger: #c93a1f;
-  --shape-energy: 0.7;
-  --shape-rotation-max: 0.8;
-  color-scheme: light;
-
-  --footer-accent: var(--neutral-0);
+/* Vinho no 400 dá só 3,9:1 com a tinta escura; o 300 passa de 4,5:1. */
+[data-season="outono"][data-mode="escuro"] {
+  --secondary-2-fill: var(--secondary-2-300);
+  --secondary-2-fill-hover: var(--secondary-2-200);
 }

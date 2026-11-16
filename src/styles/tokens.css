@@ -5,9 +5,10 @@
  * padrão) e `themes.css` (sementes e ajustes por tema). Um dos dois únicos
  * lugares onde cor literal é permitida (regra TK-01).
  *
- * O seletor `:root, [data-theme]` faz cada elemento com tema recalcular as
- * escalas a partir das próprias sementes; por isso a vitrine pode mostrar os
- * quatro temas lado a lado.
+ * O seletor `:root, [data-season], [data-mode]` faz cada elemento com
+ * estação ou modo recalcular as escalas a partir das próprias sementes; por
+ * isso a vitrine pode mostrar as 8 combinações lado a lado (um elemento
+ * aninhado sempre leva os dois atributos).
  *
  * Escalas de 11 passos: branco (claros) ou preto (escuros) sobre a semente,
  * em sRGB. 50: 92% de branco, 100: 84%, 200: 68%, 300: 50%, 400: 25%,
@@ -15,7 +16,8 @@
  */
 
 :root,
-[data-theme] {
+[data-season],
+[data-mode] {
   /* ---------- escalas derivadas ---------- */
   --primary-50: color-mix(in srgb, white 92%, var(--seed-primary));
   --primary-100: color-mix(in srgb, white 84%, var(--seed-primary));
@@ -175,11 +177,12 @@
   --footer-ink: var(--neutral-50);
   --footer-link: var(--neutral-50);
   --footer-focus: var(--primary-300);
-  --footer-tree-far: color-mix(in srgb, var(--seed-secondary-1) 32%, #2a2629);
-  --footer-tree-mid: color-mix(in srgb, var(--seed-secondary-1) 30%, #1f1c1e);
-  --footer-tree-near: color-mix(in srgb, var(--seed-secondary-1) 22%, #0c0b0c);
+  --footer-tree-far: color-mix(in srgb, var(--seed-tree) 32%, #2a2629);
+  --footer-tree-mid: color-mix(in srgb, var(--seed-tree) 30%, #1f1c1e);
+  --footer-tree-near: color-mix(in srgb, var(--seed-tree) 22%, #0c0b0c);
   --footer-accent: var(--primary-400);
   --footer-sky-accent: var(--neutral-100);
+  --footer-sun: var(--secondary-2-300);
 
   /* hero: paleta da composição de formas */
   --hero-shape-1: var(--primary-200);

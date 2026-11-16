@@ -1,13 +1,17 @@
-// Auditoria axe de todas as páginas da vitrine nos 4 temas, com repetição por
-// par (tema, página) até obter um resultado íntegro. Grava docs/qa/axe-report.json.
+// Auditoria axe de todas as páginas da vitrine nas 8 combinações de estação e modo, com repetição por
+// par (combinação, página) até obter um resultado íntegro. Grava docs/qa/axe-report.json.
 // Uso: node tests/tools/axe-audit.mjs (com o servidor de produção na porta 3100)
 import { mkdirSync, writeFileSync } from "node:fs"
 import AxeBuilder from "@axe-core/playwright"
 import { chromium } from "@playwright/test"
+import { applyTheme, readTheme, THEMES } from "./theme.mjs"
 
 const BASE = "http://localhost:3100"
-const THEMES = ["ipe", "noturno", "outono", "inverno"]
 const PAGES = [
+  "/",
+  "/projetos",
+  "/sobre",
+  "/contato",
   "/sistema",
   "/sistema/cores",
   "/sistema/tipografia",
@@ -40,7 +44,7 @@ function withTimeout(promise, ms) {
 async function audit(theme, path) {
   const context = await browser.newContext({ viewport: { width: 1366, height: 900 } })
   context.setDefaultTimeout(30_000)
-  await context.addInitScript((t) => localStorage.setItem("vg-tema", t), theme)
+  await applyTheme(context, theme)
   const page = await context.newPage()
   const consoleMessages = []
   page.on("console", (m) => {
@@ -48,7 +52,7 @@ async function audit(theme, path) {
   })
   try {
     await page.goto(BASE + path, { waitUntil: "networkidle" })
-    const applied = await page.getAttribute("html", "data-theme")
+    const applied = await readTheme(page)
     if (applied !== theme) throw new Error(`tema aplicado ${applied}`)
     const results = await new AxeBuilder({ page }).withTags(TAGS).analyze()
     return {

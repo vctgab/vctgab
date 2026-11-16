@@ -28,8 +28,9 @@ export default function SistemaPage() {
       <h1 className="mt-4 text-h1">Sistema</h1>
       <p className="mt-4 max-w-measure text-body-lg text-ink-muted">
         O design system do portfólio: caderno de campo desenhado à mão, com a
-        irregularidade sempre a serviço da leitura. {formatNumber(tokens.themes.length)}{" "}
-        temas, {formatNumber(pares)} pares de contraste aprovados no build.
+        irregularidade sempre a serviço da leitura. Quatro estações, cada uma clara e
+        escura ({formatNumber(tokens.themes.length)} combinações), {formatNumber(pares)}{" "}
+        pares de contraste aprovados no build.
       </p>
       <ul className="mt-12 grid gap-8 sm:grid-cols-2 xl:grid-cols-3">
         {SECTIONS.filter((s) => s.href !== "/sistema").map((s) => (

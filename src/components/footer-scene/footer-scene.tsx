@@ -1,7 +1,7 @@
 import type { CSSProperties } from "react"
-import { DEFAULT_THEME, THEMES } from "@/lib/theme/themes"
+import { DEFAULT_SEASON, SEASONS } from "@/lib/theme/themes"
 import { PausaForaDaTela } from "./pause-offscreen"
-import { DEFAULT_SCENE, SCENES, type SceneExtra } from "./scenes"
+import { DEFAULT_SCENE, NIGHT_EXTRAS, SCENES, type SceneExtra } from "./scenes"
 import {
   autumnTrees,
   ipe,
@@ -13,6 +13,7 @@ import {
   SCENE_H,
   SCENE_W,
   stars,
+  sun,
 } from "./trees"
 
 const PLANE_FILL = [
@@ -22,19 +23,24 @@ const PLANE_FILL = [
 ] as const
 
 /**
- * Regras que mostram só os extras da cena do tema ativo. Geradas a partir
- * das cenas: um tema novo não pede CSS à mão. Sem cor nenhuma aqui.
+ * Regras que mostram só os extras da cena da estação ativa, mais a noite
+ * (lua e estrelas) no modo escuro, e escondem o que é só de dia (o sol) à
+ * noite. Geradas a partir das cenas: uma estação nova não pede CSS à mão. Sem
+ * cor nenhuma aqui.
  */
 function sceneVisibilityCss(): string {
-  const ids = THEMES.map((t) => t.id)
-  const rules = ids.map(
-    (id) =>
-      `[data-theme="${id}"] [data-cena="${id}"]{display:inline}` +
-      (id === DEFAULT_THEME
-        ? `:root:not([data-theme]) [data-cena="${id}"]{display:inline}`
+  const rules = SEASONS.map(
+    ({ id }) =>
+      `[data-season="${id}"] [data-cena="${id}"]{display:inline}` +
+      (id === DEFAULT_SEASON
+        ? `:root:not([data-season]) [data-cena="${id}"]{display:inline}`
         : ""),
   )
-  return `[data-cena]{display:none}${rules.join("")}`
+  return (
+    `[data-cena],[data-noite]{display:none}${rules.join("")}` +
+    `[data-mode="escuro"] [data-noite]{display:inline}` +
+    `[data-mode="escuro"] [data-dia]{display:none}`
+  )
 }
 
 function Extras({ extras, seed }: { extras: readonly SceneExtra[]; seed: string }) {
@@ -45,6 +51,7 @@ function Extras({ extras, seed }: { extras: readonly SceneExtra[]; seed: string 
   const autumn = has("copas") ? autumnTrees(seed) : null
   return (
     <>
+      {has("sol") ? <path data-dia="" d={sun()} className="fill-(--footer-sun)" /> : null}
       {has("lua") ? <path d={moon()} className="fill-(--footer-sky-accent)" /> : null}
       {has("estrelas") ? (
         <path d={stars(seed)} className="fill-(--footer-sky-accent) opacity-80" />
@@ -103,13 +110,14 @@ export interface FooterSceneProps {
 
 /**
  * Cena baixa de árvores no fim do rodapé: três planos (o do fundo mais
- * claro) e os extras da cena de cada tema. Decorativa (`aria-hidden`).
+ * claro) e os extras da cena de cada estação; no modo escuro a mesma cena
+ * vira noite (lua, estrelas, sem o sol). Decorativa (`aria-hidden`).
  * Ficha: docs/specs/hero-footer.md
  */
 export function FooterScene({ seed = "rodape", className }: FooterSceneProps) {
   const geo = planes(seed)
   const [far, mid, near] = geo as [(typeof geo)[0], (typeof geo)[0], (typeof geo)[0]]
-  const sceneIds = Array.from(new Set([...THEMES.map((t) => t.id)]))
+  const sceneIds = SEASONS.map((x) => x.id)
 
   return (
     <PausaForaDaTela className={className}>
@@ -122,9 +130,11 @@ export function FooterScene({ seed = "rodape", className }: FooterSceneProps) {
         className="block size-full forced-colors:hidden"
         data-cena-rodape=""
       >
+        <g data-noite="">
+          <Extras extras={NIGHT_EXTRAS} seed={seed} />
+        </g>
         {sceneIds.map((id) => {
-          const scene = SCENES[id] ?? DEFAULT_SCENE
-          const sky = scene.extras.filter((e) => e === "lua" || e === "estrelas")
+          const sky = (SCENES[id] ?? DEFAULT_SCENE).extras.filter((e) => e === "sol")
           return sky.length ? (
             <g key={`ceu-${id}`} data-cena={id}>
               <Extras extras={sky} seed={seed} />
@@ -151,7 +161,10 @@ export function FooterScene({ seed = "rodape", className }: FooterSceneProps) {
               {scene.extras.includes("neve") ? (
                 <path d={mid.snow + near.snow} className="fill-(--footer-sky-accent)" />
               ) : null}
-              <Extras extras={front.filter((e) => e !== "neve")} seed={seed} />
+              <Extras
+                extras={front.filter((e) => e !== "neve")}
+                seed={id === "verao" ? `${seed}:verao` : seed}
+              />
             </g>
           ) : null
         })}

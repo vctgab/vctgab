@@ -1,10 +1,12 @@
 // Auditoria axe "leve": injeta o axe uma vez e devolve só o resumo das
 // violações (sem a lista de "passes"), para páginas grandes.
-// Uso: node tests/tools/axe-light.mjs <tema> <rota> [tentativas]
+// Uso: node tests/tools/axe-light.mjs <estacao-modo> <rota> [tentativas]
 import { createRequire } from "node:module"
 import { chromium } from "@playwright/test"
+import { applyTheme, readTheme } from "./theme.mjs"
 
-const [theme = "ipe", route = "/sistema", maxAttempts = "10"] = process.argv.slice(2)
+const [theme = "primavera-claro", route = "/sistema", maxAttempts = "10"] =
+  process.argv.slice(2)
 const require = createRequire(import.meta.url)
 const axePath = createRequire(require.resolve("@axe-core/playwright")).resolve(
   "axe-core/axe.min.js",
@@ -16,11 +18,10 @@ for (let attempt = 1; attempt <= Number(maxAttempts); attempt++) {
   try {
     const context = await browser.newContext({ viewport: { width: 1366, height: 900 } })
     context.setDefaultTimeout(60_000)
-    await context.addInitScript((t) => localStorage.setItem("vg-tema", t), theme)
+    await applyTheme(context, theme)
     const page = await context.newPage()
     await page.goto(`http://localhost:3100${route}`, { waitUntil: "networkidle" })
-    if ((await page.getAttribute("html", "data-theme")) !== theme)
-      throw new Error("tema não aplicado")
+    if ((await readTheme(page)) !== theme) throw new Error("tema não aplicado")
     await page.addScriptTag({ path: axePath })
     const summary = await page.evaluate(async (tags) => {
       // @ts-expect-error axe é global depois da injeção

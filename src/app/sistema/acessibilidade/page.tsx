@@ -78,9 +78,11 @@ export default function AcessibilidadePage() {
           </LinkText>
           .
         </p>
-        <ScrollRegion label="Tabela de contraste por tema">
+        <ScrollRegion label="Tabela de contraste por combinação de estação e modo">
           <table className="w-full min-w-xl border-collapse text-left text-sm">
-            <caption className="sr-only">Menor contraste por tipo de par e tema</caption>
+            <caption className="sr-only">
+              Menor contraste por tipo de par e combinação de estação e modo
+            </caption>
             <thead>
               <tr className="border-b-2 border-border font-mono text-label text-ink-subtle">
                 <th scope="col" className="py-2 pe-4">
@@ -124,7 +126,8 @@ export default function AcessibilidadePage() {
         </ScrollRegion>
         <p className="font-mono text-label text-ink-subtle">
           {formatNumber(tokens.themes.reduce((n, t) => n + t.pairs.length, 0))} pares
-          calculados em {formatNumber(tokens.themes.length)} temas.
+          calculados em {formatNumber(tokens.themes.length)} combinações de estação e
+          modo.
         </p>
       </section>
 

@@ -2,7 +2,7 @@ import type { Metadata } from "next"
 import { Hero } from "@/components/hero"
 import { Eyebrow } from "@/components/ui/eyebrow"
 import { SCENES } from "@/components/footer-scene"
-import { THEMES } from "@/lib/theme/themes"
+import { SEASONS } from "@/lib/theme/themes"
 
 export const metadata: Metadata = { title: "Hero" }
 
@@ -19,7 +19,8 @@ export default function HeroPage() {
             aqui.
           </li>
           <li>
-            O tema troca a paleta e a energia: a deriva e a irregularidade mudam na hora.
+            A estação troca a paleta e a energia: a deriva e a irregularidade mudam na
+            hora. O modo escuro troca só a polaridade das cores.
           </li>
           <li>
             O texto fica numa placa com contraste calculado; nenhuma letra pousa direto
@@ -30,11 +31,15 @@ export default function HeroPage() {
         </ul>
         <h2 className="mt-12 text-h2">Cenas do rodapé</h2>
         <ul className="mt-6 flex max-w-measure flex-col gap-2 text-body text-ink-muted">
-          {THEMES.map((t) => (
-            <li key={t.id}>
-              <strong className="text-ink">{t.label}:</strong> {SCENES[t.id]?.descricao}
+          {SEASONS.map((s) => (
+            <li key={s.id}>
+              <strong className="text-ink">{s.label}:</strong> {SCENES[s.id]?.descricao}
             </li>
           ))}
+          <li>
+            <strong className="text-ink">Modo escuro:</strong> a mesma cena da estação, à
+            noite, com lua e estrelas (o sol do verão some).
+          </li>
         </ul>
       </div>
     </main>

@@ -1,7 +1,21 @@
-import type { Page } from "@playwright/test"
+import { expect, type Page } from "@playwright/test"
 
-export const THEMES = ["ipe", "noturno", "outono", "inverno"] as const
+export const SEASONS = ["primavera", "verao", "outono", "inverno"] as const
+export const MODES = ["claro", "escuro"] as const
+export type SeasonId = (typeof SEASONS)[number]
+export type ModeId = (typeof MODES)[number]
+
+/** As 8 combinações `estacao-modo`, na ordem do CSS. */
+export const THEMES = SEASONS.flatMap((s) =>
+  MODES.map((m) => `${s}-${m}` as `${SeasonId}-${ModeId}`),
+)
 export type ThemeId = (typeof THEMES)[number]
+
+/** Separa `estacao-modo` nas duas escolhas. */
+export function splitTheme(theme: ThemeId): { season: SeasonId; mode: ModeId } {
+  const [season, mode] = theme.split("-") as [SeasonId, ModeId]
+  return { season, mode }
+}
 
 export const SYSTEM_PAGES = [
   "/sistema",
@@ -17,15 +31,31 @@ export const SYSTEM_PAGES = [
   "/sistema/acessibilidade",
 ] as const
 
-/** Define o tema antes de qualquer script da página (o mesmo que o script do <head> lê). */
+/**
+ * Define estação e modo antes de qualquer script da página (as mesmas duas
+ * chaves que o script do <head> lê). Regrava a cada navegação.
+ */
 export async function applyTheme(page: Page, theme: ThemeId): Promise<void> {
-  await page.addInitScript((t) => {
-    try {
-      window.localStorage.setItem("vg-tema", t)
-    } catch {
-      // sem armazenamento: o tema segue o sistema
-    }
-  }, theme)
+  const { season, mode } = splitTheme(theme)
+  await page.addInitScript(
+    ([s, m]) => {
+      try {
+        window.localStorage.setItem("vg-estacao", s as string)
+        window.localStorage.setItem("vg-modo", m as string)
+      } catch {
+        // sem armazenamento: o tema segue o calendário e o sistema
+      }
+    },
+    [season, mode],
+  )
+}
+
+/** Confere que o <html> tem a estação e o modo da combinação. */
+export async function expectTheme(page: Page, theme: ThemeId): Promise<void> {
+  const { season, mode } = splitTheme(theme)
+  const html = page.locator("html")
+  await expect(html).toHaveAttribute("data-season", season)
+  await expect(html).toHaveAttribute("data-mode", mode)
 }
 
 /** Coleta erros e avisos do console (inclui avisos de hidratação do React). */

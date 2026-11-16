@@ -70,29 +70,65 @@ for (const theme of THEMES) {
 test("tema salvo já está no <html> quando o <body> entra (antes da primeira pintura)", async ({
   page,
 }) => {
-  await applyTheme(page, "outono")
+  await applyTheme(page, "outono-escuro")
   await page.addInitScript(() => {
-    const w = window as unknown as { __temaNoBody?: string | null }
+    const w = window as unknown as { __temaNoBody?: string[] }
     new MutationObserver((_, obs) => {
       if (document.body) {
-        w.__temaNoBody = document.documentElement.getAttribute("data-theme")
+        const root = document.documentElement
+        w.__temaNoBody = [
+          root.getAttribute("data-season") ?? "",
+          root.getAttribute("data-mode") ?? "",
+        ]
         obs.disconnect()
       }
     }).observe(document, { childList: true, subtree: true })
   })
   await page.goto("/", { waitUntil: "load" })
   const seen = await page.evaluate(
-    () => (window as unknown as { __temaNoBody?: string | null }).__temaNoBody,
+    () => (window as unknown as { __temaNoBody?: string[] }).__temaNoBody,
   )
-  expect(seen).toBe("outono")
+  expect(seen).toEqual(["outono", "escuro"])
 })
 
-test("sem tema salvo e com sistema escuro, abre no noturno", async ({ browser }) => {
-  const context = await browser.newContext({ colorScheme: "dark" })
-  const page = await context.newPage()
+// A estação do calendário brasileiro (hemisfério sul) em America/Sao_Paulo,
+// calculada no script do <head> antes da primeira pintura (CA-2), nos três motores.
+const CALENDAR: [string, string][] = [
+  ["2026-09-22T02:59:59Z", "inverno"], // 23:59:59 de 21/09 em São Paulo
+  ["2026-09-22T03:00:00Z", "primavera"],
+  ["2026-12-21T02:59:59Z", "primavera"],
+  ["2026-12-21T03:00:00Z", "verao"],
+  ["2027-03-20T03:00:00Z", "outono"],
+  ["2027-06-21T03:00:00Z", "inverno"],
+]
+for (const [iso, season] of CALENDAR) {
+  test(`sem escolha salva, ${iso} abre em ${season} e, com sistema escuro, no modo escuro`, async ({
+    browser,
+  }) => {
+    const context = await browser.newContext({ colorScheme: "dark" })
+    const page = await context.newPage()
+    await page.clock.setFixedTime(new Date(iso))
+    await page.goto("/", { waitUntil: "load" })
+    await expect(page.locator("html")).toHaveAttribute("data-season", season)
+    await expect(page.locator("html")).toHaveAttribute("data-mode", "escuro")
+    await context.close()
+  })
+}
+
+test("o tema antigo (vg-tema) migra para estação e modo e a chave some", async ({
+  page,
+}) => {
   await page.goto("/", { waitUntil: "load" })
-  await expect(page.locator("html")).toHaveAttribute("data-theme", "noturno")
-  await context.close()
+  await page.evaluate(() => window.localStorage.setItem("vg-tema", "noturno"))
+  await page.reload({ waitUntil: "load" })
+  await expect(page.locator("html")).toHaveAttribute("data-season", "primavera")
+  await expect(page.locator("html")).toHaveAttribute("data-mode", "escuro")
+  const stored = await page.evaluate(() => [
+    window.localStorage.getItem("vg-tema"),
+    window.localStorage.getItem("vg-estacao"),
+    window.localStorage.getItem("vg-modo"),
+  ])
+  expect(stored).toEqual([null, "primavera", "escuro"])
 })
 
 test("LiveClock mostra a hora de Teresina, avança e não gera aviso", async ({ page }) => {

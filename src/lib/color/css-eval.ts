@@ -1,8 +1,9 @@
 /**
  * Avaliador mínimo das variáveis de cor de `tokens.css` e `themes.css`.
  *
- * Lê os blocos de declaração, monta o mapa de variáveis de cada tema
- * (bloco base `[data-theme]` + bloco do tema) e resolve `var()`,
+ * Lê os blocos de declaração, monta o mapa de variáveis de cada combinação de
+ * estação e modo (bloco base + blocos que casam com a combinação, aplicados
+ * por especificidade e depois por ordem, como o navegador) e resolve `var()`,
  * `color-mix(in srgb, …)`, hexadecimais, `white`, `black` e `transparent`.
  * Assim o contraste é calculado sobre o mesmo CSS que o navegador recebe.
  */
@@ -10,13 +11,28 @@ import { mixSrgb, parseHex, type Rgba } from "./color.ts"
 
 export type Declarations = Map<string, string>
 
+/** Bloco que vale para uma estação, um modo ou os dois ao mesmo tempo. */
+export interface ThemeRule {
+  /** Estação do seletor (`[data-season="x"]`) ou nulo se a regra vale para todas. */
+  season: string | null
+  /** Modo do seletor (`[data-mode="x"]`) ou nulo se a regra vale para todos. */
+  mode: string | null
+  /** Quantos atributos o seletor tem: define a especificidade. */
+  attrs: number
+  /** Ordem de aparição no CSS, que desempata a especificidade. */
+  order: number
+  decls: Declarations
+}
+
 export interface ParsedCss {
-  /** Declarações que valem para todo elemento com tema (`:root, [data-theme]`). */
+  /** Declarações que valem para todo elemento com tema (`:root, [data-season], [data-mode]`). */
   base: Declarations
-  /** Declarações de cada tema, na ordem em que aparecem. */
-  themes: Map<string, Declarations>
-  /** Tema aplicado quando o `<html>` ainda não tem `data-theme`. */
-  defaultTheme: string | null
+  /** Blocos de estação, de modo e de combinação, na ordem em que aparecem. */
+  rules: ThemeRule[]
+  /** Estações declaradas (blocos só de estação), na ordem de aparição. */
+  seasons: string[]
+  /** Estação aplicada quando o `<html>` ainda não tem `data-season`. */
+  defaultSeason: string | null
 }
 
 interface Rule {
@@ -82,43 +98,79 @@ function declarations(body: string): Declarations {
   return map
 }
 
-const THEME_SELECTOR = /\[data-theme=["']?([a-z0-9-]+)["']?\]/g
+const SEASON_ATTR = /\[data-season=["']?([a-z0-9-]+)["']?\]/
+const MODE_ATTR = /\[data-mode=["']?([a-z0-9-]+)["']?\]/
+const BASE_PARTS = new Set([":root", "[data-season]", "[data-mode]"])
 
-/** Lê o CSS de tokens e temas e separa o bloco base dos blocos de cada tema. */
+/** Lê o CSS de tokens e temas e separa o bloco base dos blocos de estação e modo. */
 export function parseThemeCss(...sources: string[]): ParsedCss {
   const base: Declarations = new Map()
-  const themes = new Map<string, Declarations>()
-  let defaultTheme: string | null = null
+  const found: ThemeRule[] = []
+  let defaultSeason: string | null = null
+  let order = 0
   for (const source of sources) {
     for (const rule of rules(stripComments(source))) {
       const decls = declarations(rule.body)
       if (decls.size === 0) continue
-      const named = [...rule.selector.matchAll(THEME_SELECTOR)].map((m) => m[1] as string)
-      if (named.length > 0) {
-        for (const theme of named) {
-          const current = themes.get(theme) ?? new Map()
-          for (const [k, v] of decls) current.set(k, v)
-          themes.set(theme, current)
+      const parts = rule.selector.split(",").map((p) => p.trim())
+      let named = false
+      let isBase = false
+      let firstSeason: string | null = null
+      for (const part of parts) {
+        const season = SEASON_ATTR.exec(part)?.[1] ?? null
+        const mode = MODE_ATTR.exec(part)?.[1] ?? null
+        if (season || mode) {
+          named = true
+          firstSeason ??= season
+          found.push({
+            season,
+            mode,
+            attrs: (season ? 1 : 0) + (mode ? 1 : 0),
+            order: order++,
+            decls,
+          })
+        } else if (BASE_PARTS.has(part)) {
+          isBase = true
         }
-        if (
-          /:root(?!\[)/.test(rule.selector) ||
-          rule.selector.includes(":not([data-theme])")
-        ) {
-          defaultTheme ??= named[0] ?? null
+      }
+      if (named) {
+        if (firstSeason && rule.selector.includes(":not([data-season])")) {
+          defaultSeason ??= firstSeason
         }
-      } else if (/(^|,)\s*(:root|\[data-theme\])\s*(,|$)/.test(rule.selector)) {
+      } else if (isBase) {
         for (const [k, v] of decls) base.set(k, v)
       }
     }
   }
-  return { base, themes, defaultTheme }
+  const seasons: string[] = []
+  for (const r of found) {
+    if (r.season && !r.mode && !seasons.includes(r.season)) seasons.push(r.season)
+  }
+  return { base, rules: found, seasons, defaultSeason }
 }
 
-/** Mapa final de variáveis de um tema: base sobrescrita pelo bloco do tema. */
-export function themeDeclarations(parsed: ParsedCss, theme: string): Declarations {
-  const block = parsed.themes.get(theme)
-  if (!block) throw new Error(`Tema não encontrado no CSS: ${theme}`)
-  return new Map([...parsed.base, ...block])
+/**
+ * Mapa final de variáveis de uma combinação: o bloco base sobrescrito pelos
+ * blocos que casam com a estação e o modo, do menos para o mais específico.
+ */
+export function themeDeclarations(
+  parsed: ParsedCss,
+  season: string,
+  mode: string,
+): Declarations {
+  if (!parsed.seasons.includes(season)) {
+    throw new Error(`Estação não encontrada no CSS: ${season}`)
+  }
+  const applicable = parsed.rules
+    .filter(
+      (r) =>
+        (r.season === null || r.season === season) &&
+        (r.mode === null || r.mode === mode),
+    )
+    .sort((a, b) => a.attrs - b.attrs || a.order - b.order)
+  const out: Declarations = new Map(parsed.base)
+  for (const r of applicable) for (const [k, v] of r.decls) out.set(k, v)
+  return out
 }
 
 const NAMED: Record<string, Rgba> = {

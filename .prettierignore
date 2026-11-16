@@ -6,4 +6,5 @@ docs/screenshots
 playwright-report
 test-results
 src/styles/tokens.generated.json
+src/styles/themes.generated.json
 docs/CONTRAST.md

@@ -1,5 +1,6 @@
-// Captura rápida para revisão visual: node tests/tools/shot.mjs <rota> <saida.png> [largura] [altura] [tema] [escala]
+// Captura rápida para revisão visual: node tests/tools/shot.mjs <rota> <saida.png> [largura] [altura] [combinação] [escala]
 import { chromium } from "@playwright/test"
+import { applyTheme } from "./theme.mjs"
 
 const [
   route = "/sistema",
@@ -15,7 +16,7 @@ const context = await browser.newContext({
   deviceScaleFactor: Number(scale),
 })
 if (theme) {
-  await context.addInitScript((t) => localStorage.setItem("vg-tema", t), theme)
+  await applyTheme(context, theme)
 }
 const page = await context.newPage()
 page.on("response", (r) => {

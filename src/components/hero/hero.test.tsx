@@ -4,7 +4,7 @@ import { FooterScene, SCENES } from "@/components/footer-scene"
 import { AchadosProvider } from "@/components/ui/finds"
 import { isValidPath } from "@/lib/shapes"
 import { ThemeProvider } from "@/lib/theme/theme-provider"
-import { THEMES } from "@/lib/theme/themes"
+import { SEASONS } from "@/lib/theme/themes"
 import { buildComposition, Hero } from "."
 
 vi.mock("next/navigation", () => ({ usePathname: () => "/sistema/hero" }))
@@ -87,13 +87,26 @@ describe("FooterScene (CA-5)", () => {
     ).toBeGreaterThanOrEqual(3)
   })
 
-  it("tem uma cena para cada tema e mostra só a do tema ativo", () => {
-    for (const t of THEMES) expect(SCENES[t.id]).toBeDefined()
+  it("tem uma cena para cada estação e mostra só a da estação ativa", () => {
+    for (const s of SEASONS) expect(SCENES[s.id]).toBeDefined()
     const { container } = render(<FooterScene />)
     const css = container.querySelector("style")?.textContent ?? ""
-    expect(css).toContain("[data-cena]{display:none}")
-    for (const t of THEMES)
-      expect(css).toContain(`[data-theme="${t.id}"] [data-cena="${t.id}"]`)
+    expect(css).toContain("[data-cena],[data-noite]{display:none}")
+    for (const s of SEASONS)
+      expect(css).toContain(`[data-season="${s.id}"] [data-cena="${s.id}"]`)
     expect(css).not.toMatch(/#[0-9a-f]{3,6}/i)
+  })
+
+  it("leva lua e estrelas no modo escuro e esconde o sol à noite (CA-9)", () => {
+    const { container } = render(<FooterScene />)
+    const css = container.querySelector("style")?.textContent ?? ""
+    expect(css).toContain('[data-mode="escuro"] [data-noite]{display:inline}')
+    expect(css).toContain('[data-mode="escuro"] [data-dia]{display:none}')
+    const svg = container.querySelector("[data-cena-rodape]")
+    // Uma só cena noturna para as quatro estações: o desenho não se duplica.
+    expect(svg?.querySelectorAll("[data-noite]")).toHaveLength(1)
+    expect(svg?.querySelectorAll("[data-noite] path").length).toBeGreaterThanOrEqual(2)
+    expect(svg?.querySelectorAll('[data-cena="verao"] [data-dia]')).toHaveLength(1)
+    expect(svg?.querySelectorAll('[data-cena="primavera"] [data-dia]')).toHaveLength(0)
   })
 })

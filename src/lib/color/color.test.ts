@@ -43,28 +43,35 @@ describe("color", () => {
 
 describe("css-eval", () => {
   const css = `
-    :root, [data-theme] { --a-50: color-mix(in srgb, white 92%, var(--seed)); --x: var(--a-50); }
-    :root:not([data-theme]), [data-theme="um"] { --seed: #EE2476; }
-    [data-theme="dois"] { --seed: #3B7EA1; --x: var(--seed); }
+    :root, [data-season], [data-mode] { --a-50: color-mix(in srgb, white 92%, var(--seed)); --x: var(--a-50); --paper: white; }
+    :root:not([data-season]), [data-season="um"] { --seed: #EE2476; }
+    [data-season="dois"] { --seed: #3B7EA1; --x: var(--seed); }
+    [data-mode="escuro"] { --paper: black; --x: var(--paper); }
+    [data-season="um"][data-mode="escuro"] { --x: #123456; }
     @media (min-width: 10px) { :root { --seed: #000000; } }
   `
   const parsed = parseThemeCss(css)
+  const hex = (season: string, mode: string, expr = "var(--x)") =>
+    toHex(quantize(resolveColor(expr, themeDeclarations(parsed, season, mode))))
 
-  it("separa o bloco base dos temas e acha o padrão", () => {
-    expect([...parsed.themes.keys()]).toEqual(["um", "dois"])
-    expect(parsed.defaultTheme).toBe("um")
+  it("separa o bloco base das estações e acha a padrão", () => {
+    expect(parsed.seasons).toEqual(["um", "dois"])
+    expect(parsed.defaultSeason).toBe("um")
   })
 
-  it("resolve var() e color-mix por tema, ignorando @media", () => {
-    expect(
-      toHex(quantize(resolveColor("var(--x)", themeDeclarations(parsed, "um")))),
-    ).toBe("#FEEDF4")
-    expect(toHex(resolveColor("var(--x)", themeDeclarations(parsed, "dois")))).toBe(
-      "#3B7EA1",
-    )
+  it("resolve var() e color-mix por estação, ignorando @media", () => {
+    expect(hex("um", "claro")).toBe("#FEEDF4")
+    expect(hex("dois", "claro")).toBe("#3B7EA1")
   })
 
-  it("acusa variável indefinida e ciclo", () => {
+  it("aplica o modo e depois a combinação, por especificidade e ordem", () => {
+    expect(hex("dois", "escuro")).toBe("#000000")
+    expect(hex("um", "escuro")).toBe("#123456")
+    expect(hex("um", "escuro", "var(--paper)")).toBe("#000000")
+  })
+
+  it("acusa estação inexistente, variável indefinida e ciclo", () => {
+    expect(() => themeDeclarations(parsed, "tres", "claro")).toThrow()
     expect(() => resolveColor("var(--nada)", new Map())).toThrow()
     expect(() => resolveColor("var(--a)", new Map([["--a", "var(--a)"]]))).toThrow()
   })
@@ -77,23 +84,29 @@ describe("tokens (VI-05, CR-01)", () => {
   ]
   const { report, problems } = buildTokenReport(...sources)
 
-  it("aprova todos os pares obrigatórios em todos os temas", () => {
+  it("aprova todos os pares obrigatórios nas 8 combinações", () => {
     expect(problems).toEqual([])
   })
 
-  it("tem os quatro temas da v1 e o ipê como padrão", () => {
+  it("tem as quatro estações em dois modos e a primavera clara como padrão", () => {
+    expect(report.seasons).toEqual(["primavera", "verao", "outono", "inverno"])
     expect(report.themes.map((t) => t.id)).toEqual([
-      "ipe",
-      "noturno",
-      "outono",
-      "inverno",
+      "primavera-claro",
+      "primavera-escuro",
+      "verao-claro",
+      "verao-escuro",
+      "outono-claro",
+      "outono-escuro",
+      "inverno-claro",
+      "inverno-escuro",
     ])
-    expect(report.defaultTheme).toBe("ipe")
+    expect(report.defaultSeason).toBe("primavera")
+    expect(report.defaultMode).toBe("claro")
   })
 
-  it("mantém a escala do rosa no tema padrão", () => {
-    const ipe = report.themes.find((t) => t.id === "ipe")
-    const hexes = ipe?.scales.primary?.map((s) => s.hex)
+  it("mantém a escala do rosa na primavera clara", () => {
+    const primavera = report.themes.find((t) => t.id === "primavera-claro")
+    const hexes = primavera?.scales.primary?.map((s) => s.hex)
     // 300 é #F792BB: 50% de branco dá canais em ,5 e o navegador arredonda para cima.
     expect(hexes).toEqual([
       "#FEEDF4",
@@ -110,20 +123,44 @@ describe("tokens (VI-05, CR-01)", () => {
     ])
   })
 
-  it("garante tinta com pelo menos 12:1 sobre o papel em cada tema", () => {
+  it("dá ao verde do verão um passo 600 com 5,0:1 contra o branco", () => {
+    const verao = report.themes.find((t) => t.id === "verao-claro")
+    expect(verao?.scales.primary?.find((s) => s.step === 600)?.hex).toBe("#108045")
+    const pair = verao?.pairs.find(
+      (p) => p.fg === "on-primary" && p.bg === "primary-fill",
+    )
+    expect(pair?.ratio).toBeGreaterThanOrEqual(5)
+  })
+
+  it("afasta a matiz do sucesso da primária em todas as combinações", () => {
+    for (const t of report.themes) {
+      expect(`${t.id}: ${t.successHueDistance >= 25}`).toBe(`${t.id}: true`)
+    }
+  })
+
+  it("garante tinta com pelo menos 12:1 sobre o papel em cada combinação", () => {
     for (const t of report.themes) {
       const pair = t.pairs.find((p) => p.fg === "ink" && p.bg === "surface-base")
       expect(pair?.ratio).toBeGreaterThanOrEqual(12)
     }
   })
 
-  it("declara color-scheme coerente com o papel de cada tema", () => {
+  it("declara color-scheme coerente com o papel de cada modo", () => {
+    const tokensCss = sources[0] ?? ""
     const themesCss = sources[1] ?? ""
-    for (const t of report.themes) {
-      const block = new RegExp(`\\[data-theme="${t.id}"\\][^{]*\\{([^}]*)\\}`).exec(
-        themesCss,
+    const base =
+      /:root,\s*\[data-season\],\s*\[data-mode\]\s*\{[\s\S]*?color-scheme: (\w+);/.exec(
+        tokensCss,
       )?.[1]
-      expect(`${t.id}: ${block}`).toContain(`color-scheme: ${t.colorScheme};`)
+    const dark = /\[data-mode="escuro"\]\s*\{[^}]*?color-scheme: (\w+);/.exec(
+      themesCss,
+    )?.[1]
+    expect(base).toBe("light")
+    expect(dark).toBe("dark")
+    for (const t of report.themes) {
+      expect(`${t.id}: ${t.colorScheme}`).toBe(
+        `${t.id}: ${t.mode === "escuro" ? "dark" : "light"}`,
+      )
     }
   })
 
@@ -131,10 +168,14 @@ describe("tokens (VI-05, CR-01)", () => {
     const committed = readFileSync("src/styles/tokens.generated.json", "utf8")
     expect(JSON.parse(committed)).toEqual(JSON.parse(JSON.stringify(report)))
     const slim = JSON.parse(readFileSync("src/styles/themes.generated.json", "utf8")) as {
-      defaultTheme: string
+      defaultSeason: string
+      defaultMode: string
+      seasons: { id: string }[]
       themes: { id: string; themeColor: string }[]
     }
-    expect(slim.defaultTheme).toBe(report.defaultTheme)
+    expect(slim.defaultSeason).toBe(report.defaultSeason)
+    expect(slim.defaultMode).toBe(report.defaultMode)
+    expect(slim.seasons.map((x) => x.id)).toEqual(report.seasons)
     expect(slim.themes.map((t) => [t.id, t.themeColor])).toEqual(
       report.themes.map((t) => [t.id, t.themeColor]),
     )

@@ -1,7 +1,8 @@
 /**
  * pnpm tokens:build
  *
- * Lê `src/styles/tokens.css` e `src/styles/themes.css`, resolve cada tema,
+ * Lê `src/styles/tokens.css` e `src/styles/themes.css`, resolve cada combinação
+ * de estação e modo (8),
  * grava `src/styles/tokens.generated.json` (consumido pela vitrine e pelo
  * script de tema) e `docs/CONTRAST.md`, e encerra com erro se algum par
  * obrigatório de contraste reprovar ou se algum token não resolver.
@@ -25,21 +26,32 @@ writeFileSync(join(root, "src/styles/tokens.generated.json"), json)
 // seletor e o script de tema usam, sem escalas nem matriz de contraste.
 function themeList(r: typeof report) {
   return {
-    defaultTheme: r.defaultTheme,
+    defaultSeason: r.defaultSeason,
+    defaultMode: r.defaultMode,
+    seasons: r.seasons.map((id) => {
+      const t = r.themes.find((x) => x.season === id)
+      return {
+        id,
+        label: t?.seasonLabel ?? id,
+        description: t?.description ?? "",
+        energy: t?.energy ?? 1,
+        rotationMax: t?.rotationMax ?? 1,
+      }
+    }),
+    modes: r.modes,
     themes: r.themes.map((t) => ({
       id: t.id,
-      label: t.label,
-      description: t.description,
+      season: t.season,
+      mode: t.mode,
       colorScheme: t.colorScheme,
       themeColor: t.themeColor,
-      energy: t.energy,
-      rotationMax: t.rotationMax,
     })),
   }
 }
 writeFileSync(
   join(root, "src/styles/themes.generated.json"),
-  `${JSON.stringify(themeList(report), null, 2)}\n`,
+  `${JSON.stringify(themeList(report), null, 2)}
+`,
 )
 
 const fmt = (n: number) => n.toFixed(2).replace(".", ",")
@@ -48,7 +60,7 @@ function themeSection(t: ThemeReport): string {
   const lines = [
     `## ${t.label} (\`${t.id}\`)`,
     "",
-    `${t.description} Esquema ${t.colorScheme === "dark" ? "escuro" : "claro"}. Energia ${t.energy}, rotação máxima ${t.rotationMax}°. Distância de matiz perigo × primária: ${fmt(t.dangerHueDistance)}°.`,
+    `${t.description} Esquema ${t.colorScheme === "dark" ? "escuro" : "claro"}. Energia ${t.energy}, rotação máxima ${t.rotationMax}°. Distância de matiz perigo × primária: ${fmt(t.dangerHueDistance)}°; sucesso × primária: ${fmt(t.successHueDistance)}°.`,
     "",
     "| Par | Uso | Tipo | Mínimo | Razão | Resultado |",
     "| --- | --- | --- | --- | --- | --- |",
@@ -73,7 +85,7 @@ function themeSection(t: ThemeReport): string {
 const md = [
   "# Contraste",
   "",
-  "Gerado por `pnpm tokens:build` a partir de `src/styles/tokens.css` e `src/styles/themes.css`. Não edite à mão.",
+  "Gerado por `pnpm tokens:build` a partir de `src/styles/tokens.css` e `src/styles/themes.css`: uma seção por combinação de estação e modo. Não edite à mão.",
   "",
   "Mínimos: texto 4,5:1; texto grande (24 px ou mais), componentes e foco 3:1; texto desabilitado 3:1 com outro indicador além da cor.",
   "",
@@ -88,5 +100,5 @@ if (problems.length > 0) {
   process.exit(1)
 }
 console.log(
-  `tokens:build: ${report.themes.length} temas, ${total} pares de contraste aprovados. Tema padrão: ${report.defaultTheme}.`,
+  `tokens:build: ${report.seasons.length} estações × ${report.modes.length} modos = ${report.themes.length} combinações, ${total} pares de contraste aprovados. Padrão: ${report.defaultSeason}, ${report.defaultMode}.`,
 )

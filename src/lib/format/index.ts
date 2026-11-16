@@ -35,6 +35,24 @@ function dateFormatter(options: Intl.DateTimeFormatOptions): Intl.DateTimeFormat
   return f
 }
 
+/**
+ * Mês (1 a 12) e dia (1 a 31) de um instante em um fuso. Serve a regras de
+ * calendário (a estação do ano) sem depender do fuso de quem visita.
+ */
+export function monthDayInZone(
+  value: DateInput,
+  timeZone: string,
+): { month: number; day: number } {
+  const parts = dateFormatter({
+    timeZone,
+    month: "numeric",
+    day: "numeric",
+  }).formatToParts(toDate(value))
+  const pick = (type: string) =>
+    Number(parts.find((part) => part.type === type)?.value ?? Number.NaN)
+  return { month: pick("month"), day: pick("day") }
+}
+
 /** Remove o espaço inseparável do Intl, que quebra buscas e testes. */
 function normalizeSpaces(s: string): string {
   return s.replace(/[  ]/g, " ")

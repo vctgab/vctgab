@@ -9,43 +9,64 @@ import {
   type ReactNode,
 } from "react"
 import {
-  ensureThemeAttribute,
-  getServerTheme,
-  getTheme,
-  setTheme,
+  ensureThemeAttributes,
+  getServerThemeState,
+  getThemeState,
+  setMode,
+  setSeason,
   subscribeTheme,
+  type ThemeState,
 } from "./theme-store"
-import { getThemeInfo, THEMES, type ThemeInfo } from "./themes"
+import { DEFAULT_SEASON, getSeasonInfo, SEASONS, type SeasonInfo } from "./themes"
 
 export interface ThemeContextValue {
-  /** Tema aplicado, ou `null` durante a renderização no servidor e a hidratação. */
-  theme: string | null
-  /** Dados do tema aplicado (ou do padrão, enquanto `theme` for nulo). */
-  info: ThemeInfo
-  themes: readonly ThemeInfo[]
-  setTheme: (id: string) => void
+  /** Estado aplicado, ou `null` durante a renderização no servidor e a hidratação. */
+  state: ThemeState | null
+  /** Estação aplicada (ou `null`, como `state`). */
+  season: string | null
+  /** Modo aplicado (ou `null`, como `state`). */
+  mode: string | null
+  /** Estação escolhida à mão; `null` quando segue o calendário. */
+  seasonPref: string | null
+  /** Modo escolhido à mão; `null` quando segue o sistema. */
+  modePref: string | null
+  /** Estação que o calendário indica hoje. */
+  autoSeason: string | null
+  /** Dados da estação aplicada (ou da padrão, enquanto `season` for nulo). */
+  info: SeasonInfo
+  seasons: readonly SeasonInfo[]
+  /** Escolhe a estação; `null` é "Automática" (volta ao calendário). */
+  setSeason: (pref: string | null) => void
+  /** Escolhe o modo; `null` é "Do sistema". */
+  setMode: (pref: string | null) => void
 }
 
 const ThemeContext = createContext<ThemeContextValue | null>(null)
 
-/** Expõe o tema atual e a troca de tema para os componentes cliente. */
+/** Expõe a estação, o modo e as trocas para os componentes cliente. */
 export function ThemeProvider({ children }: { children: ReactNode }) {
-  const theme = useSyncExternalStore(subscribeTheme, getTheme, getServerTheme)
+  const state = useSyncExternalStore(subscribeTheme, getThemeState, getServerThemeState)
 
-  // Em desenvolvimento o Strict Mode remonta o <html> e apaga o atributo
-  // definido pelo script do <head>; reaplica antes da pintura.
+  // Em desenvolvimento o Strict Mode remonta o <html> e apaga os atributos
+  // definidos pelo script do <head>; reaplica antes da pintura.
   useLayoutEffect(() => {
-    ensureThemeAttribute()
+    ensureThemeAttributes()
   }, [])
 
   const value = useMemo<ThemeContextValue>(
     () => ({
-      theme,
-      info: getThemeInfo(theme ?? THEMES[0]?.id ?? ""),
-      themes: THEMES,
-      setTheme,
+      state,
+      season: state?.season ?? null,
+      mode: state?.mode ?? null,
+      seasonPref: state?.seasonPref ?? null,
+      modePref: state?.modePref ?? null,
+      autoSeason: state?.autoSeason ?? null,
+      info: getSeasonInfo(state?.season ?? DEFAULT_SEASON),
+      seasons: SEASONS,
+      setSeason,
+      setMode,
     }),
-    [theme],
+    [state],
   )
 
   return <ThemeContext value={value}>{children}</ThemeContext>

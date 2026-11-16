@@ -66,8 +66,8 @@ export default function CoresPage() {
       <h1 className="mt-4 text-h1">Cores</h1>
       <p className="mt-4 max-w-measure text-body-lg text-ink-muted">
         Uma semente por escala; os 11 passos saem de branco ou preto misturados em sRGB.
-        As amostras usam os próprios tokens e mudam com o tema. Hex e contrastes foram
-        calculados no build por{" "}
+        As amostras usam os próprios tokens e mudam com a estação e o modo; esta página
+        mostra a combinação ativa. Hex e contrastes foram calculados no build por{" "}
         <code className="font-mono text-sm">pnpm tokens:build</code>.
       </p>
 

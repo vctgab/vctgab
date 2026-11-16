@@ -319,3 +319,13 @@ export const STEP_MIX: Record<(typeof SCALE_STEPS)[number], string> = {
 
 /** Distância mínima de matiz entre perigo e primária (perigo nunca se confunde com a marca). */
 export const MIN_DANGER_HUE_DISTANCE = 12
+
+/**
+ * Distância mínima de matiz entre sucesso e primária: no verão a primária é
+ * verde, e sem afastar a matiz do sucesso as duas se confundiriam.
+ */
+export const MIN_SUCCESS_HUE_DISTANCE = 25
+
+/** Modos do tema. O claro é o mapeamento base; o escuro tem bloco próprio em `themes.css`. */
+export const MODES = ["claro", "escuro"] as const
+export type ModeId = (typeof MODES)[number]

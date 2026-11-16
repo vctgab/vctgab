@@ -1,41 +1,96 @@
 {
-  "defaultTheme": "ipe",
-  "themes": [
+  "defaultSeason": "primavera",
+  "defaultMode": "claro",
+  "seasons": [
     {
-      "id": "ipe",
-      "label": "Ipê",
-      "description": "Claro, rosa do ipê com pinheiro e âmbar.",
-      "colorScheme": "light",
-      "themeColor": "#FEF8FB",
+      "id": "primavera",
+      "label": "Primavera",
+      "description": "Rosa do ipê com pinheiro e âmbar.",
       "energy": 1,
       "rotationMax": 1.2
     },
     {
-      "id": "noturno",
-      "label": "Noturno",
-      "description": "Escuro, as mesmas sementes do ipê sobre papel noturno.",
-      "colorScheme": "dark",
-      "themeColor": "#1D0C14",
-      "energy": 0.8,
-      "rotationMax": 0.9
+      "id": "verao",
+      "label": "Verão",
+      "description": "Verde de folha cheia com mar e sol.",
+      "energy": 1.1,
+      "rotationMax": 1.3
     },
     {
       "id": "outono",
       "label": "Outono",
-      "description": "Claro, laranja queimado com oliva e vinho.",
-      "colorScheme": "light",
-      "themeColor": "#FDFAF8",
+      "description": "Laranja queimado com oliva e vinho.",
       "energy": 1.25,
       "rotationMax": 1.4
     },
     {
       "id": "inverno",
       "label": "Inverno",
-      "description": "Claro, azul-gelo com pinheiro nevado e lilás frio.",
-      "colorScheme": "light",
-      "themeColor": "#F9FBFC",
+      "description": "Azul-gelo com pinheiro nevado e lilás frio.",
       "energy": 0.7,
       "rotationMax": 0.8
+    }
+  ],
+  "modes": [
+    "claro",
+    "escuro"
+  ],
+  "themes": [
+    {
+      "id": "primavera-claro",
+      "season": "primavera",
+      "mode": "claro",
+      "colorScheme": "light",
+      "themeColor": "#FEF8FB"
+    },
+    {
+      "id": "primavera-escuro",
+      "season": "primavera",
+      "mode": "escuro",
+      "colorScheme": "dark",
+      "themeColor": "#1D0C14"
+    },
+    {
+      "id": "verao-claro",
+      "season": "verao",
+      "mode": "claro",
+      "colorScheme": "light",
+      "themeColor": "#F8FCFA"
+    },
+    {
+      "id": "verao-escuro",
+      "season": "verao",
+      "mode": "escuro",
+      "colorScheme": "dark",
+      "themeColor": "#0C1510"
+    },
+    {
+      "id": "outono-claro",
+      "season": "outono",
+      "mode": "claro",
+      "colorScheme": "light",
+      "themeColor": "#FDFAF8"
+    },
+    {
+      "id": "outono-escuro",
+      "season": "outono",
+      "mode": "escuro",
+      "colorScheme": "dark",
+      "themeColor": "#1A100D"
+    },
+    {
+      "id": "inverno-claro",
+      "season": "inverno",
+      "mode": "claro",
+      "colorScheme": "light",
+      "themeColor": "#F9FBFC"
+    },
+    {
+      "id": "inverno-escuro",
+      "season": "inverno",
+      "mode": "escuro",
+      "colorScheme": "dark",
+      "themeColor": "#0F1317"
     }
   ]
 }

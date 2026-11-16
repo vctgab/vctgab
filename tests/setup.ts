@@ -7,7 +7,8 @@ expect.extend(toHaveNoViolations)
 
 afterEach(() => {
   cleanup()
-  document.documentElement.removeAttribute("data-theme")
+  document.documentElement.removeAttribute("data-season")
+  document.documentElement.removeAttribute("data-mode")
   try {
     window.localStorage.clear()
   } catch {

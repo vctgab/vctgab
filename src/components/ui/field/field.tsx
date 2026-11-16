@@ -106,7 +106,7 @@ export function FieldShell({
         "relative isolate flex w-full items-center",
         "[--shape-stroke:var(--border-strong)] hover:[--shape-stroke:var(--stroke)]",
         // Foco (inclusive por clique) e lista aberta: papel suave da primária e
-        // contorno no passo mais escuro da paleta (o mais claro no noturno), que garante os 3:1 que o fundo sozinho não dá.
+        // contorno no passo mais escuro da paleta (o mais claro no modo escuro), que garante os 3:1 que o fundo sozinho não dá.
         "[&:has(:focus,[aria-expanded=true])]:[--shape-fill:var(--primary-soft)]",
         "[&:not([data-invalid]):has(:focus,[aria-expanded=true])]:[--shape-stroke:var(--field-focus-stroke)]",
         "data-invalid:[--shape-stroke:var(--danger-fill)] data-invalid:hover:[--shape-stroke:var(--danger-fill)]",

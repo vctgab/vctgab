@@ -56,21 +56,79 @@ describe("Header", () => {
   })
 })
 
-describe("ThemeSwitcher (CA-4)", () => {
-  it("é um radiogroup 'Tema' e grava a escolha", async () => {
+describe("ThemeSwitcher (CA-8)", () => {
+  it("tem o radiogroup 'Estação' e o grupo 'Modo', e grava cada escolha à parte", async () => {
     const user = userEvent.setup()
     render(
       <ThemeProvider>
         <ThemeSwitcher layout="grid" />
       </ThemeProvider>,
     )
-    const group = screen.getByRole("radiogroup", { name: "Tema" })
+    const group = screen.getByRole("radiogroup", { name: "Estação" })
     const radios = within(group).getAllByRole("radio")
-    expect(radios).toHaveLength(4)
-    await user.click(within(group).getByRole("radio", { name: /Noturno/ }))
-    expect(document.documentElement.getAttribute("data-theme")).toBe("noturno")
-    expect(window.localStorage.getItem("vg-tema")).toBe("noturno")
-    expect(within(group).getByRole("radio", { name: /Noturno/ })).toBeChecked()
+    // Quatro estações e "Automática".
+    expect(radios).toHaveLength(5)
+    expect(within(group).getByRole("radio", { name: /Automática/ })).toBeChecked()
+
+    await user.click(within(group).getByRole("radio", { name: /Verão/ }))
+    expect(document.documentElement.getAttribute("data-season")).toBe("verao")
+    expect(window.localStorage.getItem("vg-estacao")).toBe("verao")
+    expect(window.localStorage.getItem("vg-modo")).toBeNull()
+    expect(within(group).getByRole("radio", { name: /Verão/ })).toBeChecked()
+
+    const mode = screen.getByRole("radiogroup", { name: "Modo" })
+    expect(within(mode).getByRole("radio", { name: "Do sistema" })).toBeChecked()
+    await user.click(within(mode).getByRole("radio", { name: "Escuro" }))
+    expect(document.documentElement.getAttribute("data-mode")).toBe("escuro")
+    expect(document.documentElement.getAttribute("data-season")).toBe("verao")
+    expect(window.localStorage.getItem("vg-modo")).toBe("escuro")
+    expect(within(mode).getByRole("radio", { name: "Escuro" })).toBeChecked()
+  })
+
+  it("'Automática' volta ao calendário e 'Do sistema' volta ao sistema (CA-4)", async () => {
+    const user = userEvent.setup()
+    window.localStorage.setItem("vg-estacao", "outono")
+    window.localStorage.setItem("vg-modo", "escuro")
+    render(
+      <ThemeProvider>
+        <ThemeSwitcher layout="compact" />
+      </ThemeProvider>,
+    )
+    const group = screen.getByRole("radiogroup", { name: "Estação" })
+    await user.click(within(group).getByRole("radio", { name: /Automática/ }))
+    expect(window.localStorage.getItem("vg-estacao")).toBeNull()
+    const mode = screen.getByRole("radiogroup", { name: "Modo" })
+    await user.click(within(mode).getByRole("radio", { name: "Do sistema" }))
+    expect(window.localStorage.getItem("vg-modo")).toBeNull()
+    expect(document.documentElement.getAttribute("data-mode")).toBe("claro")
+  })
+
+  it("é operável só pelo teclado (setas e espaço)", async () => {
+    const user = userEvent.setup()
+    render(
+      <ThemeProvider>
+        <ThemeSwitcher layout="compact" />
+      </ThemeProvider>,
+    )
+    const group = screen.getByRole("radiogroup", { name: "Estação" })
+    const first = within(group).getAllByRole("radio")[0] as HTMLElement
+    first.focus()
+    // O Radix só marca depois que o foco chega, e só se a seta ainda estiver
+    // pressionada (D-707): segura a tecla um instante.
+    await user.keyboard("{ArrowRight>}")
+    await new Promise((resolve) => setTimeout(resolve, 80))
+    await user.keyboard("{/ArrowRight}")
+    expect(within(group).getByRole("radio", { name: /Verão/ })).toBeChecked()
+    expect(window.localStorage.getItem("vg-estacao")).toBe("verao")
+  })
+
+  it("não tem violações de acessibilidade", async () => {
+    const { container } = render(
+      <ThemeProvider>
+        <ThemeSwitcher layout="grid" />
+      </ThemeProvider>,
+    )
+    expect(await axe(container)).toHaveNoViolations()
   })
 })
 
