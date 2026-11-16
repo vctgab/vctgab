@@ -5,9 +5,9 @@ Cada regra tem um ID, um enunciado, uma severidade e um teste que outra pessoa r
 **Severidade.** CRÍTICO bloqueia a etapa. IMPORTANTE se corrige antes de seguir. NIT é refino.
 **Sem exceção possível:** ER-03, BT-05, AC-03, VI-05, MS-04, VZ-05. As demais só admitem exceção registrada em `docs/EXCEPTIONS.md` (ID, regra, componente, motivo, aprovado por Victor, data limite). Sem registro, conta como violação; passada a data, a exceção deixa de valer.
 
-Famílias: VZ voz, VC vocabulário, TL texto e títulos, BT botões e links, MS mensagens e estados, ER erros, FM formulários, AC acessibilidade, VI visual e contraste, NU números e datas, CR cor, ES estados e movimento, TK tokens, SH formas, DD dados, PR processo.
+Famílias: VZ voz, VC vocabulário, TL texto e títulos, BT botões e links, MS mensagens e estados, ER erros, FM formulários, AC acessibilidade, VI visual e contraste, NU números e datas, CR cor, ES estados e movimento, TK tokens, TM temas, SH formas, DD dados, PR processo.
 
-Os testes automáticos estão em `tests/unit/rules.test.ts` (varreduras), `scripts/tokens-build.ts` (contraste), nos `*.test.tsx` de cada componente, em `tests/e2e/system.spec.ts` (axe nos 4 temas, console sem aviso de hidratação, teclado, alvo de toque, movimento reduzido), em `tests/e2e/screenshots.spec.ts` (capturas em `docs/screenshots/`) e em `tests/tools/axe-audit.mjs` (auditoria com repetição, relatório em `docs/qa/axe-report.json`).
+Os testes automáticos estão em `tests/unit/rules.test.ts` (varreduras), `scripts/tokens-build.ts` (contraste), nos `*.test.tsx` de cada componente, em `tests/e2e/system.spec.ts` (axe nas 8 combinações de estação e modo, console sem aviso de hidratação, teclado, alvo de toque, movimento reduzido), em `tests/e2e/screenshots.spec.ts` (capturas em `docs/screenshots/`) e em `tests/tools/axe-audit.mjs` (auditoria com repetição, relatório em `docs/qa/axe-report.json`).
 
 ## Texto e voz
 
@@ -72,6 +72,14 @@ Os testes automáticos estão em `tests/unit/rules.test.ts` (varreduras), `scrip
 | TK-01 | CRÍTICO    | Nenhuma cor literal (hex, `rgb(`, `hsl(`) fora dos arquivos de tokens (`src/styles/tokens.css`, `src/styles/themes.css`, `src/lib/color`).                    | Varredura em `tests/unit/rules.test.ts`.                                                                                                             |
 | TK-02 | CRÍTICO    | Nenhum espaçamento arbitrário (`p-[13px]`, `gap-[7px]`, `m-[1.3rem]`) em `src/`.                                                                              | Varredura em `tests/unit/rules.test.ts`.                                                                                                             |
 | TK-03 | IMPORTANTE | Forma e irregularidade só por tokens e pelo motor `src/lib/shapes`. Não existe token de raio numérico; `rounded-*` é proibido.                                | Varredura: nenhum `rounded-` nem `border-radius` literal fora de `src/styles` e `src/lib/shapes`.                                                    |
+
+## Temas
+
+| ID    | Sev.    | Enunciado                                                                                                                                                                                       | Teste                                                                                                          |
+| ----- | ------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------- |
+| TM-01 | CRÍTICO | O tema é estação (`data-season`) mais modo (`data-mode`). Os ids `ipe` e `noturno` e o atributo `data-theme` não existem em `src`, `tests` e `scripts`, salvo a migração de `vg-tema` (D-1105). | Varredura em `tests/unit/rules.test.ts`.                                                                       |
+| TM-02 | CRÍTICO | Contraste validado nas 8 combinações (estação × modo); sucesso a 25° ou mais de matiz da primária; perigo a 12° ou mais.                                                                        | `pnpm tokens:build` e `src/lib/color/color.test.ts`.                                                           |
+| TM-03 | CRÍTICO | A estação inicial segue o calendário brasileiro em `America/Sao_Paulo`, calculada antes da primeira pintura; a escolha manual de cada eixo prevalece.                                           | `src/lib/theme/theme.test.ts` (dias de virada, fuso, equivalência com o script) e `tests/e2e/engines.spec.ts`. |
 
 ## Formas
 

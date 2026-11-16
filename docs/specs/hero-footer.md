@@ -79,7 +79,7 @@ Formas pelo motor com seed `hero:<página>:<i>`. A energia do tema multiplica a 
 
 - [x] CA-1 Hero tem um `h1`, o CTA "Vamos conversar" e a linha de status com o relógio.
 - [x] CA-2 Composição com 5 a 9 formas, `aria-hidden`, determinística pela seed.
-- [ ] CA-3 Texto sobre a placa de apoio: axe sem violação de contraste nos 4 temas (e2e).
+- [ ] CA-3 Texto sobre a placa de apoio: axe sem violação de contraste nas 8 combinações (e2e).
 - [ ] CA-4 Movimento reduzido: nenhuma animação nem paralaxe (e2e com `reducedMotion: "reduce"`).
 - [x] CA-5 FooterScene tem 3 planos de árvores e os extras só do tema ativo.
 - [x] CA-6 Links do rodapé com contraste aprovado contra o fundo e os três planos (`tokens:build`).

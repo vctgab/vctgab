@@ -43,7 +43,7 @@ A mesma cena da estação nos dois modos. No escuro, a cena vira noite: as cores
 1. **Estação**: a escolha manual salva; sem ela, a do calendário brasileiro (hemisfério sul) na data de hoje no fuso `America/Sao_Paulo`: primavera de 22/09 a 20/12, verão de 21/12 a 19/03, outono de 20/03 a 20/06, inverno de 21/06 a 21/09. Calculada no script bloqueante do `<head>`, antes da primeira pintura.
 2. **Modo**: a escolha manual salva; sem ela, `prefers-color-scheme` do sistema.
 3. Duas chaves de `localStorage`, separadas, sempre em `try/catch`: `vg-estacao` e `vg-modo`. Sem chave, vale o automático (calendário ou sistema). Escolher "automática" ou "do sistema" apaga a chave.
-4. Migração de `vg-tema`: `ipe` vira primavera clara, `noturno` vira primavera escura, `outono` e `inverno` viram a estação de mesmo nome (modo automático). A chave antiga é apagada.
+4. Migração de `vg-tema`: `ipe` vira primavera clara, `noturno` vira primavera escura, `outono` e `inverno` viram a estação de mesmo nome no modo claro (eram temas claros). A chave antiga é apagada.
 
 ### Seletor de tema (ThemeSwitcher)
 
@@ -95,18 +95,18 @@ Amostras: `blob` do motor com seed `estacao:<id>`. Cada estação define `--shap
 
 ### Critérios de aceite
 
-- [ ] CA-1 `data-season` e `data-mode` existem no `<html>` antes da primeira pintura, com `color-scheme` e `theme-color` da combinação. (teste do script e e2e)
-- [ ] CA-2 A estação inicial segue o calendário brasileiro no fuso `America/Sao_Paulo`, inclusive nos dias de virada e perto da meia-noite. (teste unitário da regra e do script)
-- [ ] CA-3 O modo inicial segue `prefers-color-scheme`; a escolha manual de estação e de modo prevalece e fica salva em chaves separadas. (teste do store e e2e)
-- [ ] CA-4 "Automática" volta a seguir o calendário e "Do sistema" volta a seguir o sistema, apagando a chave. (teste do store)
-- [ ] CA-5 `vg-tema` antigo migra: `ipe` para primavera clara, `noturno` para primavera escura. (teste do script e do store)
-- [ ] CA-6 `pnpm tokens:build` valida a matriz de contraste nas 8 combinações e falha se algum par reprovar; sucesso e primária do verão ficam a 25° ou mais. (`tokens:build`, `color.test.ts`)
-- [ ] CA-7 Os ids `ipe` e `noturno` não aparecem em código nem testes. (varredura em `rules.test.ts`)
-- [ ] CA-8 O seletor tem `radiogroup` "Estação" (4 estações e "Automática") e `SegmentedControl` "Modo"; operável só pelo teclado. (teste de componente e e2e)
-- [ ] CA-9 O rodapé mostra a cena da estação, com lua e estrelas no escuro e o sol só no claro. (teste da regra de visibilidade e captura)
-- [ ] CA-10 axe sem violação em todas as páginas da vitrine nas 8 combinações (Chromium); Home nas 8 combinações em WebKit e Firefox; demais páginas em primavera clara e escura. (e2e)
-- [ ] CA-11 A vitrine mostra as 8 combinações lado a lado, com a matriz de contraste de cada uma. (teste da vitrine e captura)
-- [ ] CA-12 Lighthouse da Home sem piora em relação à fase 2, nos dois métodos. (relatório)
+- [x] CA-1 `data-season` e `data-mode` existem no `<html>` antes da primeira pintura, com `color-scheme` e `theme-color` da combinação. (teste do script e e2e)
+- [x] CA-2 A estação inicial segue o calendário brasileiro no fuso `America/Sao_Paulo`, inclusive nos dias de virada e perto da meia-noite. (teste unitário da regra e do script)
+- [x] CA-3 O modo inicial segue `prefers-color-scheme`; a escolha manual de estação e de modo prevalece e fica salva em chaves separadas. (teste do store e e2e)
+- [x] CA-4 "Automática" volta a seguir o calendário e "Do sistema" volta a seguir o sistema, apagando a chave. (teste do store)
+- [x] CA-5 `vg-tema` antigo migra: `ipe` para primavera clara, `noturno` para primavera escura. (teste do script e do store)
+- [x] CA-6 `pnpm tokens:build` valida a matriz de contraste nas 8 combinações e falha se algum par reprovar; sucesso e primária do verão ficam a 25° ou mais. (`tokens:build`, `color.test.ts`)
+- [x] CA-7 Os ids `ipe` e `noturno` não aparecem em código nem testes. (varredura em `rules.test.ts`)
+- [x] CA-8 O seletor tem `radiogroup` "Estação" (4 estações e "Automática") e `SegmentedControl` "Modo"; operável só pelo teclado. (teste de componente e e2e)
+- [x] CA-9 O rodapé mostra a cena da estação, com lua e estrelas no escuro e o sol só no claro. (teste da regra de visibilidade e captura)
+- [x] CA-10 axe sem violação em todas as páginas da vitrine nas 8 combinações (Chromium); Home nas 8 combinações em WebKit e Firefox; demais páginas em primavera clara e escura. (e2e)
+- [x] CA-11 A vitrine mostra as 8 combinações lado a lado, com a matriz de contraste de cada uma. (teste da vitrine e captura)
+- [x] CA-12 Lighthouse da Home sem piora em relação à fase 2, nos dois métodos. (relatório)
 
 ## Plan
 
@@ -132,11 +132,11 @@ Amostras: `blob` do motor com seed `estacao:<id>`. Cada estação define `--shap
 ## Tarefas
 
 - [x] Ficha
-- [ ] Tokens, temas e validação de contraste nas 8 combinações
-- [ ] Runtime (regra de estação, script, store, migração)
-- [ ] ThemeSwitcher com estação e modo
-- [ ] Rodapé e hero por estação, com noite
-- [ ] Vitrine com as 8 combinações e a matriz de cada uma
-- [ ] Testes (um por critério)
-- [ ] QA: axe, três motores, capturas, Lighthouse
-- [ ] `docs/REPORT-seasons.md`, `DESIGN-SYSTEM.md`, `CLAUDE.md`
+- [x] Tokens, temas e validação de contraste nas 8 combinações
+- [x] Runtime (regra de estação, script, store, migração)
+- [x] ThemeSwitcher com estação e modo
+- [x] Rodapé e hero por estação, com noite
+- [x] Vitrine com as 8 combinações e a matriz de cada uma
+- [x] Testes (um por critério)
+- [x] QA: axe, três motores, capturas, Lighthouse
+- [x] `docs/REPORT-seasons.md`, `DESIGN-SYSTEM.md`, `CLAUDE.md`

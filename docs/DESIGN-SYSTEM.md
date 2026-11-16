@@ -1,6 +1,6 @@
 # Design system
 
-Caderno de campo desenhado à mão para o portfólio de Victor Gabriel. Este documento explica os princípios, onde mora cada token e como criar um tema ou um componente sem quebrar as regras. A vitrine viva está em `/sistema`.
+Caderno de campo desenhado à mão para o portfólio de Victor Gabriel. Este documento explica os princípios, onde mora cada token e como criar uma estação ou um componente sem quebrar as regras. A vitrine viva está em `/sistema`.
 
 ## Princípios
 
@@ -57,15 +57,24 @@ Espaçamento em base de 4 px (`p-4` = 16 px). Sombras duras sem desfoque: `shado
 
 `generateShape({ kind, seed, bucket, irregularity, points, rotation })` devolve o caminho normalizado (0 a 1), os pontos, o `border-radius` de 8 valores, a rotação (−1 a 1) e o desalinhamento em px. Tipos: `blob`, `wobblyRect`, `pill`, `tornEdge`, `handLine`, `hole`. O componente `Shape` desenha até 3 camadas SVG (sombra, preenchimento, contorno) e `shapeHostProps` dá ao hospedeiro o `border-radius` da mesma seed, que faz o anel de foco seguir o contorno. Os estados mudam variáveis CSS no hospedeiro (`--shape-fill`, `--shape-stroke`, `--shape-shadow-x/y`, `--shape-dash`). Detalhes em `docs/specs/shape-engine.md`; playground em `/sistema/formas`.
 
-## Como criar um tema
+## Temas: estação e modo
 
-1. Copie um bloco de `src/styles/themes.css` e troque o nome em `[data-theme="novo"]`.
-2. Defina `--theme-label`, `--theme-description`, as sementes (`--seed-primary`, `--seed-secondary-1`, `--seed-secondary-2`, `--seed-success`, `--seed-warning`, `--seed-danger`), `--shape-energy`, `--shape-rotation-max` (abaixo de 1,5) e `color-scheme`.
-3. Se for escuro, redefina as superfícies e a tinta como no bloco `noturno`.
-4. Rode `pnpm tokens:build`. Ele falha se algum par de contraste reprovar ou se o perigo ficar a menos de 12° de matiz da primária; ajuste as sementes até passar e registre em `docs/DECISIONS.md`.
-5. Acrescente a cena do rodapé em `src/components/footer-scene/scenes.ts`.
+O tema tem dois eixos independentes (`docs/specs/themes-seasons.md`): a **estação** (`data-season`: `primavera`, `verao`, `outono`, `inverno`) e o **modo** (`data-mode`: `claro`, `escuro`), os dois no `<html>`. São 8 combinações, de id `estacao-modo` (por exemplo `verao-escuro`).
 
-Nenhum componente muda. O tema aparece sozinho no ThemeSwitcher, na vitrine e no script sem flash, porque todos leem a lista gerada pelo build.
+- **Estação** decide as sementes de cor, a cena do rodapé, a paleta do hero e os dois parâmetros do motor de formas (energia e rotação). Primavera (rosa `#EE2476`, o padrão), verão (verde `#12924E`), outono (laranja `#C5531F`) e inverno (azul `#3B7EA1`).
+- **Modo** decide só a polaridade. O claro é o mapeamento base de `tokens.css`; o escuro é um bloco único, `[data-mode="escuro"]` em `themes.css`, derivado das sementes de cada estação: superfícies quase pretas com cerca de 8% da primária, interativos no passo 400, texto de primária no 300, `on-primary` em tinta escura e sombra própria.
+- **Tema inicial:** a estação do calendário brasileiro (hemisfério sul) em `America/Sao_Paulo` (primavera de 22/09 a 20/12, verão de 21/12 a 19/03, outono de 20/03 a 20/06, inverno de 21/06 a 21/09) e o modo de `prefers-color-scheme`, os dois calculados no script do `<head>` antes da primeira pintura. A escolha manual de cada eixo prevalece e fica em `vg-estacao` e `vg-modo`; "Automática" e "Do sistema" apagam a chave e voltam ao calendário e ao sistema. O valor antigo `vg-tema` é migrado e apagado.
+- **Elementos aninhados** (a vitrine mostra as 8 combinações lado a lado) sempre levam `data-season` e `data-mode` juntos, e recalculam escalas e tokens a partir das próprias sementes.
+
+## Como criar uma estação
+
+1. Copie um bloco `[data-season="…"]` de `src/styles/themes.css` e troque o nome.
+2. Defina `--theme-label`, `--theme-description`, as sementes (`--seed-primary`, `--seed-secondary-1`, `--seed-secondary-2`, `--seed-success`, `--seed-warning`, `--seed-danger`, `--seed-tree` para as árvores do rodapé), `--shape-energy` e `--shape-rotation-max` (abaixo de 1,5). Se a secundária 2 for clara, siga o ajuste do âmbar (preenchimento no 400, tinta escura, texto no 800).
+3. O modo escuro vem de graça do bloco `[data-mode="escuro"]`. Só se uma combinação reprovar, ajuste-a em `[data-season="…"][data-mode="escuro"]` (o outono faz isso com o vinho).
+4. Rode `pnpm tokens:build`. Ele valida a matriz nas duas polaridades e falha se algum par de contraste reprovar, se o perigo ficar a menos de 12° de matiz da primária ou se o sucesso ficar a menos de 25°; ajuste as sementes até passar e registre em `docs/DECISIONS.md`.
+5. Acrescente a cena do rodapé em `src/components/footer-scene/scenes.ts`. O modo escuro leva a mesma cena à noite (lua e estrelas) sem desenho novo.
+
+Nenhum componente muda. A estação aparece sozinha no ThemeSwitcher, na vitrine e no script sem flash, porque todos leem a lista gerada pelo build.
 
 ## Como criar um componente
 
@@ -80,6 +89,6 @@ Nenhum componente muda. O tema aparece sozinho no ThemeSwitcher, na vitrine e no
 ## Qualidade
 
 - `pnpm check`: lint, tipos, testes unitários e build (com `tokens:build`).
-- `pnpm test:e2e`: axe nas páginas da vitrine nos 4 temas, console limpo, teclado, alvo de toque e movimento reduzido.
-- `pnpm screenshots`: capturas em `docs/screenshots/` (3 viewports × 4 temas e recortes 2x das bordas).
+- `pnpm test:e2e`: axe nas páginas da vitrine nas 8 combinações (Chromium; WebKit e Firefox em primavera clara e escura) e na Home nas 8 nos três motores, console limpo, teclado, alvo de toque e movimento reduzido.
+- `pnpm screenshots`: capturas em `docs/screenshots/` (Home em 390×844 e 1366×768 nas 8 combinações, rodapé de cada uma, vitrine de temas e recortes 2x das bordas numa combinação clara e numa escura).
 - `node tests/tools/axe-audit.mjs`: auditoria axe com repetição, relatório em `docs/qa/axe-report.json`.

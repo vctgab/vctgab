@@ -105,7 +105,7 @@ Herdados dos componentes: `forced-colors` troca camadas por bordas; com moviment
 ### Critérios de aceite
 
 - [x] CA-1 A Home tem as seções A a I nesta ordem, com um `h1` e um `h2` por seção (e2e de estrutura).
-- [x] CA-2 axe sem violações nos 4 temas, nos três motores, e console sem erro nem aviso de hidratação (e2e).
+- [x] CA-2 axe sem violações nas 8 combinações de estação e modo, nos três motores, e console sem erro nem aviso de hidratação (e2e).
 - [x] CA-3 "Vamos conversar" (cabeçalho e hero) leva a `#contato` enquanto o WhatsApp estiver pendente, nunca a link quebrado; "Solicitar orçamento" leva a `mailto:` com assunto (unidade de `src/lib/contact` e e2e).
 - [x] CA-4 Toda pendência aparece como `[a confirmar: …]` e está na lista do `pnpm release:check`, que também acusa `/projetos/<slug>` (script e e2e).
 - [x] CA-5 Clicar numa ficha da faixa leva à 404 "Trilha perdida" com link de volta à Home; a resposta tem status 404 (e2e).
@@ -114,7 +114,7 @@ Herdados dos componentes: `forced-colors` troca camadas por bordas; com moviment
 - [x] CA-8 Vídeo pendente vira Ficha marcada, sem `<video>` na página; o `VideoClip` cobre os cinco estados (unidade).
 - [x] CA-9 Metadados: `metadataBase` da `SITE_URL`, título e descrição em pt-BR, imagem Open Graph 1200 × 630 gerada por `next/og`, `sitemap.xml` sem `/sistema`, `robots.txt` bloqueando `/sistema`, JSON-LD `Person` só com nome, cargo, URL e GitHub (e2e).
 - [ ] CA-10 (não atingido: Home 70 no simulado e 68 no devtools; ver docs/REPORT-phase-2.md) Lighthouse mobile no método padrão ≥ 90, relatado com o devtools ao lado; acessibilidade ≥ 95 (`docs/qa/phase-2/`).
-- [x] CA-11 Capturas em 390×844, 768×1024, 1366×768 e 1440×900 nos 4 temas, nos três motores, revisadas (`docs/screenshots/home/`).
+- [x] CA-11 Capturas em 390×844 e 1366×768 nas 8 combinações de estação e modo, nos três motores, revisadas (`docs/screenshots/home/`).
 - [x] CA-12 Achados: a pinha e a coruja contam no caderno; a coruja tem alvo de 44 px (e2e).
 
 ## Plan

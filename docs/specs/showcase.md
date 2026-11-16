@@ -4,7 +4,7 @@
 
 ### Propósito
 
-Página do próprio app que prova o sistema funcionando: fundamentos, formas, componentes, temas e acessibilidade, com os quatro temas trocados ao vivo. `noindex` e fora do sitemap. **Quando não usar:** como documentação de uso por quem visita o portfólio (é ferramenta de quem desenvolve e de quem avalia o trabalho).
+Página do próprio app que prova o sistema funcionando: fundamentos, formas, componentes, temas e acessibilidade, com a estação e o modo trocados ao vivo. `noindex` e fora do sitemap. **Quando não usar:** como documentação de uso por quem visita o portfólio (é ferramenta de quem desenvolve e de quem avalia o trabalho).
 
 ### Anatomia
 
@@ -13,7 +13,7 @@ Página do próprio app que prova o sistema funcionando: fundamentos, formas, co
 - Cores: escalas de 11 passos (nome, hex, percentual aplicado, contraste contra papel e tinta) lidas do `tokens.generated.json` (calculado em build), amostras pintadas pelos próprios tokens (mudam com o tema), neutros, mapeamento semântico e a matriz de contraste com aprovado ou reprovado.
 - Tipografia: cada fonte e a escala inteira com texto real em português.
 - Espaço e movimento: escala de 4 px, sombras duras, durações e easing com demonstração (parada com movimento reduzido), camadas nomeadas.
-- Temas: os quatro lado a lado (`data-theme` local) com o mesmo conjunto de componentes.
+- Temas: as 8 combinações de estação e modo lado a lado (`data-season` e `data-mode` locais), com o mesmo conjunto de componentes e a matriz de contraste de cada uma.
 - Acessibilidade: relatório de contraste por tema e as verificações de teclado.
 
 ### Variantes
@@ -60,8 +60,8 @@ Amostras ganham borda real; demonstrações de movimento param com movimento red
 - [x] CA-1 Todas as páginas existem, com `h1`, `noindex` e fora do sitemap.
 - [x] CA-2 Navegação lateral com a página atual marcada; Drawer no mobile.
 - [x] CA-3 Escalas e matriz de contraste vindas do build, com amostras pintadas pelos tokens.
-- [x] CA-4 Os quatro temas lado a lado com o mesmo conjunto de componentes.
-- [ ] CA-5 Playwright + axe sem violações em todas as páginas nos 4 temas (etapa 7).
+- [x] CA-4 As 8 combinações lado a lado com o mesmo conjunto de componentes e a matriz de contraste de cada uma.
+- [x] CA-5 Playwright + axe sem violações em todas as páginas nas 8 combinações (Chromium).
 
 ## Plan
 

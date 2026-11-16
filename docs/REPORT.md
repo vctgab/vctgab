@@ -74,6 +74,5 @@ As demais sementes sugeridas passaram sem ajuste; os outros acertos foram de map
 1. Páginas reais (Home, Projetos, caso Nexuscoop, Sobre, Contato), compondo os componentes.
 2. Comandos do terminal `cmd`.
 3. Página secreta liberada em 7 de 7 e os seis achados restantes.
-4. Tema Floresta: um bloco em `themes.css` e uma cena em `scenes.ts`.
-5. Testes em Firefox e WebKit; Lighthouse nas páginas reais.
-6. Node 26 LTS e diagnóstico da memória desta máquina.
+4. Testes em Firefox e WebKit; Lighthouse nas páginas reais.
+5. Node 26 LTS e diagnóstico da memória desta máquina.

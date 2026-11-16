@@ -12,8 +12,8 @@ Portfólio de desenvolvimento de Victor Gabriel (front-end/full stack, Teresina,
 
 Caderno de campo desenhado à mão. Contornos, formas e posições nunca são retos nem perfeitamente alinhados. A irregularidade **nunca** atrapalha a função: texto nítido e dentro de áreas seguras, áreas de toque retangulares de 44 px ou mais, contraste intacto.
 
-- Primária rosa `#EE2476` (tema `ipe`). Escalas de 11 passos derivadas por `color-mix` em sRGB. Componentes só usam tokens semânticos.
-- Quatro temas por `data-theme` no `<html>`: `ipe` (padrão), `noturno`, `outono`, `inverno`. Um tema novo é um bloco em `src/styles/themes.css` mais uma cena em `src/components/footer-scene/scenes.ts`.
+- Primária rosa `#EE2476` (primavera). Escalas de 11 passos derivadas por `color-mix` em sRGB. Componentes só usam tokens semânticos.
+- Tema = estação × modo: `data-season` (`primavera` padrão, `verao`, `outono`, `inverno`) e `data-mode` (`claro`, `escuro`) no `<html>`, 8 combinações. Estação inicial pelo calendário (`America/Sao_Paulo`), modo pelo sistema; escolhas salvas em `vg-estacao` e `vg-modo`. Uma estação nova é um bloco `[data-season]` em `src/styles/themes.css` mais uma cena em `src/components/footer-scene/scenes.ts`; o escuro vem do bloco `[data-mode="escuro"]`.
 - Proibido: relevo topográfico, curvas de nível, mapas de trilha, shadcn/ui, gradientes roxos, emoji, pixel art, nomes ou personagens de franquias.
 - Irregularidade vem do motor `src/lib/shapes` (geometria determinística). Nunca `feDisplacementMap` nem filtro em contorno, interação ou texto. Nunca `Math.random` (use o PRNG com seed).
 
@@ -26,7 +26,7 @@ pnpm lint           # ESLint (next + jsx-a11y), zero avisos
 pnpm typecheck      # tsc estrito
 pnpm test           # Vitest + Testing Library + jest-axe + varreduras de regra
 pnpm build          # tokens:build + next build
-pnpm test:e2e       # Playwright + axe em /sistema nos 4 temas e capturas (precisa do build)
+pnpm test:e2e       # Playwright + axe nas 8 combinações de estação e modo e capturas (precisa do build)
 pnpm check          # lint + typecheck + test + build
 ```
 
