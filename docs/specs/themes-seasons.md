@@ -49,8 +49,8 @@ A mesma cena da estação nos dois modos. No escuro, a cena vira noite: as cores
 
 Dois controles:
 
-- **Estação:** `radiogroup` "Estação" com 4 amostras desenhadas pelo motor de formas, cada uma pintada com as cores reais da estação no modo atual, sem opção "Automática": a estação em vigor (do calendário ou salva) aparece marcada.
-- **Modo:** `SegmentedControl` "Modo" com Claro e Escuro; o modo em vigor aparece marcado.
+- **Estação:** `radiogroup` "Estação" com 4 amostras desenhadas pelo motor de formas, cada uma pintada com as cores reais da estação no modo atual, cada amostra leva o ícone da estação (flor, sol, folha de bordo, floco) sobre a cor primária, em `text-on-primary`; sem opção "Automática": a estação em vigor (do calendário ou salva) aparece marcada.
+- **Modo:** `SegmentedControl` "Modo" com Claro (lâmpada) e Escuro (meia-lua); o modo em vigor aparece marcado.
 
 Teclado completo (setas no radiogroup e no segmentado), estado marcado com ícone além da cor, alvos de 44 px.
 

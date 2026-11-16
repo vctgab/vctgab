@@ -88,6 +88,32 @@ describe("ThemeSwitcher (CA-8)", () => {
     expect(within(mode).getByRole("radio", { name: "Escuro" })).toBeChecked()
   })
 
+  it("cada estação e cada modo têm o seu ícone (D-1117)", () => {
+    render(
+      <ThemeProvider>
+        <ThemeSwitcher layout="compact" />
+      </ThemeProvider>,
+    )
+    const icons = (group: HTMLElement) =>
+      within(group)
+        .getAllByRole("radio")
+        .map((r) =>
+          r
+            .querySelector("svg[data-icon]:not([data-icon=check])")
+            ?.getAttribute("data-icon"),
+        )
+    expect(icons(screen.getByRole("radiogroup", { name: "Estação" }))).toEqual([
+      "flor",
+      "sol",
+      "folha",
+      "floco",
+    ])
+    expect(icons(screen.getByRole("radiogroup", { name: "Modo" }))).toEqual([
+      "lampada",
+      "lua",
+    ])
+  })
+
   it("sem escolha salva, marca a estação do calendário e o modo do sistema (CA-4)", () => {
     render(
       <ThemeProvider>

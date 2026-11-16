@@ -2,7 +2,7 @@
 
 import { RadioGroup } from "radix-ui"
 import { useId } from "react"
-import { Icon } from "@/components/ui/icon"
+import { Icon, type IconName } from "@/components/ui/icon"
 import { SegmentedControl } from "@/components/ui/segmented-control"
 import { Shape, shapeHostProps } from "@/components/ui/shape"
 import { cn } from "@/lib/cn"
@@ -19,7 +19,27 @@ export interface ThemeSwitcherProps {
   className?: string
 }
 
-const MODE_OPTIONS = MODES.map((m) => ({ value: m.id, label: m.label }))
+/** Um ícone por estação e por modo (quadro ação → ícone, CR-03); `tema` é o reserva. */
+const SEASON_ICON: Readonly<Record<string, IconName>> = {
+  primavera: "flor",
+  verao: "sol",
+  outono: "folha",
+  inverno: "floco",
+}
+const MODE_ICON: Readonly<Record<string, IconName>> = {
+  claro: "lampada",
+  escuro: "lua",
+}
+
+const MODE_OPTIONS = MODES.map((m) => ({
+  value: m.id,
+  label: (
+    <span className="inline-flex items-center justify-center gap-1.5">
+      <Icon name={MODE_ICON[m.id] ?? "tema"} size={16} decorative />
+      {m.label}
+    </span>
+  ),
+}))
 
 /**
  * Escolha de tema em dois controles independentes: estação (quatro amostras)
@@ -105,13 +125,19 @@ export function ThemeSwitcher({ layout = "compact", className }: ThemeSwitcherPr
                     strokeWidth={1.75}
                     misalign={false}
                   />
-                  <span className="relative isolate size-1/2">
+                  <span className="relative isolate grid size-3/4 place-items-center text-on-primary">
                     <Shape
                       seed={`${seed}:tinta`}
                       kind="blob"
                       bucket="sm"
                       fill="primary-fill"
                       stroke="none"
+                    />
+                    <Icon
+                      name={SEASON_ICON[option.value] ?? "tema"}
+                      size={grid ? 24 : bar ? 16 : 20}
+                      decorative
+                      className="relative"
                     />
                   </span>
                 </span>
