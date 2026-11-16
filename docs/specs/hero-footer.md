@@ -23,14 +23,14 @@ Hero:
 8. Anotação em Caveat "design que o código aguenta" (decorativa, a partir de 1024 px).
 9. `Achavel` da pinha, escondido entre as formas.
 
-FooterScene: um SVG `aria-hidden` com três planos de pinheiros (triângulos empilhados irregulares; o do fundo mais claro), copas `blob` e os extras da cena do tema. A cena de cada tema mora em `src/components/footer-scene/scenes.ts`.
+FooterScene: um SVG `aria-hidden` com três planos de pinheiros (triângulos empilhados irregulares; o do fundo mais claro), copas `blob` e os extras da cena do tema. A cena de cada estação mora em `src/components/footer-scene/scenes.ts`; o modo escuro não troca de cena: leva a mesma à noite (silhuetas, lua e estrelas), sem duplicar o desenho (ver `themes-seasons.md`).
 
-| Tema    | Cena                                                         |
-| ------- | ------------------------------------------------------------ |
-| ipe     | pinheiros e um ipê florido (copa com flores `footer-accent`) |
-| noturno | lua, estrelas e silhuetas                                    |
-| outono  | árvores alaranjadas e folhas caindo                          |
-| inverno | pinheiros com neve e flocos                                  |
+| Estação   | Cena (dia)                                                   | À noite (modo escuro)                |
+| --------- | ------------------------------------------------------------ | ------------------------------------ |
+| primavera | pinheiros e um ipê florido (copa com flores `footer-accent`) | mesma cena, lua, estrelas, silhuetas |
+| verão     | árvores de copa cheia e sol                                  | sol some; lua, estrelas, silhuetas   |
+| outono    | árvores alaranjadas e folhas caindo                          | mesma cena, lua, estrelas, silhuetas |
+| inverno   | pinheiros com neve e flocos                                  | mesma cena, lua, estrelas, silhuetas |
 
 ### Variantes
 
@@ -54,7 +54,7 @@ Composição e cena `aria-hidden`. `h1` único da página. A linha de status é 
 
 ### Irregularidade
 
-Formas pelo motor com seed `hero:<página>:<i>`. A energia do tema multiplica a irregularidade das poses e a amplitude da deriva (ipê 1, noturno 0,8, outono 1,25, inverno 0,7). A paleta vem dos tokens `hero-shape-*` do tema. Pinheiros com vértices deslocados por PRNG (seed `rodape:<plano>`).
+Formas pelo motor com seed `hero:<página>:<i>`. A energia do tema multiplica a irregularidade das poses e a amplitude da deriva (primavera 1, verão 1,1, outono 1,25, inverno 0,7; o modo não muda a energia). A paleta vem dos tokens `hero-shape-*` da estação e do modo. Pinheiros com vértices deslocados por PRNG (seed `rodape:<plano>`).
 
 ### Alto contraste e movimento
 

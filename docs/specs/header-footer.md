@@ -4,10 +4,10 @@
 
 ### Propósito
 
-- **Header:** identificação e navegação global: logo, Projetos, Sobre, Contato, seletor de tema (botão com ícone `tema` que abre Popover com as 4 amostras), CTA "Vamos conversar" e link para pular ao conteúdo. No mobile, menu em Drawer. Fase 2: o botão `cmd` sai até o terminal existir; o CTA vai ao WhatsApp ou, com o número pendente, a `#contato` (`/#contato` fora da Home).
+- **Header:** identificação e navegação global: logo, Projetos, Sobre, Contato, seletor de tema (botão com ícone `tema` que abre Popover com o seletor de estação e de modo), CTA "Vamos conversar" e link para pular ao conteúdo. No mobile, menu em Drawer. Fase 2: o botão `cmd` sai até o terminal existir; o CTA vai ao WhatsApp ou, com o número pendente, a `#contato` (`/#contato` fora da Home).
 - **Footer:** logo, "Victor Gabriel © 2026", links, chip de achados e a cena de árvores (etapa 5).
 - **Logo:** pinheiro desenhado num círculo irregular + nome em Fraunces.
-- **ThemeSwitcher:** escolher entre os temas com amostras desenhadas.
+- **ThemeSwitcher:** escolher a estação (4 amostras desenhadas e "Automática") e o modo (claro, escuro, do sistema). Modelo e regras em `themes-seasons.md`.
 - **PaginaProvisoria:** estado indisponível das rotas Projetos, Sobre e Contato até as páginas reais existirem: diz o que falta e oferece um caminho, para os links globais nunca darem 404.
 
 **Quando não usar:** o Header não leva ações de página (essas ficam no conteúdo).
@@ -18,7 +18,7 @@ Header: link "Pular para o conteúdo" (primeiro focável, visível no foco) → 
 
 Footer: faixa `footer-bg` com borda de cima rasgada (`clip-path` do motor) → Logo invertido → texto de direitos → `nav` "Rodapé" → slot `achados` → slot `scene`.
 
-ThemeSwitcher: `radiogroup` "Tema" com uma amostra por tema; cada amostra é um `blob` pintado com as cores do próprio tema (um `data-theme` local) e o nome do tema visível.
+ThemeSwitcher: `radiogroup` "Estação" com uma amostra por estação mais "Automática"; cada amostra é um `blob` pintado com as cores da própria estação no modo atual (`data-season` e `data-mode` locais) e o nome visível. Abaixo, `SegmentedControl` "Modo" (Claro, Escuro, Do sistema).
 
 ### Variantes
 
@@ -34,15 +34,15 @@ Links: padrão do LinkText; rota atual com `aria-current="page"` e traço sempre
 
 ### Teclado
 
-Tab percorre na ordem visual. ThemeSwitcher: setas mudam de tema (radiogroup). Drawer: Esc fecha e devolve o foco a "Abrir menu".
+Tab percorre na ordem visual. ThemeSwitcher: setas mudam de estação (radiogroup) e de modo (segmentado). Drawer: Esc fecha e devolve o foco a "Abrir menu".
 
 ### ARIA e nome acessível
 
-`header` (banner), `nav` com `aria-label` ("Principal", "Rodapé"), `footer` (contentinfo). Logo: link "Victor Gabriel, início". ThemeSwitcher: `radiogroup` "Tema", cada `radio` com o nome do tema.
+`header` (banner), `nav` com `aria-label` ("Principal", "Rodapé"), `footer` (contentinfo). Logo: link "Victor Gabriel, início". ThemeSwitcher: `radiogroup` "Estação", cada `radio` com o nome da estação; grupo "Modo" com os três segmentos.
 
 ### Irregularidade
 
-Logo: círculo `blob` com seed fixa. Footer: borda rasgada `tornEdge` em `clip-path`. Amostras de tema: `blob` com seed = id do tema.
+Logo: círculo `blob` com seed fixa. Footer: borda rasgada `tornEdge` em `clip-path`. Amostras de estação: `blob` com seed `estacao:<id>`.
 
 ### Alto contraste e movimento
 
@@ -54,7 +54,7 @@ Logo: círculo `blob` com seed fixa. Footer: borda rasgada `tornEdge` em `clip-p
 2. Grade de Tom: boas-vindas, acolhedor com entusiasmo baixo; CTA de contato, objetivo e motivador.
 3. Título: não se aplica.
 4. Rótulos: "Projetos", "Sobre", "Contato", "Vamos conversar", "Abrir o terminal", "Abrir menu", "Fechar menu", "Pular para o conteúdo", "Escolher tema".
-5. Ajuda: descrição de cada tema no ThemeSwitcher em grade.
+5. Ajuda: descrição de cada estação no ThemeSwitcher em grade.
 6. Termos: "tema", "terminal".
 7. Estados: não exibe dados.
 8. Erros: não se aplica.
@@ -68,7 +68,7 @@ Logo: círculo `blob` com seed fixa. Footer: borda rasgada `tornEdge` em `clip-p
 - [x] CA-1 "Pular para o conteúdo" é o primeiro focável e aponta para `#conteudo`.
 - [x] CA-2 `nav` "Principal" com os três links e o atual com `aria-current`.
 - [x] CA-3 No mobile, "Abrir menu" abre o Drawer com os mesmos links; Esc fecha.
-- [x] CA-4 ThemeSwitcher é um `radiogroup` "Tema"; escolher grava o tema e muda `data-theme`.
+- [x] CA-4 ThemeSwitcher tem um `radiogroup` "Estação" e um grupo "Modo"; escolher grava a preferência e muda `data-season` ou `data-mode` (CA-8 de `themes-seasons.md`).
 - [x] CA-5 Footer com `nav` "Rodapé", direitos e slots.
 - [x] CA-6 jest-axe sem violações.
 - [x] CA-7 Projetos, Sobre e Contato respondem 200 com a página provisória (sem 404 no prefetch).
