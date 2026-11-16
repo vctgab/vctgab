@@ -35,7 +35,7 @@ const MODE_OPTIONS = MODES.map((m) => ({
   value: m.id,
   label: (
     <span className="inline-flex items-center justify-center gap-1.5">
-      <Icon name={MODE_ICON[m.id] ?? "tema"} size={16} decorative />
+      <Icon name={MODE_ICON[m.id] ?? "tema"} size={24} strokeWidth={2.25} decorative />
       {m.label}
     </span>
   ),
@@ -114,7 +114,7 @@ export function ThemeSwitcher({ layout = "compact", className }: ThemeSwitcherPr
                   aria-hidden="true"
                   className={cn(
                     "shape-scope relative isolate grid shrink-0 place-items-center",
-                    grid ? "size-16" : bar ? "size-8" : "size-9",
+                    grid ? "size-20" : bar ? "size-9" : "size-11",
                   )}
                 >
                   <Shape
@@ -135,7 +135,8 @@ export function ThemeSwitcher({ layout = "compact", className }: ThemeSwitcherPr
                     />
                     <Icon
                       name={SEASON_ICON[option.value] ?? "tema"}
-                      size={grid ? 24 : bar ? 16 : 20}
+                      size={grid ? 32 : bar ? 20 : 24}
+                      strokeWidth={2.25}
                       decorative
                       className="relative"
                     />

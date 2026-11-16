@@ -10,8 +10,10 @@ type IconBase = Omit<
   "children" | "aria-label" | "aria-hidden" | "role"
 > & {
   name: IconName
-  /** 16, 20 (padrão) ou 24 px. */
-  size?: 16 | 20 | 24
+  /** 16, 20 (padrão), 24 ou 32 px. */
+  size?: 16 | 20 | 24 | 32
+  /** Traço (padrão 1,75). Mais grosso só ao lado de contornos grossos, como nas amostras do tema. */
+  strokeWidth?: number
 }
 
 /**
@@ -25,6 +27,7 @@ export type IconProps = IconBase &
 export function Icon({
   name,
   size = 20,
+  strokeWidth = 1.75,
   decorative,
   label,
   className,
@@ -43,7 +46,7 @@ export function Icon({
       viewBox="0 0 24 24"
       fill="none"
       stroke="currentColor"
-      strokeWidth={1.75}
+      strokeWidth={strokeWidth}
       strokeLinecap="round"
       strokeLinejoin="round"
       focusable="false"

@@ -8,14 +8,14 @@ Conjunto de ícones desenhados à mão em grade 24, traço 1,75 e pontas arredon
 
 ### Anatomia
 
-`<svg viewBox="0 0 24 24">` com `stroke="currentColor"`, `fill="none"`, traço 1,75, `stroke-linecap="round"`, `stroke-linejoin="round"`. A cor herda do texto.
+`<svg viewBox="0 0 24 24">` com `stroke="currentColor"`, `fill="none"`, traço 1,75 (a prop `strokeWidth` o engrossa, até 2,25, só ao lado de contornos grossos, como nas amostras do tema), `stroke-linecap="round"`, `stroke-linejoin="round"`. A cor herda do texto.
 
 ### Variantes e tamanhos
 
 | Prop   | Valores                                                                                                                                                                                                                               |
 | ------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | `name` | `seta`, `seta-diagonal`, `externo`, `fechar`, `menu`, `check`, `mais`, `menos`, `sol`, `lua`, `lampada`, `flor`, `folha`, `floco`, `tema`, `mail`, `github`, `linkedin`, `whatsapp`, `terminal`, `busca`, `alerta`, `info`, `seletor` |
-| `size` | 16, 20 (padrão), 24                                                                                                                                                                                                                   |
+| `size` | 16, 20 (padrão), 24, 32                                                                                                                                                                                                               |
 
 ### Estados
 
