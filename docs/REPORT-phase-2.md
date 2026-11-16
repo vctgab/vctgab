@@ -1,5 +1,7 @@
 # Relatório da fase 2: verificação e Home
 
+> **Nota da fase 3 (`docs/REPORT-seasons.md`):** os quatro temas desta fase (`ipe`, `noturno`, `outono`, `inverno`, atributo `data-theme`) foram trocados por estação × modo (`data-season` e `data-mode`, 8 combinações). Onde este relatório fala em "4 temas", leia "8 combinações". As capturas citadas abaixo (`docs/screenshots/home/<motor>/<tema>/` em 4 tamanhos, `docs/screenshots/bordas/`) foram substituídas por Home em 390×844 e 1366×768 nas 8 combinações e recortes a 400% numa combinação clara e numa escura (D-1114); as antigas continuam no histórico do git, no commit `65aeb24^`. Os números e as conclusões abaixo valem para o estado da fase 2 e não foram refeitos.
+
 ## Resumo
 
 - **Etapa 0 (fundação):** CI no GitHub Actions (lint, tipos, testes, build, tokens e e2e com axe em chromium, webkit e firefox, sem novas tentativas); varredura de todas as revisões do histórico com o comando de reescrita pronto e **não executado**; três motores no Playwright com um spec só para os pontos de risco; fontes da primeira dobra com pré-carga que o Firefox reaproveita e CLS 0 sem pré-carregar as outras; todo texto e dado em `src/content/` com pendência tipada e `pnpm release:check`.
