@@ -101,7 +101,9 @@ function SeasonButton() {
                 className="items-center gap-1.5 whitespace-nowrap"
               >
                 <Icon name={SEASON_ICON[s.id] ?? "tema"} decorative />
-                <span className="max-lg:sr-only">
+                {/* Largura fixa no desktop: a troca da Patrick Hand e a da estação
+                    não movem o resto do cabeçalho (como o CTA da D-1034). */}
+                <span className="max-lg:sr-only lg:inline-block lg:w-36 lg:text-start">
                   {HOME.header.seasonLabel} {s.label.toLowerCase()}
                 </span>
               </span>

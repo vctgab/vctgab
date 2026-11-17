@@ -10,6 +10,7 @@ import { SegmentedControl } from "@/components/ui/segmented-control"
 import { SITE } from "@/content/site"
 import { CONTACT_PAGE, isContactTab } from "@/content/contact"
 import type { ContactTab } from "@/content/home"
+import { cn } from "@/lib/cn"
 import { mailtoHref } from "@/lib/contact"
 
 const OPTIONS = CONTACT_PAGE.tabs.map((t) => ({ value: t.value, label: t.label }))
@@ -47,10 +48,29 @@ export function ContactTabsView({
         className="flex flex-col gap-8 md:flex-row md:items-end md:justify-between"
       >
         <div className="flex max-w-measure flex-col gap-4">
-          <h2 id={`${id}-titulo`} className="text-h2">
-            {content.title}
-          </h2>
-          <p className="text-body-lg text-ink-muted">{content.text}</p>
+          {/* Os textos das duas abas ocupam a mesma célula e só o da aba atual
+              aparece: a altura é a do maior, e a troca na hidratação (fallback
+              "vaga" → aba da URL) não move nada (CLS 0). */}
+          <div className="grid">
+            {CONTACT_PAGE.tabs.map((t) => {
+              const active = t.value === content.value
+              return (
+                <div
+                  key={t.value}
+                  aria-hidden={active ? undefined : true}
+                  className={cn(
+                    "col-start-1 row-start-1 flex flex-col gap-4",
+                    !active && "invisible",
+                  )}
+                >
+                  <h2 id={active ? `${id}-titulo` : undefined} className="text-h2">
+                    {t.title}
+                  </h2>
+                  <p className="text-body-lg text-ink-muted">{t.text}</p>
+                </div>
+              )
+            })}
+          </div>
           <ul className="mt-2 flex flex-col gap-3">
             <Channel icon="mail" label={labels.email}>
               <LinkText href={mailtoHref(content.subject)}>{SITE.email}</LinkText>

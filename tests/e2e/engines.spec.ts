@@ -131,21 +131,18 @@ test("o tema antigo (vg-tema) migra para estação e modo e a chave some", async
   expect(stored).toEqual([null, "primavera", "escuro"])
 })
 
-test("LiveClock mostra a hora de Teresina, avança e não gera aviso", async ({ page }) => {
+test("LiveClock mostra a hora de Teresina em HH:mm, avança e não gera aviso", async ({
+  page,
+}) => {
   const messages = collectConsole(page)
+  // 12:34:50 UTC = 09:34 em Teresina (America/Fortaleza, UTC−3, sem horário de verão).
+  await page.clock.install({ time: new Date("2026-11-17T12:34:50Z") })
   await page.goto("/sistema/hero", { waitUntil: "networkidle" })
   const clock = page.locator("main time").first()
-  await expect(clock).toHaveText(/^\d{2}:\d{2}:\d{2}$/)
-  const first = await clock.textContent()
-  // America/Fortaleza (UTC−3): compara com a hora calculada aqui.
-  const [h, m] = (first ?? "").split(":").map(Number)
-  const now = new Date(Date.now() - 3 * 3600 * 1000)
-  const diff = Math.abs(
-    (h ?? 0) * 60 + (m ?? 0) - (now.getUTCHours() * 60 + now.getUTCMinutes()),
-  )
-  expect(Math.min(diff, 1440 - diff)).toBeLessThanOrEqual(1)
-  await expect(clock).not.toHaveText(first ?? "", { timeout: 3000 })
-  await expect(clock).toHaveAttribute("aria-label", /^Horário em Teresina: \d{2}:\d{2}$/)
+  await expect(clock).toHaveText("09:34")
+  await expect(clock).toHaveAttribute("aria-label", "Horário em Teresina: 09:34")
+  await page.clock.runFor(15_000)
+  await expect(clock).toHaveText("09:35")
   expect(messages.filter((m) => !m.includes("favicon"))).toEqual([])
 })
 

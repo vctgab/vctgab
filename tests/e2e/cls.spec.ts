@@ -5,7 +5,8 @@
  */
 import { expect, test, type Page } from "@playwright/test"
 
-const PAGES = ["/", "/sistema"] as const
+// /contato?aba=projeto: a hidratação troca a aba do fallback ("vaga") pela da URL.
+const PAGES = ["/", "/contato?aba=projeto", "/sistema"] as const
 const VIEWPORTS = [
   { name: "mobile", width: 390, height: 844 },
   { name: "desktop", width: 1366, height: 768 },

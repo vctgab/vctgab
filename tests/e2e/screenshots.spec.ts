@@ -130,17 +130,17 @@ const EDGES: readonly Edge[] = [
     selector: "main h1 svg",
     at: "right-end",
   },
-  // Home (fase 2).
+  // Home v2.
   {
     slug: "home-cta",
     path: "/",
-    selector: "main section a:has-text('Vamos conversar')",
+    selector: "main section a:has-text('tenho uma vaga')",
     at: "top-right",
   },
   {
     slug: "home-ficha",
     path: "/",
-    selector: "[data-faixa] > div:first-child article",
+    selector: "#projetos article",
     at: "top-right",
   },
   { slug: "home-polaroid", path: "/", selector: "#sobre figure", at: "top-right" },
@@ -158,7 +158,7 @@ async function cropEdges(browser: Browser, theme: ThemeId) {
   const context = await browser.newContext({
     viewport: { width: 1366, height: 900 },
     deviceScaleFactor: 2,
-    // A faixa da Home fica parada para o recorte.
+    // O hero fica parado para o recorte.
     reducedMotion: "reduce",
   })
   const page = await context.newPage()

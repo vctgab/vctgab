@@ -59,7 +59,7 @@ Sem formulário (não há backend). A página `/contato` mínima tem ficha próp
 
 ### Teclado
 
-Ordem no desktop: Pular para o conteúdo → Logo → projetos, sobre, contato → achados: N de 7 (abre o caderno; Esc fecha e devolve o foco) → estação: primavera (abre o seletor; setas trocam a estação; Tab vai ao modo; Esc fecha e devolve o foco) → pinha → tenho uma vaga → tenho um projeto → as quatro fichas → ver todos os projetos → pena → mais sobre mim → tenho uma vaga → tenho um projeto → vctgab.ux@gmail.com → coruja → rodapé. No mobile: Logo → contador → estação → Abrir menu (Drawer com os três links, foco preso e Esc).
+Ordem no desktop: Pular para o conteúdo → Logo → projetos, sobre, contato → achados: N de 7 (abre o caderno; Esc fecha e devolve o foco) → estação: primavera (abre o seletor; setas trocam a estação; Tab vai ao modo; Esc fecha e devolve o foco) → tenho uma vaga → tenho um projeto → pinha → as quatro fichas → ver todos os projetos → mais sobre mim → pena → tenho uma vaga → tenho um projeto → vctgab.ux@gmail.com → coruja → rodapé. No mobile: Logo → contador → estação → Abrir menu (Drawer com os três links, foco preso e Esc). Teste: `tests/e2e/home.spec.ts` (CA-7).
 
 ### ARIA e nome acessível
 

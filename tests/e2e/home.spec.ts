@@ -1,6 +1,7 @@
 /**
- * Home (docs/specs/pages/home.md): estrutura, axe nas 8 combinações de estação e modo, chamadas,
- * pendências, 404, teclado, achados e metadados. Roda nos três motores.
+ * Home v2 (docs/specs/pages/home.md): estrutura, axe nas 8 combinações de
+ * estação e modo, CTAs, pendências, contador de achados, nome da estação,
+ * teclado, achados e metadados. Roda nos três motores.
  */
 import AxeBuilder from "@axe-core/playwright"
 import { expect, test, type Page } from "@playwright/test"
@@ -16,21 +17,19 @@ import {
 const AXE_TAGS = ["wcag2a", "wcag2aa", "wcag21a", "wcag21aa", "wcag22aa"]
 
 const SECTION_TITLES = [
-  "Projetos em destaque",
-  "O que eu faço",
-  "O que dizem sobre o trabalho",
-  "Resultado medido",
-  "Desenvolvedor que veio do design de produto",
-  "Vamos trabalhar no seu projeto",
+  "o que eu ando construindo",
+  "do layout ao deploy",
+  "depoimento e números",
+  "prazer, Victor",
+  "bora conversar?",
 ]
 
+/** Nome do elemento focado: aria-label ou o texto renderizado (sem os spans escondidos). */
 async function focusedName(page: Page) {
   return page.evaluate(() => {
-    const a = document.activeElement
+    const a = document.activeElement as HTMLElement | null
     if (!a || a === document.body) return null
-    return (a.getAttribute("aria-label") || a.textContent || "")
-      .trim()
-      .replace(/\s+/g, " ")
+    return (a.getAttribute("aria-label") || a.innerText || "").trim().replace(/\s+/g, " ")
   })
 }
 
@@ -54,118 +53,177 @@ for (const theme of THEMES) {
 test("CA-1: um h1 e as seções na ordem do pedido", async ({ page }) => {
   await page.goto("/", { waitUntil: "load" })
   await expect(page.locator("h1")).toHaveCount(1)
-  await expect(page.locator("h1")).toHaveText("Front-end com visão de produto.")
+  await expect(page.locator("h1")).toHaveText(
+    "Comecei desenhando as telas. Hoje eu coloco elas no ar.",
+  )
   const h2 = await page.locator("main h2").allTextContents()
   expect(h2.map((t) => t.trim())).toEqual(SECTION_TITLES)
-  await expect(page.locator("main #contato")).toHaveCount(1)
+  // O hero vem antes de tudo; o contato é a última seção do main.
+  const sections = await page
+    .locator("main > section")
+    .evaluateAll((els) => els.map((e) => e.id || e.getAttribute("aria-labelledby")))
+  expect(sections[0]).toBe("hero-home-titulo")
+  expect(sections.at(-1)).toBe("contato")
+  await expect(page.locator("main #projetos article")).toHaveCount(4)
+  await expect(page.locator("main #o-que-eu-faco ol > li")).toHaveCount(4)
 })
 
-test("CA-3: com o WhatsApp pendente, as chamadas nunca levam a link quebrado", async ({
-  page,
-}) => {
+test("CA-3: os CTAs levam ao /contato com a aba certa marcada", async ({ page }) => {
   await page.setViewportSize({ width: 1366, height: 900 })
   await page.goto("/", { waitUntil: "load" })
-  const talk = page.getByRole("link", { name: "Vamos conversar" })
-  await expect(talk).toHaveCount(2)
-  for (const link of await talk.all())
-    await expect(link).toHaveAttribute("href", "#contato")
-  await expect(page.getByRole("link", { name: "Solicitar orçamento" })).toHaveAttribute(
-    "href",
-    "mailto:vctgab.ux@gmail.com?subject=Or%C3%A7amento",
-  )
-  await page.locator("main").getByRole("link", { name: "Vamos conversar" }).click()
-  await expect(page).toHaveURL(/#contato$/)
-  await expect(
-    page.getByRole("heading", { name: "Vamos trabalhar no seu projeto" }),
-  ).toBeInViewport()
-
-  // Fora da Home, o cabeçalho leva ao contato da Home.
-  await page.goto("/sobre", { waitUntil: "load" })
-  await expect(
-    page.getByRole("banner").getByRole("link", { name: "Vamos conversar" }),
-  ).toHaveAttribute("href", "/#contato")
+  const vaga = page.getByRole("link", { name: "tenho uma vaga" })
+  const projeto = page.getByRole("link", { name: "tenho um projeto" })
+  await expect(vaga).toHaveCount(2)
+  await expect(projeto).toHaveCount(2)
+  for (const link of await vaga.all())
+    await expect(link).toHaveAttribute("href", "/contato?aba=vaga")
+  for (const link of await projeto.all())
+    await expect(link).toHaveAttribute("href", "/contato?aba=projeto")
+  await projeto.first().click()
+  await expect(page).toHaveURL(/\/contato\?aba=projeto$/)
+  await expect(page.getByRole("radio", { name: "projeto" })).toBeChecked()
 })
 
 test("CA-4: toda pendência aparece como [a confirmar: …]", async ({ page }) => {
   await page.goto("/", { waitUntil: "load" })
-  const marks = await page.locator("main [data-pendente]").allTextContents()
-  expect(marks.length).toBeGreaterThan(10)
+  const marks = await page.locator("[data-pendente]").allTextContents()
   for (const m of marks) expect(m).toMatch(/^\[a confirmar: [^\]]+\]$/)
-  // Vídeo pendente: Ficha marcada, nunca um player vazio (CA-8).
+  for (const what of [
+    "captura do Nexuscoop",
+    "captura do Kasb Health",
+    "captura da Suíte OdiN",
+    "captura do Lance!",
+    "depoimento voltado a dev, de preferência sobre a atuação como tech lead",
+    "como foi medido e o tempo final em segundos",
+    "validar: arquivos ou testes",
+    "foto do Victor",
+    "URL do LinkedIn",
+    "arquivo do CV em PDF",
+    "confirmar o sobrenome usado no site",
+  ])
+    expect(marks).toContain(`[a confirmar: ${what}]`)
+  // Sem citação inventada nem player vazio.
+  await expect(page.locator("main blockquote")).toHaveCount(0)
   await expect(page.locator("main video")).toHaveCount(0)
-  await expect(
-    page.getByText("[a confirmar: vídeo do Nexuscoop, até 30 s, sem som]"),
-  ).toBeVisible()
 })
 
-test("CA-5: ficha da faixa leva à 404 'Trilha perdida', com volta à Home", async ({
+test("CA-4: ficha de projeto leva à 404 'Trilha perdida', sem pré-busca", async ({
   page,
 }) => {
   const messages = collectConsole(page)
   await page.goto("/", { waitUntil: "networkidle" })
   await scrollThrough(page)
-  // Sem pré-busca das rotas inexistentes: nenhum 404 no console da Home.
   expect(messages.filter((m) => /404|Failed to load/.test(m))).toEqual([])
-  // A faixa pode estar em movimento: o clique vai pelo link original.
-  await page.getByRole("link", { name: "Nexuscoop" }).first().click({ force: true })
+  await page.getByRole("link", { name: "Nexuscoop" }).click()
   await expect(
     page.getByRole("heading", { level: 1, name: "Trilha perdida" }),
   ).toBeVisible()
   await expect(page).toHaveURL(/\/projetos\/nexuscoop$/)
   const direct = await page.request.get("/projetos/nexuscoop")
   expect(direct.status()).toBe(404)
-  await page.getByRole("link", { name: "Voltar para a página inicial" }).click()
-  await expect(page).toHaveURL(/\/$/)
 })
 
-test("CA-6: teclado de ponta a ponta no desktop", async ({ page, browserName }) => {
+test("CA-5: contador do cabeçalho ao vivo, abre o caderno e devolve o foco", async ({
+  page,
+}) => {
+  await page.setViewportSize({ width: 1366, height: 900 })
+  await page.goto("/", { waitUntil: "networkidle" })
+  const header = page.getByRole("banner")
+  const counter = header.getByRole("button", { name: /^achados: 0 de 7/ })
+  await expect(counter).toBeVisible()
+  await expect(page.getByRole("contentinfo")).toContainText(
+    "Achados: 0 de 7. Tem coisa escondida por aqui.",
+  )
+  await page.getByRole("button", { name: "Algo entre as formas do hero" }).click()
+  await expect(header.getByRole("button", { name: /^achados: 1 de 7/ })).toBeVisible()
+  await expect(page.getByRole("contentinfo")).toContainText("Achados: 1 de 7.")
+  const open = header.getByRole("button", { name: /^achados: 1 de 7/ })
+  await open.focus()
+  await page.keyboard.press("Enter")
+  await expect(page.getByRole("dialog")).toBeVisible()
+  await page.keyboard.press("Escape")
+  await expect(page.getByRole("dialog")).toBeHidden()
+  await expect(open).toBeFocused()
+})
+
+test("CA-6: o nome da estação já vem certo sem React e muda ao trocar", async ({
+  page,
+}) => {
+  await page.setViewportSize({ width: 1366, height: 900 })
+  await applyTheme(page, "outono-escuro")
+  // Sem os scripts do Next: só o script do <head> e o CSS decidem o nome.
+  await page.route(/\/_next\/static\/.*\.js$/, (route) => route.abort())
+  await page.goto("/", { waitUntil: "load" })
+  const seasonText = page.getByRole("banner").locator("[data-season-only]:visible")
+  await expect(seasonText).toHaveCount(1)
+  await expect(seasonText).toHaveText("estação: outono")
+  await page.unroute(/\/_next\/static\/.*\.js$/)
+
+  await page.goto("/", { waitUntil: "networkidle" })
+  const trigger = page.getByRole("button", { name: "estação: outono" })
+  await trigger.click()
+  await page
+    .getByRole("radiogroup", { name: "Estação" })
+    .getByRole("radio", { name: /Inverno/ })
+    .click()
+  await expect(page.locator("html")).toHaveAttribute("data-season", "inverno")
+  await page.keyboard.press("Escape")
+  await expect(page.getByRole("button", { name: "estação: inverno" })).toBeVisible()
+})
+
+test("CA-7: teclado de ponta a ponta no desktop", async ({ page, browserName }) => {
   test.skip(browserName === "webkit", "No WebKit o Tab pula links (CN-01)")
   await page.setViewportSize({ width: 1366, height: 900 })
   await page.goto("/", { waitUntil: "networkidle" })
   const order: string[] = []
-  for (let i = 0; i < 26; i++) {
+  for (let i = 0; i < 30; i++) {
     await page.keyboard.press("Tab")
     const name = await focusedName(page)
     if (name) order.push(name)
   }
-  const expected = [
+  const expected: (string | RegExp)[] = [
     "Pular para o conteúdo",
     "Victor Gabriel, início",
-    "Projetos",
-    "Sobre",
-    "Contato",
-    "Escolher tema",
-    "Vamos conversar",
-    "Vamos conversar",
+    "projetos",
+    "sobre",
+    "contato",
+    /^achados: 0 de 7/,
+    /^estação: (primavera|verão|outono|inverno)$/,
+    "tenho uma vaga",
+    "tenho um projeto",
     "Algo entre as formas do hero",
     "Nexuscoop",
-    "OIA",
-    "Cinnatra",
     "Kasb Health",
-    "Ver todos os projetos",
-    "Natália Oliveira",
-    "Mais sobre mim",
-    "Solicitar orçamento",
+    "Suíte OdiN",
+    "Lance!",
+    "ver todos os projetos",
+    "mais sobre mim",
+    "Algo para escrever perto da foto",
+    "tenho uma vaga",
+    "tenho um projeto",
     "vctgab.ux@gmail.com",
-    "github.com/vctgab (abre em nova aba)",
     "Algo pousado perto do correio",
+    "Victor Gabriel, voltar ao início",
   ]
-  expect(order.slice(0, expected.length)).toEqual(expected)
+  expect(order.length).toBeGreaterThanOrEqual(expected.length)
+  expected.forEach((want, i) => {
+    if (typeof want === "string") expect(order[i], `posição ${i}`).toBe(want)
+    else expect(order[i], `posição ${i}`).toMatch(want)
+  })
 })
 
-test("CA-6: tema pelo teclado: abre, troca estação e modo, fecha com Esc e persiste", async ({
+test("CA-7: tema pelo teclado: abre, troca estação e modo, fecha com Esc e persiste", async ({
   page,
 }) => {
-  // Sem tema salvo e com sistema claro, o modo começa claro (a estação segue o calendário).
   await page.setViewportSize({ width: 1366, height: 900 })
   await page.goto("/", { waitUntil: "networkidle" })
   await expect(page.locator("html")).toHaveAttribute("data-mode", "claro")
-  const trigger = page.getByRole("button", { name: "Escolher tema" })
+  const trigger = page.getByRole("button", { name: /^estação:/ })
   await trigger.focus()
   await page.keyboard.press("Enter")
   const group = page.getByRole("radiogroup", { name: "Estação" })
   await expect(group).toBeVisible()
-  // Tab até o grupo (cai na opção marcada, a estação do calendário) e seta segurada, como uma pessoa (D-707).
+  // Tab até o grupo (cai na opção marcada) e seta segurada, como uma pessoa (D-707).
   const current = group.getByRole("radio", { checked: true })
   await expect(current).toHaveCount(1)
   for (
@@ -182,15 +240,12 @@ test("CA-6: tema pelo teclado: abre, troca estação e modo, fecha com Esc e per
   await page.waitForTimeout(60)
   await page.keyboard.up("ArrowLeft")
   await expect(page.locator("html")).toHaveAttribute("data-season", previous)
-  // Tab leva ao modo (cai em "Claro", o do sistema); no segmentado a seta move o foco e Espaço marca.
   await page.keyboard.press("Tab")
   const mode = page.getByRole("radiogroup", { name: "Modo" })
   await expect(mode.getByRole("radio", { name: "Claro" })).toBeFocused()
   await page.keyboard.press("ArrowLeft")
-  // O Radix move o foco depois da seta (D-707): espera chegar antes do Espaço.
   await expect(mode.getByRole("radio", { name: "Escuro" })).toBeFocused()
   await page.keyboard.press("Space")
-  await expect(mode.getByRole("radio", { name: "Escuro" })).toBeChecked()
   await expect(page.locator("html")).toHaveAttribute("data-mode", "escuro")
   await page.keyboard.press("Escape")
   await expect(group).toBeHidden()
@@ -199,49 +254,56 @@ test("CA-6: tema pelo teclado: abre, troca estação e modo, fecha com Esc e per
   await expectTheme(page, `${previous}-escuro` as ThemeId)
 })
 
-test("CA-6: menu mobile em Drawer, com Esc e foco de volta", async ({ page }) => {
+test("CA-7: no mobile, links no Drawer; contador e estação no cabeçalho", async ({
+  page,
+}) => {
   await page.setViewportSize({ width: 390, height: 844 })
   await page.goto("/", { waitUntil: "networkidle" })
+  const header = page.getByRole("banner")
+  await expect(header.getByRole("button", { name: /^achados: 0 de 7/ })).toBeVisible()
+  await expect(header.getByRole("button", { name: /^estação:/ })).toBeVisible()
+  await expect(header.getByRole("navigation", { name: "Principal" })).toBeHidden()
   const open = page.getByRole("button", { name: "Abrir menu" })
   await open.focus()
   await page.keyboard.press("Enter")
   const dialog = page.getByRole("dialog", { name: "Menu" })
   await expect(dialog).toBeVisible()
-  await expect(dialog.getByRole("link", { name: "Projetos" })).toBeVisible()
+  await expect(dialog.getByRole("link", { name: "projetos" })).toBeVisible()
   await page.keyboard.press("Escape")
   await expect(dialog).toBeHidden()
   await expect(open).toBeFocused()
-  // O CTA do menu leva ao contato sem o foco puxar a página de volta ao topo.
   await open.click()
-  await dialog.getByRole("link", { name: "Vamos conversar" }).click()
+  await dialog.getByRole("link", { name: "contato" }).click()
+  await expect(page).toHaveURL(/\/contato$/)
   await expect(dialog).toBeHidden()
-  await expect(page).toHaveURL(/#contato$/)
-  await expect(
-    page.getByRole("heading", { name: "Vamos trabalhar no seu projeto" }),
-  ).toBeInViewport()
 })
 
-test("CA-12: pinha e coruja pelo teclado contam no caderno; alvo de 44 px", async ({
+test("CA-12: pinha, pena e coruja pelo teclado contam no caderno; alvo de 44 px", async ({
   page,
 }) => {
   await page.setViewportSize({ width: 1366, height: 900 })
   await page.goto("/", { waitUntil: "networkidle" })
-  for (const label of ["Algo entre as formas do hero", "Algo pousado perto do correio"]) {
+  for (const label of [
+    "Algo entre as formas do hero",
+    "Algo para escrever perto da foto",
+    "Algo pousado perto do correio",
+  ]) {
     const finder = page.getByRole("button", { name: label })
+    await finder.scrollIntoViewIfNeeded()
     const box = await finder.boundingBox()
-    expect(box && box.width >= 44 && box.height >= 44).toBe(true)
+    expect(box && box.width >= 44 && box.height >= 44, label).toBe(true)
     await finder.focus()
     await page.keyboard.press("Enter")
   }
   await expect(
-    page.getByRole("button", { name: "Coruja do correio, achado" }),
+    page.getByRole("button", { name: "Pena de escrever, achado" }),
   ).toHaveAttribute("aria-pressed", "true")
   await expect(
-    page.getByRole("button", { name: /Achados: 2 de 7/ }).first(),
+    page.getByRole("banner").getByRole("button", { name: /^achados: 3 de 7/ }),
   ).toBeVisible()
 })
 
-test("AC-04: todo controle da Home tem 44 px ou mais", async ({ page }) => {
+test("CA-12: todo controle da Home tem 44 px ou mais", async ({ page }) => {
   for (const width of [390, 1366]) {
     await page.setViewportSize({ width, height: 900 })
     await page.goto("/", { waitUntil: "networkidle" })
@@ -252,8 +314,8 @@ test("AC-04: todo controle da Home tem 44 px ou mais", async ({ page }) => {
         ),
       )
         .filter((el) => el.offsetParent !== null && !el.closest("[inert]"))
-        .filter((el) => !(el.tagName === "A" && el.closest("p")))
-        .filter((el) => !el.closest("[data-faixa]") || el.closest("article"))
+        // Links dentro de texto corrido seguem a linha (exceção da WCAG 2.5.8).
+        .filter((el) => !(el.tagName === "A" && el.closest("p") && !el.closest("footer")))
         .map((el) => {
           // O link do título da Ficha cobre o card inteiro (::after): o alvo é o card.
           const r = (el.closest("article") ?? el).getBoundingClientRect()
@@ -268,12 +330,17 @@ test("AC-04: todo controle da Home tem 44 px ou mais", async ({ page }) => {
   }
 })
 
-test("movimento reduzido: faixa e hero parados", async ({ browser }) => {
+test("movimento reduzido: hero parado", async ({ browser }) => {
   const context = await browser.newContext({ reducedMotion: "reduce" })
   const page = await context.newPage()
   await page.goto("/", { waitUntil: "networkidle" })
   const running = await page.evaluate(
-    () => document.getAnimations().filter((a) => a.playState === "running").length,
+    () =>
+      document
+        .getAnimations()
+        .filter((a) => a.playState === "running")
+        // Transições de 0,01 ms da rede de segurança de base.css não são movimento.
+        .filter((a) => Number(a.effect?.getTiming().duration ?? 0) > 1).length,
   )
   expect(running).toBe(0)
   await context.close()
@@ -284,14 +351,18 @@ test("CA-9: metadados, Open Graph, sitemap, robots e JSON-LD", async ({
   request,
 }) => {
   await page.goto("/", { waitUntil: "load" })
-  await expect(page).toHaveTitle("Victor Gabriel, desenvolvedor front-end")
+  await expect(page).toHaveTitle("Victor Gabriel, dev front-end e tech lead")
   await expect(page.locator('meta[name="description"]')).toHaveAttribute(
     "content",
-    /^Desenvolvedor front-end em Teresina/,
+    /^Victor Gabriel, dev front-end e tech lead em Teresina/,
   )
   await expect(page.locator("html")).toHaveAttribute("lang", "pt-BR")
   const og = await page.locator('meta[property="og:image"]').getAttribute("content")
   expect(og).toMatch(/\/opengraph-image/)
+  await expect(page.locator('meta[property="og:image:alt"]')).toHaveAttribute(
+    "content",
+    /Comecei desenhando as telas\. Hoje eu coloco elas no ar\./,
+  )
   const image = await request.get(new URL(og ?? "", "http://localhost:3100").pathname)
   expect(image.status()).toBe(200)
   expect(image.headers()["content-type"]).toBe("image/png")
@@ -305,7 +376,7 @@ test("CA-9: metadados, Open Graph, sitemap, robots e JSON-LD", async ({
   expect(ld).toMatchObject({
     "@type": "Person",
     name: "Victor Gabriel",
-    jobTitle: "Desenvolvedor front-end",
+    jobTitle: "Desenvolvedor front-end e tech lead",
     sameAs: ["https://github.com/vctgab"],
   })
 

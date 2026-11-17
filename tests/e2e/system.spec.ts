@@ -130,6 +130,9 @@ test.describe("movimento reduzido", () => {
       document
         .getAnimations()
         .filter((a) => a.playState === "running")
+        // A rede de segurança de base.css encurta transições para 0,01 ms: elas
+        // podem estar "rodando" no instante da hidratação, mas não são movimento.
+        .filter((a) => Number(a.effect?.getTiming().duration ?? 0) > 1)
         .map((a) => (a.effect as KeyframeEffect | null)?.target?.toString() ?? "?"),
     )
     expect(running).toEqual([])
