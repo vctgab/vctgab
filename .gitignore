@@ -31,3 +31,6 @@ pnpm-debug.log*
 
 # relatórios completos do Lighthouse (só os resumos entram no git, D-1008)
 /docs/qa/phase-2/lighthouse-*-[0-9].json
+
+# portfólio antigo
+/vctgab.com.br
