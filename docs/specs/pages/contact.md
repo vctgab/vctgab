@@ -71,12 +71,12 @@ Herdados dos componentes.
 
 ### Critérios de aceite
 
-- [ ] CA-1 `/contato?aba=projeto` abre com "projeto" marcado e o e-mail com assunto "Projeto"; sem `?aba=`, "vaga" marcado e assunto "Vaga" (e2e).
-- [ ] CA-2 Trocar a aba reescreve `?aba=` sem rolar a página nem criar entrada no histórico (e2e).
-- [ ] CA-3 Teclado: Tab até o controle, setas e Espaço trocam a aba (e2e).
-- [ ] CA-4 axe sem violações nas 8 combinações; console sem aviso de hidratação (e2e).
-- [ ] CA-5 A mesa conta no caderno; alvo de 44 px (e2e).
-- [ ] CA-6 A página deixa de ser provisória e sai da lista do `release:check` (o LinkedIn continua lá).
+- [x] CA-1 `/contato?aba=projeto` abre com "projeto" marcado e o e-mail com assunto "Projeto"; sem `?aba=`, "vaga" marcado e assunto "Vaga" (e2e).
+- [x] CA-2 Trocar a aba reescreve `?aba=` sem rolar a página nem criar entrada no histórico (e2e).
+- [x] CA-3 Teclado: Tab até o controle, setas e Espaço trocam a aba (e2e).
+- [x] CA-4 axe sem violações nas 8 combinações; console sem aviso de hidratação (e2e).
+- [x] CA-5 A mesa conta no caderno; alvo de 44 px (e2e).
+- [x] CA-6 A página deixa de ser provisória e sai da lista do `release:check` (o LinkedIn continua lá).
 
 ## Plan
 
@@ -85,5 +85,5 @@ Herdados dos componentes.
 ## Tarefas
 
 - [x] Ficha
-- [ ] Conteúdo e página
-- [ ] Testes e2e
+- [x] Conteúdo e página
+- [x] Testes e2e

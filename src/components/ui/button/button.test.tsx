@@ -1,7 +1,7 @@
 import { render, screen } from "@testing-library/react"
 import userEvent from "@testing-library/user-event"
 import { axe } from "jest-axe"
-import { Button } from "."
+import { Button, ButtonLink } from "."
 
 const VARIANTS = ["primary", "secondary", "ghost", "link"] as const
 const SIZES = ["sm", "md", "lg"] as const
@@ -76,6 +76,30 @@ describe("Button", () => {
     expect(link.querySelector("[data-shape-layer]")).not.toBeNull()
     expect(link.querySelector("[data-icon=seta]")).not.toBeNull()
     expect(container.querySelector("button")).toBeNull()
+  })
+
+  it("CA-11: ButtonLink dá o mesmo link do Button asChild, sem botão e sem JavaScript próprio", async () => {
+    const { container } = render(
+      <div>
+        <ButtonLink href="/contato?aba=vaga" iconRight="seta" seed="t" prefetch={false}>
+          tenho uma vaga
+        </ButtonLink>
+        <Button asChild iconRight="seta" seed="t">
+          <a href="/contato?aba=vaga">tenho uma vaga</a>
+        </Button>
+      </div>,
+    )
+    const [server, client] = screen.getAllByRole("link", { name: "tenho uma vaga" })
+    expect(server).toHaveAttribute("href", "/contato?aba=vaga")
+    expect(server?.className).toBe(client?.className)
+    expect(server?.querySelector("[data-shape-layer]")).not.toBeNull()
+    expect(server?.querySelector("[data-icon=seta]")).not.toBeNull()
+    // As mesmas camadas de forma (mesma seed, mesmo contorno).
+    expect(server?.querySelector("svg path")?.getAttribute("d")).toBe(
+      client?.querySelector("svg path")?.getAttribute("d"),
+    )
+    expect(container.querySelector("button")).toBeNull()
+    expect(await axe(container)).toHaveNoViolations()
   })
 
   it("CA-6: mesma seed, mesmo contorno; rótulos diferentes, contornos diferentes", () => {

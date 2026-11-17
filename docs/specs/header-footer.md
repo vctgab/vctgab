@@ -72,8 +72,8 @@ Logo: círculo `blob` com seed fixa. Footer: borda rasgada `tornEdge` em `clip-p
 - [x] CA-5 Footer com `nav` "Rodapé", direitos e slots.
 - [x] CA-6 jest-axe sem violações.
 - [x] CA-7 Projetos, Sobre e Contato respondem 200 com a página provisória (sem 404 no prefetch).
-- [ ] CA-8 (Home v2) Cabeçalho sem CTA: links "projetos", "sobre", "contato", contador "achados: N de 7" e botão "estação: <nome>" com o nome da estação ativa vindo do CSS sobre `data-season` (certo antes da hidratação). No mobile, links no Drawer; contador e botão de estação continuam no cabeçalho.
-- [ ] CA-9 (Home v2) Rodapé com "Desenhado e codado por mim, em Teresina.", "Achados: N de 7. Tem coisa escondida por aqui." (N ao vivo), links projetos, sobre, contato, GitHub (nova aba), LinkedIn e baixar CV (pendentes, como texto com `[a confirmar: …]`) e a assinatura "© 2026 Victor Barros" com a pendência do sobrenome.
+- [x] CA-8 (Home v2) Cabeçalho sem CTA: links "projetos", "sobre", "contato", contador "achados: N de 7" e botão "estação: <nome>" com o nome da estação ativa vindo do CSS sobre `data-season` (certo antes da hidratação). No mobile, links no Drawer; contador e botão de estação continuam no cabeçalho.
+- [x] CA-9 (Home v2) Rodapé com "Desenhado e codado por mim, em Teresina.", "Achados: N de 7. Tem coisa escondida por aqui." (N ao vivo), links projetos, sobre, contato, GitHub (nova aba), LinkedIn e baixar CV (pendentes, como texto com `[a confirmar: …]`) e a assinatura "© 2026 Victor Barros" com a pendência do sobrenome.
 
 ## Plan
 

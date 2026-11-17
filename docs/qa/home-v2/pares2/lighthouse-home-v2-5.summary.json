@@ -1,0 +1,34 @@
+{
+  "rota": "/",
+  "base": "http://localhost:3100",
+  "rotulo": "v2-5",
+  "execucoes": 1,
+  "metodos": {
+    "devtools": {
+      "mediana": {
+        "desempenho": 72,
+        "acessibilidade": 100,
+        "boasPraticas": 100,
+        "seo": 100,
+        "fcpMs": 1876,
+        "lcpMs": 2209,
+        "tbtMs": 1348,
+        "siMs": 2273,
+        "cls": 0
+      },
+      "execucoes": [
+        {
+          "desempenho": 72,
+          "acessibilidade": 100,
+          "boasPraticas": 100,
+          "seo": 100,
+          "fcpMs": 1876,
+          "lcpMs": 2209,
+          "tbtMs": 1348,
+          "siMs": 2273,
+          "cls": 0
+        }
+      ]
+    }
+  }
+}

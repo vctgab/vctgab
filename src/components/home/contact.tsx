@@ -1,6 +1,5 @@
-import Link from "next/link"
 import type { ReactNode } from "react"
-import { Button } from "@/components/ui/button"
+import { ButtonLink } from "@/components/ui/button"
 import { Fact } from "@/components/ui/fact"
 import { Achavel } from "@/components/ui/finds"
 import { Coruja } from "@/components/ui/finds/drawings"
@@ -61,16 +60,17 @@ export function Contact() {
       <div className="flex flex-col gap-10 md:flex-row md:items-start md:justify-between">
         <div className="flex flex-wrap gap-3">
           {HOME.ctas.map((cta) => (
-            <Button
+            <ButtonLink
               key={cta.tab}
-              asChild
+              href={contactHref(cta.tab)}
+              prefetch={false}
               size="lg"
               variant={cta.variant}
               iconRight="seta"
               seed={`home:contato:cta:${cta.tab}`}
             >
-              <Link href={contactHref(cta.tab)}>{cta.label}</Link>
-            </Button>
+              {cta.label}
+            </ButtonLink>
           ))}
         </div>
         <div className="flex items-end gap-6">

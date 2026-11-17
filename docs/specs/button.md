@@ -93,10 +93,15 @@ Só ícone: quadrado de 44, 48 ou 56 px, `aria-label` obrigatório pelo tipo.
 - [x] CA-8 Contraste dos estados (`on-primary` sobre `primary-fill`, `-hover`, `-active`; `ink` sobre `surface-hover`, `surface-active`) aprovado em `tokens:build`.
 - [x] CA-9 jest-axe sem violações em todas as variantes.
 - [x] CA-10 Capturas em 390 e 1280 px nos 4 temas e recorte 2x da borda sem serrilhado (etapa 7).
+- [x] CA-11 (Home v2) `ButtonLink` (servidor) renderiza o mesmo link do `Button asChild`: mesmas classes, mesmas camadas e mesmo contorno pela seed, sem `<button>`.
 
 ## Plan
 
 `src/components/ui/button/{button.tsx,button.variants.ts,button.test.tsx,index.ts}`. Estados de cor por variáveis `--shape-fill` trocadas em `hover:`/`active:` (Tailwind com propriedade arbitrária, sem valor solto de espaçamento nem cor). Risco: Patrick Hand tem métrica alta; o alinhamento ótico pede ajuste de 1 px no topo (verificar na captura).
+
+### Home v2
+
+- `ButtonLink` (`button-link.tsx`, Server Component) para link de navegação com cara de botão: `href`, `variant` (sem `link`), `size`, ícones, `prefetch` e `seed`. As camadas saem para `button-shape.tsx`, usado pelos dois. Quando usar: navegação que nunca fica desabilitada nem carregando (CTAs da Home). Ação continua no `Button` (D-1220).
 
 ## Tarefas
 

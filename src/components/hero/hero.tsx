@@ -1,7 +1,6 @@
-import Link from "next/link"
 import { Achavel } from "@/components/ui/finds"
 import { Pinha } from "@/components/ui/finds/drawings"
-import { Button } from "@/components/ui/button"
+import { ButtonLink } from "@/components/ui/button"
 import { LiveClock } from "@/components/ui/live-clock"
 import { Container } from "@/components/ui/section"
 import { Shape, shapeHostProps } from "@/components/ui/shape"
@@ -103,16 +102,17 @@ export function Hero({ seed, titleAs: Title = "h1" }: HeroProps) {
           <p className="mt-6 max-w-xl text-body-lg text-ink-muted">{text.lead}</p>
           <div className="mt-8 flex flex-wrap gap-3">
             {HOME.ctas.map((cta) => (
-              <Button
+              <ButtonLink
                 key={cta.tab}
-                asChild
+                href={contactHref(cta.tab)}
+                prefetch={false}
                 size="lg"
                 variant={cta.variant}
                 iconRight="seta"
                 seed={`hero:${seed}:cta:${cta.tab}`}
               >
-                <Link href={contactHref(cta.tab)}>{cta.label}</Link>
-              </Button>
+                {cta.label}
+              </ButtonLink>
             ))}
           </div>
         </div>

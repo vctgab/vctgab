@@ -1,5 +1,5 @@
 {
-  "geradoEm": "2026-11-16T14:57:15.027Z",
+  "geradoEm": "2026-11-17T13:16:55.443Z",
   "tags": ["wcag2a", "wcag2aa", "wcag21a", "wcag21aa", "wcag22aa"],
   "resultados": [
     {
@@ -7,7 +7,7 @@
       "pagina": "/",
       "tentativas": 1,
       "violations": [],
-      "passes": 28,
+      "passes": 26,
       "console": []
     },
     {
@@ -127,7 +127,7 @@
       "pagina": "/",
       "tentativas": 1,
       "violations": [],
-      "passes": 28,
+      "passes": 26,
       "console": []
     },
     {
@@ -247,7 +247,7 @@
       "pagina": "/",
       "tentativas": 1,
       "violations": [],
-      "passes": 28,
+      "passes": 26,
       "console": []
     },
     {
@@ -367,7 +367,7 @@
       "pagina": "/",
       "tentativas": 1,
       "violations": [],
-      "passes": 28,
+      "passes": 26,
       "console": []
     },
     {
@@ -487,7 +487,7 @@
       "pagina": "/",
       "tentativas": 1,
       "violations": [],
-      "passes": 28,
+      "passes": 26,
       "console": []
     },
     {
@@ -607,7 +607,7 @@
       "pagina": "/",
       "tentativas": 1,
       "violations": [],
-      "passes": 28,
+      "passes": 26,
       "console": []
     },
     {
@@ -727,7 +727,7 @@
       "pagina": "/",
       "tentativas": 1,
       "violations": [],
-      "passes": 28,
+      "passes": 26,
       "console": []
     },
     {
@@ -847,7 +847,7 @@
       "pagina": "/",
       "tentativas": 1,
       "violations": [],
-      "passes": 28,
+      "passes": 26,
       "console": []
     },
     {

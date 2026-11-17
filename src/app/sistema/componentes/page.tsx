@@ -1,5 +1,5 @@
 import type { Metadata } from "next"
-import { Button } from "@/components/ui/button"
+import { Button, ButtonLink } from "@/components/ui/button"
 import { Checkbox } from "@/components/ui/checkbox"
 import { Chip } from "@/components/ui/chip"
 import { Dialog, DialogClose, Drawer } from "@/components/ui/dialog"
@@ -44,6 +44,23 @@ export default function ComponentesPage() {
               Abrir o terminal
             </Button>
             <Button variant="link">Limpar filtros</Button>
+          </Row>
+          <Row label="ButtonLink (navegação, renderizado no servidor)">
+            <ButtonLink
+              href="/sistema/componentes#button"
+              iconRight="seta"
+              prefetch={false}
+            >
+              Ir para o exemplo
+            </ButtonLink>
+            <ButtonLink
+              href="/sistema/componentes#button"
+              variant="secondary"
+              prefetch={false}
+              seed="vitrine:button-link:secundario"
+            >
+              Ir para o exemplo
+            </ButtonLink>
           </Row>
           <Row label="Tamanhos">
             <Button size="sm">Enviar mensagem</Button>

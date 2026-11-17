@@ -1,0 +1,148 @@
+{
+  "rota": "/",
+  "base": "http://localhost:3100",
+  "rotulo": "v2b",
+  "execucoes": 5,
+  "metodos": {
+    "simulate": {
+      "mediana": {
+        "desempenho": 75,
+        "acessibilidade": 100,
+        "boasPraticas": 100,
+        "seo": 100,
+        "fcpMs": 1829,
+        "lcpMs": 4119,
+        "tbtMs": 414,
+        "siMs": 1829,
+        "cls": 0
+      },
+      "execucoes": [
+        {
+          "desempenho": 83,
+          "acessibilidade": 100,
+          "boasPraticas": 100,
+          "seo": 100,
+          "fcpMs": 1835,
+          "lcpMs": 4100,
+          "tbtMs": 200,
+          "siMs": 1835,
+          "cls": 0
+        },
+        {
+          "desempenho": 69,
+          "acessibilidade": 100,
+          "boasPraticas": 100,
+          "seo": 100,
+          "fcpMs": 1829,
+          "lcpMs": 4214,
+          "tbtMs": 627,
+          "siMs": 1829,
+          "cls": 0
+        },
+        {
+          "desempenho": 75,
+          "acessibilidade": 100,
+          "boasPraticas": 100,
+          "seo": 100,
+          "fcpMs": 1827,
+          "lcpMs": 4119,
+          "tbtMs": 414,
+          "siMs": 1827,
+          "cls": 0
+        },
+        {
+          "desempenho": 75,
+          "acessibilidade": 100,
+          "boasPraticas": 100,
+          "seo": 100,
+          "fcpMs": 1837,
+          "lcpMs": 4150,
+          "tbtMs": 427,
+          "siMs": 1837,
+          "cls": 0
+        },
+        {
+          "desempenho": 79,
+          "acessibilidade": 100,
+          "boasPraticas": 100,
+          "seo": 100,
+          "fcpMs": 1827,
+          "lcpMs": 4116,
+          "tbtMs": 298,
+          "siMs": 1827,
+          "cls": 0
+        }
+      ]
+    },
+    "devtools": {
+      "mediana": {
+        "desempenho": 73,
+        "acessibilidade": 100,
+        "boasPraticas": 100,
+        "seo": 100,
+        "fcpMs": 1848,
+        "lcpMs": 2168,
+        "tbtMs": 1302,
+        "siMs": 2214,
+        "cls": 0
+      },
+      "execucoes": [
+        {
+          "desempenho": 68,
+          "acessibilidade": 100,
+          "boasPraticas": 100,
+          "seo": 100,
+          "fcpMs": 1956,
+          "lcpMs": 2636,
+          "tbtMs": 1689,
+          "siMs": 2631,
+          "cls": 0
+        },
+        {
+          "desempenho": 73,
+          "acessibilidade": 100,
+          "boasPraticas": 100,
+          "seo": 100,
+          "fcpMs": 1813,
+          "lcpMs": 2146,
+          "tbtMs": 1242,
+          "siMs": 2214,
+          "cls": 0
+        },
+        {
+          "desempenho": 72,
+          "acessibilidade": 100,
+          "boasPraticas": 100,
+          "seo": 100,
+          "fcpMs": 1840,
+          "lcpMs": 2240,
+          "tbtMs": 1508,
+          "siMs": 2293,
+          "cls": 0
+        },
+        {
+          "desempenho": 73,
+          "acessibilidade": 100,
+          "boasPraticas": 100,
+          "seo": 100,
+          "fcpMs": 1848,
+          "lcpMs": 2168,
+          "tbtMs": 1302,
+          "siMs": 2196,
+          "cls": 0
+        },
+        {
+          "desempenho": 74,
+          "acessibilidade": 100,
+          "boasPraticas": 100,
+          "seo": 100,
+          "fcpMs": 1861,
+          "lcpMs": 2128,
+          "tbtMs": 1224,
+          "siMs": 2179,
+          "cls": 0
+        }
+      ]
+    }
+  }
+}

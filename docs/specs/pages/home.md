@@ -114,19 +114,19 @@ Claro: preenchimento no passo 600 com texto branco; texto em primária no 700. E
 
 ### Critérios de aceite
 
-- [ ] CA-1 A Home tem as seções na ordem cabeçalho, hero, projetos, o que eu faço, depoimento e números, sobre, contato, rodapé, com um `h1` e um `h2` por seção (e2e de estrutura).
-- [ ] CA-2 axe sem violações nas 8 combinações de estação e modo, nos três motores, e console sem erro nem aviso de hidratação (e2e).
-- [ ] CA-3 "tenho uma vaga" e "tenho um projeto" (hero e contato) levam a `/contato?aba=vaga` e `/contato?aba=projeto`, e a aba certa aparece marcada (e2e).
-- [ ] CA-4 Toda pendência aparece como `[a confirmar: …]` e está na lista do `pnpm release:check`, que também acusa `/projetos`, `/sobre` e `/projetos/<slug>` (script e e2e).
-- [ ] CA-5 O contador do cabeçalho mostra "achados: N de 7" ao vivo, abre o caderno e, ao fechar, devolve o foco; o rodapé repete N (e2e).
-- [ ] CA-6 O botão de tema mostra o nome da estação ativa já no HTML pintado (sem JavaScript), muda ao trocar a estação e abre o seletor de estação e modo (e2e).
-- [ ] CA-7 Teclado de ponta a ponta: pular para o conteúdo, navegação, contador, tema, CTAs, achados (pinha, pena, coruja) e, no mobile, o menu em Drawer (e2e).
-- [ ] CA-8 CLS 0 com as fontes sem pré-carga atrasadas, em mobile e desktop (e2e `cls.spec.ts`).
-- [ ] CA-9 Metadados: título e descrição novos, Open Graph 1200 × 630 com o título novo, sitemap sem `/sistema`, robots bloqueando `/sistema`, JSON-LD `Person` com os quatro campos (e2e).
-- [ ] CA-10 Lighthouse mobile da Home nos dois métodos sem piora em relação à v1 medida na mesma sessão; acessibilidade ≥ 95 (`docs/qa/home-v2/`).
-- [ ] CA-11 Capturas em 390×844 e 1366×768 nas 8 combinações, revisadas (`docs/screenshots/home/`).
-- [ ] CA-12 Todo controle tem 44 px ou mais; os achados pinha, pena e coruja contam no caderno (e2e).
-- [ ] CA-13 O texto da Home é o do copy, sem reescrita (teste de unidade compara `src/content/home.ts` com as frases do pedido).
+- [x] CA-1 A Home tem as seções na ordem cabeçalho, hero, projetos, o que eu faço, depoimento e números, sobre, contato, rodapé, com um `h1` e um `h2` por seção (e2e de estrutura).
+- [x] CA-2 axe sem violações nas 8 combinações de estação e modo, nos três motores, e console sem erro nem aviso de hidratação (e2e).
+- [x] CA-3 "tenho uma vaga" e "tenho um projeto" (hero e contato) levam a `/contato?aba=vaga` e `/contato?aba=projeto`, e a aba certa aparece marcada (e2e).
+- [x] CA-4 Toda pendência aparece como `[a confirmar: …]` e está na lista do `pnpm release:check`, que também acusa `/projetos`, `/sobre` e `/projetos/<slug>` (script e e2e).
+- [x] CA-5 O contador do cabeçalho mostra "achados: N de 7" ao vivo, abre o caderno e, ao fechar, devolve o foco; o rodapé repete N (e2e).
+- [x] CA-6 O botão de tema mostra o nome da estação ativa já no HTML pintado (sem JavaScript), muda ao trocar a estação e abre o seletor de estação e modo (e2e).
+- [x] CA-7 Teclado de ponta a ponta: pular para o conteúdo, navegação, contador, tema, CTAs, achados (pinha, pena, coruja) e, no mobile, o menu em Drawer (e2e).
+- [x] CA-8 CLS 0 com as fontes sem pré-carga atrasadas, em mobile e desktop (e2e `cls.spec.ts`).
+- [x] CA-9 Metadados: título e descrição novos, Open Graph 1200 × 630 com o título novo, sitemap sem `/sistema`, robots bloqueando `/sistema`, JSON-LD `Person` com os quatro campos (e2e).
+- [ ] CA-10 (não demonstrado: nas medianas em pares, 2 a 3 pontos abaixo da v1 nos dois métodos; ver docs/REPORT-home-v2.md) Lighthouse mobile da Home nos dois métodos sem piora em relação à v1 medida na mesma sessão; acessibilidade ≥ 95 (`docs/qa/home-v2/`).
+- [x] CA-11 Capturas em 390×844 e 1366×768 nas 8 combinações, revisadas (`docs/screenshots/home/`).
+- [x] CA-12 Todo controle tem 44 px ou mais; os achados pinha, pena e coruja contam no caderno (e2e).
+- [x] CA-13 O texto da Home é o do copy, sem reescrita (teste de unidade compara `src/content/home.ts` com as frases do pedido).
 
 ## Plan
 
@@ -138,8 +138,8 @@ Claro: preenchimento no passo 600 com texto branco; texto em primária no 700. E
 ## Tarefas
 
 - [x] Ficha (esta, `pages/contact.md`, `image-frame.md` e ajustes nas fichas dos componentes)
-- [ ] Componentes do design system: `ImageFrame`, `Tag` com ponto, `Stat`, `Quote` indisponível, `AchadosChip` `header`, `AchadosCount`, `Pena`, `Mesa`, com testes e vitrine
-- [ ] Conteúdo e Home: cabeçalho, hero, seções, rodapé, metadados e Open Graph
-- [ ] Página `/contato` com abas
-- [ ] Testes e2e (um por critério), axe nas 8 combinações, Lighthouse e capturas
-- [ ] Relatório `docs/REPORT-home-v2.md`
+- [x] Componentes do design system: `ImageFrame`, `Tag` com ponto, `Stat`, `Quote` indisponível, `AchadosChip` `header`, `AchadosCount`, `Pena`, `Mesa`, com testes e vitrine
+- [x] Conteúdo e Home: cabeçalho, hero, seções, rodapé, metadados e Open Graph
+- [x] Página `/contato` com abas
+- [x] Testes e2e (um por critério), axe nas 8 combinações, Lighthouse e capturas
+- [x] Relatório `docs/REPORT-home-v2.md`

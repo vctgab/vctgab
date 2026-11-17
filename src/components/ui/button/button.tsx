@@ -3,9 +3,10 @@
 import { Slot } from "radix-ui"
 import { useId, type ComponentProps, type MouseEvent, type ReactNode } from "react"
 import { Icon, type IconName } from "@/components/ui/icon"
-import { Shape, shapeHostProps } from "@/components/ui/shape"
+import { shapeHostProps } from "@/components/ui/shape"
 import { Spinner } from "@/components/ui/spinner"
 import { cn } from "@/lib/cn"
+import { ButtonShape } from "./button-shape"
 import { buttonVariants, type ButtonVariantProps } from "./button.variants"
 
 type Native = Omit<
@@ -95,28 +96,7 @@ export function Button(props: ButtonProps) {
   ) : null
   const right = iconRight ? <Icon name={iconRight} size={iconSize} decorative /> : null
 
-  const shape =
-    variant === "link" ? (
-      <span aria-hidden="true" className="absolute inset-x-1 bottom-1.5 h-2.5">
-        <Shape
-          seed={`${shapeSeed}:sublinhado`}
-          kind="handLine"
-          bucket="sm"
-          fill="none"
-          stroke="primary-decor"
-          strokeWidth={2.5}
-        />
-      </span>
-    ) : (
-      <Shape
-        seed={shapeSeed}
-        kind="wobblyRect"
-        bucket="sm"
-        fill="surface-raised"
-        stroke={variant === "ghost" ? "none" : "stroke"}
-        shadow={variant === "primary" || variant === "secondary" ? "md" : "none"}
-      />
-    )
+  const shape = <ButtonShape seed={shapeSeed} variant={variant} />
 
   const content = iconOnly ? (
     loading ? (
