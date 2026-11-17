@@ -13,7 +13,7 @@
 ### Anatomia
 
 1. `h1` "contato" e um parágrafo de apoio.
-2. `SegmentedControl` "Assunto" com "vaga" e "projeto". Lê e escreve `?aba=` na URL (`router.replace`, sem rolar a página e sem nova entrada no histórico).
+2. `SegmentedControl` "Assunto" com "vaga" e "projeto". Lê `?aba=` por `useSearchParams` e escreve com o `history.replaceState` nativo, que o Next integra ao roteador: sem rolar a página, sem nova entrada no histórico e sem ida ao servidor.
 3. Painel da aba: uma frase curta e os canais diretos: e-mail (`mailto:` com assunto "Vaga" ou "Projeto") e LinkedIn (pendente: `[a confirmar: URL do LinkedIn]`).
 4. Achado: **mesa de contato**, ao lado dos canais.
 
@@ -33,7 +33,7 @@ Tab até o controle (cai na aba marcada); setas movem o foco entre "vaga" e "pro
 
 ### ARIA e nome acessível
 
-`main#conteudo`, um `h1`. O controle é o `SegmentedControl` (`radiogroup` nomeado "Assunto"). O painel é uma `section` nomeada pelo seu `h2` ("Vaga" ou "Projeto"), com `aria-live="polite"` para anunciar a troca. O e-mail tem nome com o endereço; o achado "Algo em cima da mesa" → "Mesa de contato, achado".
+`main#conteudo`, um `h1`. O controle é o `SegmentedControl` (`radiogroup` nomeado "Assunto"). O painel é uma `section` nomeada pelo seu `h2` ("sobre a vaga" ou "sobre o projeto"), com `aria-live="polite"` para anunciar a troca. O e-mail tem nome com o endereço; o achado "Algo em cima da mesa" → "Mesa de contato, achado".
 
 ### Irregularidade
 
@@ -48,15 +48,15 @@ Herdados dos componentes.
 1. **Quem lê:** quem clicou num dos CTAs da Home (recrutador, tech lead, fundador).
 2. **Grade de Tom:**
 
-| Situação    | Voz      | Texto final                                                                                                         |
-| ----------- | -------- | ------------------------------------------------------------------------------------------------------------------- |
-| Título      | sistema  | "contato"                                                                                                           |
-| Apoio       | sistema  | "Escolha o assunto e fale direto comigo. Costumo responder em até um dia útil."                                     |
-| Controle    | sistema  | "Assunto" (nome acessível); opções "vaga" e "projeto"                                                               |
-| Aba vaga    | sistema  | "Vaga" / "Mande a descrição da vaga e como é o processo. Se tiver, inclua o modelo de trabalho e a faixa salarial." |
-| Aba projeto | sistema  | "Projeto" / "Conte o que você quer construir, para quando e se já existe algo desenhado."                           |
-| Canais      | sistema  | "E-mail", "LinkedIn"; e-mail com o próprio endereço                                                                 |
-| Achado      | mistério | "Algo em cima da mesa" → "Mesa de contato, achado"                                                                  |
+| Situação    | Voz      | Texto final                                                                                                                 |
+| ----------- | -------- | --------------------------------------------------------------------------------------------------------------------------- |
+| Título      | sistema  | "contato"                                                                                                                   |
+| Apoio       | sistema  | "Escolha o assunto e fale direto comigo. Costumo responder em até um dia útil."                                             |
+| Controle    | sistema  | "Assunto" (nome acessível); opções "vaga" e "projeto"                                                                       |
+| Aba vaga    | sistema  | "sobre a vaga" / "Mande a descrição da vaga e como é o processo. Se tiver, inclua o modelo de trabalho e a faixa salarial." |
+| Aba projeto | sistema  | "sobre o projeto" / "Conte o que você quer construir, para quando e se já existe algo desenhado."                           |
+| Canais      | sistema  | "E-mail", "LinkedIn"; e-mail com o próprio endereço                                                                         |
+| Achado      | mistério | "Algo em cima da mesa" → "Mesa de contato, achado"                                                                          |
 
 3. **Título e subtítulo:** ver a grade.
 4. **Ações e rótulos:** opções do controle; links com o endereço.
@@ -80,7 +80,7 @@ Herdados dos componentes.
 
 ## Plan
 
-`src/app/contato/page.tsx` (Server: título, apoio e `Suspense`), `src/components/contact/contact-tabs.tsx` (cliente: `useSearchParams`, `useRouter`), `src/content/contact.ts`. Desenho `Mesa` em `src/components/ui/finds/drawings.tsx`. Risco: `useSearchParams` sem `Suspense` quebra o build com `cacheComponents`; o fallback renderiza a mesma árvore com a aba "vaga" para não haver salto.
+`src/app/contato/page.tsx` (Server: título, apoio e `Suspense`), `src/components/contact/contact-tabs.tsx` (cliente: `useSearchParams` e `history.replaceState`), `src/content/contact.ts`. Desenho `Mesa` em `src/components/ui/finds/drawings.tsx`. Risco: `useSearchParams` sem `Suspense` quebra o build com `cacheComponents`; o fallback renderiza a mesma árvore com a aba "vaga" para não haver salto.
 
 ## Tarefas
 

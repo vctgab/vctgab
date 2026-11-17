@@ -26,14 +26,14 @@ export const CONTACT_PAGE = {
     {
       value: "vaga",
       label: "vaga",
-      title: "Vaga",
+      title: "sobre a vaga",
       text: "Mande a descrição da vaga e como é o processo. Se tiver, inclua o modelo de trabalho e a faixa salarial.",
       subject: "Vaga",
     },
     {
       value: "projeto",
       label: "projeto",
-      title: "Projeto",
+      title: "sobre o projeto",
       text: "Conte o que você quer construir, para quando e se já existe algo desenhado.",
       subject: "Projeto",
     },

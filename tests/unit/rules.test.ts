@@ -346,6 +346,7 @@ describe("processo", () => {
     hero: "hero-footer",
     "footer-scene": "hero-footer",
     home: "pages/home",
+    contact: "pages/contact",
     fact: "fact",
     "video-clip": "video-clip",
   }
