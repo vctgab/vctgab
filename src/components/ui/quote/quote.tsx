@@ -130,7 +130,7 @@ export function Quote({
           <Holes />
           <span
             aria-hidden="true"
-            className="font-soft font-display text-display leading-none text-primary-decor"
+            className="font-soft -mb-2 font-display text-h1 leading-none text-primary-decor"
           >
             “
           </span>

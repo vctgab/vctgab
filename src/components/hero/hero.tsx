@@ -1,48 +1,47 @@
 import Link from "next/link"
-import type { Route } from "next"
 import { Achavel } from "@/components/ui/finds"
 import { Pinha } from "@/components/ui/finds/drawings"
 import { Button } from "@/components/ui/button"
-import { Fact } from "@/components/ui/fact"
 import { LiveClock } from "@/components/ui/live-clock"
 import { Container } from "@/components/ui/section"
 import { Shape, shapeHostProps } from "@/components/ui/shape"
 import { Tag } from "@/components/ui/tag"
 import { HOME } from "@/content/home"
-import { SITE } from "@/content/site"
-import { talkHref } from "@/lib/contact"
+import { contactHref } from "@/lib/contact"
 import { generateShape } from "@/lib/shapes"
 import { HeroBackdrop } from "./hero-backdrop"
+import { HeroSketch } from "./hero-sketch"
 
 export interface HeroProps {
-  /** Seed da página: muda a composição de fundo. */
+  /** Seed da página: muda a composição de fundo e o esboço. */
   seed: string
-  /** Destino do CTA. Padrão: WhatsApp ou, com o número pendente, #contato (D-1015). */
-  ctaHref?: string
   /** Nível do título (h1 na página que o usa como abertura). */
   titleAs?: "h1" | "h2"
 }
 
+/** Separador "·" da linha de local: visual, não lido. */
+function Dot() {
+  return (
+    <span aria-hidden="true" className="text-ink-subtle">
+      ·
+    </span>
+  )
+}
+
 /**
- * Hero com o conteúdo da home sobre uma composição de formas que deriva.
- * O texto fica numa placa de apoio com contraste calculado (CR-02). Os
- * textos vêm de src/content/home.ts. Ficha: docs/specs/hero-footer.md
+ * Hero com o conteúdo da Home sobre uma composição de formas que deriva e,
+ * a partir de `lg`, o esboço "do rascunho ao ar". O texto fica numa placa de
+ * apoio com contraste calculado (CR-02). Textos de src/content/home.ts.
+ * Ficha: docs/specs/hero-footer.md
  */
-export function Hero({ seed, ctaHref, titleAs: Title = "h1" }: HeroProps) {
+export function Hero({ seed, titleAs: Title = "h1" }: HeroProps) {
   const text = HOME.hero
-  const cta = ctaHref ?? talkHref(text.ctaMessage, true)
   const plateSeed = `hero:${seed}:placa`
   const underline = generateShape({
     kind: "handLine",
     seed: `hero:${seed}:sublinhado`,
-    bucket: "lg",
+    bucket: "md",
     irregularity: 0.35,
-  })
-  const dot = generateShape({
-    kind: "blob",
-    seed: "hero:agenda",
-    points: 7,
-    irregularity: 0.3,
   })
 
   return (
@@ -51,7 +50,7 @@ export function Hero({ seed, ctaHref, titleAs: Title = "h1" }: HeroProps) {
       className="relative isolate overflow-hidden py-16 md:py-24"
     >
       <HeroBackdrop seed={seed} />
-      <Container className="relative">
+      <Container className="relative grid items-center gap-12 lg:grid-cols-[minmax(0,1fr)_minmax(0,25rem)] xl:grid-cols-[minmax(0,1fr)_minmax(0,28rem)]">
         <div
           {...shapeHostProps({ seed: plateSeed, bucket: "xl" })}
           className="relative isolate max-w-2xl p-6 sm:p-10 md:p-12"
@@ -63,27 +62,25 @@ export function Hero({ seed, ctaHref, titleAs: Title = "h1" }: HeroProps) {
             shadow="lg"
             shadowColor="shadow-soft"
           />
-          <p
-            aria-hidden="true"
-            className="pointer-events-none absolute top-6 right-8 hidden max-w-44 -rotate-3 font-hand text-hand font-bold text-primary-text lg:block"
+          <div className="flex flex-col items-start gap-4">
+            <Tag dot="success" seed={`hero:${seed}:selo`}>
+              {text.badge}
+            </Tag>
+            <p className="flex flex-wrap items-center gap-x-2 gap-y-1 font-mono text-sm text-ink-muted">
+              <span>{text.place}</span>
+              <Dot />
+              <LiveClock seconds={false} className="text-ink" />
+              <Dot />
+              <span>{text.weather}</span>
+            </p>
+          </div>
+          <Title
+            id={`hero-${seed}-titulo`}
+            className="font-soft mt-6 text-display lg:text-h1"
           >
-            {text.annotation}
-          </p>
-          <ul className="flex flex-wrap gap-2.5" aria-label="Especialidades">
-            {text.eyebrows.map((label) => (
-              <Tag as="li" key={label}>
-                {label}
-              </Tag>
-            ))}
-          </ul>
-          <Title id={`hero-${seed}-titulo`} className="font-soft mt-6 text-display">
-            {/* Sem quebra no hífen: o Chromium quebrava "Front-" / "end". */}
-            <span className="whitespace-nowrap">
-              {text.titleStart.split(" ")[0]}
-            </span>{" "}
-            {text.titleStart.split(" ").slice(1).join(" ")}{" "}
-            <span className="relative inline-block">
-              {text.titleHighlight}
+            {text.title.before}
+            <span className="relative inline-block whitespace-nowrap">
+              {text.title.highlight}
               <svg
                 aria-hidden="true"
                 focusable="false"
@@ -95,44 +92,31 @@ export function Hero({ seed, ctaHref, titleAs: Title = "h1" }: HeroProps) {
                   d={underline.path}
                   fill="none"
                   stroke="currentColor"
-                  strokeWidth={5}
+                  strokeWidth={6}
                   strokeLinecap="round"
                   vectorEffect="non-scaling-stroke"
                 />
               </svg>
             </span>
+            {text.title.after}
           </Title>
           <p className="mt-6 max-w-xl text-body-lg text-ink-muted">{text.lead}</p>
-          <div className="mt-8">
-            <Button asChild size="lg" iconRight="seta" seed={`hero:${seed}:cta`}>
-              <Link href={cta as Route}>{text.cta}</Link>
-            </Button>
-          </div>
-          <ul className="mt-8 flex flex-wrap items-center gap-x-6 gap-y-2 font-mono text-sm text-ink-muted">
-            <li className="flex items-center gap-2.5">
-              <svg
-                aria-hidden="true"
-                focusable="false"
-                viewBox="0 0 1 1"
-                className="size-3.5 overflow-visible"
+          <div className="mt-8 flex flex-wrap gap-3">
+            {HOME.ctas.map((cta) => (
+              <Button
+                key={cta.tab}
+                asChild
+                size="lg"
+                variant={cta.variant}
+                iconRight="seta"
+                seed={`hero:${seed}:cta:${cta.tab}`}
               >
-                <path
-                  d={dot.path}
-                  className="fill-success-fill stroke-ink"
-                  strokeWidth={1.5}
-                  vectorEffect="non-scaling-stroke"
-                />
-              </svg>
-              <span>
-                {text.agenda.before} <Fact value={SITE.agendaMonth} /> {text.agenda.after}
-              </span>
-            </li>
-            <li>{text.location}</li>
-            <li>
-              <LiveClock className="text-ink" />
-            </li>
-          </ul>
+                <Link href={contactHref(cta.tab)}>{cta.label}</Link>
+              </Button>
+            ))}
+          </div>
         </div>
+        <HeroSketch seed={seed} className="hidden lg:block" />
       </Container>
       <div className="absolute right-6 bottom-6 z-(--z-raised) md:right-20">
         <Achavel id="pinha" label="Algo entre as formas do hero">

@@ -1,152 +1,188 @@
 import { pending, type Maybe } from "./pending.ts"
 
 /**
- * Textos da Home (ficha: docs/specs/pages/home.md). Tom sério e direto;
- * brincadeira só na camada de mistério (achados), que fica em
- * src/lib/finds. Fatos ausentes são `pending(...)`.
+ * Textos da Home v2 (ficha: docs/specs/pages/home.md), inclusive cabeçalho e
+ * rodapé. O copy é de Victor e é literal (D-1201): não reescreva. Itens a
+ * validar ou pendentes são `pending(...)` e entram no `pnpm release:check`.
+ * Brincadeira dos achados fica em src/lib/finds.
  */
 
-export interface Testimonial {
-  id: string
-  author: string
-  /** Cargo e empresa. */
-  role: Maybe<string>
-  text: Maybe<string>
-}
-
-/** Foto com texto alternativo (obrigatório quando houver). */
-export interface Photo {
-  src: string
-  alt: string
-}
-
-export interface Service {
+/** Item de "o que eu faço". */
+export interface Skill {
   marker: string
   title: string
   description: string
-  tags: readonly string[]
+  chips: readonly string[]
 }
+
+/** Número com o que ele conta e o método ou a fonte (D-1207). */
+export interface Figure {
+  id: string
+  /** Valor anterior, para "de → para". */
+  from?: string
+  value: string
+  label: string
+  methodKind: "metodo" | "fonte"
+  method: Maybe<string>
+}
+
+/** Destino dos CTAs "tenho uma vaga" e "tenho um projeto". */
+export type ContactTab = "vaga" | "projeto"
 
 export const HOME = {
   meta: {
-    title: "Victor Gabriel, desenvolvedor front-end",
+    title: "Victor Gabriel, dev front-end e tech lead",
     description:
-      "Desenvolvedor front-end em Teresina, vindo do design de produto. Interfaces em React e Next.js para fundadores e equipes que precisam de produto no ar.",
+      "Victor Gabriel, dev front-end e tech lead em Teresina, PI. Cinco anos desenhando interfaces antes do código; hoje constrói em React e TypeScript, da ideia ao deploy.",
+  },
+
+  header: {
+    /** Rótulos da navegação em minúscula, como no copy. */
+    nav: [
+      { href: "/projetos", label: "projetos" },
+      { href: "/sobre", label: "sobre" },
+      { href: "/contato", label: "contato" },
+    ],
+    /** "estação: primavera" (o nome vem da estação ativa). */
+    seasonLabel: "estação:",
   },
 
   hero: {
-    eyebrows: ["desenvolvedor front-end", "react e next.js"],
-    titleStart: "Front-end com",
-    titleHighlight: "visão de produto.",
-    lead: "Desenvolvo interfaces em React e Next.js para fundadores e equipes que precisam de produto no ar, com design que o código aguenta.",
-    cta: "Vamos conversar",
-    /** Mensagem já escrita no WhatsApp. */
-    ctaMessage: "Olá, Victor. Vim pelo portfólio e quero conversar sobre um projeto.",
-    agenda: { before: "Agenda de", after: "aberta" },
-    location: "Teresina • Brasil",
-    annotation: "design que o código aguenta",
+    badge: "aberto a vagas e projetos",
+    place: "Teresina, PI",
+    /** Camada de personalidade: fixo, não é medição. */
+    weather: "provavelmente uns 30 °C",
+    title: {
+      before: "Comecei desenhando as telas. Hoje eu coloco elas ",
+      highlight: "no ar",
+      after: ".",
+    },
+    lead: "Sou o Victor, dev front-end e tech lead. Passei cinco anos desenhando interfaces e conferindo se o que chegava em produção era o que tinha sido desenhado. Hoje eu mesmo construo, em React e TypeScript, e o caminho entre a ideia e o deploy ficou bem mais curto.",
   },
+
+  /** CTAs do hero e do contato. */
+  ctas: [
+    { tab: "vaga", label: "tenho uma vaga", variant: "primary" },
+    { tab: "projeto", label: "tenho um projeto", variant: "secondary" },
+  ] as const satisfies readonly {
+    tab: ContactTab
+    label: string
+    variant: "primary" | "secondary"
+  }[],
 
   projects: {
-    title: "Projetos em destaque",
-    allLabel: "Ver todos os projetos",
+    title: "o que eu ando construindo",
+    allLabel: "ver todos os projetos",
     allHref: "/projetos",
-    labels: { client: "para a", role: "Papel", type: "Tipo", delivery: "Entrega" },
   },
 
-  services: {
-    eyebrow: "serviços",
-    title: "O que eu faço",
+  skills: {
+    title: "do layout ao deploy",
+    lead: "quatro coisas que eu faço bem, de preferência juntas.",
     items: [
       {
         marker: "01",
-        title: "Desenvolvimento front-end",
+        title: "Front-end",
         description:
-          "Interfaces rápidas e fáceis de manter, a partir de design system, com testes e padrões.",
-        tags: ["react", "next.js", "typescript", "tailwind css"],
+          "Interfaces em React e Next.js que respeitam o design, carregam rápido e funcionam em qualquer tela.",
+        chips: ["React", "Next.js", "TypeScript", "Tailwind CSS", "acessibilidade"],
       },
       {
         marker: "02",
-        title: "Design que o código aguenta",
+        title: "Produto completo",
         description:
-          "Do protótipo ao componente, com tokens, biblioteca de componentes, handoff e QA visual.",
-        tags: ["handoff", "design system", "qa visual"],
-      },
-    ] satisfies readonly Service[],
-  },
-
-  testimonials: {
-    eyebrow: "depoimentos",
-    title: "O que dizem sobre o trabalho",
-    items: [
-      {
-        id: "natalia-oliveira",
-        author: "Natália Oliveira",
-        role: pending("cargo e empresa de Natália Oliveira"),
-        text: pending("depoimento de Natália Oliveira"),
+          "Pra quando o projeto precisa de mais que uma interface: banco, autenticação, API e app mobile, com testes e CI pra nada quebrar em silêncio.",
+        chips: [
+          "Supabase",
+          "Node",
+          "React Native",
+          "Vitest",
+          "Playwright",
+          "GitHub Actions",
+        ],
       },
       {
-        id: "diogo-reis",
-        author: "Diogo Reis",
-        role: pending("cargo e empresa de Diogo Reis"),
-        text: pending("depoimento de Diogo Reis"),
+        marker: "03",
+        title: "Design de produto",
+        description:
+          "Foram cinco anos de UX antes do primeiro commit. Pesquiso, desenho e monto design systems que o time de dev usa de verdade, não só admira no Figma.",
+        chips: ["Figma", "design systems", "design tokens", "pesquisa", "protótipos"],
       },
       {
-        id: "eduardo-silva",
-        author: "Eduardo Silva",
-        role: pending("cargo e empresa de Eduardo Silva"),
-        text: pending("depoimento de Eduardo Silva"),
+        marker: "04",
+        title: "Liderança técnica",
+        description:
+          "Conduzo o time e a conversa com o cliente: organizo o trabalho, reviso código e transformo pedido vago em tarefa que dá pra entregar.",
+        chips: ["tech lead", "code review", "Scrum", "Kanban"],
       },
-      {
-        id: "jecielly-mota",
-        author: "Jecielly Mota",
-        role: pending("cargo e empresa de Jecielly Mota"),
-        text: pending("depoimento de Jecielly Mota"),
-      },
-    ] satisfies readonly Testimonial[],
+    ] satisfies readonly Skill[],
   },
 
   proof: {
-    eyebrow: "prova",
-    title: "Resultado medido",
-    stat: { from: 34, to: 89, method: "Teste de árvore no OdiN Docs." },
-    video: {
-      title: "Nexuscoop em 30 segundos",
-      /** Arquivo em /public/videos; até 30 s, sem som. */
-      src: pending("vídeo do Nexuscoop, até 30 s, sem som") as Maybe<string>,
-      captions: pending("legenda do vídeo do Nexuscoop") as Maybe<string>,
-      poster: pending("quadro de capa do vídeo do Nexuscoop") as Maybe<string>,
-      description: pending("o que o vídeo do Nexuscoop mostra") as Maybe<string>,
+    /** Título só para leitores de tela (D-1211). */
+    title: "depoimento e números",
+    testimonial: {
+      unavailable: "O depoimento entra quando a pessoa autorizar a publicação.",
+      text: pending(
+        "depoimento voltado a dev, de preferência sobre a atuação como tech lead",
+      ),
     },
+    figures: [
+      {
+        id: "anos",
+        value: "5+",
+        label: "anos em produto digital",
+        methodKind: "fonte",
+        method: "desde 2021",
+      },
+      {
+        id: "landing",
+        from: "8s",
+        value: "quase instantâneo",
+        label: "carregamento da landing do Nexuscoop",
+        methodKind: "metodo",
+        method: pending("como foi medido e o tempo final em segundos"),
+      },
+      {
+        id: "plataformas",
+        value: "1 base de código, 3 plataformas",
+        label: "web, Android e iOS",
+        methodKind: "fonte",
+        method: "mesmo código React para as três",
+      },
+      {
+        id: "testes",
+        value: "400+",
+        label: "arquivos de teste no projeto atual",
+        methodKind: "fonte",
+        method: pending("validar: arquivos ou testes"),
+      },
+    ] satisfies readonly Figure[],
   },
 
   about: {
-    eyebrow: "sobre",
-    title: "Desenvolvedor que veio do design de produto",
-    /** Cada frase em três partes: antes, destaque em negrito, depois. */
-    facts: [
-      ["Trabalho com ", "produto digital desde 2021", "."],
-      ["Na OdiNetwork, ", "liderei três pessoas de design", "."],
-      ["E ", "ensino quem trabalha comigo", "."],
-    ] as const,
-    photos: [
-      pending("foto 1 de Victor"),
-      pending("foto 2 de Victor"),
-      pending("foto 3 de Victor"),
-      pending("foto 4 de Victor"),
-    ] as readonly Maybe<Photo>[],
-    cta: "Mais sobre mim",
-    ctaHref: "/sobre",
+    title: "prazer, Victor",
+    paragraphs: [
+      "Comecei no design em 2021, desenhando produtos pra agências, startups e empresas de vários tamanhos. No caminho virei líder de design, passei a revisar cada entrega antes de ela ir pra produção e, quando vi, já estava mexendo no código. Hoje sou dev e tech lead na Entrega Contínua. O olhar de designer continua aqui, só trocou de ferramenta.",
+      "Fora do trabalho, leio mistério e horror (Poe, Lovecraft e qualquer coisa com um enigma no meio) e ouço rock nacional alto demais. Se você reparar bem, esse site também guarda alguns segredos.",
+    ],
+    photo: pending("foto do Victor") as Maybe<{ src: string; alt: string }>,
+    link: "mais sobre mim",
+    linkHref: "/sobre",
   },
 
   contact: {
     id: "contato",
-    title: "Vamos trabalhar no seu projeto",
-    lead: "Conte o que você precisa e para quando.",
-    cta: "Solicitar orçamento",
-    ctaMessage: "Olá, Victor. Quero pedir um orçamento para um projeto.",
-    /** Assunto do e-mail quando o WhatsApp ainda não está confirmado. */
-    emailSubject: "Orçamento",
-    labels: { email: "E-mail", github: "GitHub", linkedin: "LinkedIn" },
+    title: "bora conversar?",
+    lead: "Pode ser uma vaga, um projeto ou só uma ideia ainda meio solta. Costumo responder em até um dia útil.",
+    labels: { email: "E-mail", linkedin: "LinkedIn" },
+  },
+
+  footer: {
+    credit: "Desenhado e codado por mim, em Teresina.",
+    finds: { before: "Achados:", after: ". Tem coisa escondida por aqui." },
+    links: { github: "GitHub", linkedin: "LinkedIn", cv: "baixar CV" },
+    signature: "© 2026 Victor Barros",
+    signatureCheck: pending("confirmar o sobrenome usado no site"),
   },
 } as const

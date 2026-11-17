@@ -71,7 +71,7 @@ Hachura vira borda; ProgressHatch mantém o texto do valor. Sem movimento (a lar
 - [x] CA-5 Números passam pelo formatador.
 - [x] CA-6 jest-axe sem violações.
 - [x] CA-7 (Home v2) `Stat` mostra `label` (o que o número conta) e o rótulo do método conforme `methodKind`: "Método" (padrão) ou "Fonte"; `method` continua obrigatório e aceita a pendência por `Fact`.
-- [x] CA-8 (Home v2) `Stat` `size="md"` usa `text-h1` no valor (grade de quatro números); `lg` mantém `text-display`.
+- [x] CA-8 (Home v2) `Stat` `size="md"` usa `text-h2` no valor, sem hifenizar e com quebra equilibrada (grade de quatro números, valores longos como "1 base de código, 3 plataformas"); `lg` mantém `text-display`.
 - [x] CA-9 (Home v2) `Polaroid` usa o `ImageFrame` por dentro e aceita `placeholder` como texto ou `Fact`.
 
 ## Plan

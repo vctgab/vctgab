@@ -9,7 +9,7 @@ export const metadata: Metadata = { title: "Hero" }
 export default function HeroPage() {
   return (
     <main id="conteudo">
-      <Hero seed="sistema" ctaHref="/#contato" />
+      <Hero seed="sistema" />
       <div className="py-16">
         <Eyebrow>Vitrine</Eyebrow>
         <h2 className="mt-4 text-h2">Como o hero funciona</h2>

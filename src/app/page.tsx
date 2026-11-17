@@ -1,13 +1,6 @@
 import type { Metadata } from "next"
 import { Hero } from "@/components/hero"
-import {
-  About,
-  Contact,
-  ProjectsStrip,
-  Proof,
-  Services,
-  Testimonials,
-} from "@/components/home"
+import { About, Contact, Projects, Proof, Skills } from "@/components/home"
 import { HOME } from "@/content/home"
 import { SITE } from "@/content/site"
 import { SITE_URL } from "@/lib/site-url"
@@ -43,9 +36,8 @@ export default function Home() {
     <main id="conteudo">
       <PersonJsonLd />
       <Hero seed="home" />
-      <ProjectsStrip />
-      <Services />
-      <Testimonials />
+      <Projects />
+      <Skills />
       <Proof />
       <About />
       <Contact />

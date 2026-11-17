@@ -2,7 +2,7 @@ import type { Metadata, Viewport } from "next"
 import { FooterScene } from "@/components/footer-scene"
 import { Footer } from "@/components/layout/footer"
 import { Header } from "@/components/layout/header"
-import { AchadosChip, AchadosProvider } from "@/components/ui/finds"
+import { AchadosProvider } from "@/components/ui/finds"
 import { HOME } from "@/content/home"
 import { SITE } from "@/content/site"
 import { fontVariables, PRELOADED_FONTS } from "@/lib/fonts"
@@ -61,11 +61,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
           <AchadosProvider>
             <Header />
             {children}
-            <Footer
-              achados={<AchadosChip placement="inline" />}
-              scene={<FooterScene />}
-            />
-            <AchadosChip placement="dock" />
+            <Footer scene={<FooterScene />} />
           </AchadosProvider>
         </ThemeProvider>
       </body>

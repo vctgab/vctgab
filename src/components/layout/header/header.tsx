@@ -3,27 +3,38 @@
 import Link from "next/link"
 import type { Route } from "next"
 import { usePathname } from "next/navigation"
-import { useRef, useState } from "react"
+import { useState } from "react"
 import { Button } from "@/components/ui/button"
 import { Drawer } from "@/components/ui/dialog"
+import { AchadosChip } from "@/components/ui/finds"
+import { Icon } from "@/components/ui/icon"
 import { Logo } from "@/components/ui/logo"
 import { Popover } from "@/components/ui/popover"
 import { Container } from "@/components/ui/section"
-import { ThemeSwitcher } from "@/components/ui/theme-switcher"
+import { SEASON_ICON, ThemeSwitcher } from "@/components/ui/theme-switcher"
 import { HOME } from "@/content/home"
 import { cn } from "@/lib/cn"
-import { talkHref } from "@/lib/contact"
 import { generateShape } from "@/lib/shapes"
+import { DEFAULT_SEASON, SEASONS } from "@/lib/theme/themes"
 import { NAV_LINKS } from "./nav-links"
 
 export interface HeaderProps {
-  /**
-   * Destino do CTA "Vamos conversar". Padrão: WhatsApp quando houver número;
-   * senão, o contato da Home (D-1015).
-   */
-  ctaHref?: string
   className?: string
 }
+
+/**
+ * Só o nome da estação de `html[data-season]` aparece (D-1203). A regra vem de
+ * SEASONS: uma estação nova não pede CSS à mão. Sem o atributo (sem
+ * JavaScript), vale a estação padrão.
+ */
+const SEASON_ONLY_CSS = [
+  "[data-season-only]{display:none}",
+  ...SEASONS.map(
+    (s) =>
+      `html[data-season="${s.id}"] [data-season-only="${s.id}"]{display:inline-flex}`,
+  ),
+  `html:not([data-season]) [data-season-only="${DEFAULT_SEASON}"]{display:inline-flex}`,
+].join("")
 
 function NavLink({
   href,
@@ -68,21 +79,50 @@ function NavLink({
 }
 
 /**
- * Cabeçalho global: pular para o conteúdo, logo, navegação, tema e CTA. No
- * mobile, menu em Drawer. O botão `cmd` volta quando o terminal existir.
- * Ficha: docs/specs/header-footer.md
+ * "estação: primavera". O nome certo já na primeira pintura, sem estado no
+ * servidor: um `span` por estação e a regra de exibição sobre `data-season`.
+ * Abaixo de `lg`, só o ícone aparece; o nome fica para leitores de tela.
  */
-export function Header({ ctaHref, className }: HeaderProps) {
+function SeasonButton() {
+  return (
+    <>
+      <style href="vg-season-only" precedence="default">
+        {SEASON_ONLY_CSS}
+      </style>
+      <Popover
+        title="Tema"
+        align="end"
+        trigger={
+          <Button variant="ghost" size="sm" seed="cabecalho:estacao" className="px-3">
+            {SEASONS.map((s) => (
+              <span
+                key={s.id}
+                data-season-only={s.id}
+                className="items-center gap-1.5 whitespace-nowrap"
+              >
+                <Icon name={SEASON_ICON[s.id] ?? "tema"} decorative />
+                <span className="max-lg:sr-only">
+                  {HOME.header.seasonLabel} {s.label.toLowerCase()}
+                </span>
+              </span>
+            ))}
+          </Button>
+        }
+      >
+        <ThemeSwitcher layout="compact" className="mt-1" />
+      </Popover>
+    </>
+  )
+}
+
+/**
+ * Cabeçalho global: pular para o conteúdo, logo, navegação, contador de
+ * achados e estação (D-1203). No mobile, os links vão para o Drawer; contador
+ * e estação ficam no cabeçalho. Ficha: docs/specs/header-footer.md
+ */
+export function Header({ className }: HeaderProps) {
   const pathname = usePathname()
   const [menuOpen, setMenuOpen] = useState(false)
-  // Link do menu para uma âncora (#contato): o foco não volta ao botão do
-  // menu, senão a página rolaria de volta ao topo.
-  const toAnchor = useRef(false)
-  const closeMenu = (href: string) => {
-    toAnchor.current = href.includes("#")
-    setMenuOpen(false)
-  }
-  const cta = ctaHref ?? talkHref(HOME.hero.ctaMessage, pathname === "/")
 
   return (
     <header className={cn("relative z-(--z-header)", className)}>
@@ -92,7 +132,7 @@ export function Header({ ctaHref, className }: HeaderProps) {
       >
         Pular para o conteúdo
       </a>
-      <Container className="flex min-h-19 items-center justify-between gap-3">
+      <Container className="flex min-h-19 items-center justify-between gap-2">
         <Logo compact />
 
         <nav aria-label="Principal" className="hidden items-center gap-1 lg:flex">
@@ -101,84 +141,42 @@ export function Header({ ctaHref, className }: HeaderProps) {
           ))}
         </nav>
 
-        <div className="hidden items-center gap-3 lg:flex">
-          <Popover
-            title="Tema"
-            align="end"
-            trigger={
-              <Button
-                iconOnly="tema"
-                aria-label="Escolher tema"
-                variant="ghost"
-                size="sm"
-                seed="cabecalho:tema"
-              />
-            }
-          >
-            <ThemeSwitcher layout="compact" className="mt-1" />
-          </Popover>
-          {/* Largura fixa, texto no início e seta no fim: a troca de fonte não move
-              o grupo alinhado à direita, em qualquer sistema (D-1034). */}
-          <Button
-            asChild
-            size="sm"
-            iconRight="seta"
-            seed="cabecalho:cta"
-            className="w-48 justify-between"
-          >
-            <Link href={cta as Route}>Vamos conversar</Link>
-          </Button>
-        </div>
-
-        <div className="lg:hidden">
-          <Drawer
-            title="Menu"
-            open={menuOpen}
-            onOpenChange={setMenuOpen}
-            onCloseAutoFocus={(event) => {
-              if (toAnchor.current) event.preventDefault()
-              toAnchor.current = false
-            }}
-            closeLabel="Fechar menu"
-            trigger={
-              <Button
-                iconOnly="menu"
-                aria-label="Abrir menu"
-                variant="secondary"
-                size="sm"
-              />
-            }
-            footer={
-              <>
-                <Button asChild iconRight="seta" seed="menu:cta">
-                  <Link href={cta as Route} onClick={() => closeMenu(cta)}>
-                    Vamos conversar
-                  </Link>
-                </Button>
-              </>
-            }
-          >
-            <nav aria-label="Principal no menu">
-              <ul className="flex flex-col">
-                {NAV_LINKS.map((link) => (
-                  <li key={link.href}>
-                    <Link
-                      href={link.href as Route}
-                      aria-current={pathname === link.href ? "page" : undefined}
-                      onClick={() => closeMenu(link.href)}
-                      className="font-soft flex min-h-12 items-center font-display text-h3 text-ink aria-[current=page]:text-primary-text"
-                    >
-                      {link.label}
-                    </Link>
-                  </li>
-                ))}
-              </ul>
-            </nav>
-            <div className="mt-6 flex flex-col gap-3">
-              <p className="font-mono text-label text-ink-subtle">Tema</p>
-              <ThemeSwitcher layout="compact" />
-            </div>
-          </Drawer>
+        <div className="flex items-center gap-1 lg:gap-2">
+          <AchadosChip placement="header" />
+          <SeasonButton />
+          <div className="lg:hidden">
+            <Drawer
+              title="Menu"
+              open={menuOpen}
+              onOpenChange={setMenuOpen}
+              closeLabel="Fechar menu"
+              trigger={
+                <Button
+                  iconOnly="menu"
+                  aria-label="Abrir menu"
+                  variant="secondary"
+                  size="sm"
+                />
+              }
+            >
+              <nav aria-label="Principal no menu">
+                <ul className="flex flex-col">
+                  {NAV_LINKS.map((link) => (
+                    <li key={link.href}>
+                      <Link
+                        href={link.href as Route}
+                        aria-current={pathname === link.href ? "page" : undefined}
+                        onClick={() => setMenuOpen(false)}
+                        className="font-soft flex min-h-12 items-center font-display text-h3 text-ink aria-[current=page]:text-primary-text"
+                      >
+                        {link.label}
+                      </Link>
+                    </li>
+                  ))}
+                </ul>
+              </nav>
+            </Drawer>
+          </div>
         </div>
       </Container>
     </header>

@@ -2,6 +2,8 @@ import { render, screen, within } from "@testing-library/react"
 import userEvent from "@testing-library/user-event"
 import { axe } from "jest-axe"
 import { Footer } from "@/components/layout/footer"
+import { AchadosProvider } from "@/components/ui/finds"
+import { __resetAchadosStore } from "@/lib/finds/store"
 import { ThemeSwitcher } from "@/components/ui/theme-switcher"
 import { ThemeProvider } from "@/lib/theme/theme-provider"
 import { Header } from "."
@@ -11,11 +13,17 @@ vi.mock("next/navigation", () => ({ usePathname: () => "/sobre" }))
 function renderHeader() {
   return render(
     <ThemeProvider>
-      <Header />
-      <main id="conteudo">Conteúdo</main>
+      <AchadosProvider>
+        <Header />
+        <main id="conteudo">Conteúdo</main>
+      </AchadosProvider>
     </ThemeProvider>,
   )
 }
+
+beforeEach(() => {
+  __resetAchadosStore()
+})
 
 describe("Header", () => {
   it("CA-1: pular para o conteúdo é o primeiro focável", async () => {
@@ -31,8 +39,8 @@ describe("Header", () => {
     renderHeader()
     const nav = screen.getByRole("navigation", { name: "Principal" })
     const links = within(nav).getAllByRole("link")
-    expect(links.map((l) => l.textContent)).toEqual(["Projetos", "Sobre", "Contato"])
-    expect(within(nav).getByRole("link", { name: "Sobre" })).toHaveAttribute(
+    expect(links.map((l) => l.textContent)).toEqual(["projetos", "sobre", "contato"])
+    expect(within(nav).getByRole("link", { name: "sobre" })).toHaveAttribute(
       "aria-current",
       "page",
     )
@@ -44,10 +52,35 @@ describe("Header", () => {
     await user.click(screen.getByRole("button", { name: "Abrir menu" }))
     const drawer = await screen.findByRole("dialog", { name: "Menu" })
     expect(
-      within(drawer).getAllByRole("link", { name: /Projetos|Sobre|Contato/ }),
+      within(drawer).getAllByRole("link", { name: /^(projetos|sobre|contato)$/ }),
     ).toHaveLength(3)
     await user.keyboard("{Escape}")
     expect(screen.queryByRole("dialog")).toBeNull()
+  })
+
+  it("CA-8: sem CTA; contador de achados e botão com o nome da estação", async () => {
+    const user = userEvent.setup()
+    renderHeader()
+    const header = screen.getByRole("banner")
+    expect(within(header).queryByRole("link", { name: /conversar/ })).toBeNull()
+    expect(
+      within(header).getByRole("button", { name: /^achados: 0 de 7/ }),
+    ).toHaveAttribute("aria-haspopup", "dialog")
+    // Um span por estação; o CSS mostra só o de html[data-season] (D-1203).
+    expect(document.head.innerHTML + document.body.innerHTML).toContain(
+      'html[data-season="verao"] [data-season-only="verao"]{display:inline-flex}',
+    )
+    const spans = header.querySelectorAll("[data-season-only]")
+    expect(Array.from(spans, (s) => s.textContent)).toEqual([
+      "estação: primavera",
+      "estação: verão",
+      "estação: outono",
+      "estação: inverno",
+    ])
+    const trigger = spans[0]?.closest("button") as HTMLElement
+    await user.click(trigger)
+    expect(await screen.findByRole("radiogroup", { name: "Estação" })).toBeInTheDocument()
+    expect(screen.getByRole("radiogroup", { name: "Modo" })).toBeInTheDocument()
   })
 
   it("CA-6: sem violações", async () => {
@@ -155,15 +188,32 @@ describe("ThemeSwitcher (CA-8)", () => {
   })
 })
 
-describe("Footer (CA-5)", () => {
-  it("tem navegação de rodapé, direitos e slots", async () => {
+describe("Footer (CA-5 e CA-9)", () => {
+  it("tem crédito, achados ao vivo, links, pendências e assinatura", async () => {
     const { container } = render(
-      <Footer achados={<button type="button">Achados: 0 de 7</button>} />,
+      <AchadosProvider>
+        <Footer />
+      </AchadosProvider>,
     )
-    expect(screen.getByRole("contentinfo")).toBeInTheDocument()
-    expect(screen.getByRole("navigation", { name: "Rodapé" })).toBeInTheDocument()
-    expect(screen.getByText("Victor Gabriel © 2026")).toBeInTheDocument()
-    expect(screen.getByRole("button", { name: "Achados: 0 de 7" })).toBeInTheDocument()
+    const footer = screen.getByRole("contentinfo")
+    expect(footer).toHaveTextContent("Desenhado e codado por mim, em Teresina.")
+    expect(footer).toHaveTextContent("Achados: 0 de 7. Tem coisa escondida por aqui.")
+    const nav = within(footer).getByRole("navigation", { name: "Rodapé" })
+    expect(
+      within(nav)
+        .getAllByRole("link")
+        .map((l) => l.textContent),
+    ).toEqual(["projetos", "sobre", "contato", "GitHub (abre em nova aba)"])
+    expect(within(nav).getByRole("link", { name: /GitHub/ })).toHaveAttribute(
+      "href",
+      "https://github.com/vctgab",
+    )
+    // LinkedIn e CV pendentes: texto com a marca, nunca link quebrado (D-1213).
+    expect(nav).toHaveTextContent("LinkedIn [a confirmar: URL do LinkedIn]")
+    expect(nav).toHaveTextContent("baixar CV [a confirmar: arquivo do CV em PDF]")
+    expect(footer).toHaveTextContent(
+      "© 2026 Victor Barros [a confirmar: confirmar o sobrenome usado no site]",
+    )
     expect(await axe(container)).toHaveNoViolations()
   })
 })

@@ -20,7 +20,7 @@ export interface ThemeSwitcherProps {
 }
 
 /** Um ícone por estação e por modo (quadro ação → ícone, CR-03); `tema` é o reserva. */
-const SEASON_ICON: Readonly<Record<string, IconName>> = {
+export const SEASON_ICON: Readonly<Record<string, IconName>> = {
   primavera: "flor",
   verao: "sol",
   outono: "folha",

@@ -20,20 +20,39 @@ function renderHero() {
 }
 
 describe("Hero", () => {
-  it("CA-1: um h1, o CTA e a linha de status com o relógio", () => {
-    renderHero()
+  it("CA-1 e CA-9: h1 do copy, selo, linha de local e os dois CTAs", () => {
+    const { container } = renderHero()
     expect(screen.getByRole("heading", { level: 1 })).toHaveTextContent(
-      "Front-end com visão de produto.",
+      "Comecei desenhando as telas. Hoje eu coloco elas no ar.",
     )
-    // WhatsApp pendente: o CTA leva ao contato da própria Home (D-1015).
-    expect(screen.getByRole("link", { name: "Vamos conversar" })).toHaveAttribute(
+    expect(screen.getByText("aberto a vagas e projetos")).toBeInTheDocument()
+    expect(container.querySelector("[data-ponto=success]")).toHaveAttribute(
+      "aria-hidden",
+      "true",
+    )
+    expect(screen.getByText("Teresina, PI")).toBeInTheDocument()
+    expect(screen.getByText("provavelmente uns 30 °C")).toBeInTheDocument()
+    expect(screen.getByRole("link", { name: "tenho uma vaga" })).toHaveAttribute(
       "href",
-      "#contato",
+      "/contato?aba=vaga",
     )
-    expect(screen.getByText("[a confirmar: mês da agenda aberta]")).toHaveAttribute(
-      "data-pendente",
+    expect(screen.getByRole("link", { name: "tenho um projeto" })).toHaveAttribute(
+      "href",
+      "/contato?aba=projeto",
     )
-    expect(screen.getByText("Teresina • Brasil")).toBeInTheDocument()
+    // Sublinhado de pincel sob "no ar", decorativo.
+    const highlight = screen.getByText("no ar")
+    expect(highlight.querySelector("svg")).toHaveAttribute("aria-hidden", "true")
+  })
+
+  it("CA-10: esboço do rascunho ao ar, decorativo, escondido abaixo de lg", () => {
+    const { container } = renderHero()
+    const sketch = container.querySelector("[data-hero-esboco]")
+    expect(sketch).toHaveAttribute("aria-hidden", "true")
+    expect(sketch?.className).toMatch(/hidden lg:block/)
+    expect(sketch?.className).toMatch(/forced-colors:hidden/)
+    expect(sketch?.querySelectorAll('path[stroke-dasharray="4 3"]').length).toBe(7)
+    expect(sketch?.querySelector("button, a, input")).toBeNull()
   })
 
   it("CA-2: composição de 5 a 9 formas, decorativa e determinística", () => {

@@ -14,7 +14,9 @@ import tokens from "@/styles/tokens.generated.json"
  * licença OFL em public/fonts. Gerada no build, sem rede.
  */
 
-export const alt = `${SITE.name}, ${SITE.role.toLowerCase()}: ${HOME.hero.titleStart} ${HOME.hero.titleHighlight}`
+const TITLE = HOME.hero.title
+
+export const alt = `${SITE.name}, ${SITE.role.toLowerCase()}: ${TITLE.before}${TITLE.highlight}${TITLE.after}`
 export const size = { width: 1200, height: 630 }
 export const contentType = "image/png"
 
@@ -25,8 +27,8 @@ const base = tokens.themes.find((t) => t.id === "primavera-claro")?.semantic as 
 const color = (name: string): string => base[name] ?? base.ink ?? "currentColor"
 
 const fonts = Promise.all([
-  readFile(join(process.cwd(), "src/assets/og/fraunces-og-v1.ttf")),
-  readFile(join(process.cwd(), "src/assets/og/dm-sans-og-v1.ttf")),
+  readFile(join(process.cwd(), "src/assets/og/fraunces-og-v2.ttf")),
+  readFile(join(process.cwd(), "src/assets/og/dm-sans-og-v2.ttf")),
 ])
 
 /** Forma do motor esticada numa caixa (viewBox 0–1, como no site). */
@@ -116,28 +118,36 @@ export default async function Image() {
         }}
       >
         <div style={{ display: "flex", fontSize: 26, color: color("primary-text") }}>
-          {`${HOME.hero.eyebrows[0]} · ${HOME.hero.eyebrows[1]}`}
+          {`${SITE.role.toLowerCase()} · ${HOME.hero.badge}`}
         </div>
         <div
           style={{
             display: "flex",
-            flexDirection: "column",
+            flexWrap: "wrap",
+            alignItems: "baseline",
             fontFamily: "Fraunces",
-            fontSize: 76,
-            lineHeight: 1.04,
+            fontSize: 60,
+            lineHeight: 1.1,
             letterSpacing: -1.5,
             color: color("ink"),
           }}
         >
-          <span>{HOME.hero.titleStart}</span>
-          <span style={{ display: "flex", position: "relative" }}>
-            {HOME.hero.titleHighlight}
+          {TITLE.before
+            .trim()
+            .split(" ")
+            .map((word, i) => (
+              <span key={i} style={{ marginRight: 16 }}>
+                {word}
+              </span>
+            ))}
+          <span style={{ display: "flex", position: "relative", marginRight: 2 }}>
+            {TITLE.highlight}
             <svg
-              width={500}
-              height={18}
+              width={150}
+              height={16}
               viewBox="0 0 1 1"
               preserveAspectRatio="none"
-              style={{ position: "absolute", left: 0, bottom: -10 }}
+              style={{ position: "absolute", left: 0, bottom: -8 }}
             >
               <path
                 d={underline.path}
@@ -148,6 +158,7 @@ export default async function Image() {
               />
             </svg>
           </span>
+          <span>{TITLE.after}</span>
         </div>
         <div
           style={{
@@ -157,7 +168,7 @@ export default async function Image() {
             color: color("ink-muted"),
           }}
         >
-          {`${SITE.name} · ${HOME.hero.location}`}
+          {`${SITE.name} · ${HOME.hero.place}`}
         </div>
       </div>
     </div>,

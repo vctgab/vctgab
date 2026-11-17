@@ -12,22 +12,19 @@ export interface SiteContent {
   domain: string
   location: { city: string; region: string; country: string }
   email: string
-  /** Só dígitos, com país e DDD (ex.: 55 86 9…). */
-  whatsapp: Maybe<string>
   github: { user: string; url: string }
   linkedin: Maybe<string>
-  /** Mês com agenda aberta, por extenso e em minúsculas ("dezembro"). */
-  agendaMonth: Maybe<string>
+  /** Caminho do CV em PDF (em /public). */
+  cv: Maybe<string>
 }
 
 export const SITE: SiteContent = {
   name: "Victor Gabriel",
-  role: "Desenvolvedor front-end",
+  role: "Desenvolvedor front-end e tech lead",
   domain: "https://vctgab.com.br",
   location: { city: "Teresina", region: "PI", country: "Brasil" },
   email: "vctgab.ux@gmail.com",
-  whatsapp: pending("número do WhatsApp"),
   github: { user: "vctgab", url: "https://github.com/vctgab" },
-  linkedin: pending("perfil do LinkedIn"),
-  agendaMonth: pending("mês da agenda aberta"),
+  linkedin: pending("URL do LinkedIn"),
+  cv: pending("arquivo do CV em PDF"),
 }

@@ -1,3 +1,5 @@
+import Link from "next/link"
+import type { ReactNode } from "react"
 import { Button } from "@/components/ui/button"
 import { Fact } from "@/components/ui/fact"
 import { Achavel } from "@/components/ui/finds"
@@ -8,10 +10,10 @@ import { Section } from "@/components/ui/section"
 import { HOME } from "@/content/home"
 import { isPending } from "@/content/pending"
 import { SITE } from "@/content/site"
-import { mailtoHref, quoteHref } from "@/lib/contact"
-import type { ReactNode } from "react"
+import { contactHref, mailtoHref } from "@/lib/contact"
 
-function Channel({
+/** Um canal direto com ícone e rótulo. Também usado no /contato. */
+export function Channel({
   icon,
   label,
   children,
@@ -31,40 +33,52 @@ function Channel({
   )
 }
 
+/** LinkedIn ou a pendência, nunca um link quebrado. */
+export function LinkedInChannel({ label }: { label: string }) {
+  return (
+    <Channel icon="linkedin" label={label}>
+      {isPending(SITE.linkedin) ? (
+        <span className="inline-flex min-h-11 items-center text-ink">
+          <Fact value={SITE.linkedin} />
+        </span>
+      ) : (
+        <LinkText href={SITE.linkedin}>
+          {SITE.linkedin.replace(/^https:\/\/(www\.)?/, "")}
+        </LinkText>
+      )}
+    </Channel>
+  )
+}
+
 /**
- * H. Contato: chamada para orçamento e canais. Sem formulário nesta fase.
+ * G. Contato: os mesmos CTAs do hero e os canais diretos. Sem formulário.
  * Achado escondido: a coruja do correio. Ficha: docs/specs/pages/home.md
  */
 export function Contact() {
-  const { id, title, lead, cta, ctaMessage, emailSubject, labels } = HOME.contact
-  const github = SITE.github.url.replace(/^https:\/\//, "")
+  const { id, title, lead, labels } = HOME.contact
   return (
     <Section id={id} title={title} intro={lead} spacing="lg">
       <div className="flex flex-col gap-10 md:flex-row md:items-start md:justify-between">
-        <div>
-          <Button asChild size="lg" iconRight="seta" seed="home:contato:cta">
-            <a href={quoteHref(ctaMessage, emailSubject)}>{cta}</a>
-          </Button>
+        <div className="flex flex-wrap gap-3">
+          {HOME.ctas.map((cta) => (
+            <Button
+              key={cta.tab}
+              asChild
+              size="lg"
+              variant={cta.variant}
+              iconRight="seta"
+              seed={`home:contato:cta:${cta.tab}`}
+            >
+              <Link href={contactHref(cta.tab)}>{cta.label}</Link>
+            </Button>
+          ))}
         </div>
         <div className="flex items-end gap-6">
           <ul className="flex flex-col gap-3">
             <Channel icon="mail" label={labels.email}>
               <LinkText href={mailtoHref()}>{SITE.email}</LinkText>
             </Channel>
-            <Channel icon="github" label={labels.github}>
-              <LinkText href={SITE.github.url}>{github}</LinkText>
-            </Channel>
-            <Channel icon="linkedin" label={labels.linkedin}>
-              {isPending(SITE.linkedin) ? (
-                <span className="inline-flex min-h-11 items-center text-ink">
-                  <Fact value={SITE.linkedin} />
-                </span>
-              ) : (
-                <LinkText href={SITE.linkedin}>
-                  {SITE.linkedin.replace(/^https:\/\//, "")}
-                </LinkText>
-              )}
-            </Channel>
+            <LinkedInChannel label={labels.linkedin} />
           </ul>
           <Achavel id="coruja" label="Algo pousado perto do correio" className="mb-1">
             <Coruja className="-rotate-6" />

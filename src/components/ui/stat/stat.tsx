@@ -6,7 +6,7 @@ const METHOD_LABEL = { metodo: "Método", fonte: "Fonte" } as const
 
 const SIZE = {
   lg: { value: "text-display", from: "text-h1", arrow: 24 },
-  md: { value: "text-h1", from: "text-h3", arrow: 20 },
+  md: { value: "text-h2", from: "text-h3", arrow: 20 },
 } as const
 
 export interface StatProps {
@@ -61,7 +61,10 @@ export function Stat({
           ) : null}
           <span
             aria-hidden="true"
-            className={cn("font-soft font-display text-primary-decor", s.value)}
+            className={cn(
+              "font-soft font-display text-balance hyphens-none text-primary-decor",
+              s.value,
+            )}
           >
             {value}
           </span>

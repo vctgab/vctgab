@@ -84,11 +84,12 @@ describe("P1 visuais", () => {
     expect(screen.getByText("Método")).toBeInTheDocument()
   })
 
-  it("CA-8: Stat md usa text-h1 no valor; lg, text-display", () => {
+  it("CA-8: Stat md usa text-h2 no valor, sem hifenizar; lg, text-display", () => {
     const { container, rerender } = render(<Stat value="400+" method="x" size="md" />)
     const value = () =>
       container.querySelector('[role="img"] > span:last-child') as HTMLElement
-    expect(value().className).toContain("text-h1")
+    expect(value().className).toContain("text-h2")
+    expect(value().className).toContain("hyphens-none")
     rerender(<Stat value="400+" method="x" />)
     expect(value().className).toContain("text-display")
   })

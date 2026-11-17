@@ -1,1 +1,1 @@
-export { ThemeSwitcher, type ThemeSwitcherProps } from "./theme-switcher"
+export { SEASON_ICON, ThemeSwitcher, type ThemeSwitcherProps } from "./theme-switcher"

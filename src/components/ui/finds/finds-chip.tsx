@@ -38,10 +38,10 @@ export function AchadosChip({ placement = "dock", className }: AchadosChipProps)
         seed={seed}
         aria-haspopup="dialog"
         aria-describedby={`${id}-acao`}
+        iconLeft="busca"
         onClick={(e) => openCard(e.currentTarget)}
         className={cn("gap-1.5 px-3", className)}
       >
-        <Icon name="busca" decorative className="max-sm:hidden" />
         {/* Larguras fixas: a troca de fonte e o número ao vivo não movem o
             cabeçalho (D-1009). */}
         <span className="inline-flex">

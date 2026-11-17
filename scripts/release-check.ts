@@ -11,6 +11,7 @@
 import { readdirSync, readFileSync, statSync } from "node:fs"
 import { join, relative, sep } from "node:path"
 import ts from "typescript"
+import { CONTACT_PAGE } from "../src/content/contact.ts"
 import { HOME } from "../src/content/home.ts"
 import { PROVISIONAL_PAGES, SECRET_PAGE } from "../src/content/pages.ts"
 import { isPending, type Pending } from "../src/content/pending.ts"
@@ -52,6 +53,7 @@ function collectPending(value: unknown, path: string, out: Found[]): void {
 const pendings: Found[] = []
 collectPending(SITE, "site", pendings)
 collectPending(HOME, "home", pendings)
+collectPending(CONTACT_PAGE, "contact", pendings)
 collectPending(PROJECTS, "projects", pendings)
 collectPending(PROVISIONAL_PAGES, "pages.provisional", pendings)
 collectPending(SECRET_PAGE, "pages.secret", pendings)
@@ -121,7 +123,14 @@ links.push({
   where: "src/content/home.ts (projects.allHref)",
   what: HOME.projects.allHref,
 })
-links.push({ where: "src/content/home.ts (about.ctaHref)", what: HOME.about.ctaHref })
+links.push({ where: "src/content/home.ts (about.linkHref)", what: HOME.about.linkHref })
+for (const link of HOME.header.nav)
+  links.push({ where: "src/content/home.ts (header.nav)", what: link.href })
+for (const cta of HOME.ctas)
+  links.push({
+    where: `src/content/home.ts (ctas.${cta.tab})`,
+    what: `/contato?aba=${cta.tab}`,
+  })
 for (const p of PROJECTS)
   links.push({ where: `src/content/projects.ts (${p.slug})`, what: projectHref(p) })
 

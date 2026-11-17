@@ -1,54 +1,56 @@
 import { pending, type Maybe } from "./pending.ts"
 
 /**
- * Projetos do portfólio. Só fatos confirmados por Victor; o resto é
- * `pending(...)`. Nomes de clientes autorizados: Felicoop, Houer Tecnologia.
+ * Projetos em destaque (Home v2). Só o que Victor escreveu; a captura de cada
+ * um é `pending(...)` até chegar (D-1216).
  */
 export interface Project {
   slug: string
-  /** Marco da faixa: "01" a "04". */
-  marker: string
   name: string
-  /** Para quem foi feito (cliente), quando houver. */
-  client?: string
-  /** Papel de Victor no projeto. */
-  role?: Maybe<string>
-  /** Tipo de projeto ("produto digital", "design system"...). */
-  type: Maybe<string>
-  /** O que foi entregue. */
-  delivery?: Maybe<string>
+  /** Linha de meta: cliente (quando houver) e papel ("Felicoop · código, liderança"). */
+  meta: string
+  status: "em andamento" | "no ar"
+  description: string
+  /** Captura do projeto. */
+  image: Maybe<{ src: string; alt: string }>
 }
 
 export const PROJECTS: readonly Project[] = [
   {
     slug: "nexuscoop",
-    marker: "01",
     name: "Nexuscoop",
-    client: "Felicoop",
-    role: "Tech lead e desenvolvedor",
-    type: pending("tipo do projeto Nexuscoop"),
-  },
-  {
-    slug: "oia",
-    marker: "02",
-    name: "OIA",
-    client: "Houer Tecnologia",
-    type: pending("tipo do projeto OIA"),
-    delivery: pending("entrega do OIA"),
-  },
-  {
-    slug: "cinnatra",
-    marker: "03",
-    name: "Cinnatra",
-    type: pending("tipo do projeto Cinnatra"),
-    delivery: pending("entrega do Cinnatra"),
+    meta: "Felicoop · código, liderança",
+    status: "em andamento",
+    description:
+      "Lidero o time que constrói o portal de faturamento de uma cooperativa médica, com uma base de código só pra web, Android e iOS.",
+    image: pending("captura do Nexuscoop"),
   },
   {
     slug: "kasb-health",
-    marker: "04",
     name: "Kasb Health",
-    role: "Fundador, atuando no código e na liderança de produto e engenharia",
-    type: pending("tipo do projeto Kasb Health"),
+    meta: "liderança, design, código",
+    status: "em andamento",
+    description:
+      "Uma healthtech que eu fundei e conduzo da ideia ao MVP, do Figma ao código.",
+    image: pending("captura do Kasb Health"),
+  },
+  {
+    slug: "suite-odin",
+    name: "Suíte OdiN",
+    meta: "OdiNetwork · design, liderança, código",
+    status: "no ar",
+    description:
+      "Três sistemas SaaS B2B, um design system criado do zero e um time de design pra liderar.",
+    image: pending("captura da Suíte OdiN"),
+  },
+  {
+    slug: "lance",
+    name: "Lance!",
+    meta: "design",
+    status: "no ar",
+    description:
+      "Home, Tempo Real e Bolão de um dos maiores portais esportivos do Brasil.",
+    image: pending("captura do Lance!"),
   },
 ]
 
