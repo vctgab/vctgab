@@ -1,6 +1,7 @@
 "use client"
 
 import { useId } from "react"
+import { Button } from "@/components/ui/button"
 import { Icon } from "@/components/ui/icon"
 import { Shape, shapeHostProps } from "@/components/ui/shape"
 import { cn } from "@/lib/cn"
@@ -8,8 +9,11 @@ import { formatCount } from "@/lib/format"
 import { useAchados } from "./finds-provider"
 
 export interface AchadosChipProps {
-  /** `dock`: fixo no canto (barra inferior no mobile); `inline`: no fluxo (rodapé). */
-  placement?: "dock" | "inline"
+  /**
+   * `dock`: fixo no canto (barra inferior no mobile); `inline`: no fluxo;
+   * `header`: botão discreto do cabeçalho, "achados: 3 de 7" em minúscula.
+   */
+  placement?: "dock" | "inline" | "header"
   className?: string
 }
 
@@ -19,6 +23,37 @@ export function AchadosChip({ placement = "dock", className }: AchadosChipProps)
   const id = useId()
   const seed = `achados-chip:${placement}`
   const host = shapeHostProps({ seed, bucket: "sm", interactive: true })
+  const number =
+    state === null ? (
+      <span className="invisible">{formatCount(0, total)}</span>
+    ) : (
+      formatCount(count, total)
+    )
+
+  if (placement === "header") {
+    return (
+      <Button
+        variant="ghost"
+        size="sm"
+        seed={seed}
+        aria-haspopup="dialog"
+        aria-describedby={`${id}-acao`}
+        onClick={(e) => openCard(e.currentTarget)}
+        className={cn("gap-1.5 px-3", className)}
+      >
+        <Icon name="busca" decorative className="max-sm:hidden" />
+        {/* Larguras fixas: a troca de fonte e o número ao vivo não movem o
+            cabeçalho (D-1009). */}
+        <span className="inline-flex">
+          <span className="inline-block w-17 text-start">achados:</span>{" "}
+          <span className="inline-block w-12 text-start">{number}</span>
+        </span>
+        <span id={`${id}-acao`} className="sr-only">
+          Abre o caderno de achados
+        </span>
+      </Button>
+    )
+  }
 
   const chip = (
     <button
@@ -42,13 +77,7 @@ export function AchadosChip({ placement = "dock", className }: AchadosChipProps)
           contagem. Com o chip centralizado, isso mantém o CLS em 0 (D-1009). */}
       <span className="inline-flex translate-y-px">
         <span className="inline-block w-18 text-start">Achados:</span>{" "}
-        <span className="inline-block w-12 text-start">
-          {state === null ? (
-            <span className="invisible">{formatCount(0, total)}</span>
-          ) : (
-            formatCount(count, total)
-          )}
-        </span>
+        <span className="inline-block w-12 text-start">{number}</span>
       </span>
       <span id={`${id}-acao`} className="sr-only">
         Abre o caderno de achados
@@ -71,5 +100,22 @@ export function AchadosChip({ placement = "dock", className }: AchadosChipProps)
         {chip}
       </div>
     </>
+  )
+}
+
+/**
+ * Só a contagem, "3 de 7", ao vivo e em texto corrido (rodapé). Antes de ler
+ * o caderno, o número fica oculto com a largura reservada.
+ */
+export function AchadosCount({ className }: { className?: string }) {
+  const { state, count, total } = useAchados()
+  return (
+    <span className={cn("tabular inline-block", className)}>
+      {state === null ? (
+        <span className="invisible">{formatCount(0, total)}</span>
+      ) : (
+        formatCount(count, total)
+      )}
+    </span>
   )
 }

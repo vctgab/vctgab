@@ -64,3 +64,78 @@ export function Coruja({ className }: { className?: string }) {
     </svg>
   )
 }
+
+export function Pena({ className }: { className?: string }) {
+  return (
+    <svg
+      width="40"
+      height="44"
+      viewBox="0 0 40 44"
+      aria-hidden="true"
+      focusable="false"
+      className={className}
+    >
+      <path
+        d="M34.2 3.6c-9.4.8-17.6 6.8-21.7 15.6-2.2 4.8-3.3 10-3.2 14.6 4.4-.9 9.3-3.6 13.4-7.8 6.2-6.3 10.4-14 11.5-22.4Z"
+        className="fill-secondary-1-soft stroke-ink"
+        strokeWidth={2}
+        strokeLinejoin="round"
+      />
+      <path
+        d="M31.6 6.8 8.6 37.4M23.2 13.4l5 .6M19.4 18.6l5.4.4M16.4 23.8l5.2-.2M13.6 28.6l4.4-.6"
+        fill="none"
+        className="stroke-ink"
+        strokeWidth={1.6}
+        strokeLinecap="round"
+      />
+      <path
+        d="m8.6 37.4-2.8 4.2"
+        fill="none"
+        className="stroke-ink"
+        strokeWidth={2.4}
+        strokeLinecap="round"
+      />
+    </svg>
+  )
+}
+
+export function Mesa({ className }: { className?: string }) {
+  return (
+    <svg
+      width="40"
+      height="44"
+      viewBox="0 0 40 44"
+      aria-hidden="true"
+      focusable="false"
+      className={className}
+    >
+      <path
+        d="M12.6 11.4 27.4 11l.2 9.6-14.8.4Z"
+        className="fill-surface-raised stroke-ink"
+        strokeWidth={1.8}
+        strokeLinejoin="round"
+      />
+      <path
+        d="m12.8 11.6 7.6 5.4 7-5.8"
+        fill="none"
+        className="stroke-ink"
+        strokeWidth={1.6}
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      />
+      <path
+        d="M3.6 21.4 36.6 21l-2.2 4.6-28.8.4Z"
+        className="fill-secondary-2-soft stroke-ink"
+        strokeWidth={2}
+        strokeLinejoin="round"
+      />
+      <path
+        d="M8.4 26.2 7.8 40.6M31.8 25.8l.8 14.6M8.2 33.4l24-.4"
+        fill="none"
+        className="stroke-ink"
+        strokeWidth={2}
+        strokeLinecap="round"
+      />
+    </svg>
+  )
+}

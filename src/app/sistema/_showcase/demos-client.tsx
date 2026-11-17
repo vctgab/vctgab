@@ -2,11 +2,13 @@
 
 import { useState, type FormEvent } from "react"
 import { Button } from "@/components/ui/button"
+import { Fact } from "@/components/ui/fact"
 import { Quote, type QuoteItem, type QuoteStatus } from "@/components/ui/quote"
 import { SegmentedControl } from "@/components/ui/segmented-control"
 import { TextField } from "@/components/ui/text-field"
 import { Textarea } from "@/components/ui/textarea"
 import { useToast } from "@/components/ui/toast"
+import { pending } from "@/content/pending"
 
 /** Dispara os dois tons de aviso permitidos. */
 export function ToastDemo() {
@@ -155,6 +157,12 @@ export function QuoteDemo() {
         onRetry={() => setStatus("carregando")}
       />
       <Quote items={[]} status="indisponivel" />
+      <Quote
+        items={[]}
+        status="indisponivel"
+        unavailableMessage="O depoimento entra quando a pessoa autorizar a publicação."
+        note={<Fact value={pending("depoimento fictício de exemplo")} />}
+      />
     </div>
   )
 }

@@ -2,10 +2,11 @@ import type { Metadata } from "next"
 import {
   AchadosCardBody,
   AchadosChip,
+  AchadosCount,
   Achavel,
   AvisoPaginaSecreta,
 } from "@/components/ui/finds"
-import { Pinha } from "@/components/ui/finds/drawings"
+import { Coruja, Mesa, Pena, Pinha } from "@/components/ui/finds/drawings"
 import { Eyebrow } from "@/components/ui/eyebrow"
 import { Demo, Row } from "../_showcase/demo"
 
@@ -32,6 +33,17 @@ export default function AchadosPage() {
               <Pinha className="rotate-12" />
             </Achavel>
             <AchadosChip placement="inline" />
+          </Row>
+          <Row label="Contador do cabeçalho e contagem em texto (rodapé)">
+            <AchadosChip placement="header" />
+            <p className="text-body">
+              Achados: <AchadosCount />.
+            </p>
+          </Row>
+          <Row label="Desenhos (só o desenho; o achado de verdade fica escondido)">
+            <Coruja />
+            <Pena />
+            <Mesa />
           </Row>
         </Demo>
 

@@ -75,7 +75,7 @@ Chip: `aria-pressed="true|false"`, nome = rótulo. Grupo de chips: `role="group"
 - [x] CA-4 Chip desabilitado exige motivo (tipo) e não alterna.
 - [x] CA-5 Altura mínima de 44 px no Chip.
 - [x] CA-6 jest-axe sem violações.
-- [ ] CA-7 (Home v2) `Tag` com `dot` mostra um ponto de status `aria-hidden` ao lado do texto (`success` ou `warning`); o texto continua sendo o portador do significado (VI-06).
+- [x] CA-7 (Home v2) `Tag` com `dot` mostra um ponto de status `aria-hidden` ao lado do texto (`success` ou `warning`); o texto continua sendo o portador do significado (VI-06).
 
 ## Plan
 

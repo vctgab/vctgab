@@ -26,10 +26,34 @@ export interface QuoteProps {
   autoAdvanceMs?: number
   /** Ação do estado de erro ("Tentar carregar de novo"). */
   onRetry?: () => void
+  /** Frase do estado indisponível (padrão: a dos vários depoimentos). */
+  unavailableMessage?: ReactNode
+  /**
+   * Pendência do estado indisponível (`[a confirmar: …]`, por `Fact`). Com ela, o
+   * estado é desenhado na ficha de papel, sem citação inventada.
+   */
+  note?: ReactNode
   className?: string
 }
 
 const isPending = (text: string) => text.startsWith("[a confirmar")
+
+/** Furos de caderno na margem da ficha (gradientes, sem SVG). */
+function Holes() {
+  return (
+    <span
+      aria-hidden="true"
+      className="pointer-events-none absolute top-6 bottom-6 left-4 w-6 forced-colors:hidden"
+      style={{
+        backgroundImage: Array.from(
+          { length: 6 },
+          (_, i) =>
+            `radial-gradient(circle at 12px ${(6 + i * 17.6).toFixed(1)}%, var(--hole) 0 5px, var(--hole-rim) 5.5px 6.5px, transparent 7px)`,
+        ).join(", "),
+      }}
+    />
+  )
+}
 
 function prefersReducedMotion(): boolean {
   try {
@@ -45,6 +69,8 @@ export function Quote({
   status = "pronto",
   autoAdvanceMs,
   onRetry,
+  unavailableMessage,
+  note,
   className,
 }: QuoteProps) {
   const id = useId()
@@ -78,9 +104,41 @@ export function Quote({
           Recarregue a página ou tente de novo agora.
         </>
       ),
-      indisponivel: "Os depoimentos voltam quando cada pessoa autorizar a publicação.",
+      indisponivel:
+        unavailableMessage ??
+        "Os depoimentos voltam quando cada pessoa autorizar a publicação.",
     }
     const state = status === "pronto" ? "vazio" : status
+    if (state === "indisponivel" && note) {
+      return (
+        <div
+          {...shapeHostProps({ seed: "quote:indisponivel", bucket: "lg" })}
+          role="status"
+          data-quote-indisponivel=""
+          className={cn(
+            "relative isolate flex min-h-56 flex-col justify-center gap-4 p-8 ps-16 md:p-10 md:ps-18",
+            className,
+          )}
+        >
+          <Shape
+            seed="quote:indisponivel"
+            bucket="lg"
+            fill="surface-raised"
+            shadow="lg"
+            shadowColor="shadow-soft"
+          />
+          <Holes />
+          <span
+            aria-hidden="true"
+            className="font-soft font-display text-display leading-none text-primary-decor"
+          >
+            “
+          </span>
+          <p className="text-body-lg text-ink">{messages.indisponivel}</p>
+          <p className="text-body text-ink">{note}</p>
+        </div>
+      )
+    }
     return (
       <div
         className={cn("flex flex-col gap-4", className)}
@@ -193,17 +251,7 @@ export function Quote({
           shadow="lg"
           shadowColor="shadow-soft"
         />
-        <span
-          aria-hidden="true"
-          className="pointer-events-none absolute top-6 bottom-6 left-4 w-6"
-          style={{
-            backgroundImage: Array.from(
-              { length: 6 },
-              (_, i) =>
-                `radial-gradient(circle at 12px ${(6 + i * 17.6).toFixed(1)}%, var(--hole) 0 5px, var(--hole-rim) 5.5px 6.5px, transparent 7px)`,
-            ).join(", "),
-          }}
-        />
+        <Holes />
         <blockquote
           key={item.id}
           className="font-soft font-display text-h2 font-medium motion-safe:animate-esmaecer"

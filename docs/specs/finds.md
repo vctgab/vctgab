@@ -76,8 +76,8 @@ Chip e caderno com bordas reais; achados riscados (texto) além da cor. Moviment
 - [x] CA-5 Cinco estados com os textos previstos.
 - [x] CA-6 Achavel tem alvo de 44 px, nome acessível e `aria-pressed`.
 - [x] CA-7 jest-axe sem violações.
-- [ ] CA-8 (Home v2) `AchadosChip` `placement="header"` mostra "achados: N de 7" com o número ao vivo, largura fixa (sem CLS) e abre o caderno; `AchadosCount` mostra "N de 7" em texto, com o número oculto antes de ler o caderno.
-- [ ] CA-9 (Home v2) Pena (seção sobre da Home) e mesa (`/contato`) têm desenho, nome antes e depois de achar e alvo de 44 px.
+- [x] CA-8 (Home v2) `AchadosChip` `placement="header"` mostra "achados: N de 7" com o número ao vivo, largura fixa (sem CLS) e abre o caderno; `AchadosCount` mostra "N de 7" em texto, com o número oculto antes de ler o caderno.
+- [x] CA-9 (Home v2) Pena (seção sobre da Home) e mesa (`/contato`) têm desenho, nome antes e depois de achar e alvo de 44 px.
 
 ## Plan
 

@@ -61,11 +61,11 @@ Nenhuma forma própria: a moldura fica dentro de um hospedeiro com forma (`Ficha
 
 ### Critérios de aceite
 
-- [ ] CA-1 Com `src`, renderiza `<img>` com o `alt` (obrigatório no tipo) e `loading="lazy"`.
-- [ ] CA-2 Sem `src`, renderiza a hachura com o rótulo e nenhuma `<img>`.
-- [ ] CA-3 A proporção é a do `ratio` (classe `aspect-*`), com ou sem imagem.
-- [ ] CA-4 jest-axe sem violações nos dois estados.
-- [ ] CA-5 O `Polaroid` sem foto continua mostrando o rótulo pela moldura.
+- [x] CA-1 Com `src`, renderiza `<img>` com o `alt` (obrigatório no tipo) e `loading="lazy"`.
+- [x] CA-2 Sem `src`, renderiza a hachura com o rótulo e nenhuma `<img>`.
+- [x] CA-3 A proporção é a do `ratio` (classe `aspect-*`), com ou sem imagem.
+- [x] CA-4 jest-axe sem violações nos dois estados.
+- [x] CA-5 O `Polaroid` sem foto continua mostrando o rótulo pela moldura.
 
 ## Plan
 
@@ -74,6 +74,6 @@ Nenhuma forma própria: a moldura fica dentro de um hospedeiro com forma (`Ficha
 ## Tarefas
 
 - [x] Ficha
-- [ ] Implementação
-- [ ] Testes (um por critério)
-- [ ] Seção na vitrine
+- [x] Implementação
+- [x] Testes (um por critério)
+- [x] Seção na vitrine

@@ -7,9 +7,11 @@ import {
   ACHADOS_COMPLETE_EVENT,
   ACHADOS_STORAGE_KEY,
 } from "@/lib/finds/store"
+import { Mesa, Pena } from "./drawings"
 import {
   AchadosCardBody,
   AchadosChip,
+  AchadosCount,
   AchadosProvider,
   Achavel,
   AvisoPaginaSecreta,
@@ -141,5 +143,50 @@ describe("Achados", () => {
       <AchadosCardBody state={{ found: ["mesa"], storage: "indisponivel" }} />,
     )
     expect(await axe(card.container)).toHaveNoViolations()
+  })
+
+  it("CA-8: contador do cabeçalho e contagem em texto, ao vivo", async () => {
+    const user = userEvent.setup()
+    render(
+      <AchadosProvider>
+        <AchadosChip placement="header" />
+        <p data-testid="rodape">
+          Achados: <AchadosCount />.
+        </p>
+        <Achavel id="pena" label="Algo para escrever perto da foto">
+          <Pena />
+        </Achavel>
+      </AchadosProvider>,
+    )
+    const chip = screen.getByRole("button", { name: /^achados: 0 de 7/ })
+    expect(chip).toHaveAttribute("aria-haspopup", "dialog")
+    expect(chip.className).toMatch(/min-h-11/)
+    expect(screen.getByTestId("rodape")).toHaveTextContent("Achados: 0 de 7.")
+    await user.click(
+      screen.getByRole("button", { name: "Algo para escrever perto da foto" }),
+    )
+    expect(screen.getByRole("button", { name: /^achados: 1 de 7/ })).toBeInTheDocument()
+    expect(screen.getByTestId("rodape")).toHaveTextContent("Achados: 1 de 7.")
+    expect(
+      screen.getByRole("button", { name: "Pena de escrever, achado" }),
+    ).toHaveAttribute("aria-pressed", "true")
+  })
+
+  it("CA-9: pena e mesa são desenhos decorativos dentro de um Achavel de 44 px", async () => {
+    const { container } = render(
+      <AchadosProvider>
+        <Achavel id="mesa" label="Algo em cima da mesa">
+          <Mesa />
+        </Achavel>
+        <Achavel id="pena" label="Algo para escrever perto da foto">
+          <Pena />
+        </Achavel>
+      </AchadosProvider>,
+    )
+    for (const svg of container.querySelectorAll("button svg"))
+      expect(svg).toHaveAttribute("aria-hidden", "true")
+    const mesa = screen.getByRole("button", { name: "Algo em cima da mesa" })
+    expect(mesa.className).toMatch(/min-h-11/)
+    expect(await axe(container)).toHaveNoViolations()
   })
 })

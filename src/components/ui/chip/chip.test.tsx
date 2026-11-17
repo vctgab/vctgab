@@ -12,6 +12,30 @@ describe("Tag", () => {
     expect(tag.className).toContain("min-h-8")
     expect(screen.queryByRole("button")).toBeNull()
   })
+
+  it("CA-7: o ponto de status é decorativo e o texto continua lá", async () => {
+    const { container } = render(
+      <ul>
+        <Tag as="li" dot="success">
+          no ar
+        </Tag>
+        <Tag as="li" dot="warning">
+          em andamento
+        </Tag>
+      </ul>,
+    )
+    const dots = container.querySelectorAll("[data-ponto]")
+    expect(dots).toHaveLength(2)
+    for (const dot of dots) expect(dot).toHaveAttribute("aria-hidden", "true")
+    expect(dots[0]?.querySelector("path")?.getAttribute("class")).toContain(
+      "fill-success-fill",
+    )
+    expect(dots[1]?.querySelector("path")?.getAttribute("class")).toContain(
+      "fill-warning-fill",
+    )
+    expect(screen.getByText("no ar")).toBeInTheDocument()
+    expect(await axe(container)).toHaveNoViolations()
+  })
 })
 
 describe("Chip", () => {

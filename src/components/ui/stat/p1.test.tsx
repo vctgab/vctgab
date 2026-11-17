@@ -70,6 +70,29 @@ describe("P1 visuais", () => {
     expect(semMetodo).toBeTruthy()
   })
 
+  it("CA-7: Stat mostra o rótulo e o método ou a fonte", () => {
+    const { rerender } = render(
+      <Stat value="5+" label="anos fictícios" method="desde 2000" methodKind="fonte" />,
+    )
+    expect(screen.getByText("anos fictícios")).toBeInTheDocument()
+    expect(screen.getByText("Fonte")).toBeInTheDocument()
+    expect(screen.queryByText("Método")).toBeNull()
+    rerender(<Stat from="8s" value="quase instantâneo" method="[a confirmar: método]" />)
+    expect(
+      screen.getByRole("img", { name: "De 8s para quase instantâneo" }),
+    ).toBeInTheDocument()
+    expect(screen.getByText("Método")).toBeInTheDocument()
+  })
+
+  it("CA-8: Stat md usa text-h1 no valor; lg, text-display", () => {
+    const { container, rerender } = render(<Stat value="400+" method="x" size="md" />)
+    const value = () =>
+      container.querySelector('[role="img"] > span:last-child') as HTMLElement
+    expect(value().className).toContain("text-h1")
+    rerender(<Stat value="400+" method="x" />)
+    expect(value().className).toContain("text-display")
+  })
+
   it("Skeleton é decorativo", () => {
     const { container } = render(<Skeleton shape="linha" lines={3} />)
     expect(container.firstElementChild).toHaveAttribute("aria-hidden", "true")
@@ -100,6 +123,25 @@ describe("Quote", () => {
     expect(
       screen.getByRole("radiogroup", { name: "Escolher quem fala" }),
     ).toBeInTheDocument()
+  })
+
+  it("CA-5: indisponível com pendência fica na ficha de papel, sem citação", async () => {
+    const { container } = render(
+      <Quote
+        items={[]}
+        status="indisponivel"
+        unavailableMessage="O depoimento entra quando a pessoa autorizar a publicação."
+        note="[a confirmar: depoimento fictício]"
+      />,
+    )
+    const box = screen.getByRole("status")
+    expect(box).toHaveTextContent(
+      "O depoimento entra quando a pessoa autorizar a publicação.",
+    )
+    expect(box).toHaveTextContent("[a confirmar: depoimento fictício]")
+    expect(container.querySelector("blockquote")).toBeNull()
+    expect(container.querySelector("[data-shape-layer]")).not.toBeNull()
+    expect(await axe(container)).toHaveNoViolations()
   })
 
   it("CA-2: escolher um depoente troca a ficha", async () => {

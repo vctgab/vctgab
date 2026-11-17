@@ -120,6 +120,10 @@ export default function ComponentesPage() {
             <Tag tone="secondary-1">QA visual</Tag>
             <Tag tone="secondary-2">Handoff</Tag>
           </Row>
+          <Row label="Tag com ponto de status (o texto sempre presente)">
+            <Tag dot="success">no ar</Tag>
+            <Tag dot="warning">em andamento</Tag>
+          </Row>
           <div role="group" aria-label="Filtrar projetos por tecnologia (exemplo)">
             <Row label="Chip">
               <Chip defaultPressed>React</Chip>

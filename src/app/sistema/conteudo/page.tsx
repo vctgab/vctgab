@@ -3,6 +3,7 @@ import { Accordion } from "@/components/ui/accordion"
 import { Divider } from "@/components/ui/divider"
 import { Eyebrow } from "@/components/ui/eyebrow"
 import { Ficha } from "@/components/ui/card"
+import { ImageFrame } from "@/components/ui/image-frame"
 import { LiveClock } from "@/components/ui/live-clock"
 import { Marquee } from "@/components/ui/marquee"
 import { Polaroid } from "@/components/ui/polaroid"
@@ -71,15 +72,54 @@ export default function ConteudoPage() {
         </Demo>
 
         <Demo
+          id="image-frame"
+          title="ImageFrame"
+          description="Moldura com proporção fixa. Sem imagem, a hachura com a pendência: nunca espaço vazio nem imagem inventada."
+        >
+          <div className="grid max-w-3xl gap-6 md:grid-cols-3">
+            <ImageFrame
+              ratio="video"
+              placeholder={<Fact value={pending("captura do projeto fictício A")} />}
+            />
+            <ImageFrame
+              ratio="wide"
+              placeholder={<Fact value={pending("captura do projeto fictício B")} />}
+            />
+            <ImageFrame
+              ratio="square"
+              placeholder={<Fact value={pending("foto fictícia")} />}
+            />
+          </div>
+        </Demo>
+
+        <Demo
           id="stat"
           title="Stat"
-          description="Número grande sempre com o método. Sem método, o componente não compila."
+          description="Número grande sempre com o método ou a fonte. Sem um dos dois, o componente não compila. Em grade, o tamanho md."
         >
-          <Stat
-            from={formatPercent(34)}
-            value={formatPercent(89)}
-            method="Taxa de acerto em teste de árvore, antes e depois da nova navegação (exemplo fictício da vitrine)."
-          />
+          <div className="flex flex-col gap-12">
+            <Stat
+              from={formatPercent(34)}
+              value={formatPercent(89)}
+              method="Taxa de acerto em teste de árvore, antes e depois da nova navegação (exemplo fictício da vitrine)."
+            />
+            <div className="grid gap-10 md:grid-cols-2">
+              <Stat
+                size="md"
+                value="5+"
+                label="anos de exemplo fictício"
+                methodKind="fonte"
+                method="desde 2000 (fictício)"
+              />
+              <Stat
+                size="md"
+                from="8s"
+                value="quase instantâneo"
+                label="carregamento de uma página fictícia"
+                method={<Fact value={pending("como foi medido (fictício)")} />}
+              />
+            </div>
+          </div>
         </Demo>
 
         <Demo

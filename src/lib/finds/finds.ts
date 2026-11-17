@@ -32,7 +32,7 @@ export const ACHADOS: readonly Achado[] = [
   {
     id: "pena",
     nome: "Pena de escrever",
-    dica: "Ainda na página sobre, outra coisa para escrever.",
+    dica: "Perto de quem se apresenta na Home, algo para escrever.",
   },
   {
     id: "chave",

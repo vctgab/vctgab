@@ -69,7 +69,7 @@ Selecionado mantém a marca à esquerda além da cor. Movimento reduzido: sem es
 - [x] CA-2 Escolher um depoente troca a ficha; setas funcionam.
 - [x] CA-3 Troca automática pausa com foco e tem botão de pausa nomeado.
 - [x] CA-4 jest-axe sem violações.
-- [ ] CA-5 (Home v2) No estado indisponível, `unavailableMessage` troca a frase padrão e `note` mostra a pendência; com `note`, o estado é desenhado na ficha de papel com furos, sem `blockquote` (nada de citação inventada).
+- [x] CA-5 (Home v2) No estado indisponível, `unavailableMessage` troca a frase padrão e `note` mostra a pendência; com `note`, o estado é desenhado na ficha de papel com furos, sem `blockquote` (nada de citação inventada).
 
 ## Plan
 
