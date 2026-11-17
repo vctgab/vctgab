@@ -85,6 +85,8 @@ Formas pelo motor com seed `hero:<página>:<i>`. A energia do tema multiplica a 
 - [x] CA-6 Links do rodapé com contraste aprovado contra o fundo e os três planos (`tokens:build`).
 - [x] CA-7 Pausa fora da tela (IntersectionObserver marca `data-pausado`).
 - [x] CA-8 Sem curvas de nível, mapa ou relevo (varredura de nomes e revisão das capturas).
+- [ ] CA-9 (Home v2) Hero com selo (`Tag` com ponto), linha "Teresina, PI · HH:mm · provavelmente uns 30 °C" (hora após montar), `h1` do copy com sublinhado `handLine` sob "no ar", apoio, CTAs "tenho uma vaga" (primário) e "tenho um projeto" (secundário).
+- [ ] CA-10 (Home v2) Esboço "do rascunho ao ar" a partir de `lg`: ficha com o wireframe à mão atrás e a mesma tela numa moldura de navegador na frente, nas cores da estação, `aria-hidden`, escondido em `forced-colors`.
 
 ## Plan
 
@@ -93,6 +95,10 @@ Formas pelo motor com seed `hero:<página>:<i>`. A energia do tema multiplica a 
 ### Fase 2
 
 - O hero vai para a Home e lê os textos de `src/content/home.ts`; o mês da agenda vem de `site.ts` por `Fact`. CTA por `talkHref` (WhatsApp ou `#contato`). "Front-end" sem quebra no hífen (D-1014).
+
+### Home v2
+
+- Textos novos de `src/content/home.ts`; sem agenda e sem WhatsApp. `hero-sketch.tsx` (Server) desenha o esboço com o motor (D-1205). O fundo de formas não muda.
 
 ## Tarefas
 

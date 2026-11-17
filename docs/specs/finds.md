@@ -76,6 +76,8 @@ Chip e caderno com bordas reais; achados riscados (texto) além da cor. Moviment
 - [x] CA-5 Cinco estados com os textos previstos.
 - [x] CA-6 Achavel tem alvo de 44 px, nome acessível e `aria-pressed`.
 - [x] CA-7 jest-axe sem violações.
+- [ ] CA-8 (Home v2) `AchadosChip` `placement="header"` mostra "achados: N de 7" com o número ao vivo, largura fixa (sem CLS) e abre o caderno; `AchadosCount` mostra "N de 7" em texto, com o número oculto antes de ler o caderno.
+- [ ] CA-9 (Home v2) Pena (seção sobre da Home) e mesa (`/contato`) têm desenho, nome antes e depois de achar e alvo de 44 px.
 
 ## Plan
 
@@ -85,6 +87,11 @@ Chip e caderno com bordas reais; achados riscados (texto) além da cor. Moviment
 
 - Coruja do correio escondida na Home, ao lado dos canais de contato (desenho `Coruja` em `drawings.tsx`, nome "Algo pousado perto do correio"). Teste em `tests/e2e/home.spec.ts` (CA-12).
 - Chip com duas caixas de largura fixa para a troca de fonte não deslocar o conteúdo (D-1009).
+
+### Home v2
+
+- `AchadosChip` ganha `placement="header"` (botão discreto, rótulo "achados:" em minúscula, como no copy); o `dock` sai do layout público e fica na vitrine (D-1204). `AchadosCount` (novo) para o rodapé.
+- Desenhos `Pena` e `Mesa` em `drawings.tsx`. A pena muda para a seção sobre da Home e ganha dica nova; a mesa fica em `/contato` (D-1215).
 
 ## Tarefas
 

@@ -75,10 +75,15 @@ Chip: `aria-pressed="true|false"`, nome = rótulo. Grupo de chips: `role="group"
 - [x] CA-4 Chip desabilitado exige motivo (tipo) e não alterna.
 - [x] CA-5 Altura mínima de 44 px no Chip.
 - [x] CA-6 jest-axe sem violações.
+- [ ] CA-7 (Home v2) `Tag` com `dot` mostra um ponto de status `aria-hidden` ao lado do texto (`success` ou `warning`); o texto continua sendo o portador do significado (VI-06).
 
 ## Plan
 
 `src/components/ui/tag/*` (Server) e `src/components/ui/chip/*` (cliente).
+
+### Home v2
+
+- `Tag` ganha `dot?: "success" | "warning"`: um `blob` pequeno do motor, preenchido com `success-fill` ou `warning-fill` e contornado em `ink`, antes do texto. Usos: selo do hero ("aberto a vagas e projetos") e status das fichas de projeto ("no ar" com `success`, "em andamento" com `warning`). D-1210.
 
 ## Tarefas
 

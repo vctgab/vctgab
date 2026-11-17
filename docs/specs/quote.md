@@ -69,10 +69,15 @@ Selecionado mantém a marca à esquerda além da cor. Movimento reduzido: sem es
 - [x] CA-2 Escolher um depoente troca a ficha; setas funcionam.
 - [x] CA-3 Troca automática pausa com foco e tem botão de pausa nomeado.
 - [x] CA-4 jest-axe sem violações.
+- [ ] CA-5 (Home v2) No estado indisponível, `unavailableMessage` troca a frase padrão e `note` mostra a pendência; com `note`, o estado é desenhado na ficha de papel com furos, sem `blockquote` (nada de citação inventada).
 
 ## Plan
 
 `src/components/ui/quote/*` (cliente). Radix RadioGroup para a lista.
+
+### Home v2
+
+- Estado indisponível com `unavailableMessage?: ReactNode` e `note?: ReactNode` (D-1208). A Home usa "O depoimento entra quando a pessoa autorizar a publicação." e `[a confirmar: depoimento voltado a dev, de preferência sobre a atuação como tech lead]`.
 
 ## Tarefas
 

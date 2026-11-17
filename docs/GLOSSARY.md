@@ -18,3 +18,4 @@ Um termo por conceito (regra VC-01). Se um texto precisar de um conceito que nã
 | vitrine            | A rota `/sistema`, que mostra o design system.                                                        | storybook, playground (exceto o playground de formas)     |
 | mensagem           | O que alguém envia pelo contato.                                                                      | contato (como substantivo para a mensagem), lead          |
 | orçamento          | Pedido de proposta de trabalho.                                                                       | cotação                                                   |
+| vaga               | Oportunidade de emprego ou contratação de Victor (CTA "tenho uma vaga", aba "vaga" do contato).       | job, position, oportunidade (como rótulo)                 |
