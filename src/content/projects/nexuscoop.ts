@@ -147,6 +147,7 @@ export const NEXUSCOOP: ProjectCase = {
   slug: "nexuscoop",
   meta: {
     title: "Caso Nexuscoop",
+    ogLine: "Portal de faturamento de uma cooperativa médica",
     description:
       "Como liderei o time que constrói o portal de faturamento, glosas, repasse e credenciamento de uma cooperativa médica, com uma base de código para web, Android e iOS.",
   },

@@ -102,7 +102,12 @@ export interface CaseHeaderData {
 
 export interface ProjectCase {
   slug: string
-  meta: { title: string; description: string }
+  meta: {
+    title: string
+    description: string
+    /** Linha curta da imagem Open Graph (sem print do cliente). */
+    ogLine: string
+  }
   header: CaseHeaderData
   /** Imagem principal (a única com prioridade). */
   cover: CaseFigureData

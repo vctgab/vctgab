@@ -23,7 +23,10 @@ export const PROJECTS: readonly Project[] = [
     status: "em andamento",
     description:
       "Lidero o time que constrói o portal de faturamento de uma cooperativa médica com mais de 500 médicos, com uma base de código só pra web, Android e iOS.",
-    image: pending("captura do Nexuscoop"),
+    image: {
+      src: "/projetos/nexuscoop/dashboard-desktop.webp",
+      alt: "Painel do cooperado do Nexuscoop, com dados fictícios: produção do mês, gráfico de barras dos últimos 12 meses e o Glosômetro.",
+    },
   },
   {
     slug: "kasb-health",

@@ -17,6 +17,8 @@ export interface LinkTextProps extends Omit<
   size?: "body" | "marker"
   /** Força o tratamento de link externo (por padrão, qualquer `http(s)://`). */
   external?: boolean
+  /** `false` desliga a pré-busca do Next (rota que ainda não existe: sem 404 no console). */
+  prefetch?: boolean
   seed?: string
 }
 
@@ -35,6 +37,7 @@ export function LinkText({
   variant = "standalone",
   size = "body",
   external,
+  prefetch,
   seed,
   className,
   ...rest
@@ -120,7 +123,7 @@ export function LinkText({
     )
   }
   return (
-    <Link {...rest} href={href as Route} className={classes}>
+    <Link {...rest} href={href as Route} prefetch={prefetch} className={classes}>
       {content}
       {underline}
     </Link>

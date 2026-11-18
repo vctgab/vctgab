@@ -1,3 +1,4 @@
+import Image from "next/image"
 import type { ReactNode } from "react"
 import { cn } from "@/lib/cn"
 
@@ -19,6 +20,10 @@ type Content =
 export type ImageFrameProps = Content & {
   /** Proporção fixa: a altura existe antes da imagem (sem CLS). */
   ratio?: keyof typeof RATIO
+  /** `sizes` do `next/image` (largura da moldura em cada tela). */
+  sizes?: string
+  /** Carrega com prioridade (só a imagem principal da página). */
+  priority?: boolean
   className?: string
 }
 
@@ -32,20 +37,28 @@ export function ImageFrame({
   alt,
   placeholder,
   ratio = "video",
+  sizes = "(min-width: 768px) 576px, 100vw",
+  priority = false,
   className,
 }: ImageFrameProps) {
   return (
     <div
       className={cn(
-        "w-full overflow-hidden forced-colors:border forced-colors:border-solid",
+        "relative w-full overflow-hidden forced-colors:border forced-colors:border-solid",
         RATIO[ratio],
         className,
       )}
     >
       {src ? (
-        // Imagens estáticas e pequenas do próprio site; next/image entra com as páginas reais.
-        // eslint-disable-next-line @next/next/no-img-element
-        <img src={src} alt={alt} className="size-full object-cover" loading="lazy" />
+        // `fill` dentro da moldura de proporção fixa: nada se desloca (D-1309).
+        <Image
+          src={src}
+          alt={alt}
+          fill
+          sizes={sizes}
+          preload={priority}
+          className="object-cover object-top"
+        />
       ) : (
         <div
           data-moldura-pendente=""

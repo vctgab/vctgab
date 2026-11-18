@@ -158,3 +158,24 @@
     border-color: ButtonText;
   }
 }
+
+/*
+ * Realce de sintaxe do CodeBlock (D-1308): o tema `css-variables` do shiki
+ * lê estas variáveis, ligadas a tokens semânticos que o `tokens:build` já
+ * valida sobre `surface-raised` (o fundo do bloco) nas 8 combinações.
+ */
+@layer base {
+  [data-code-block] {
+    --shiki-foreground: var(--ink);
+    --shiki-background: transparent;
+    --shiki-token-constant: var(--ink);
+    --shiki-token-string: var(--secondary-1-text);
+    --shiki-token-string-expression: var(--secondary-1-text);
+    --shiki-token-comment: var(--ink-subtle);
+    --shiki-token-keyword: var(--primary-text);
+    --shiki-token-parameter: var(--ink);
+    --shiki-token-function: var(--secondary-2-text);
+    --shiki-token-punctuation: var(--ink-muted);
+    --shiki-token-link: var(--primary-text);
+  }
+}

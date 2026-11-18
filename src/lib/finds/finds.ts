@@ -37,7 +37,7 @@ export const ACHADOS: readonly Achado[] = [
   {
     id: "chave",
     nome: "Chave de latão",
-    dica: "Na página de projetos, algo abre uma porta.",
+    dica: "No caso Nexuscoop, perto de onde nada some sem rastro, algo abre uma porta.",
   },
   { id: "bussola", nome: "Bússola", dica: "Também nos projetos, algo aponta o caminho." },
 ]

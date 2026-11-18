@@ -139,3 +139,43 @@ export function Mesa({ className }: { className?: string }) {
     </svg>
   )
 }
+
+export function Chave({ className }: { className?: string }) {
+  return (
+    <svg
+      width="40"
+      height="44"
+      viewBox="0 0 40 44"
+      aria-hidden="true"
+      focusable="false"
+      className={className}
+    >
+      <path
+        d="M12 4.2c4.4-.2 7.8 3.2 7.7 7.6-.1 4.4-3.6 7.6-7.8 7.5-4.3-.1-7.6-3.4-7.5-7.7.1-4.2 3.4-7.3 7.6-7.4Z"
+        className="fill-secondary-2-soft stroke-ink"
+        strokeWidth={2}
+        strokeLinejoin="round"
+      />
+      <path
+        d="M12 9.2c1.6 0 2.9 1.2 2.8 2.8-.1 1.6-1.3 2.8-2.9 2.7-1.5-.1-2.7-1.3-2.6-2.8.1-1.5 1.2-2.7 2.7-2.7Z"
+        className="fill-surface-base stroke-ink"
+        strokeWidth={1.6}
+        strokeLinejoin="round"
+      />
+      <path
+        d="M17.6 17.8 33.6 36.4"
+        fill="none"
+        className="stroke-ink"
+        strokeWidth={3.2}
+        strokeLinecap="round"
+      />
+      <path
+        d="m28.6 32.2 4.6-3.2M31.6 35.8l4.2-2.8"
+        fill="none"
+        className="stroke-ink"
+        strokeWidth={2.4}
+        strokeLinecap="round"
+      />
+    </svg>
+  )
+}

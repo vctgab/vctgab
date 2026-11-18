@@ -24,7 +24,7 @@ interface BaseProps {
 }
 
 export interface DialogProps extends BaseProps {
-  size?: "sm" | "md" | "lg"
+  size?: "sm" | "md" | "lg" | "xl"
   /** Para onde o foco volta ao fechar quando não há gatilho próprio. */
   onCloseAutoFocus?: (event: Event) => void
 }
@@ -38,7 +38,7 @@ export interface DrawerProps extends BaseProps {
   onCloseAutoFocus?: (event: Event) => void
 }
 
-const SIZE = { sm: "max-w-sm", md: "max-w-lg", lg: "max-w-2xl" } as const
+const SIZE = { sm: "max-w-sm", md: "max-w-lg", lg: "max-w-2xl", xl: "max-w-6xl" } as const
 
 function Header({
   title,

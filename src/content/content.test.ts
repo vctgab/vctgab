@@ -80,9 +80,13 @@ describe("CA-13: o copy da Home é o do pedido, literal", () => {
       "/projetos/suite-odin",
       "/projetos/lance",
     ])
-    expect(PROJECTS.every((p) => isPending(p.image))).toBe(true)
-    expect(isPending(PROJECTS[0]?.image) && PROJECTS[0].image.what).toBe(
-      "captura do Nexuscoop",
+    // O Nexuscoop já tem print (caso Nexuscoop); os outros três seguem pendentes.
+    expect(PROJECTS.map((p) => isPending(p.image))).toEqual([false, true, true, true])
+    expect(PROJECTS[0]?.image).toMatchObject({
+      src: "/projetos/nexuscoop/dashboard-desktop.webp",
+    })
+    expect(isPending(PROJECTS[1]?.image) && PROJECTS[1].image.what).toBe(
+      "captura do Kasb Health",
     )
   })
 
