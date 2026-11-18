@@ -7,6 +7,7 @@ export const SECTIONS = [
   { href: "/sistema/formas", label: "Formas", group: "Formas" },
   { href: "/sistema/componentes", label: "Componentes", group: "Componentes" },
   { href: "/sistema/conteudo", label: "Conteúdo e movimento", group: "Componentes" },
+  { href: "/sistema/caso", label: "Caso", group: "Componentes" },
   { href: "/sistema/achados", label: "Achados", group: "Componentes" },
   { href: "/sistema/hero", label: "Hero e rodapé", group: "Composições" },
   { href: "/sistema/temas", label: "Temas", group: "Composições" },

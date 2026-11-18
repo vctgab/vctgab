@@ -115,17 +115,17 @@ Herdados dos componentes: `forced-colors` troca camadas por bordas reais; com mo
 
 ### Critérios de aceite
 
-- [ ] CA-1 O conteúdo do caso é o do copy: um teste compara cada trecho de texto com `docs/copy/case-nexuscoop.md` (insensível à primeira letra) e as seções saem na ordem do copy.
-- [ ] CA-2 `/projetos/nexuscoop` tem um `h1`, um `h2` por seção na ordem do copy e axe sem violações nas 8 combinações de estação e modo (e2e).
-- [ ] CA-3 Cada figura tem a legenda do copy e um `alt` descritivo (não é o nome do arquivo); só a imagem principal tem prioridade e todas declaram largura e altura (teste de conteúdo e e2e de CLS 0).
-- [ ] CA-4 Os itens `[validar]` estão como `review(...)` no conteúdo, aparecem com a marca visível e o trecho de código do cliente não é renderizado (teste de componente e e2e).
-- [ ] CA-5 `pnpm release:check` lista cada revisão (cinco) e o link para `/projetos/kasb-health`, e continua reprovando enquanto existirem.
-- [ ] CA-6 Os cinco números usam o `Stat` com fonte ou método, exatamente como pedido.
-- [ ] CA-7 Teclado de ponta a ponta: sumário, ampliar e fechar figura, copiar código (quando liberado) e CTAs (e2e).
-- [ ] CA-8 Metadados: título e descrição em pt-BR, imagem Open Graph gerada pelo `next/og` sem print do cliente, entrada no sitemap (teste de unidade e build).
-- [ ] CA-9 A Home usa a descrição nova do Nexuscoop e os quatro números novos, sem "8s → quase instantâneo" nem "400+" (teste de conteúdo; D-1303).
-- [ ] CA-10 Capturas do caso em 390×844 e 1366×768, em primavera clara e escura, em `docs/screenshots/caso/`.
-- [ ] CA-11 Lighthouse mobile nos dois métodos (simulado e devtools) e CLS 0 com as imagens, registrados no relatório.
+- [x] CA-1 O conteúdo do caso é o do copy: um teste compara cada trecho de texto com `docs/copy/case-nexuscoop.md` (insensível à primeira letra) e as seções saem na ordem do copy.
+- [x] CA-2 `/projetos/nexuscoop` tem um `h1`, um `h2` por seção na ordem do copy e axe sem violações nas 8 combinações de estação e modo (e2e).
+- [x] CA-3 Cada figura tem a legenda do copy e um `alt` descritivo (não é o nome do arquivo); só a imagem principal tem prioridade e todas declaram largura e altura (teste de conteúdo e e2e de CLS 0).
+- [x] CA-4 Os itens `[validar]` estão como `review(...)` no conteúdo, aparecem com a marca visível e o trecho de código do cliente não é renderizado (teste de componente e e2e).
+- [x] CA-5 `pnpm release:check` lista cada revisão (cinco) e o link para `/projetos/kasb-health`, e continua reprovando enquanto existirem.
+- [x] CA-6 Os cinco números usam o `Stat` com fonte ou método, exatamente como pedido.
+- [x] CA-7 Teclado de ponta a ponta: sumário, ampliar e fechar figura, copiar código (quando liberado) e CTAs (e2e).
+- [x] CA-8 Metadados: título e descrição em pt-BR, imagem Open Graph gerada pelo `next/og` sem print do cliente, entrada no sitemap (teste de unidade e build).
+- [x] CA-9 A Home usa a descrição nova do Nexuscoop e os quatro números novos, sem "8s → quase instantâneo" nem "400+" (teste de conteúdo; D-1303).
+- [x] CA-10 Capturas do caso em 390×844 e 1366×768, em primavera clara e escura, em `docs/screenshots/caso/`.
+- [x] CA-11 Lighthouse mobile nos dois métodos (simulado e devtools) e CLS 0 com as imagens, registrados no relatório.
 
 ## Plan
 
@@ -140,9 +140,9 @@ Herdados dos componentes: `forced-colors` troca camadas por bordas reais; com mo
 ## Tarefas
 
 - [x] Ficha
-- [ ] Conteúdo tipado e `review()`
-- [ ] Componentes (cada um com teste)
-- [ ] Molde e página `/projetos/nexuscoop`
-- [ ] Prints, metadados, sitemap
-- [ ] Seção na vitrine
-- [ ] QA (axe, Lighthouse, CLS, teclado, capturas) e relatório
+- [x] Conteúdo tipado e `review()`
+- [x] Componentes (cada um com teste)
+- [x] Molde e página `/projetos/nexuscoop`
+- [x] Prints, metadados, sitemap
+- [x] Seção na vitrine
+- [x] QA (axe, Lighthouse, CLS, teclado, capturas) e relatório

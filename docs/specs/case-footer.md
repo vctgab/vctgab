@@ -55,11 +55,11 @@ Herdados dos componentes usados.
 
 ### Critérios de aceite
 
-- [ ] CA-1 Mostra "Próximo projeto:" e o link para `next.href` com o nome do projeto (componente).
-- [ ] CA-2 Os CTAs levam a `/contato?aba=vaga` e `/contato?aba=projeto` (componente e e2e).
-- [ ] CA-3 O link do próximo projeto não pré-busca a rota (componente).
-- [ ] CA-4 jest-axe sem violações; axe nas 8 combinações (e2e do caso).
-- [ ] CA-5 `pnpm release:check` acusa `/projetos/kasb-health` enquanto a rota não existir (script).
+- [x] CA-1 Mostra "Próximo projeto:" e o link para `next.href` com o nome do projeto (componente).
+- [x] CA-2 Os CTAs levam a `/contato?aba=vaga` e `/contato?aba=projeto` (componente e e2e).
+- [x] CA-3 O link do próximo projeto não pré-busca a rota: o console do e2e do caso fica limpo, sem 404 (e2e).
+- [x] CA-4 jest-axe sem violações; axe nas 8 combinações (e2e do caso).
+- [x] CA-5 `pnpm release:check` acusa `/projetos/kasb-health` enquanto a rota não existir (script).
 
 ## Plan
 
@@ -68,6 +68,6 @@ Herdados dos componentes usados.
 ## Tarefas
 
 - [x] Ficha
-- [ ] Implementação
-- [ ] Testes (um por critério)
-- [ ] Seção na vitrine
+- [x] Implementação
+- [x] Testes (um por critério)
+- [x] Seção na vitrine

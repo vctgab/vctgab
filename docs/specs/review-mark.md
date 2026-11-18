@@ -58,11 +58,11 @@ Nenhuma forma do motor: fundo `warning-soft` retangular e sublinhado tracejado d
 
 ### Critérios de aceite
 
-- [ ] CA-1 `review()` devolve um objeto simples e `isReview()` o reconhece; texto comum e `pending()` não são revisão (unidade).
-- [ ] CA-2 `ReviewMark` mostra o conteúdo e a marca `[validar: o que validar]` com `data-review` (componente).
-- [ ] CA-3 Sem `children`, mostra só a marca (componente).
-- [ ] CA-4 jest-axe sem violações; os pares `ink`/`warning-soft` e `warning-text`/`warning-soft` já estão no `tokens:build`.
-- [ ] CA-5 `pnpm release:check` lista cada `review()` do conteúdo e reprova enquanto existir um (script e teste do coletor).
+- [x] CA-1 `review()` devolve um objeto simples e `isReview()` o reconhece; texto comum e `pending()` não são revisão (unidade).
+- [x] CA-2 `ReviewMark` mostra o conteúdo e a marca `[validar: o que validar]` com `data-review` (componente).
+- [x] CA-3 Sem `children`, mostra só a marca (componente).
+- [x] CA-4 jest-axe sem violações; os pares `ink`/`warning-soft` e `warning-text`/`warning-soft` já estão no `tokens:build`.
+- [x] CA-5 `pnpm release:check` lista cada `review()` do conteúdo e reprova enquanto existir um (script e teste do coletor).
 
 ## Plan
 
@@ -71,6 +71,6 @@ Nenhuma forma do motor: fundo `warning-soft` retangular e sublinhado tracejado d
 ## Tarefas
 
 - [x] Ficha
-- [ ] Implementação
-- [ ] Testes (um por critério)
-- [ ] Seção na vitrine
+- [x] Implementação
+- [x] Testes (um por critério)
+- [x] Seção na vitrine

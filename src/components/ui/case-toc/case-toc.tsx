@@ -35,7 +35,8 @@ function useCurrentSection(ids: readonly string[], initial: string | null) {
           else visible.delete(entry.target.id)
         }
         const first = ids.find((id) => visible.has(id))
-        if (first) setCurrent(first)
+        // Sem seção na faixa de leitura (topo da página): nenhuma marcada.
+        setCurrent(first ?? null)
       },
       { rootMargin: "-96px 0px -60% 0px" },
     )
@@ -128,7 +129,7 @@ export function CaseToc({ items, current: initial, className }: CaseTocProps) {
         <details
           ref={details}
           {...host}
-          className="group/sumario relative isolate px-4 text-ink"
+          className="group/sumario relative isolate px-6 text-ink"
         >
           <Shape
             seed="caso:sumario"

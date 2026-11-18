@@ -45,7 +45,7 @@ Moldura `wobblyRect` `md` (preenchimento `surface-raised`, contorno `stroke`), r
 
 ### Realce e contraste
 
-`shiki` com tema `css-variables`: os tokens usam `--shiki-token-*`, definidos em `src/styles/base.css` com tokens semânticos já validados em `surface-raised`: palavra-chave `primary-text`, texto `ink`, pontuação `ink-muted`, comentário `ink-subtle`, texto entre aspas `secondary-1-text`, função `secondary-2-text`, constante `danger-text`. Cada par entra no `tokens:build` sobre `surface-raised` (8 combinações).
+`shiki` com tema `css-variables`: os tokens usam `--shiki-token-*`, definidos em `src/styles/base.css` com tokens semânticos já validados em `surface-raised`: palavra-chave `primary-text`, texto `ink`, pontuação `ink-muted`, comentário `ink-subtle`, texto entre aspas `secondary-1-text`, função `secondary-2-text`, constante `danger-text`. Todos esses pares já estão no `tokens:build` sobre `surface-raised` (8 combinações); nenhum par novo foi preciso.
 
 ### Ficha de Texto
 
@@ -66,21 +66,21 @@ Erro (MS-02): "Não foi possível copiar o código. O navegador não liberou a �
 
 ### Critérios de aceite
 
-- [ ] CA-1 Com `code`, renderiza `<pre><code>` com `<span>` realçados e nenhum JavaScript de realce no cliente (componente de servidor, sem `"use client"` no realce).
-- [ ] CA-2 Com `review(…, { withhold: true })`, o texto do código não aparece no DOM; aparecem a legenda e a marca (componente).
-- [ ] CA-3 "Copiar código" tem nome acessível, copia exatamente o código, anuncia "Código copiado" e volta ao rótulo inicial (componente, `userEvent`).
-- [ ] CA-4 Falha de cópia mostra a mensagem inline do padrão MS-02 e mantém o botão utilizável (componente).
-- [ ] CA-5 A região de código é focável e tem nome (componente e e2e de teclado).
-- [ ] CA-6 Contraste dos pares de realce calculado nas 8 combinações (`tokens:build`).
-- [ ] CA-7 jest-axe sem violações nos dois estados (componente).
+- [x] CA-1 Com `code`, renderiza `<pre><code>` com `<span>` realçados e nenhum JavaScript de realce no cliente (componente de servidor, sem `"use client"` no realce).
+- [x] CA-2 Com `review(…, { withhold: true })`, o texto do código não aparece no DOM; aparecem a legenda e a marca (componente).
+- [x] CA-3 "Copiar código" tem nome acessível, copia exatamente o código, anuncia "Código copiado" e volta ao rótulo inicial (componente, `userEvent`).
+- [x] CA-4 Falha de cópia mostra a mensagem inline do padrão MS-02 e mantém o botão utilizável (componente).
+- [x] CA-5 A região de código é focável e tem nome (componente e e2e de teclado).
+- [x] CA-6 Contraste dos pares de realce calculado nas 8 combinações (`tokens:build`).
+- [x] CA-7 jest-axe sem violações nos dois estados (componente).
 
 ## Plan
 
-`shiki` (núcleo e motor JavaScript, só as linguagens usadas) em `src/components/ui/code-block/highlight.ts` (servidor, em cache). `code-block.tsx` (servidor) e `copy-button.tsx` (cliente). Variáveis `--shiki-*` em `src/styles/base.css`; pares em `src/lib/color/pairs.ts`. Riscos: peso da dependência no servidor (não vai ao cliente, D-1307); contraste (pares novos).
+`shiki` (núcleo e motor JavaScript, só as linguagens usadas) em `src/components/ui/code-block/highlight.ts` (servidor, em cache). `code-block.tsx` (servidor) e `copy-button.tsx` (cliente). Variáveis `--shiki-*` em `src/styles/base.css`. Riscos: peso da dependência no servidor (não vai ao cliente, D-1307); contraste (pares já validados).
 
 ## Tarefas
 
 - [x] Ficha
-- [ ] Implementação
-- [ ] Testes (um por critério)
-- [ ] Seção na vitrine
+- [x] Implementação
+- [x] Testes (um por critério)
+- [x] Seção na vitrine

@@ -33,7 +33,7 @@ Não é focável. Um link dentro do texto segue o padrão do `LinkText`.
 
 ### Irregularidade
 
-`wobblyRect` `md`, seed própria, rotação 0 (texto longo fica reto). A barra à esquerda é um `handLine` vertical (segunda camada SVG). Duas camadas ao todo (SH-03). Padding de segurança `p-6`.
+`wobblyRect` `md`, seed própria, rotação 0 (texto longo fica reto). A barra à esquerda é um `wobblyRect` estreito em `primary-decor` (uma camada a mais). Até 3 camadas ao todo (SH-03). Padding de segurança `p-6`.
 
 ### Alto contraste e movimento
 
@@ -56,11 +56,11 @@ Não é focável. Um link dentro do texto segue o padrão do `LinkText`.
 
 ### Critérios de aceite
 
-- [ ] CA-1 Tem `role="note"` com o nome de `label` e mostra o conteúdo (componente).
-- [ ] CA-2 No máximo 2 camadas SVG, todas `aria-hidden` e sem `pointer-events` (componente).
-- [ ] CA-3 jest-axe sem violações nos dois tons (componente).
-- [ ] CA-4 Contraste de `ink` sobre `primary-soft` e `surface-sunken` calculado (`tokens:build`) e axe nas 8 combinações (e2e do caso).
-- [ ] CA-5 Texto longo com 3 seeds fica dentro do corpo (componente).
+- [x] CA-1 Tem `role="note"` com o nome de `label` e mostra o conteúdo (componente).
+- [x] CA-2 No máximo 3 camadas SVG, todas `aria-hidden` e sem `pointer-events` (componente).
+- [x] CA-3 jest-axe sem violações nos dois tons (componente).
+- [x] CA-4 Contraste de `ink` sobre `primary-soft` e `surface-sunken` calculado (`tokens:build`) e axe nas 8 combinações (e2e do caso).
+- [x] CA-5 Texto longo com 3 seeds fica dentro do corpo (componente).
 
 ## Plan
 
@@ -69,6 +69,6 @@ Não é focável. Um link dentro do texto segue o padrão do `LinkText`.
 ## Tarefas
 
 - [x] Ficha
-- [ ] Implementação
-- [ ] Testes (um por critério)
-- [ ] Seção na vitrine
+- [x] Implementação
+- [x] Testes (um por critério)
+- [x] Seção na vitrine

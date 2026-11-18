@@ -77,6 +77,81 @@ for (const theme of THEMES) {
   })
 }
 
+/** Caso Nexuscoop (docs/specs/pages/case.md CA-10): primavera clara e escura em 390×844 e 1366×768. */
+for (const theme of ["primavera-claro", "primavera-escuro"] as const) {
+  for (const vp of HOME_VIEWPORTS) {
+    test(`caso Nexuscoop ${theme} ${vp.name}`, async ({ browser }) => {
+      const dir = join(OUT, "caso", engineOf(), theme)
+      mkdirSync(dir, { recursive: true })
+      const context = await browser.newContext({
+        viewport: { width: vp.width, height: vp.height },
+        deviceScaleFactor: 1,
+      })
+      const page = await context.newPage()
+      await applyTheme(page, theme)
+      await open(page, "/projetos/nexuscoop", theme)
+      await page.screenshot({
+        path: join(dir, `${vp.name}.jpg`),
+        type: "jpeg",
+        quality: 72,
+        fullPage: true,
+      })
+      // A parte de cima da página, como o visitante a vê ao chegar.
+      await page.screenshot({
+        path: join(dir, `${vp.name}-topo.jpg`),
+        type: "jpeg",
+        quality: 80,
+      })
+      await context.close()
+    })
+  }
+}
+
+test("caso Nexuscoop: figura ampliada (1366×768) e sumário aberto (390×844)", async ({
+  browser,
+}) => {
+  const dir = join(OUT, "caso", engineOf(), "primavera-claro")
+  mkdirSync(dir, { recursive: true })
+  const desktop = await browser.newContext({
+    viewport: { width: 1366, height: 768 },
+    deviceScaleFactor: 1,
+  })
+  const page = await desktop.newPage()
+  await applyTheme(page, "primavera-claro")
+  await open(page, "/projetos/nexuscoop", "primavera-claro")
+  await page
+    .getByRole("button", { name: /^Ampliar imagem/ })
+    .first()
+    .click()
+  await page.getByRole("dialog").waitFor()
+  await page.waitForTimeout(500)
+  await page.screenshot({
+    path: join(dir, "1366x768-ampliada.jpg"),
+    type: "jpeg",
+    quality: 80,
+  })
+  await desktop.close()
+
+  const mobile = await browser.newContext({
+    viewport: { width: 390, height: 844 },
+    deviceScaleFactor: 1,
+  })
+  const phone = await mobile.newPage()
+  await applyTheme(phone, "primavera-claro")
+  await open(phone, "/projetos/nexuscoop", "primavera-claro")
+  await phone
+    .getByRole("navigation", { name: "Sumário do caso" })
+    .getByText("Sumário")
+    .click()
+  await phone.waitForTimeout(300)
+  await phone.screenshot({
+    path: join(dir, "390x844-sumario-aberto.jpg"),
+    type: "jpeg",
+    quality: 80,
+  })
+  await mobile.close()
+})
+
 test("vitrine de temas: as 8 combinações lado a lado", async ({ browser }) => {
   const dir = join(OUT, "sistema", engineOf())
   mkdirSync(dir, { recursive: true })

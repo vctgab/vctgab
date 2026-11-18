@@ -87,11 +87,21 @@ export function CaseHeader({ name, areas, about, facts, seed }: CaseHeaderProps)
           </Row>
           <Row label="Stack">
             <ul aria-label="Stack" className="flex flex-wrap gap-2">
-              {facts.stack.map((item) => (
-                <Tag as="li" key={item} seed={`${base}:stack:${item}`}>
-                  {item}
-                </Tag>
-              ))}
+              {facts.stack.map((item) => {
+                // "Supabase (PostgreSQL, Auth, …)": a ferramenta vira chip e o detalhe fica ao lado.
+                const [, name = item, detail] = /^(.+?) \((.+)\)$/.exec(item) ?? []
+                return (
+                  <li key={item} className="flex flex-wrap items-center gap-2">
+                    <Tag seed={`${base}:stack:${name}`}>{name}</Tag>
+                    {detail ? (
+                      <>
+                        {" "}
+                        <span className="text-sm text-ink-muted">({detail})</span>
+                      </>
+                    ) : null}
+                  </li>
+                )
+              })}
             </ul>
           </Row>
         </dl>

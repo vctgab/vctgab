@@ -21,7 +21,7 @@ Sumário do caso: links para as seções, com a seção atual marcada. No deskto
 
 ### Estados
 
-Link: padrão, hover (um passo mais escuro), foco visível (anel a 3:1), ativo (dois passos), atual (`aria-current="location"`, barra desenhada à esquerda, texto em primária e peso médio: três indicadores além da cor). Bloco recolhível: fechado, aberto. Sem JavaScript: o bloco recolhível fica aberto e os links funcionam; nenhuma seção marcada. Carregando e vazio não se aplicam; erro não se aplica; indisponível: sem observador (navegador antigo), nenhuma seção marcada.
+Link: padrão, hover (um passo mais escuro), foco visível (anel a 3:1), ativo (dois passos), atual (`aria-current="location"`, seta desenhada à esquerda, texto em primária e peso médio: três indicadores além da cor). Bloco recolhível: fechado, aberto. Sem JavaScript: o `<details>` abre e fecha nativamente e os links funcionam; nenhuma seção marcada. Carregando e vazio não se aplicam; erro não se aplica; indisponível: sem observador (navegador antigo), nenhuma seção marcada.
 
 ### Teclado
 
@@ -38,7 +38,7 @@ Link: padrão, hover (um passo mais escuro), foco visível (anel a 3:1), ativo (
 
 ### Irregularidade
 
-Barra da seção atual: `handLine` vertical do motor, seed por item (`caso:toc:<id>`). Fundo do bloco recolhível: `wobblyRect` `md`. Um SVG por barra marcada e uma camada de fundo no bloco: até 2 por parte (SH-03).
+A seta da seção atual é o ícone `seta` do sistema. Fundo do bloco recolhível: `wobblyRect` `md` (seed `caso:sumario`), até 3 camadas (SH-03). A coluna do desktop não tem fundo.
 
 ### Alto contraste e movimento
 
@@ -61,21 +61,21 @@ Barra da seção atual: `handLine` vertical do motor, seed por item (`caso:toc:<
 
 ### Critérios de aceite
 
-- [ ] CA-1 Um link por item, com `href="#<id>"` e o título da seção (componente).
-- [ ] CA-2 O item passado em `current` (e depois o observado) leva `aria-current="location"` e não os demais (componente).
-- [ ] CA-3 No celular, o botão "Sumário" tem `aria-expanded` e abre e fecha a lista; Esc fecha e devolve o foco (componente).
-- [ ] CA-4 No desktop a coluna é `sticky` e fica visível ao rolar; no celular, o bloco recolhível está no topo (e2e).
-- [ ] CA-5 Rolar até uma seção marca o item dela como atual (e2e).
-- [ ] CA-6 Todo link e o botão têm alvo de 44 px ou mais (e2e).
-- [ ] CA-7 jest-axe sem violações; axe nas 8 combinações (e2e do caso).
+- [x] CA-1 Um link por item, com `href="#<id>"` e o título da seção (componente).
+- [x] CA-2 O item passado em `current` (e depois o observado) leva `aria-current="location"` e não os demais (componente).
+- [x] CA-3 No celular, o botão "Sumário" tem `aria-expanded` e abre e fecha a lista; Esc fecha e devolve o foco (componente).
+- [x] CA-4 No desktop a coluna é `sticky` e fica visível ao rolar; no celular, o bloco recolhível está no topo (e2e).
+- [x] CA-5 Rolar até uma seção marca o item dela como atual (e2e).
+- [x] CA-6 Todo link e o botão têm alvo de 44 px ou mais (e2e).
+- [x] CA-7 jest-axe sem violações; axe nas 8 combinações (e2e do caso).
 
 ## Plan
 
-`src/components/ui/case-toc/case-toc.tsx` (cliente: observador e estado) e `index.ts`, teste. Usa `Button` e `Icon`. Riscos: dois `nav` no DOM (um escondido por CSS: nomes diferentes e `display: none` evitam `landmark-unique`); marcação errada em seções curtas (o observador usa uma faixa de 20% a 30% da tela).
+`src/components/ui/case-toc/case-toc.tsx` (cliente: observador e estado; o bloco do celular é um `<details>`, que funciona sem JavaScript) e `index.ts`, teste. Usa `Button` e `Icon`. Riscos: dois `nav` no DOM (um escondido por CSS: nomes diferentes e `display: none` evitam `landmark-unique`); marcação errada em seções curtas (o observador usa uma faixa de 20% a 30% da tela).
 
 ## Tarefas
 
 - [x] Ficha
-- [ ] Implementação
-- [ ] Testes (um por critério)
-- [ ] Seção na vitrine
+- [x] Implementação
+- [x] Testes (um por critério)
+- [x] Seção na vitrine

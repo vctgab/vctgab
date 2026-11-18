@@ -1,7 +1,9 @@
 import { render, screen, within } from "@testing-library/react"
+import type { ReactNode } from "react"
 import { axe } from "jest-axe"
 import { AchadosProvider } from "@/components/ui/finds"
 import { NEXUSCOOP } from "@/content/projects"
+import type * as CodeBlockModule from "@/components/ui/code-block"
 import { CasePage } from "."
 
 /**
@@ -10,7 +12,7 @@ import { CasePage } from "."
  * O realce e a cópia têm teste próprio em ui/code-block.
  */
 vi.mock("@/components/ui/code-block", async (importOriginal) => {
-  const actual = await importOriginal<typeof import("@/components/ui/code-block")>()
+  const actual = (await importOriginal()) as typeof CodeBlockModule
   return {
     ...actual,
     CodeBlock: ({
@@ -19,7 +21,7 @@ vi.mock("@/components/ui/code-block", async (importOriginal) => {
       seed = "codigo",
     }: {
       code: { what?: string }
-      caption: React.ReactNode
+      caption: ReactNode
       seed?: string
     }) => actual.CodeBlockView({ language: "ts", caption, review: code.what, seed }),
   }

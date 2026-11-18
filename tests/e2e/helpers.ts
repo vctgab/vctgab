@@ -25,6 +25,7 @@ export const SYSTEM_PAGES = [
   "/sistema/formas",
   "/sistema/componentes",
   "/sistema/conteudo",
+  "/sistema/caso",
   "/sistema/achados",
   "/sistema/hero",
   "/sistema/temas",

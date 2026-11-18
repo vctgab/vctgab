@@ -89,38 +89,40 @@ test("CA-4: toda pendência aparece como [a confirmar: …]", async ({ page }) =
   const marks = await page.locator("[data-pendente]").allTextContents()
   for (const m of marks) expect(m).toMatch(/^\[a confirmar: [^\]]+\]$/)
   for (const what of [
-    "captura do Nexuscoop",
     "captura do Kasb Health",
     "captura da Suíte OdiN",
     "captura do Lance!",
     "depoimento voltado a dev, de preferência sobre a atuação como tech lead",
-    "como foi medido e o tempo final em segundos",
-    "validar: arquivos ou testes",
     "foto do Victor",
     "URL do LinkedIn",
     "arquivo do CV em PDF",
     "confirmar o sobrenome usado no site",
   ])
     expect(marks).toContain(`[a confirmar: ${what}]`)
+  // O Nexuscoop já tem print; o 8s e o 400+ saíram da Home (D-1303, D-1320).
+  expect(marks).not.toContain("[a confirmar: captura do Nexuscoop]")
+  expect(marks.join(" ")).not.toMatch(/medido|arquivos ou testes/)
   // Sem citação inventada nem player vazio.
   await expect(page.locator("main blockquote")).toHaveCount(0)
   await expect(page.locator("main video")).toHaveCount(0)
 })
 
-test("CA-4: ficha de projeto leva à 404 'Trilha perdida', sem pré-busca", async ({
+test("CA-4: ficha de projeto sem caso leva à 404 'Trilha perdida', sem pré-busca", async ({
   page,
 }) => {
   const messages = collectConsole(page)
   await page.goto("/", { waitUntil: "networkidle" })
   await scrollThrough(page)
   expect(messages.filter((m) => /404|Failed to load/.test(m))).toEqual([])
-  await page.getByRole("link", { name: "Nexuscoop" }).click()
+  await page.getByRole("link", { name: "Kasb Health" }).click()
   await expect(
     page.getByRole("heading", { level: 1, name: "Trilha perdida" }),
   ).toBeVisible()
-  await expect(page).toHaveURL(/\/projetos\/nexuscoop$/)
-  const direct = await page.request.get("/projetos/nexuscoop")
+  await expect(page).toHaveURL(/\/projetos\/kasb-health$/)
+  const direct = await page.request.get("/projetos/kasb-health")
   expect(direct.status()).toBe(404)
+  // O Nexuscoop tem caso publicado.
+  expect((await page.request.get("/projetos/nexuscoop")).status()).toBe(200)
 })
 
 test("CA-5: contador do cabeçalho ao vivo, abre o caderno e devolve o foco", async ({

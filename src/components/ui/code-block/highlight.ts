@@ -39,6 +39,9 @@ function getHighlighter() {
 
 /** HTML do `<pre><code>` realçado, com `tabindex` e nome para rolar pelo teclado. */
 export async function highlight(code: string, language: CodeLanguage): Promise<string> {
+  // Em cache (Cache Components): o realce roda uma vez por trecho, no build, e a
+  // inicialização do shiki (que lê o relógio) não vira valor instável no render.
+  "use cache"
   const h = await getHighlighter()
   return h.codeToHtml(code, {
     lang: language,

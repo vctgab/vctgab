@@ -42,7 +42,7 @@ Padrão; hover (a ficha sobe 2 px e o selo "ampliar" aparece); foco visível (an
 
 ### Irregularidade
 
-`wobblyRect` `lg` para o navegador e `wobblyRect` `md` mais arredondado (irregularidade menor) para o celular; seed por figura (`caso:<slug>:<id>`); rotação fixa de -1,2° a 1,2° por seed. Duas camadas SVG (sombra e contorno). A imagem fica dentro do retângulo, sem rotação (o print nunca fica torto, só a moldura). Padding de segurança `p-2` e barra de 2,5 rem.
+`wobblyRect` `lg` para o navegador e `wobblyRect` `md` mais arredondado (irregularidade menor) para o celular; seed por figura (`caso:<id>`); sem rotação (o print nunca fica torto, só o contorno é irregular). Até três camadas SVG (sombra, preenchimento e contorno); os pontos do navegador e o alto-falante são elementos com `border-radius` do motor, sem SVG. Padding de segurança `p-2` e barra de 2,5 rem.
 
 ### Alto contraste e movimento
 
@@ -65,14 +65,14 @@ Padrão; hover (a ficha sobe 2 px e o selo "ampliar" aparece); foco visível (an
 
 ### Critérios de aceite
 
-- [ ] CA-1 Com `src`, renderiza `<figure>` com `<img>` de `alt` descritivo, `width` e `height` declarados e `<figcaption>` com a legenda (componente).
-- [ ] CA-2 Só a figura com `priority` tem prioridade; as demais carregam de forma preguiçosa (componente).
-- [ ] CA-3 O botão tem o nome "Ampliar imagem: <alt>" e alvo de toque de 44 px ou mais (componente e e2e).
-- [ ] CA-4 Enter abre o diálogo com a imagem inteira; Esc fecha e devolve o foco ao botão (componente e e2e).
-- [ ] CA-5 `CaseFigureGroup` mostra todas as figuras com uma legenda só; empilha no celular e fica lado a lado a partir de `md` (componente e e2e).
-- [ ] CA-6 Sem `src`, mostra a hachura com `[a confirmar: print: <arquivo>]` e nenhuma `<img>` (componente).
-- [ ] CA-7 No máximo 2 camadas SVG por moldura, `aria-hidden` e sem `pointer-events` (componente).
-- [ ] CA-8 jest-axe sem violações; axe nas 8 combinações no caso (e2e); CLS 0 (e2e).
+- [x] CA-1 Com `src`, renderiza `<figure>` com `<img>` de `alt` descritivo, `width` e `height` declarados e `<figcaption>` com a legenda (componente).
+- [x] CA-2 Só a figura com `priority` tem prioridade; as demais carregam de forma preguiçosa (componente).
+- [x] CA-3 O botão tem o nome "Ampliar imagem: <alt>" e alvo de toque de 44 px ou mais (componente e e2e).
+- [x] CA-4 Enter abre o diálogo com a imagem inteira; Esc fecha e devolve o foco ao botão (componente e e2e).
+- [x] CA-5 `CaseFigureGroup` mostra todas as figuras com uma legenda só; empilha no celular e fica lado a lado a partir de `md` (componente e e2e).
+- [x] CA-6 Sem `src`, mostra a hachura com `[a confirmar: print: <arquivo>]` e nenhuma `<img>` (componente).
+- [x] CA-7 No máximo 2 camadas SVG por moldura, `aria-hidden` e sem `pointer-events` (componente).
+- [x] CA-8 jest-axe sem violações; axe nas 8 combinações no caso (e2e); CLS 0 (e2e).
 
 ## Plan
 
@@ -81,6 +81,6 @@ Padrão; hover (a ficha sobe 2 px e o selo "ampliar" aparece); foco visível (an
 ## Tarefas
 
 - [x] Ficha
-- [ ] Implementação
-- [ ] Testes (um por critério)
-- [ ] Seção na vitrine
+- [x] Implementação
+- [x] Testes (um por critério)
+- [x] Seção na vitrine

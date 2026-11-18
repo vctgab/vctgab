@@ -55,11 +55,11 @@ Herdados da `Ficha` e da `Tag`. Sem movimento.
 
 ### Critérios de aceite
 
-- [ ] CA-1 Mostra `h1`, "o que é" e a ficha como `dl` com os sete rótulos na ordem (componente).
-- [ ] CA-2 O status é uma `Tag` com ponto e texto; a stack é uma lista de `Tag` (componente).
-- [ ] CA-3 Campo em revisão mostra a marca `[validar: …]`; campo pendente mostra `[a confirmar: …]` (componente).
-- [ ] CA-4 jest-axe sem violações (componente) e axe nas 8 combinações (e2e do caso).
-- [ ] CA-5 Texto longo ("o que é" e a stack) com 3 seeds não vaza da ficha, em 390 px (componente e e2e).
+- [x] CA-1 Mostra `h1`, "o que é" e a ficha como `dl` com os sete rótulos na ordem (componente).
+- [x] CA-2 O status é uma `Tag` com ponto e texto; a stack é uma lista de `Tag` (componente).
+- [x] CA-3 Campo em revisão mostra a marca `[validar: …]`; campo pendente mostra `[a confirmar: …]` (componente).
+- [x] CA-4 jest-axe sem violações (componente) e axe nas 8 combinações (e2e do caso).
+- [x] CA-5 Texto longo ("o que é" e a stack) com 3 seeds não vaza da ficha, em 390 px (componente e e2e).
 
 ## Plan
 
@@ -68,6 +68,6 @@ Herdados da `Ficha` e da `Tag`. Sem movimento.
 ## Tarefas
 
 - [x] Ficha
-- [ ] Implementação
-- [ ] Testes (um por critério)
-- [ ] Seção na vitrine
+- [x] Implementação
+- [x] Testes (um por critério)
+- [x] Seção na vitrine

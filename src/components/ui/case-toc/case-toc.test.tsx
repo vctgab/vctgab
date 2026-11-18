@@ -72,6 +72,26 @@ describe("CaseToc", () => {
     for (const { id } of ITEMS) document.getElementById(id)?.remove()
   })
 
+  it("CA-2: ao voltar para o topo (nenhuma seção na faixa), nada fica marcado", async () => {
+    const observers = stubObserver()
+    for (const { id } of ITEMS) {
+      const el = document.createElement("section")
+      el.id = id
+      document.body.append(el)
+    }
+    render(<CaseToc items={ITEMS} />)
+    const target = document.getElementById("contexto") as HTMLElement
+    await act(async () => {
+      observers[0]?.callback([{ target, isIntersecting: true }])
+    })
+    await act(async () => {
+      observers[0]?.callback([{ target, isIntersecting: false }])
+    })
+    const desktop = screen.getByRole("navigation", { name: "Sumário" })
+    expect(desktop.querySelectorAll('[aria-current="location"]')).toHaveLength(0)
+    for (const { id } of ITEMS) document.getElementById(id)?.remove()
+  })
+
   it("CA-3: no celular, o bloco abre pelo botão Sumário e Esc fecha devolvendo o foco", async () => {
     const user = userEvent.setup()
     const { container } = render(<CaseToc items={ITEMS} />)
