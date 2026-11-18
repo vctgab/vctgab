@@ -15,7 +15,11 @@ export interface Skill {
   chips: readonly string[]
 }
 
-/** Número com o que ele conta e o método ou a fonte (D-1207). */
+/**
+ * Número com o que ele conta e o método ou a fonte (D-1207). O "8s → quase
+ * instantâneo" fica reservado para a otimização de imagens deste portfólio,
+ * quando for medida (pendência futura, D-1320): não entra no site antes.
+ */
 export interface Figure {
   id: string
   /** Valor anterior, para "de → para". */
@@ -136,26 +140,25 @@ export const HOME = {
         method: "desde 2021",
       },
       {
-        id: "landing",
-        from: "8s",
-        value: "quase instantâneo",
-        label: "carregamento da landing do Nexuscoop",
-        methodKind: "metodo",
-        method: pending("como foi medido e o tempo final em segundos"),
-      },
-      {
         id: "plataformas",
         value: "1 base de código, 3 plataformas",
         label: "web, Android e iOS",
         methodKind: "fonte",
-        method: "mesmo código React para as três",
+        method: "React + Capacitor",
       },
       {
         id: "testes",
-        value: "400+",
-        label: "arquivos de teste no projeto atual",
+        value: "6.500+",
+        label: "testes automatizados no projeto atual",
         methodKind: "fonte",
-        method: pending("validar: arquivos ou testes"),
+        method: "testes unitários no Vitest, todos passando",
+      },
+      {
+        id: "edge-functions",
+        value: "44",
+        label: "Edge Functions no back end do projeto atual",
+        methodKind: "fonte",
+        method: "Supabase, em Deno",
       },
     ] satisfies readonly Figure[],
   },

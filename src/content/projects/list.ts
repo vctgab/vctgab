@@ -1,4 +1,4 @@
-import { pending, type Maybe } from "./pending.ts"
+import { pending, type Maybe } from "../pending.ts"
 
 /**
  * Projetos em destaque (Home v2). Só o que Victor escreveu; a captura de cada
@@ -22,7 +22,7 @@ export const PROJECTS: readonly Project[] = [
     meta: "Felicoop · código, liderança",
     status: "em andamento",
     description:
-      "Lidero o time que constrói o portal de faturamento de uma cooperativa médica, com uma base de código só pra web, Android e iOS.",
+      "Lidero o time que constrói o portal de faturamento de uma cooperativa médica com mais de 500 médicos, com uma base de código só pra web, Android e iOS.",
     image: pending("captura do Nexuscoop"),
   },
   {

@@ -53,7 +53,7 @@ describe("CA-13: o copy da Home é o do pedido, literal", () => {
         "Nexuscoop",
         "Felicoop · código, liderança",
         "em andamento",
-        "Lidero o time que constrói o portal de faturamento de uma cooperativa médica, com uma base de código só pra web, Android e iOS.",
+        "Lidero o time que constrói o portal de faturamento de uma cooperativa médica com mais de 500 médicos, com uma base de código só pra web, Android e iOS.",
       ],
       [
         "Kasb Health",
@@ -122,22 +122,22 @@ describe("CA-13: o copy da Home é o do pedido, literal", () => {
       ]),
     ).toEqual([
       ["5+", "anos em produto digital", "desde 2021"],
+      ["1 base de código, 3 plataformas", "web, Android e iOS", "React + Capacitor"],
       [
-        "8s → quase instantâneo",
-        "carregamento da landing do Nexuscoop",
-        "pendente: como foi medido e o tempo final em segundos",
+        "6.500+",
+        "testes automatizados no projeto atual",
+        "testes unitários no Vitest, todos passando",
       ],
-      [
-        "1 base de código, 3 plataformas",
-        "web, Android e iOS",
-        "mesmo código React para as três",
-      ],
-      [
-        "400+",
-        "arquivos de teste no projeto atual",
-        "pendente: validar: arquivos ou testes",
-      ],
+      ["44", "Edge Functions no back end do projeto atual", "Supabase, em Deno"],
     ])
+  })
+
+  it("CA-9 (caso): saem o 8s → quase instantâneo e o 400+, e ficam quatro números", () => {
+    const values = HOME.proof.figures.map((f) => f.value)
+    expect(values).toEqual(["5+", "1 base de código, 3 plataformas", "6.500+", "44"])
+    expect(values.join(" ")).not.toMatch(/quase instantâneo|400\+/)
+    expect(HOME.proof.figures.every((f) => !isPending(f.method))).toBe(true)
+    expect(HOME.proof.figures.every((f) => !("from" in f))).toBe(true)
   })
 
   it("sobre, contato e rodapé", () => {

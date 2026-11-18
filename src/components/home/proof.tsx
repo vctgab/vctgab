@@ -2,7 +2,7 @@ import { Fact } from "@/components/ui/fact"
 import { Quote } from "@/components/ui/quote"
 import { Container } from "@/components/ui/section"
 import { Stat } from "@/components/ui/stat"
-import { HOME } from "@/content/home"
+import { HOME, type Figure } from "@/content/home"
 import { isPending } from "@/content/pending"
 
 /**
@@ -11,7 +11,8 @@ import { isPending } from "@/content/pending"
  * (D-1208). Ficha: docs/specs/pages/home.md
  */
 export function Proof() {
-  const { title, testimonial, figures } = HOME.proof
+  const { title, testimonial } = HOME.proof
+  const figures: readonly Figure[] = HOME.proof.figures
   return (
     <section aria-labelledby="home-prova" className="py-16 md:py-24">
       <Container>
@@ -32,7 +33,7 @@ export function Proof() {
               <li key={figure.id}>
                 <Stat
                   size="md"
-                  from={"from" in figure ? figure.from : undefined}
+                  from={figure.from}
                   value={figure.value}
                   label={figure.label}
                   methodKind={figure.methodKind}

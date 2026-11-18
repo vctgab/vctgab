@@ -15,7 +15,7 @@ import { CONTACT_PAGE } from "../src/content/contact.ts"
 import { HOME } from "../src/content/home.ts"
 import { PROVISIONAL_PAGES, SECRET_PAGE } from "../src/content/pages.ts"
 import { isPending, type Pending } from "../src/content/pending.ts"
-import { PROJECTS, projectHref } from "../src/content/projects.ts"
+import { PROJECTS, projectHref } from "../src/content/projects/index.ts"
 import { SITE } from "../src/content/site.ts"
 
 const ROOT = process.cwd()
