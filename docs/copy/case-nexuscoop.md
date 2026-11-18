@@ -53,7 +53,7 @@ O desafio era transformar tudo isso numa esteira única, rastreável e auditáve
 ```ts
 // No app, a sessão vai para o Keychain/Keystore em vez do localStorage.
 // O deep link de recuperação de senha é tratado à mão no nativo.
-const native = isNativePlatform()
+const native = isNativePlatform();
 
 export const supabase = createClient(supabaseUrl, supabaseAnonKey, {
   auth: {
@@ -61,7 +61,7 @@ export const supabase = createClient(supabaseUrl, supabaseAnonKey, {
     detectSessionInUrl: !native,
     ...(native ? { storage: SecureStorage } : {}),
   },
-})
+});
 ```
 
 _Poucas linhas separam web e app sem duplicar o código._ **[validar: permissão para mostrar trechos do código do cliente]**

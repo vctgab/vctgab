@@ -4,7 +4,8 @@
  * 2. houver marca `[a confirmar: …]` escrita direto no código das páginas
  *    públicas (fora da vitrine /sistema, que mostra exemplos fictícios);
  * 3. algum link interno apontar para rota que não existe ou para página
- *    provisória (PaginaProvisoria).
+ *    provisória (PaginaProvisoria);
+ * 4. houver item em revisão (`review(...)`, o `[validar: …]` do copy) nos casos.
  *
  * Roda direto no Node 24 (remoção de tipos), sem build.
  */
@@ -14,8 +15,8 @@ import ts from "typescript"
 import { CONTACT_PAGE } from "../src/content/contact.ts"
 import { HOME } from "../src/content/home.ts"
 import { PROVISIONAL_PAGES, SECRET_PAGE } from "../src/content/pages.ts"
-import { isPending, type Pending } from "../src/content/pending.ts"
-import { PROJECTS, projectHref } from "../src/content/projects/index.ts"
+import { collectPending, collectReviews, type Found } from "../src/content/collect.ts"
+import { CASES, PROJECTS, projectHref } from "../src/content/projects/index.ts"
 import { SITE } from "../src/content/site.ts"
 
 const ROOT = process.cwd()
@@ -31,32 +32,16 @@ function walk(dir: string): string[] {
 
 // 1. Pendências no conteúdo ------------------------------------------------
 
-interface Found {
-  where: string
-  what: string
-}
-
-function collectPending(value: unknown, path: string, out: Found[]): void {
-  if (isPending(value)) {
-    out.push({ where: path, what: (value as Pending).what })
-    return
-  }
-  if (Array.isArray(value)) {
-    value.forEach((v, i) => collectPending(v, `${path}[${i}]`, out))
-    return
-  }
-  if (value && typeof value === "object") {
-    for (const [k, v] of Object.entries(value)) collectPending(v, `${path}.${k}`, out)
-  }
-}
-
 const pendings: Found[] = []
+const reviews: Found[] = []
 collectPending(SITE, "site", pendings)
 collectPending(HOME, "home", pendings)
 collectPending(CONTACT_PAGE, "contact", pendings)
 collectPending(PROJECTS, "projects", pendings)
 collectPending(PROVISIONAL_PAGES, "pages.provisional", pendings)
 collectPending(SECRET_PAGE, "pages.secret", pendings)
+collectPending(CASES, "cases", pendings)
+collectReviews(CASES, "cases", reviews)
 
 // 2. Marcas escritas no código e 3. links internos -------------------------
 
@@ -132,7 +117,15 @@ for (const cta of HOME.ctas)
     what: `/contato?aba=${cta.tab}`,
   })
 for (const p of PROJECTS)
-  links.push({ where: `src/content/projects.ts (${p.slug})`, what: projectHref(p) })
+  links.push({
+    where: `src/content/projects/list.ts (${p.slug})`,
+    what: projectHref(p),
+  })
+for (const [slug, project] of Object.entries(CASES))
+  links.push({
+    where: `src/content/projects/${slug}.ts (próximo projeto)`,
+    what: project.next.href,
+  })
 
 // Rotas que existem em src/app.
 interface RouteInfo {
@@ -181,6 +174,7 @@ for (const link of links) {
 
 const sections: [string, Found[], (f: Found) => string][] = [
   ["Pendências no conteúdo", pendings, (f) => `${f.where}: [a confirmar: ${f.what}]`],
+  ["Itens em revisão ([validar])", reviews, (f) => `${f.where}: ${f.what}`],
   [
     "Marcas [a confirmar] no código das páginas",
     hardcoded,

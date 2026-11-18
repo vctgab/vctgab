@@ -8,3 +8,5 @@ test-results
 src/styles/tokens.generated.json
 src/styles/themes.generated.json
 docs/CONTRAST.md
+# Copy literal de Victor (D-1301): não reformatar.
+docs/copy
